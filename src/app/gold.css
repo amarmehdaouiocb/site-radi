@@ -1276,8 +1276,62 @@ select.gold-input {
   background: var(--gold-gradient);
   color: var(--gold-bg);
   border: none;
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .gold-sticky-quote:hover {
   opacity: 0.9;
+  animation: none;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(212, 175, 55, 0);
+  }
+}
+
+/* Service Badge "Plus demandé" */
+.gold-service-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--gold-gradient);
+  color: var(--gold-bg);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* Portfolio CTA */
+.gold-portfolio-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Header CTA Group */
+.gold-header-cta-group {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (min-width: 1024px) {
+  .gold-header-cta-group {
+    display: flex;
+  }
+}
+
+.gold-header-badge {
+  font-size: 0.65rem;
+  color: var(--gold-primary);
+  opacity: 0.8;
+  letter-spacing: 0.05em;
 }
