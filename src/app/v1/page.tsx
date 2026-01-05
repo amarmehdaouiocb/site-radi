@@ -1,218 +1,164 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import {
   Phone,
   Mail,
   MapPin,
   ArrowRight,
-  Sparkles,
-  Shield,
-  Clock,
-  Award,
-  ChevronDown,
+  Star,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
-import "./gold.css";
+import "./editorial.css";
 
-export default function GoldVariant() {
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
-
+export default function EditorialVariant() {
   return (
-    <div className="gold-variant">
+    <div className="editorial-variant">
       {/* Header */}
-      <header className="gold-header">
-        <div className="gold-container">
-          <a href="/v1" className="gold-logo">
-            <div className="gold-logo-icon">
-              <span>RA</span>
-            </div>
-            <div className="gold-logo-text">
-              <span className="gold-logo-name">{SITE_CONFIG.name}</span>
-              <span className="gold-logo-tagline">Excellence & Prestige</span>
-            </div>
+      <header className="ed-header">
+        <div className="ed-header-inner">
+          <a href="/v1" className="ed-logo">
+            <span className="ed-logo-mark">RA</span>
+            <span className="ed-logo-divider" />
+            <span className="ed-logo-text">Solution</span>
           </a>
 
-          <nav className="gold-nav">
+          <nav className="ed-nav">
             <a href="#services">Services</a>
-            <a href="#realisations">Réalisations</a>
-            <a href="#temoignages">Témoignages</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#témoignages">Témoignages</a>
             <a href="#contact">Contact</a>
           </nav>
 
-          <a href="#contact" className="gold-cta-button">
-            <span>Consultation Privée</span>
-            <Sparkles className="w-4 h-4" />
+          <a href="#contact" className="ed-header-cta">
+            <span>Consultation</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="gold-hero">
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="gold-hero-bg">
+      <section className="ed-hero">
+        <div className="ed-hero-content">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="ed-hero-eyebrow"
+          >
+            <span className="ed-hero-issue">Édition 2025</span>
+            <span className="ed-hero-date">Île-de-France</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="ed-hero-title"
+          >
+            L&apos;Art de la
+            <br />
+            <em>Rénovation</em>
+            <br />
+            d&apos;Exception
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="ed-hero-intro"
+          >
+            Depuis 15 ans, nous transformons vos espaces avec un savoir-faire
+            artisanal et une vision contemporaine. Chaque projet est une
+            histoire unique.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="ed-hero-ctas"
+          >
+            <a href="#contact" className="ed-btn-primary">
+              <span>Demander un Devis</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a href="#portfolio" className="ed-btn-secondary">
+              <span>Voir le Portfolio</span>
+            </a>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2 }}
+          className="ed-hero-image"
+        >
           <Image
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
-            alt="Luxury interior"
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80"
+            alt="Architecture intérieure"
             fill
             priority
             className="object-cover"
           />
-          <div className="gold-hero-overlay" />
+          <div className="ed-hero-image-overlay" />
+          <span className="ed-hero-caption">Architecture • Design • Artisanat</span>
         </motion.div>
+      </section>
 
-        <div className="gold-hero-content">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="gold-hero-badge"
-          >
-            <Award className="w-4 h-4" />
-            <span>Artisan d&apos;Excellence depuis 15 ans</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="gold-hero-title"
-          >
-            L&apos;Art de
-            <br />
-            <span className="gold-text-gradient">Bâtir le Prestige</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="gold-hero-description"
-          >
-            Des réalisations d&apos;exception pour une clientèle exigeante.
-            <br />
-            Rénovation haut de gamme en Île-de-France.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="gold-hero-ctas"
-          >
-            <a href="#contact" className="gold-btn-primary">
-              <span>Demander un Devis</span>
-              <ArrowRight className="w-5 h-5" />
-            </a>
-            <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-btn-secondary">
-              <Phone className="w-5 h-5" />
-              <span>{SITE_CONFIG.phone}</span>
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            className="gold-hero-scroll"
-          >
-            <span>Découvrir</span>
-            <ChevronDown className="w-5 h-5 animate-bounce" />
-          </motion.div>
-        </div>
-
-        {/* Floating Stats */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="gold-hero-stats"
-        >
-          {[
-            { value: "15+", label: "Années" },
-            { value: "500+", label: "Projets" },
-            { value: "100%", label: "Satisfaction" },
-          ].map((stat) => (
-            <div key={stat.label} className="gold-stat">
-              <span className="gold-stat-value">{stat.value}</span>
-              <span className="gold-stat-label">{stat.label}</span>
+      {/* Marquee */}
+      <div className="ed-marquee">
+        <div className="ed-marquee-track">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="ed-marquee-item">
+              <span className="ed-marquee-text">Garantie Décennale</span>
+              <span className="ed-marquee-dot" />
+              <span className="ed-marquee-text">Artisan Certifié</span>
+              <span className="ed-marquee-dot" />
+              <span className="ed-marquee-text">Devis sous 24h</span>
+              <span className="ed-marquee-dot" />
+              <span className="ed-marquee-text">+500 Réalisations</span>
+              <span className="ed-marquee-dot" />
             </div>
           ))}
-        </motion.div>
-      </section>
-
-      {/* Trust Badges */}
-      <section className="gold-trust">
-        <div className="gold-container">
-          <div className="gold-trust-grid">
-            {[
-              { icon: Shield, label: "Garantie Décennale", desc: "Protection totale" },
-              { icon: Clock, label: "Réponse 24h", desc: "Réactivité garantie" },
-              { icon: Award, label: "Artisan Certifié", desc: "Qualité premium" },
-              { icon: Sparkles, label: "Finitions Luxe", desc: "Détails soignés" },
-            ].map((item) => (
-              <div key={item.label} className="gold-trust-item">
-                <div className="gold-trust-icon">
-                  <item.icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="gold-trust-label">{item.label}</span>
-                  <span className="gold-trust-desc">{item.desc}</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
+      </div>
 
       {/* Services Section */}
-      <section id="services" className="gold-services">
-        <div className="gold-container">
-          <div className="gold-section-header">
-            <span className="gold-section-label">Nos Expertises</span>
-            <h2 className="gold-section-title">
-              Des Services <span className="gold-text-gradient">d&apos;Exception</span>
-            </h2>
-            <p className="gold-section-desc">
-              Chaque projet est traité avec le plus grand soin,
-              alliant savoir-faire traditionnel et techniques modernes.
-            </p>
+      <section id="services" className="ed-services">
+        <div className="ed-container">
+          <div className="ed-section-header">
+            <div className="ed-section-line" />
+            <span className="ed-section-label">Nos Expertises</span>
+            <div className="ed-section-line" />
           </div>
 
-          <div className="gold-services-grid">
+          <h2 className="ed-section-title">
+            Des Services <em>d&apos;Excellence</em>
+          </h2>
+          <p className="ed-section-subtitle">
+            Un accompagnement sur mesure, de la conception à la réalisation finale
+          </p>
+
+          <div className="ed-services-grid" style={{ marginTop: "4rem" }}>
             {SERVICES.map((service, index) => (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="gold-service-card"
+                className="ed-service-card"
               >
-                <div className="gold-service-image">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="gold-service-overlay" />
-                </div>
-                <div className="gold-service-content">
-                  <span className="gold-service-number">0{index + 1}</span>
-                  <h3 className="gold-service-title">{service.title}</h3>
-                  <p className="gold-service-desc">{service.description}</p>
-                  <a href="#contact" className="gold-service-link">
-                    En savoir plus <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
+                <span className="ed-service-number">{String(index + 1).padStart(2, "0")}</span>
+                <h3 className="ed-service-title">{service.title}</h3>
+                <p className="ed-service-desc">{service.description}</p>
+                <a href="#contact" className="ed-service-link">
+                  En savoir plus <ArrowRight className="w-4 h-4" />
+                </a>
               </motion.div>
             ))}
           </div>
@@ -220,24 +166,27 @@ export default function GoldVariant() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="realisations" className="gold-portfolio">
-        <div className="gold-container">
-          <div className="gold-section-header">
-            <span className="gold-section-label">Portfolio</span>
-            <h2 className="gold-section-title">
-              Nos <span className="gold-text-gradient">Réalisations</span>
-            </h2>
+      <section id="portfolio" className="ed-portfolio">
+        <div className="ed-container">
+          <div className="ed-section-header">
+            <div className="ed-section-line" />
+            <span className="ed-section-label">Portfolio</span>
+            <div className="ed-section-line" />
           </div>
 
-          <div className="gold-portfolio-grid">
+          <h2 className="ed-section-title" style={{ color: "white" }}>
+            Nos <em>Réalisations</em>
+          </h2>
+
+          <div className="ed-portfolio-grid" style={{ marginTop: "4rem" }}>
             {PORTFOLIO_ITEMS.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`gold-portfolio-item ${index === 0 ? "gold-portfolio-featured" : ""}`}
+                className="ed-portfolio-item"
               >
                 <Image
                   src={item.image}
@@ -245,10 +194,10 @@ export default function GoldVariant() {
                   fill
                   className="object-cover"
                 />
-                <div className="gold-portfolio-overlay">
-                  <span className="gold-portfolio-category">{item.category}</span>
-                  <h3 className="gold-portfolio-title">{item.title}</h3>
-                  <span className="gold-portfolio-location">{item.location}</span>
+                <div className="ed-portfolio-overlay">
+                  <span className="ed-portfolio-category">{item.category}</span>
+                  <h3 className="ed-portfolio-title">{item.title}</h3>
+                  <span className="ed-portfolio-location">{item.location}</span>
                 </div>
               </motion.div>
             ))}
@@ -257,85 +206,102 @@ export default function GoldVariant() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="temoignages" className="gold-testimonials">
-        <div className="gold-container">
-          <div className="gold-section-header">
-            <span className="gold-section-label">Témoignages</span>
-            <h2 className="gold-section-title">
-              La Parole à Nos <span className="gold-text-gradient">Clients</span>
-            </h2>
-          </div>
+      <section id="témoignages" className="ed-testimonials">
+        <div className="ed-container">
+          <div className="ed-testimonials-wrapper">
+            <div className="ed-testimonials-intro">
+              <span className="ed-testimonials-quote">&ldquo;</span>
+              <h2 className="ed-testimonials-title">
+                Ce que nos <em>clients</em> disent
+              </h2>
+              <p className="ed-testimonials-desc">
+                La satisfaction de nos clients est notre plus grande fierté.
+                Découvrez leurs témoignages.
+              </p>
+            </div>
 
-          <div className="gold-testimonials-grid">
-            {TESTIMONIALS.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="gold-testimonial-card"
-              >
-                <div className="gold-testimonial-stars">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Sparkles key={i} className="w-4 h-4" />
-                  ))}
-                </div>
-                <blockquote className="gold-testimonial-quote">
-                  &ldquo;{testimonial.content}&rdquo;
-                </blockquote>
-                <div className="gold-testimonial-author">
-                  <div className="gold-testimonial-avatar">
-                    {testimonial.author.split(" ").map((n) => n[0]).join("")}
+            <div className="ed-testimonials-list">
+              {TESTIMONIALS.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="ed-testimonial-card"
+                >
+                  <p className="ed-testimonial-content">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
+                  <div className="ed-testimonial-footer">
+                    <div className="ed-testimonial-author">
+                      <div className="ed-testimonial-avatar">
+                        {testimonial.author.split(" ").map((n) => n[0]).join("")}
+                      </div>
+                      <div>
+                        <span className="ed-testimonial-name">{testimonial.author}</span>
+                        <span className="ed-testimonial-project">{testimonial.project}</span>
+                      </div>
+                    </div>
+                    <div className="ed-testimonial-rating">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <span className="gold-testimonial-name">{testimonial.author}</span>
-                    <span className="gold-testimonial-project">{testimonial.project}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="gold-contact">
-        <div className="gold-container">
-          <div className="gold-contact-grid">
-            <div className="gold-contact-info">
-              <span className="gold-section-label">Contact</span>
-              <h2 className="gold-section-title">
-                Parlons de Votre <span className="gold-text-gradient">Projet</span>
-              </h2>
-              <p className="gold-contact-desc">
-                Bénéficiez d&apos;une consultation personnalisée et d&apos;un devis
-                détaillé sous 24 heures.
+      <section id="contact" className="ed-contact">
+        <div className="ed-container">
+          <div className="ed-contact-grid">
+            <div className="ed-contact-info">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                Parlons de votre <em>projet</em>
+              </motion.h2>
+              <p className="ed-contact-desc">
+                Chaque projet commence par une conversation. Contactez-nous
+                pour une consultation personnalisée et un devis détaillé
+                sous 24 heures.
               </p>
 
-              <div className="gold-contact-details">
-                <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-contact-item">
-                  <Phone className="w-5 h-5" />
+              <div className="ed-contact-details">
+                <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="ed-contact-item">
+                  <Phone />
                   <span>{SITE_CONFIG.phone}</span>
                 </a>
-                <a href={`mailto:${SITE_CONFIG.email}`} className="gold-contact-item">
-                  <Mail className="w-5 h-5" />
+                <a href={`mailto:${SITE_CONFIG.email}`} className="ed-contact-item">
+                  <Mail />
                   <span>{SITE_CONFIG.email}</span>
                 </a>
-                <div className="gold-contact-item">
-                  <MapPin className="w-5 h-5" />
+                <div className="ed-contact-item">
+                  <MapPin />
                   <span>{SITE_CONFIG.address}</span>
                 </div>
               </div>
             </div>
 
-            <form className="gold-contact-form">
-              <div className="gold-form-row">
-                <input type="text" placeholder="Votre nom" className="gold-input" />
-                <input type="email" placeholder="Votre email" className="gold-input" />
+            <motion.form
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="ed-contact-form"
+            >
+              <div className="ed-form-row">
+                <input type="text" placeholder="Votre nom" className="ed-input" />
+                <input type="email" placeholder="Votre email" className="ed-input" />
               </div>
-              <input type="tel" placeholder="Votre téléphone" className="gold-input" />
-              <select className="gold-input">
+              <input type="tel" placeholder="Votre téléphone" className="ed-input" />
+              <select className="ed-input">
                 <option value="">Type de projet</option>
                 <option value="renovation">Rénovation intérieure</option>
                 <option value="maconnerie">Maçonnerie</option>
@@ -343,37 +309,34 @@ export default function GoldVariant() {
                 <option value="electricite">Électricité</option>
                 <option value="autre">Autre</option>
               </select>
-              <textarea placeholder="Décrivez votre projet..." rows={4} className="gold-input" />
-              <button type="submit" className="gold-btn-primary gold-btn-full">
+              <textarea placeholder="Décrivez votre projet..." rows={4} className="ed-input" />
+              <button type="submit" className="ed-btn-primary ed-btn-full">
                 <span>Envoyer ma demande</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4" />
               </button>
-            </form>
+            </motion.form>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="gold-footer">
-        <div className="gold-container">
-          <div className="gold-footer-content">
-            <div className="gold-footer-brand">
-              <div className="gold-logo">
-                <div className="gold-logo-icon">
-                  <span>RA</span>
-                </div>
-                <span className="gold-logo-name">{SITE_CONFIG.name}</span>
-              </div>
-              <p>L&apos;excellence au service de vos projets.</p>
+      <footer className="ed-footer">
+        <div className="ed-container">
+          <div className="ed-footer-content">
+            <div className="ed-footer-brand">
+              <span className="ed-footer-logo">RA</span>
+              <p className="ed-footer-tagline">
+                L&apos;excellence au service de vos projets de rénovation.
+              </p>
             </div>
-            <div className="gold-footer-links">
+            <div className="ed-footer-links">
               <a href="#services">Services</a>
-              <a href="#realisations">Réalisations</a>
-              <a href="#temoignages">Témoignages</a>
+              <a href="#portfolio">Portfolio</a>
+              <a href="#témoignages">Témoignages</a>
               <a href="#contact">Contact</a>
             </div>
           </div>
-          <div className="gold-footer-bottom">
+          <div className="ed-footer-bottom">
             <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Tous droits réservés.</p>
             <p>Artisan BTP — Île-de-France</p>
           </div>
