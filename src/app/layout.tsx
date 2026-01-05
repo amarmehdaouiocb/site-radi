@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: "RA Solution | Artisan Multi-Services BTP",
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <body className="antialiased">
+        <GoogleAnalytics />
         {children}
       </body>
     </html>

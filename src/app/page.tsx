@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState, FormEvent } from "react";
+import { useRef, useState, useEffect, FormEvent } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Phone,
   Mail,
@@ -19,6 +20,7 @@ import {
   X,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
+import { trackFormSubmit, trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
 import TrustedBy from "@/components/TrustedBy";
 import "./gold.css";
 
@@ -42,6 +44,33 @@ export default function HomePage() {
   const [formMessage, setFormMessage] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [portfolioFilter, setPortfolioFilter] = useState<string>("Tous");
+  const [hideStickyCta, setHideStickyCta] = useState(false);
+
+  // Hide sticky CTA on scroll down, show on scroll up
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const scrollingDown = currentScrollY > lastScrollY;
+          const scrolledPastThreshold = currentScrollY > 300;
+
+          // Hide when scrolling down and past threshold, show when scrolling up
+          setHideStickyCta(scrollingDown && scrolledPastThreshold);
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Get unique categories for filter
   const portfolioCategories = ["Tous", ...Array.from(new Set(PORTFOLIO_ITEMS.map(item => item.category)))];
@@ -67,6 +96,7 @@ export default function HomePage() {
         setFormMessage(data.message);
         setFormData({ name: "", phone: "", message: "" });
         setRgpdAccepted(false);
+        trackFormSubmit("contact_form");
       } else {
         setFormStatus("error");
         setFormMessage(data.error || "Une erreur est survenue.");
@@ -99,12 +129,20 @@ export default function HomePage() {
             <a href="#contact">Contact</a>
           </nav>
 
-          <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-header-phone">
+          <a
+            href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
+            className="gold-header-phone"
+            onClick={() => trackPhoneClick("header")}
+          >
             <Phone className="w-4 h-4" />
             <span>{SITE_CONFIG.phone}</span>
           </a>
           <div className="gold-header-cta-group">
-            <a href="#contact" className="gold-cta-button gold-cta-desktop">
+            <a
+              href="#contact"
+              className="gold-cta-button gold-cta-desktop"
+              onClick={() => trackCtaClick("devis_gratuit", "header")}
+            >
               <span>Devis Gratuit 24h</span>
               <ArrowRight className="w-4 h-4" />
             </a>
@@ -202,11 +240,19 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.8 }}
             className="gold-hero-ctas"
           >
-            <a href="#contact" className="gold-btn-primary">
+            <a
+              href="#contact"
+              className="gold-btn-primary"
+              onClick={() => trackCtaClick("demander_devis", "hero")}
+            >
               <span>Demander un Devis</span>
               <ArrowRight className="w-5 h-5" />
             </a>
-            <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-btn-secondary">
+            <a
+              href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
+              className="gold-btn-secondary"
+              onClick={() => trackPhoneClick("hero")}
+            >
               <Phone className="w-5 h-5" />
               <span>{SITE_CONFIG.phone}</span>
             </a>
@@ -326,9 +372,9 @@ export default function HomePage() {
                   <span className="gold-service-number">0{index + 1}</span>
                   <h3 className="gold-service-title">{service.title}</h3>
                   <p className="gold-service-desc">{service.description}</p>
-                  <a href="#contact" className="gold-service-link">
+                  <Link href={`/services/${service.slug}`} className="gold-service-link">
                     En savoir plus <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -351,7 +397,10 @@ export default function HomePage() {
               <button
                 key={category}
                 className={`gold-portfolio-filter ${portfolioFilter === category ? "active" : ""}`}
-                onClick={() => setPortfolioFilter(category)}
+                onClick={() => {
+                  setPortfolioFilter(category);
+                  trackPortfolioFilter(category);
+                }}
               >
                 {category}
               </button>
@@ -580,12 +629,20 @@ export default function HomePage() {
       </footer>
 
       {/* Mobile Sticky CTA */}
-      <div className="gold-mobile-sticky-cta">
-        <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-sticky-call">
+      <div className={`gold-mobile-sticky-cta ${hideStickyCta ? "gold-sticky-hidden" : ""}`}>
+        <a
+          href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
+          className="gold-sticky-call"
+          onClick={() => trackPhoneClick("sticky_mobile")}
+        >
           <Phone className="w-5 h-5" />
           <span>Appeler</span>
         </a>
-        <a href="#contact" className="gold-sticky-quote">
+        <a
+          href="#contact"
+          className="gold-sticky-quote"
+          onClick={() => trackCtaClick("devis_gratuit", "sticky_mobile")}
+        >
           <span>Devis gratuit</span>
           <ArrowRight className="w-4 h-4" />
         </a>
