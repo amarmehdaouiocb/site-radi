@@ -284,3 +284,9 @@ Avant chaque mise en prod :
 | P2: Trust badge "Devis Gratuit" | Done | 05/01/26 | dbf3c40 |
 | P2: Mention sous formulaire | Done | 05/01/26 | dbf3c40 |
 | P2: Horaires + zone footer | Done | 05/01/26 | dbf3c40 |
+| P2: Badge "Plus demandé" services | Done | 05/01/26 | 648f7ee |
+| P2: CTA "Voir toutes nos réalisations" | Done | 05/01/26 | 648f7ee |
+| P2: Date sur témoignages | Done | 05/01/26 | 648f7ee |
+| P3: Badge "Réponse garantie" header | Done | 05/01/26 | 648f7ee |
+| P3: Animation pulse CTA sticky | Done | 05/01/26 | 648f7ee |
+| P3: Badge "Assurance RC Pro" | Done | 05/01/26 | 648f7ee |
