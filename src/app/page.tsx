@@ -41,6 +41,13 @@ export default function HomePage() {
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [portfolioFilter, setPortfolioFilter] = useState<string>("Tous");
+
+  // Get unique categories for filter
+  const portfolioCategories = ["Tous", ...Array.from(new Set(PORTFOLIO_ITEMS.map(item => item.category)))];
+  const filteredPortfolio = portfolioFilter === "Tous"
+    ? PORTFOLIO_ITEMS
+    : PORTFOLIO_ITEMS.filter(item => item.category === portfolioFilter);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -339,8 +346,20 @@ export default function HomePage() {
             </h2>
           </div>
 
+          <div className="gold-portfolio-filters">
+            {portfolioCategories.map((category) => (
+              <button
+                key={category}
+                className={`gold-portfolio-filter ${portfolioFilter === category ? "active" : ""}`}
+                onClick={() => setPortfolioFilter(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
           <div className="gold-portfolio-grid">
-            {PORTFOLIO_ITEMS.map((item, index) => (
+            {filteredPortfolio.map((item, index) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.95 }}
