@@ -14,23 +14,25 @@ export const SITE_CONFIG = {
   hours: "Lun - Sam: 8h - 19h",
 };
 
-// Unsplash images for construction/renovation theme
+// Vidéos YouTube (ajouter les IDs après upload)
+// Pour obtenir l'ID: youtube.com/watch?v=XXXXX → l'ID est XXXXX
+export const VIDEOS = [
+  // Décommenter et ajouter vos vidéos après upload sur YouTube:
+  // { id: "VIDEO_ID_1", title: "Rénovation Salle de Bain", project: "sdb-mosaique" },
+  // { id: "VIDEO_ID_2", title: "Construction Piscine", project: "piscine" },
+];
+
+// Images réelles des réalisations RA Solution
 export const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
-  heroAlt: "Chantier de construction professionnel",
+  hero: "/portfolio/terrasse-bois-apres-01.jpg",
+  heroAlt: "Terrasse bois aménagée par RA Solution",
   services: {
-    renovation:
-      "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&q=80",
-    maconnerie:
-      "https://images.unsplash.com/photo-1590725140246-20acdee442be?w=800&q=80",
-    plomberie:
-      "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80",
-    electricite:
-      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80",
-    peinture:
-      "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800&q=80",
-    carrelage:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+    renovation: "/portfolio/renovation-couloir-apres-01.jpg",
+    maconnerie: "/portfolio/piscine-apres-01.jpg",
+    plomberie: "/portfolio/sdb-mosaique-apres-03.jpg",
+    electricite: "/portfolio/renovation-tableau-elec-01.jpg",
+    peinture: "/portfolio/cuisine-moderne-02.jpg",
+    carrelage: "/portfolio/terrasse-pierre-apres-02.jpg",
   },
 };
 
@@ -155,51 +157,61 @@ export const SERVICES = [
 export const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    title: "Rénovation Cuisine Moderne",
+    title: "Cuisine Moderne sur Mesure",
     category: "Rénovation",
-    location: "Paris 15e",
-    image:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+    location: "Île-de-France",
+    image: "/portfolio/cuisine-moderne-01.jpg",
   },
   {
     id: 2,
-    title: "Salle de Bain Contemporaine",
+    title: "Salle de Bain Mosaïque",
     category: "Rénovation",
-    location: "Boulogne",
-    image:
-      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
+    location: "Île-de-France",
+    image: "/portfolio/sdb-mosaique-apres-03.jpg",
+    beforeImage: "/portfolio/sdb-mosaique-avant-01.jpg",
   },
   {
     id: 3,
-    title: "Extension Maison",
+    title: "Piscine Béton",
     category: "Maçonnerie",
-    location: "Versailles",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    location: "Île-de-France",
+    image: "/portfolio/piscine-apres-01.jpg",
+    beforeImage: "/portfolio/piscine-avant-01.jpg",
   },
   {
     id: 4,
-    title: "Appartement Haussmannien",
-    category: "Rénovation",
-    location: "Paris 8e",
-    image:
-      "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80",
+    title: "Salle de Bain Effet Marbre",
+    category: "Carrelage",
+    location: "Île-de-France",
+    image: "/portfolio/sdb-marbre-apres-01.jpg",
   },
   {
     id: 5,
-    title: "Installation Électrique Complète",
-    category: "Électricité",
-    location: "Neuilly",
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    title: "Terrasse Bois avec Barbecue",
+    category: "Rénovation",
+    location: "Île-de-France",
+    image: "/portfolio/terrasse-bois-apres-01.jpg",
   },
   {
     id: 6,
-    title: "Terrasse Carrelée",
+    title: "Terrasse Pierre Naturelle",
     category: "Carrelage",
-    location: "Saint-Cloud",
-    image:
-      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+    location: "Île-de-France",
+    image: "/portfolio/terrasse-pierre-apres-02.jpg",
+  },
+  {
+    id: 7,
+    title: "Escalier Design Bois & Métal",
+    category: "Rénovation",
+    location: "Île-de-France",
+    image: "/portfolio/escalier-design-apres-01.jpg",
+  },
+  {
+    id: 8,
+    title: "Rénovation Complète Appartement",
+    category: "Rénovation",
+    location: "Île-de-France",
+    image: "/portfolio/renovation-couloir-apres-01.jpg",
   },
 ];
 
