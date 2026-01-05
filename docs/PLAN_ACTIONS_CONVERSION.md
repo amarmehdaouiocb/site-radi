@@ -290,3 +290,4 @@ Avant chaque mise en prod :
 | P3: Badge "Réponse garantie" header | Done | 05/01/26 | 648f7ee |
 | P3: Animation pulse CTA sticky | Done | 05/01/26 | 648f7ee |
 | P3: Badge "Assurance RC Pro" | Done | 05/01/26 | 648f7ee |
+| P3: Filtrage portfolio par type | Done | 05/01/26 | af9e1fd |
