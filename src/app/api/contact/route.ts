@@ -60,6 +60,17 @@ export async function POST(request: NextRequest) {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%); padding: 20px; text-align: center;">
+            <table align="center" style="margin-bottom: 15px;">
+              <tr>
+                <td style="background: #0a0a0a; padding: 12px 16px; border: 1px solid #d4af37;">
+                  <span style="font-family: Georgia, serif; font-size: 24px; font-weight: bold; color: #d4af37; letter-spacing: 2px;">RA</span>
+                </td>
+                <td style="padding-left: 12px; text-align: left;">
+                  <div style="font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #0a0a0a;">RA Solution</div>
+                  <div style="font-family: Georgia, serif; font-size: 11px; color: #333; letter-spacing: 1px;">Excellence & Prestige</div>
+                </td>
+              </tr>
+            </table>
             <h1 style="color: #0a0a0a; margin: 0;">Nouvelle Demande de Devis</h1>
           </div>
 
@@ -116,6 +127,17 @@ export async function POST(request: NextRequest) {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%); padding: 30px; text-align: center;">
+            <table align="center" style="margin-bottom: 15px;">
+              <tr>
+                <td style="background: #0a0a0a; padding: 12px 16px; border: 1px solid #d4af37;">
+                  <span style="font-family: Georgia, serif; font-size: 24px; font-weight: bold; color: #d4af37; letter-spacing: 2px;">RA</span>
+                </td>
+                <td style="padding-left: 12px; text-align: left;">
+                  <div style="font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #0a0a0a;">RA Solution</div>
+                  <div style="font-family: Georgia, serif; font-size: 11px; color: #333; letter-spacing: 1px;">Excellence & Prestige</div>
+                </td>
+              </tr>
+            </table>
             <h1 style="color: #0a0a0a; margin: 0;">Merci pour votre demande</h1>
           </div>
 

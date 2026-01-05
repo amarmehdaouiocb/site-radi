@@ -17,6 +17,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
+import TrustedBy from "@/components/TrustedBy";
 import "./gold.css";
 
 export default function HomePage() {
@@ -338,6 +339,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Trusted By Section */}
+      <TrustedBy />
 
       {/* Contact Section */}
       <section id="contact" className="gold-contact">
