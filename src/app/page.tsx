@@ -39,6 +39,7 @@ export default function HomePage() {
     projectType: "",
     message: "",
   });
+  const [rgpdAccepted, setRgpdAccepted] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -60,6 +61,7 @@ export default function HomePage() {
         setFormStatus("success");
         setFormMessage(data.message);
         setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
+        setRgpdAccepted(false);
       } else {
         setFormStatus("error");
         setFormMessage(data.error || "Une erreur est survenue.");
@@ -460,6 +462,21 @@ export default function HomePage() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
               />
+              <label className="gold-checkbox">
+                <input
+                  type="checkbox"
+                  checked={rgpdAccepted}
+                  onChange={(e) => setRgpdAccepted(e.target.checked)}
+                  required
+                />
+                <span className="gold-checkbox-mark" />
+                <span className="gold-checkbox-text">
+                  J&apos;accepte que mes données soient utilisées pour traiter ma demande.{" "}
+                  <a href="/mentions-legales" target="_blank" rel="noopener noreferrer">
+                    Politique de confidentialité
+                  </a>
+                </span>
+              </label>
               <button
                 type="submit"
                 className="gold-btn-primary gold-btn-full"
@@ -516,6 +533,8 @@ export default function HomePage() {
             <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Tous droits réservés.</p>
             <div className="gold-footer-legal">
               <a href="/mentions-legales">Mentions légales</a>
+              <span>•</span>
+              <span>SIRET : {SITE_CONFIG.siret}</span>
               <span>•</span>
               <span>Artisan BTP — Île-de-France</span>
             </div>

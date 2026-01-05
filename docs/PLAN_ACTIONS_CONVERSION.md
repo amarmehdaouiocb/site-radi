@@ -200,9 +200,9 @@ Apres: "Renovation cle en main | Devis sous 24h | Garantie decennale"
 ## Roadmap Suggeree
 
 ### Sprint 1 : Conformite & Credibilite (P1 #1-3-9)
-- [ ] Supprimer faux logos partenaires
-- [ ] Ajouter checkbox RGPD
-- [ ] Afficher SIRET footer
+- [x] Supprimer faux logos partenaires
+- [x] Ajouter checkbox RGPD
+- [x] Afficher SIRET footer
 
 ### Sprint 2 : Formulaire & CTA (P1 #2-4)
 - [ ] Reduire formulaire a 3 champs
@@ -272,4 +272,6 @@ Avant chaque mise en prod :
 | Menu mobile hamburger | Done | 05/01/26 | 4dd0f64 |
 | CTA sticky mobile | Done | 05/01/26 | 4dd0f64 |
 | Documentation UX mobile | Done | 05/01/26 | faaacd9 |
-| ... | ... | ... | ... |
+| Remplacer faux logos partenaires | Done | 05/01/26 | 3925bb0 |
+| Checkbox RGPD formulaire | Done | 05/01/26 | 3925bb0 |
+| SIRET dans footer | Done | 05/01/26 | 3925bb0 |
