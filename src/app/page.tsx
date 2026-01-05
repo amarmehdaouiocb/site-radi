@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, FormEvent } from "react";
 import Image from "next/image";
 import {
@@ -15,6 +15,8 @@ import {
   ChevronDown,
   Loader2,
   CheckCircle,
+  Menu,
+  X,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
 import TrustedBy from "@/components/TrustedBy";
@@ -39,6 +41,7 @@ export default function HomePage() {
   });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -82,18 +85,55 @@ export default function HomePage() {
             </div>
           </a>
 
-          <nav className="gold-nav">
+          <nav className="gold-nav gold-nav-desktop">
             <a href="#services">Services</a>
             <a href="#realisations">Réalisations</a>
             <a href="#temoignages">Témoignages</a>
             <a href="#contact">Contact</a>
           </nav>
 
-          <a href="#contact" className="gold-cta-button">
+          <a href="#contact" className="gold-cta-button gold-cta-desktop">
             <span>Consultation Privée</span>
             <Sparkles className="w-4 h-4" />
           </a>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="gold-mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile navigation */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.nav
+              className="gold-mobile-nav"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
+              <a href="#realisations" onClick={() => setMobileMenuOpen(false)}>Réalisations</a>
+              <a href="#temoignages" onClick={() => setMobileMenuOpen(false)}>Témoignages</a>
+              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+              <div className="gold-mobile-nav-ctas">
+                <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-mobile-call">
+                  <Phone className="w-5 h-5" />
+                  <span>Appeler</span>
+                </a>
+                <a href="#contact" className="gold-mobile-quote" onClick={() => setMobileMenuOpen(false)}>
+                  <span>Devis gratuit</span>
+                </a>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Hero Section */}
@@ -482,6 +522,18 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Mobile Sticky CTA */}
+      <div className="gold-mobile-sticky-cta">
+        <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-sticky-call">
+          <Phone className="w-5 h-5" />
+          <span>Appeler</span>
+        </a>
+        <a href="#contact" className="gold-sticky-quote">
+          <span>Devis gratuit</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
     </div>
   );
 }
