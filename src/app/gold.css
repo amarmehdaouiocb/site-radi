@@ -171,6 +171,28 @@
   width: 100%;
 }
 
+/* Header Phone */
+.gold-header-phone {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.gold-header-phone:hover {
+  color: var(--gold-primary-light);
+}
+
+@media (min-width: 1024px) {
+  .gold-header-phone {
+    display: flex;
+  }
+}
+
 .gold-cta-button {
   display: none;
   align-items: center;
@@ -993,6 +1015,14 @@ select.gold-input {
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
+.gold-form-reassurance {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gold-primary);
+  margin-top: 0.75rem;
+  opacity: 0.9;
+}
+
 .gold-btn-primary:disabled {
   opacity: 0.7;
   cursor: not-allowed;
@@ -1042,6 +1072,24 @@ select.gold-input {
 
 .gold-footer-links a:hover {
   color: var(--gold-primary);
+}
+
+.gold-footer-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  font-size: 0.85rem;
+  color: var(--gold-text-muted);
+}
+
+.gold-footer-info span:nth-child(2) {
+  color: var(--gold-primary);
+  opacity: 0.5;
 }
 
 .gold-footer-bottom {

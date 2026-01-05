@@ -277,5 +277,10 @@ Avant chaque mise en prod :
 | SIRET dans footer | Done | 05/01/26 | 7009070 |
 | Formulaire réduit à 3 champs | Done | 05/01/26 | d23e850 |
 | CTA "Recevoir mon devis gratuit sous 24h" | Done | 05/01/26 | d23e850 |
-| Stats visibles sur mobile | Done | 05/01/26 | - |
-| Proposition de valeur concrete | Done | 05/01/26 | - |
+| Stats visibles sur mobile | Done | 05/01/26 | 5f48d6d |
+| Proposition de valeur concrete | Done | 05/01/26 | 5f48d6d |
+| P2: Telephone header desktop | Done | 05/01/26 | dbf3c40 |
+| P2: CTA header "Devis Gratuit 24h" | Done | 05/01/26 | dbf3c40 |
+| P2: Trust badge "Devis Gratuit" | Done | 05/01/26 | dbf3c40 |
+| P2: Mention sous formulaire | Done | 05/01/26 | dbf3c40 |
+| P2: Horaires + zone footer | Done | 05/01/26 | dbf3c40 |
