@@ -177,9 +177,9 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.6 }}
             className="gold-hero-description"
           >
-            Des réalisations d&apos;exception pour une clientèle exigeante.
+            Rénovation clé en main • Devis sous 24h • Garantie décennale
             <br />
-            Rénovation haut de gamme en Île-de-France.
+            <span style={{ opacity: 0.8 }}>Artisan certifié en Île-de-France</span>
           </motion.p>
 
           <motion.div
@@ -196,6 +196,25 @@ export default function HomePage() {
               <Phone className="w-5 h-5" />
               <span>{SITE_CONFIG.phone}</span>
             </a>
+          </motion.div>
+
+          {/* Mobile Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="gold-hero-stats-mobile"
+          >
+            {[
+              { value: "15+", label: "Années" },
+              { value: "500+", label: "Projets" },
+              { value: "100%", label: "Satisfaction" },
+            ].map((stat) => (
+              <div key={stat.label} className="gold-stat">
+                <span className="gold-stat-value">{stat.value}</span>
+                <span className="gold-stat-label">{stat.label}</span>
+              </div>
+            ))}
           </motion.div>
 
           <motion.div

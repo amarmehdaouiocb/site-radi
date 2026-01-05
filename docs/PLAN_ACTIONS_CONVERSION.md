@@ -209,8 +209,8 @@ Apres: "Renovation cle en main | Devis sous 24h | Garantie decennale"
 - [x] Reformuler CTA "Recevoir mon devis gratuit sous 24h"
 
 ### Sprint 3 : Hero & Mobile (P1 #5-8)
-- [ ] Stats visibles sur mobile
-- [ ] Proposition de valeur concrete
+- [x] Stats visibles sur mobile
+- [x] Proposition de valeur concrete
 
 ### Sprint 4 : Authenticite (P1 #6-7-10)
 - [ ] Vraies photos de projets
@@ -275,5 +275,7 @@ Avant chaque mise en prod :
 | Remplacer faux logos partenaires | Done | 05/01/26 | 7009070 |
 | Checkbox RGPD formulaire | Done | 05/01/26 | 7009070 |
 | SIRET dans footer | Done | 05/01/26 | 7009070 |
-| Formulaire réduit à 3 champs | Done | 05/01/26 | - |
-| CTA "Recevoir mon devis gratuit sous 24h" | Done | 05/01/26 | - |
+| Formulaire réduit à 3 champs | Done | 05/01/26 | d23e850 |
+| CTA "Recevoir mon devis gratuit sous 24h" | Done | 05/01/26 | d23e850 |
+| Stats visibles sur mobile | Done | 05/01/26 | - |
+| Proposition de valeur concrete | Done | 05/01/26 | - |

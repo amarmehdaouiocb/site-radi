@@ -363,6 +363,7 @@
   text-transform: uppercase;
 }
 
+/* Desktop floating stats */
 .gold-hero-stats {
   position: absolute;
   right: 4rem;
@@ -380,6 +381,36 @@
   .gold-hero-stats {
     display: flex;
   }
+}
+
+/* Mobile stats bar */
+.gold-hero-stats-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: rgba(10, 10, 10, 0.7);
+  border: 1px solid var(--gold-border);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 1280px) {
+  .gold-hero-stats-mobile {
+    display: none;
+  }
+}
+
+.gold-hero-stats-mobile .gold-stat {
+  text-align: center;
+}
+
+.gold-hero-stats-mobile .gold-stat-value {
+  font-size: 1.5rem;
+}
+
+.gold-hero-stats-mobile .gold-stat-label {
+  font-size: 0.55rem;
 }
 
 .gold-stat {
