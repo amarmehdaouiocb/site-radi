@@ -12,6 +12,8 @@ Ce document présente les différentes variantes de design disponibles pour le s
 | V1 | `/v1` | Black Metallic Gold | Luxe, prestige, haute gamme |
 | V2 | `/v2` | Editorial Magazine | Épuré, éditorial, raffiné |
 | V3 | `/v3` | Neo-Brutalist | Bold, graphique, impactant |
+| V4 | `/v4` | Glassmorphism Dark | Futuriste, tech, premium |
+| V5 | `/v5` | Minimalist Warm | Zen, épuré, chaleureux |
 
 ---
 
@@ -141,6 +143,88 @@ Moderne, technique, sans compromis. Communique l'efficacité et la précision. I
 
 ---
 
+## Variante 4 (`/v4`)
+
+### Style : Glassmorphism Dark
+
+Design futuriste avec effets de verre, blur et accents néon cyan/violet.
+
+#### Palette de couleurs
+```css
+--gl-bg: #0f0f1a            /* Bleu-noir profond */
+--gl-bg-lighter: #161625    /* Fond légèrement plus clair */
+--gl-cyan: #00d4ff          /* Cyan néon */
+--gl-purple: #a855f7        /* Violet */
+--gl-pink: #ec4899          /* Rose */
+--gl-gradient: linear-gradient(135deg, var(--gl-cyan) 0%, var(--gl-purple) 100%)
+```
+
+#### Typographie
+- **Titres & Corps** : Outfit (moderne, géométrique)
+- **Code/Technique** : JetBrains Mono (monospace)
+
+#### Caractéristiques design
+- Header flottant avec effet verre (blur + transparence)
+- Cartes avec backdrop-filter blur
+- Bordures lumineuses subtiles
+- Dégradés de fond animés (blobs colorés)
+- Coins arrondis généreux (20px)
+- Effet glow sur les boutons au hover
+
+#### Effets spéciaux
+```css
+/* Glass effect */
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+
+/* Glow on hover */
+box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+```
+
+#### Ambiance
+High-tech, premium, avant-gardiste. Idéal pour communiquer l'innovation et la modernité. Parfait pour une clientèle jeune et connectée.
+
+---
+
+## Variante 5 (`/v5`)
+
+### Style : Minimalist Warm
+
+Design zen et épuré avec tons chauds et espaces généreux, inspiration japonaise.
+
+#### Palette de couleurs
+```css
+--mn-bg: #fdfbf7            /* Blanc cassé chaud */
+--mn-bg-alt: #f7f4ed        /* Crème */
+--mn-text: #2c2825          /* Brun foncé */
+--mn-accent: #c67d4e        /* Terracotta/cuivre */
+--mn-accent-light: #e8cdb9  /* Beige doré */
+```
+
+#### Typographie
+- **Titres** : Instrument Serif (élégant, classique)
+- **Corps** : DM Sans (lisible, neutre)
+
+#### Caractéristiques design
+- Espacement généreux (sections de 8-12rem)
+- Grille de services avec séparateurs de 1px
+- Numérotation italique décorative
+- Citation centrale en pleine largeur
+- Témoignages sur fond sombre pour contraste
+- Lignes fines et délicates
+
+#### Philosophie
+- Moins c'est plus
+- Laisser respirer le contenu
+- Typographie comme élément décoratif
+- Couleurs chaudes et apaisantes
+
+#### Ambiance
+Calme, raffiné, intemporel. Communique la sérénité et le savoir-faire. Idéal pour une clientèle recherchant l'authenticité et la qualité.
+
+---
+
 ## Comparatif des sections
 
 ### Hero
@@ -151,6 +235,8 @@ Moderne, technique, sans compromis. Communique l'efficacité et la précision. I
 | V1 Gold | Centré avec stats flottantes | Gradient doré animé |
 | V2 Editorial | 2 colonnes (texte / image) | Image avec overlay dégradé |
 | V3 Brutalist | 2 colonnes avec bordure | Image N&B + stats en bas |
+| V4 Glass | 2 colonnes avec carte flottante | Gradient blur background |
+| V5 Minimal | Centré avec image full-width | Espaces généreux, simplicité |
 
 ### Services
 
@@ -160,6 +246,8 @@ Moderne, technique, sans compromis. Communique l'efficacité et la précision. I
 | V1 Gold | Grille 2x3 avec images | Overlay au hover |
 | V2 Editorial | Grille 3x2 avec séparateurs | Fond qui change au hover |
 | V3 Brutalist | Grille 3x2 avec bordures | Background slide-up |
+| V4 Glass | Grille 3x2 avec glass cards | Bordure gradient au hover |
+| V5 Minimal | Grille 2x3 avec numéros | Fond subtil au hover |
 
 ### Portfolio
 
@@ -169,6 +257,8 @@ Moderne, technique, sans compromis. Communique l'efficacité et la précision. I
 | V1 Gold | Masonry avec featured | Overlay doré |
 | V2 Editorial | Asymétrique magazine | Overlay avec infos |
 | V3 Brutalist | Grille stricte | N&B → couleur |
+| V4 Glass | Featured + grille | Zoom + overlay gradient |
+| V5 Minimal | Featured vertical + grille | Zoom subtil + overlay |
 
 ---
 
@@ -188,6 +278,16 @@ Moderne, technique, sans compromis. Communique l'efficacité et la précision. I
 - Clientèle moderne / tech-savvy
 - Différenciation forte sur le marché
 - Communication impactante
+
+### V4 Glass - Pour qui ?
+- Clientèle jeune / connectée
+- Projets modernes / high-tech
+- Image innovante et avant-gardiste
+
+### V5 Minimal - Pour qui ?
+- Clientèle sensible à l'authenticité
+- Projets haut de gamme discret
+- Communication zen et raffinée
 
 ---
 
@@ -215,7 +315,13 @@ src/app/
 ├── v2/
 │   ├── page.tsx          # Variante Editorial
 │   └── editorial.css     # Styles Editorial
-└── v3/
-    ├── page.tsx          # Variante Brutalist
-    └── brutalist.css     # Styles Brutalist
+├── v3/
+│   ├── page.tsx          # Variante Brutalist
+│   └── brutalist.css     # Styles Brutalist
+├── v4/
+│   ├── page.tsx          # Variante Glassmorphism
+│   └── glass.css         # Styles Glass
+└── v5/
+    ├── page.tsx          # Variante Minimalist
+    └── minimal.css       # Styles Minimal
 ```
