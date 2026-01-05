@@ -2,12 +2,15 @@
 
 export const SITE_CONFIG = {
   name: "RA Solution",
+  legalName: "R.A Bâtiment",
+  legalForm: "SAS – Société par Actions Simplifiée",
   tagline: "Artisan Multi-Services BTP",
   description:
     "Votre artisan de confiance en Île-de-France pour tous vos travaux de rénovation, maçonnerie, plomberie, électricité et plus encore.",
-  phone: "01 23 45 67 89",
-  email: "contact@ra-solution.fr",
-  address: "Île-de-France",
+  phone: "06 23 30 44 45",
+  email: "ra.solution@myyahoo.com",
+  address: "5 rue de la Gaîté, 93000 Bobigny",
+  siret: "933 728 610 00017",
   hours: "Lun - Sam: 8h - 19h",
 };
 

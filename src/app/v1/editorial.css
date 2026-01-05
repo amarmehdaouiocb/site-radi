@@ -796,6 +796,31 @@ textarea.ed-input {
   justify-content: center;
 }
 
+/* Form Messages */
+.ed-form-message {
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.ed-form-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.ed-form-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ed-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
   .ed-contact-grid {
     grid-template-columns: 1fr;
@@ -882,5 +907,27 @@ textarea.ed-input {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
+  }
+}
+
+.ed-footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ed-footer-legal a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ed-footer-legal a:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .ed-footer-legal {
+    justify-content: center;
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, FormEvent } from "react";
 import Image from "next/image";
 import {
   Phone,
@@ -13,6 +13,8 @@ import {
   Clock,
   Award,
   ChevronDown,
+  Loader2,
+  CheckCircle,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
 import "./gold.css";
@@ -25,6 +27,44 @@ export default function HomePage() {
   });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
+
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formMessage, setFormMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setFormStatus("loading");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormStatus("success");
+        setFormMessage(data.message);
+        setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
+      } else {
+        setFormStatus("error");
+        setFormMessage(data.error || "Une erreur est survenue.");
+      }
+    } catch {
+      setFormStatus("error");
+      setFormMessage("Erreur de connexion. Veuillez réessayer.");
+    }
+  };
 
   return (
     <div className="gold-variant">
@@ -329,13 +369,38 @@ export default function HomePage() {
               </div>
             </div>
 
-            <form className="gold-contact-form">
+            <form className="gold-contact-form" onSubmit={handleSubmit}>
               <div className="gold-form-row">
-                <input type="text" placeholder="Votre nom" className="gold-input" />
-                <input type="email" placeholder="Votre email" className="gold-input" />
+                <input
+                  type="text"
+                  placeholder="Votre nom"
+                  className="gold-input"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  className="gold-input"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                />
               </div>
-              <input type="tel" placeholder="Votre téléphone" className="gold-input" />
-              <select className="gold-input">
+              <input
+                type="tel"
+                placeholder="Votre téléphone"
+                className="gold-input"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required
+              />
+              <select
+                className="gold-input"
+                value={formData.projectType}
+                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+              >
                 <option value="">Type de projet</option>
                 <option value="renovation">Rénovation intérieure</option>
                 <option value="maconnerie">Maçonnerie</option>
@@ -343,11 +408,41 @@ export default function HomePage() {
                 <option value="electricite">Électricité</option>
                 <option value="autre">Autre</option>
               </select>
-              <textarea placeholder="Décrivez votre projet..." rows={4} className="gold-input" />
-              <button type="submit" className="gold-btn-primary gold-btn-full">
-                <span>Envoyer ma demande</span>
-                <ArrowRight className="w-5 h-5" />
+              <textarea
+                placeholder="Décrivez votre projet..."
+                rows={4}
+                className="gold-input"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                required
+              />
+              <button
+                type="submit"
+                className="gold-btn-primary gold-btn-full"
+                disabled={formStatus === "loading"}
+              >
+                {formStatus === "loading" ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Envoi en cours...</span>
+                  </>
+                ) : formStatus === "success" ? (
+                  <>
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Envoyé !</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Envoyer ma demande</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
               </button>
+              {formMessage && (
+                <p className={`gold-form-message ${formStatus === "error" ? "gold-form-error" : "gold-form-success"}`}>
+                  {formMessage}
+                </p>
+              )}
             </form>
           </div>
         </div>
@@ -375,7 +470,11 @@ export default function HomePage() {
           </div>
           <div className="gold-footer-bottom">
             <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Tous droits réservés.</p>
-            <p>Artisan BTP — Île-de-France</p>
+            <div className="gold-footer-legal">
+              <a href="/mentions-legales">Mentions légales</a>
+              <span>•</span>
+              <span>Artisan BTP — Île-de-France</span>
+            </div>
           </div>
         </div>
       </footer>

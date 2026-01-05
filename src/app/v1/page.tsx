@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, FormEvent } from "react";
 import Image from "next/image";
 import {
   Phone,
@@ -8,11 +9,51 @@ import {
   MapPin,
   ArrowRight,
   Star,
+  Loader2,
+  CheckCircle,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
 import "./editorial.css";
 
 export default function EditorialVariant() {
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formMessage, setFormMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setFormStatus("loading");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormStatus("success");
+        setFormMessage(data.message);
+        setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
+      } else {
+        setFormStatus("error");
+        setFormMessage(data.error || "Une erreur est survenue.");
+      }
+    } catch {
+      setFormStatus("error");
+      setFormMessage("Erreur de connexion. Veuillez réessayer.");
+    }
+  };
+
   return (
     <div className="editorial-variant">
       {/* Header */}
@@ -295,13 +336,39 @@ export default function EditorialVariant() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="ed-contact-form"
+              onSubmit={handleSubmit}
             >
               <div className="ed-form-row">
-                <input type="text" placeholder="Votre nom" className="ed-input" />
-                <input type="email" placeholder="Votre email" className="ed-input" />
+                <input
+                  type="text"
+                  placeholder="Votre nom"
+                  className="ed-input"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  className="ed-input"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                />
               </div>
-              <input type="tel" placeholder="Votre téléphone" className="ed-input" />
-              <select className="ed-input">
+              <input
+                type="tel"
+                placeholder="Votre téléphone"
+                className="ed-input"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required
+              />
+              <select
+                className="ed-input"
+                value={formData.projectType}
+                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+              >
                 <option value="">Type de projet</option>
                 <option value="renovation">Rénovation intérieure</option>
                 <option value="maconnerie">Maçonnerie</option>
@@ -309,11 +376,41 @@ export default function EditorialVariant() {
                 <option value="electricite">Électricité</option>
                 <option value="autre">Autre</option>
               </select>
-              <textarea placeholder="Décrivez votre projet..." rows={4} className="ed-input" />
-              <button type="submit" className="ed-btn-primary ed-btn-full">
-                <span>Envoyer ma demande</span>
-                <ArrowRight className="w-4 h-4" />
+              <textarea
+                placeholder="Décrivez votre projet..."
+                rows={4}
+                className="ed-input"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                required
+              />
+              <button
+                type="submit"
+                className="ed-btn-primary ed-btn-full"
+                disabled={formStatus === "loading"}
+              >
+                {formStatus === "loading" ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Envoi en cours...</span>
+                  </>
+                ) : formStatus === "success" ? (
+                  <>
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Envoyé !</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Envoyer ma demande</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
               </button>
+              {formMessage && (
+                <p className={`ed-form-message ${formStatus === "error" ? "ed-form-error" : "ed-form-success"}`}>
+                  {formMessage}
+                </p>
+              )}
             </motion.form>
           </div>
         </div>
@@ -338,7 +435,11 @@ export default function EditorialVariant() {
           </div>
           <div className="ed-footer-bottom">
             <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Tous droits réservés.</p>
-            <p>Artisan BTP — Île-de-France</p>
+            <div className="ed-footer-legal">
+              <a href="/mentions-legales">Mentions légales</a>
+              <span>•</span>
+              <span>Artisan BTP — Île-de-France</span>
+            </div>
           </div>
         </div>
       </footer>

@@ -872,6 +872,31 @@ select.gold-input {
   cursor: pointer;
 }
 
+/* Form Messages */
+.gold-form-message {
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.gold-form-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.gold-form-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.gold-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 /* Footer */
 .gold-footer {
   padding: 4rem 0 2rem;
@@ -934,4 +959,20 @@ select.gold-input {
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.gold-footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gold-footer-legal a {
+  color: var(--gold-text-subtle);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.gold-footer-legal a:hover {
+  color: var(--gold-primary);
 }
