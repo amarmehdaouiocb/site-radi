@@ -291,3 +291,6 @@ Avant chaque mise en prod :
 | P3: Animation pulse CTA sticky | Done | 05/01/26 | 648f7ee |
 | P3: Badge "Assurance RC Pro" | Done | 05/01/26 | 648f7ee |
 | P3: Filtrage portfolio par type | Done | 05/01/26 | af9e1fd |
+| P3: Pages dédiées par service (6 pages) | Done | 05/01/26 | - |
+| P3: Hide on scroll sticky CTA mobile | Done | 05/01/26 | - |
+| P3: Tracking analytics (events GA) | Done | 05/01/26 | - |
