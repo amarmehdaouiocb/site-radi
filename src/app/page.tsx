@@ -96,10 +96,13 @@ export default function HomePage() {
             <Phone className="w-4 h-4" />
             <span>{SITE_CONFIG.phone}</span>
           </a>
-          <a href="#contact" className="gold-cta-button gold-cta-desktop">
-            <span>Devis Gratuit 24h</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="gold-header-cta-group">
+            <a href="#contact" className="gold-cta-button gold-cta-desktop">
+              <span>Devis Gratuit 24h</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <span className="gold-header-badge">Réponse garantie</span>
+          </div>
 
           {/* Mobile menu toggle */}
           <button
@@ -259,7 +262,7 @@ export default function HomePage() {
             {[
               { icon: Shield, label: "Garantie Décennale", desc: "Protection totale" },
               { icon: Clock, label: "Devis Gratuit", desc: "Sans engagement" },
-              { icon: Award, label: "Artisan Certifié", desc: "Qualité premium" },
+              { icon: Award, label: "Assurance RC Pro", desc: "Couverture complète" },
               { icon: Sparkles, label: "Réponse 24h", desc: "Réactivité garantie" },
             ].map((item) => (
               <div key={item.label} className="gold-trust-item">
@@ -308,6 +311,9 @@ export default function HomePage() {
                     className="object-cover"
                   />
                   <div className="gold-service-overlay" />
+                  {"popular" in service && service.popular && (
+                    <span className="gold-service-badge">Plus demandé</span>
+                  )}
                 </div>
                 <div className="gold-service-content">
                   <span className="gold-service-number">0{index + 1}</span>
@@ -357,6 +363,13 @@ export default function HomePage() {
               </motion.div>
             ))}
           </div>
+
+          <div className="gold-portfolio-cta">
+            <a href="#contact" className="gold-btn-secondary">
+              <span>Voir toutes nos réalisations</span>
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -394,7 +407,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <span className="gold-testimonial-name">{testimonial.author}</span>
-                    <span className="gold-testimonial-project">{testimonial.project}</span>
+                    <span className="gold-testimonial-project">{testimonial.project} • {testimonial.date}</span>
                   </div>
                 </div>
               </motion.div>

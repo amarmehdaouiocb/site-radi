@@ -42,6 +42,7 @@ export const SERVICES = [
       "Transformation complète de vos espaces : cuisine, salle de bain, sols et murs.",
     icon: "Home",
     image: IMAGES.services.renovation,
+    popular: true,
   },
   {
     id: "maconnerie",
@@ -58,6 +59,7 @@ export const SERVICES = [
       "Installation, réparation et dépannage de tous vos équipements sanitaires.",
     icon: "Droplets",
     image: IMAGES.services.plomberie,
+    popular: true,
   },
   {
     id: "electricite",
@@ -145,6 +147,7 @@ export const TESTIMONIALS = [
     location: "Paris 15e",
     rating: 5,
     project: "Rénovation cuisine",
+    date: "Novembre 2025",
   },
   {
     id: 2,
@@ -155,6 +158,7 @@ export const TESTIMONIALS = [
     location: "Boulogne-Billancourt",
     rating: 5,
     project: "Salle de bain",
+    date: "Octobre 2025",
   },
   {
     id: 3,
@@ -165,6 +169,7 @@ export const TESTIMONIALS = [
     location: "Versailles",
     rating: 5,
     project: "Extension maison",
+    date: "Septembre 2025",
   },
 ];
 
