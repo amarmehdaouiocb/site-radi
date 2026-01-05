@@ -34,11 +34,10 @@ export default function HomePage() {
   // Form state
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    projectType: "",
     message: "",
   });
+  const [rgpdAccepted, setRgpdAccepted] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -59,7 +58,8 @@ export default function HomePage() {
       if (response.ok) {
         setFormStatus("success");
         setFormMessage(data.message);
-        setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
+        setFormData({ name: "", phone: "", message: "" });
+        setRgpdAccepted(false);
       } else {
         setFormStatus("error");
         setFormMessage(data.error || "Une erreur est survenue.");
@@ -92,9 +92,13 @@ export default function HomePage() {
             <a href="#contact">Contact</a>
           </nav>
 
+          <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-header-phone">
+            <Phone className="w-4 h-4" />
+            <span>{SITE_CONFIG.phone}</span>
+          </a>
           <a href="#contact" className="gold-cta-button gold-cta-desktop">
-            <span>Consultation Privée</span>
-            <Sparkles className="w-4 h-4" />
+            <span>Devis Gratuit 24h</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
 
           {/* Mobile menu toggle */}
@@ -177,9 +181,9 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.6 }}
             className="gold-hero-description"
           >
-            Des réalisations d&apos;exception pour une clientèle exigeante.
+            Rénovation clé en main • Devis sous 24h • Garantie décennale
             <br />
-            Rénovation haut de gamme en Île-de-France.
+            <span style={{ opacity: 0.8 }}>Artisan certifié en Île-de-France</span>
           </motion.p>
 
           <motion.div
@@ -196,6 +200,25 @@ export default function HomePage() {
               <Phone className="w-5 h-5" />
               <span>{SITE_CONFIG.phone}</span>
             </a>
+          </motion.div>
+
+          {/* Mobile Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="gold-hero-stats-mobile"
+          >
+            {[
+              { value: "15+", label: "Années" },
+              { value: "500+", label: "Projets" },
+              { value: "100%", label: "Satisfaction" },
+            ].map((stat) => (
+              <div key={stat.label} className="gold-stat">
+                <span className="gold-stat-value">{stat.value}</span>
+                <span className="gold-stat-label">{stat.label}</span>
+              </div>
+            ))}
           </motion.div>
 
           <motion.div
@@ -235,9 +258,9 @@ export default function HomePage() {
           <div className="gold-trust-grid">
             {[
               { icon: Shield, label: "Garantie Décennale", desc: "Protection totale" },
-              { icon: Clock, label: "Réponse 24h", desc: "Réactivité garantie" },
+              { icon: Clock, label: "Devis Gratuit", desc: "Sans engagement" },
               { icon: Award, label: "Artisan Certifié", desc: "Qualité premium" },
-              { icon: Sparkles, label: "Finitions Luxe", desc: "Détails soignés" },
+              { icon: Sparkles, label: "Réponse 24h", desc: "Réactivité garantie" },
             ].map((item) => (
               <div key={item.label} className="gold-trust-item">
                 <div className="gold-trust-icon">
@@ -414,24 +437,14 @@ export default function HomePage() {
             </div>
 
             <form className="gold-contact-form" onSubmit={handleSubmit}>
-              <div className="gold-form-row">
-                <input
-                  type="text"
-                  placeholder="Votre nom"
-                  className="gold-input"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="gold-input"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
-              </div>
+              <input
+                type="text"
+                placeholder="Votre nom"
+                className="gold-input"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
               <input
                 type="tel"
                 placeholder="Votre téléphone"
@@ -440,18 +453,6 @@ export default function HomePage() {
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 required
               />
-              <select
-                className="gold-input"
-                value={formData.projectType}
-                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-              >
-                <option value="">Type de projet</option>
-                <option value="renovation">Rénovation intérieure</option>
-                <option value="maconnerie">Maçonnerie</option>
-                <option value="plomberie">Plomberie</option>
-                <option value="electricite">Électricité</option>
-                <option value="autre">Autre</option>
-              </select>
               <textarea
                 placeholder="Décrivez votre projet..."
                 rows={4}
@@ -460,6 +461,21 @@ export default function HomePage() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
               />
+              <label className="gold-checkbox">
+                <input
+                  type="checkbox"
+                  checked={rgpdAccepted}
+                  onChange={(e) => setRgpdAccepted(e.target.checked)}
+                  required
+                />
+                <span className="gold-checkbox-mark" />
+                <span className="gold-checkbox-text">
+                  J&apos;accepte que mes données soient utilisées pour traiter ma demande.{" "}
+                  <a href="/mentions-legales" target="_blank" rel="noopener noreferrer">
+                    Politique de confidentialité
+                  </a>
+                </span>
+              </label>
               <button
                 type="submit"
                 className="gold-btn-primary gold-btn-full"
@@ -477,7 +493,7 @@ export default function HomePage() {
                   </>
                 ) : (
                   <>
-                    <span>Envoyer ma demande</span>
+                    <span>Recevoir mon devis gratuit sous 24h</span>
                     <ArrowRight className="w-5 h-5" />
                   </>
                 )}
@@ -487,6 +503,9 @@ export default function HomePage() {
                   {formMessage}
                 </p>
               )}
+              <p className="gold-form-reassurance">
+                ✓ Réponse sous 24h • Sans engagement
+              </p>
             </form>
           </div>
         </div>
@@ -512,12 +531,17 @@ export default function HomePage() {
               <a href="#contact">Contact</a>
             </div>
           </div>
+          <div className="gold-footer-info">
+            <span>{SITE_CONFIG.hours}</span>
+            <span>•</span>
+            <span>Zone : Île-de-France</span>
+          </div>
           <div className="gold-footer-bottom">
             <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Tous droits réservés.</p>
             <div className="gold-footer-legal">
               <a href="/mentions-legales">Mentions légales</a>
               <span>•</span>
-              <span>Artisan BTP — Île-de-France</span>
+              <span>SIRET : {SITE_CONFIG.siret}</span>
             </div>
           </div>
         </div>

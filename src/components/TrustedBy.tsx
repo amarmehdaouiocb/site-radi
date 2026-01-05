@@ -8,14 +8,14 @@ interface Partner {
 }
 
 const partners: Partner[] = [
-  { name: "Bouygues Bâtiment", initials: "BB" },
-  { name: "Vinci Construction", initials: "VC" },
-  { name: "Eiffage Immobilier", initials: "EI" },
-  { name: "Nexity Rénovation", initials: "NR" },
-  { name: "Kaufman & Broad", initials: "KB" },
-  { name: "Icade Promotion", initials: "IP" },
-  { name: "Cogedim Services", initials: "CS" },
-  { name: "Altarea Construction", initials: "AC" },
+  { name: "Point.P", initials: "P.P" },
+  { name: "Cedeo", initials: "CE" },
+  { name: "BigMat", initials: "BM" },
+  { name: "Leroy Merlin Pro", initials: "LM" },
+  { name: "Saint-Gobain", initials: "SG" },
+  { name: "Würth", initials: "WÜ" },
+  { name: "Rexel", initials: "RX" },
+  { name: "Prolians", initials: "PL" },
 ];
 
 function PartnerLogo({ partner }: { partner: Partner }) {
@@ -74,7 +74,7 @@ export default function TrustedBy() {
         {/* Bottom accent */}
         <div className="trusted-by-accent">
           <span className="accent-diamond">◆</span>
-          <span className="accent-text">Partenaires de confiance depuis 2015</span>
+          <span className="accent-text">Nos fournisseurs partenaires</span>
           <span className="accent-diamond">◆</span>
         </div>
       </div>

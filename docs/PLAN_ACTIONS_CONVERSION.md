@@ -200,17 +200,17 @@ Apres: "Renovation cle en main | Devis sous 24h | Garantie decennale"
 ## Roadmap Suggeree
 
 ### Sprint 1 : Conformite & Credibilite (P1 #1-3-9)
-- [ ] Supprimer faux logos partenaires
-- [ ] Ajouter checkbox RGPD
-- [ ] Afficher SIRET footer
+- [x] Supprimer faux logos partenaires
+- [x] Ajouter checkbox RGPD
+- [x] Afficher SIRET footer
 
 ### Sprint 2 : Formulaire & CTA (P1 #2-4)
-- [ ] Reduire formulaire a 3 champs
-- [ ] Reformuler CTA "Recevoir mon devis gratuit sous 24h"
+- [x] Reduire formulaire a 3 champs
+- [x] Reformuler CTA "Recevoir mon devis gratuit sous 24h"
 
 ### Sprint 3 : Hero & Mobile (P1 #5-8)
-- [ ] Stats visibles sur mobile
-- [ ] Proposition de valeur concrete
+- [x] Stats visibles sur mobile
+- [x] Proposition de valeur concrete
 
 ### Sprint 4 : Authenticite (P1 #6-7-10)
 - [ ] Vraies photos de projets
@@ -272,4 +272,15 @@ Avant chaque mise en prod :
 | Menu mobile hamburger | Done | 05/01/26 | 4dd0f64 |
 | CTA sticky mobile | Done | 05/01/26 | 4dd0f64 |
 | Documentation UX mobile | Done | 05/01/26 | faaacd9 |
-| ... | ... | ... | ... |
+| Remplacer faux logos partenaires | Done | 05/01/26 | 7009070 |
+| Checkbox RGPD formulaire | Done | 05/01/26 | 7009070 |
+| SIRET dans footer | Done | 05/01/26 | 7009070 |
+| Formulaire réduit à 3 champs | Done | 05/01/26 | d23e850 |
+| CTA "Recevoir mon devis gratuit sous 24h" | Done | 05/01/26 | d23e850 |
+| Stats visibles sur mobile | Done | 05/01/26 | 5f48d6d |
+| Proposition de valeur concrete | Done | 05/01/26 | 5f48d6d |
+| P2: Telephone header desktop | Done | 05/01/26 | dbf3c40 |
+| P2: CTA header "Devis Gratuit 24h" | Done | 05/01/26 | dbf3c40 |
+| P2: Trust badge "Devis Gratuit" | Done | 05/01/26 | dbf3c40 |
+| P2: Mention sous formulaire | Done | 05/01/26 | dbf3c40 |
+| P2: Horaires + zone footer | Done | 05/01/26 | dbf3c40 |

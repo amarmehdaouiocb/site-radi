@@ -171,6 +171,28 @@
   width: 100%;
 }
 
+/* Header Phone */
+.gold-header-phone {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.gold-header-phone:hover {
+  color: var(--gold-primary-light);
+}
+
+@media (min-width: 1024px) {
+  .gold-header-phone {
+    display: flex;
+  }
+}
+
 .gold-cta-button {
   display: none;
   align-items: center;
@@ -363,6 +385,7 @@
   text-transform: uppercase;
 }
 
+/* Desktop floating stats */
 .gold-hero-stats {
   position: absolute;
   right: 4rem;
@@ -380,6 +403,36 @@
   .gold-hero-stats {
     display: flex;
   }
+}
+
+/* Mobile stats bar */
+.gold-hero-stats-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: rgba(10, 10, 10, 0.7);
+  border: 1px solid var(--gold-border);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 1280px) {
+  .gold-hero-stats-mobile {
+    display: none;
+  }
+}
+
+.gold-hero-stats-mobile .gold-stat {
+  text-align: center;
+}
+
+.gold-hero-stats-mobile .gold-stat-value {
+  font-size: 1.5rem;
+}
+
+.gold-hero-stats-mobile .gold-stat-label {
+  font-size: 0.55rem;
 }
 
 .gold-stat {
@@ -872,6 +925,76 @@ select.gold-input {
   cursor: pointer;
 }
 
+/* RGPD Checkbox */
+.gold-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--gold-text-muted);
+  margin: 0.5rem 0;
+}
+
+.gold-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.gold-checkbox-mark {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-top: 2px;
+}
+
+.gold-checkbox-mark::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--gold-primary);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+.gold-checkbox input[type="checkbox"]:checked + .gold-checkbox-mark {
+  border-color: var(--gold-primary);
+}
+
+.gold-checkbox input[type="checkbox"]:checked + .gold-checkbox-mark::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gold-checkbox input[type="checkbox"]:focus + .gold-checkbox-mark {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.gold-checkbox-text {
+  flex: 1;
+}
+
+.gold-checkbox-text a {
+  color: var(--gold-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.gold-checkbox-text a:hover {
+  color: var(--gold-primary-light);
+}
+
 /* Form Messages */
 .gold-form-message {
   padding: 1rem;
@@ -890,6 +1013,14 @@ select.gold-input {
   background: rgba(239, 68, 68, 0.1);
   color: #ef4444;
   border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.gold-form-reassurance {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gold-primary);
+  margin-top: 0.75rem;
+  opacity: 0.9;
 }
 
 .gold-btn-primary:disabled {
@@ -941,6 +1072,24 @@ select.gold-input {
 
 .gold-footer-links a:hover {
   color: var(--gold-primary);
+}
+
+.gold-footer-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  font-size: 0.85rem;
+  color: var(--gold-text-muted);
+}
+
+.gold-footer-info span:nth-child(2) {
+  color: var(--gold-primary);
+  opacity: 0.5;
 }
 
 .gold-footer-bottom {
