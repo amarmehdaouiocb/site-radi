@@ -1,0 +1,20 @@
+# Robots.txt pour RA Solution
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ra-solution.fr/sitemap.xml
+
+# Bloquer les pages techniques
+Disallow: /api/
+Disallow: /_next/
+Disallow: /v1/
+
+# Autoriser les crawlers d'images
+User-agent: Googlebot-Image
+Allow: /portfolio/
+
+# Délai entre les requêtes (optionnel, pour ne pas surcharger le serveur)
+Crawl-delay: 1
