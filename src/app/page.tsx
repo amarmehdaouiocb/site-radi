@@ -34,9 +34,7 @@ export default function HomePage() {
   // Form state
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    projectType: "",
     message: "",
   });
   const [rgpdAccepted, setRgpdAccepted] = useState(false);
@@ -60,7 +58,7 @@ export default function HomePage() {
       if (response.ok) {
         setFormStatus("success");
         setFormMessage(data.message);
-        setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
+        setFormData({ name: "", phone: "", message: "" });
         setRgpdAccepted(false);
       } else {
         setFormStatus("error");
@@ -416,24 +414,14 @@ export default function HomePage() {
             </div>
 
             <form className="gold-contact-form" onSubmit={handleSubmit}>
-              <div className="gold-form-row">
-                <input
-                  type="text"
-                  placeholder="Votre nom"
-                  className="gold-input"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="gold-input"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
-              </div>
+              <input
+                type="text"
+                placeholder="Votre nom"
+                className="gold-input"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
               <input
                 type="tel"
                 placeholder="Votre téléphone"
@@ -442,18 +430,6 @@ export default function HomePage() {
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 required
               />
-              <select
-                className="gold-input"
-                value={formData.projectType}
-                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-              >
-                <option value="">Type de projet</option>
-                <option value="renovation">Rénovation intérieure</option>
-                <option value="maconnerie">Maçonnerie</option>
-                <option value="plomberie">Plomberie</option>
-                <option value="electricite">Électricité</option>
-                <option value="autre">Autre</option>
-              </select>
               <textarea
                 placeholder="Décrivez votre projet..."
                 rows={4}
@@ -494,7 +470,7 @@ export default function HomePage() {
                   </>
                 ) : (
                   <>
-                    <span>Envoyer ma demande</span>
+                    <span>Recevoir mon devis gratuit sous 24h</span>
                     <ArrowRight className="w-5 h-5" />
                   </>
                 )}
