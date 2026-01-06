@@ -6,8 +6,8 @@ import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ra-solution.fr"),
   title: {
-    default: "RA Solution | Artisan Multi-Services BTP Île-de-France",
-    template: "%s | RA Solution",
+    default: "RA Bâtiment | Artisan Multi-Services BTP Île-de-France",
+    template: "%s | RA Bâtiment",
   },
   description:
     "Artisan de confiance pour vos travaux en Île-de-France. Rénovation, maçonnerie, plomberie, électricité, peinture, carrelage. Devis gratuit sous 24h. Garantie décennale.",
@@ -23,19 +23,19 @@ export const metadata: Metadata = {
     "terrasse extérieure",
     "devis gratuit travaux",
   ],
-  authors: [{ name: "RA Solution" }],
-  creator: "RA Solution",
-  publisher: "RA Solution",
+  authors: [{ name: "RA Bâtiment" }],
+  creator: "RA Bâtiment",
+  publisher: "RA Bâtiment",
   formatDetection: {
     telephone: true,
     email: true,
   },
   openGraph: {
-    title: "RA Solution | Artisan Multi-Services BTP Île-de-France",
+    title: "RA Bâtiment | Artisan Multi-Services BTP Île-de-France",
     description:
       "Artisan de confiance pour vos travaux en Île-de-France. Rénovation, maçonnerie, plomberie, électricité. Devis gratuit sous 24h.",
     url: "https://ra-solution.fr",
-    siteName: "RA Solution",
+    siteName: "RA Bâtiment",
     locale: "fr_FR",
     type: "website",
     images: [
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
         url: "/portfolio/terrasse-bois-apres-01.jpg",
         width: 1200,
         height: 630,
-        alt: "RA Solution - Réalisations BTP",
+        alt: "RA Bâtiment - Réalisations BTP",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RA Solution | Artisan Multi-Services BTP",
+    title: "RA Bâtiment | Artisan Multi-Services BTP",
     description: "Artisan de confiance en Île-de-France. Devis gratuit sous 24h.",
     images: ["/portfolio/terrasse-bois-apres-01.jpg"],
   },

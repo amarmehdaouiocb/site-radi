@@ -16,12 +16,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!service) {
     return {
-      title: "Service non trouvé | RA Solution",
+      title: "Service non trouvé | RA Bâtiment",
     };
   }
 
   return {
-    title: `${service.title} | RA Solution - Artisan BTP Île-de-France`,
+    title: `${service.title} | RA Bâtiment - Artisan BTP Île-de-France`,
     description: service.longDescription,
   };
 }

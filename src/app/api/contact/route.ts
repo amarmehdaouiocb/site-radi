@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     // Email à l'artisan
     await resend.emails.send({
-      from: "RA Solution <onboarding@resend.dev>",
+      from: "RA Bâtiment <onboarding@resend.dev>",
       to: process.env.CONTACT_EMAIL || "ra.solution@myyahoo.com",
       subject: `Nouvelle demande de devis - ${name}`,
       html: `
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
                   <span style="font-family: Georgia, serif; font-size: 24px; font-weight: bold; color: #d4af37; letter-spacing: 2px;">RA</span>
                 </td>
                 <td style="padding-left: 12px; text-align: left;">
-                  <div style="font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #0a0a0a;">RA Solution</div>
+                  <div style="font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #0a0a0a;">RA Bâtiment</div>
                   <div style="font-family: Georgia, serif; font-size: 11px; color: #333; letter-spacing: 1px;">Excellence & Prestige</div>
                 </td>
               </tr>
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
 
           <div style="background: #0a0a0a; padding: 20px; text-align: center;">
             <p style="color: #d4af37; margin: 0; font-size: 14px;">
-              RA Solution — Excellence & Prestige
+              RA Bâtiment — Excellence & Prestige
             </p>
           </div>
         </div>

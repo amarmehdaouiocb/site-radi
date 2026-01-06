@@ -1,7 +1,7 @@
-// RA Solution - Site Data
+// RA Bâtiment - Site Data
 
 export const SITE_CONFIG = {
-  name: "RA Solution",
+  name: "RA Bâtiment",
   legalName: "R.A Bâtiment",
   legalForm: "SAS – Société par Actions Simplifiée",
   tagline: "Artisan Multi-Services BTP",
@@ -22,10 +22,10 @@ export const VIDEOS = [
   // { id: "VIDEO_ID_2", title: "Construction Piscine", project: "piscine" },
 ];
 
-// Images réelles des réalisations RA Solution
+// Images réelles des réalisations RA Bâtiment
 export const IMAGES = {
   hero: "/portfolio/terrasse-bois-apres-01.jpg",
-  heroAlt: "Terrasse bois aménagée par RA Solution",
+  heroAlt: "Terrasse bois aménagée par RA Bâtiment",
   services: {
     renovation: "/portfolio/renovation-couloir-apres-01.jpg",
     maconnerie: "/portfolio/piscine-apres-01.jpg",
@@ -285,7 +285,7 @@ export const TESTIMONIALS = [
   {
     id: 3,
     content:
-      "RA Solution a pris en charge l'extension de notre maison. Du gros œuvre aux finitions, tout a été parfait. Communication claire et transparente tout au long du chantier.",
+      "RA Bâtiment a pris en charge l'extension de notre maison. Du gros œuvre aux finitions, tout a été parfait. Communication claire et transparente tout au long du chantier.",
     author: "Sophie M.",
     role: "Particulier",
     location: "Versailles",
