@@ -321,6 +321,126 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      {/* Réalisations Section - Before/After + Portfolio */}
+      <section id="realisations" className="gold-portfolio">
+        <div className="gold-container">
+          <div className="gold-section-header">
+            <span className="gold-section-label">Portfolio</span>
+            <h2 className="gold-section-title">
+              Nos <span className="gold-text-gradient">Réalisations</span>
+            </h2>
+            <p className="gold-section-desc">
+              Découvrez nos transformations et projets réalisés en Île-de-France
+            </p>
+          </div>
+
+          {/* Before/After Showcase - Impact visuel en premier */}
+          {beforeAfterItems.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="gold-testimonials-showcase"
+              style={{ marginBottom: "4rem" }}
+            >
+              <div className="gold-showcase-header">
+                <h3 className="gold-showcase-title">
+                  La Preuve en <span className="gold-text-gradient">Images</span>
+                </h3>
+                <p className="gold-showcase-subtitle">
+                  Glissez pour comparer avant/après
+                </p>
+              </div>
+              <div className="gold-showcase-grid">
+                {beforeAfterItems.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="gold-showcase-item"
+                  >
+                    <BeforeAfterSlider
+                      beforeImage={item.beforeImage!}
+                      afterImage={item.image}
+                    />
+                    <p className="gold-showcase-item-title">
+                      <strong>{item.title}</strong> • {item.location}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Portfolio Grid */}
+          <div className="gold-portfolio-filters">
+            {portfolioCategories.map((category) => (
+              <button
+                key={category}
+                className={`gold-portfolio-filter ${portfolioFilter === category ? "active" : ""}`}
+                onClick={() => {
+                  setPortfolioFilter(category);
+                  trackPortfolioFilter(category);
+                }}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="gold-portfolio-grid">
+            {filteredPortfolio.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`gold-portfolio-item ${index === 0 ? "gold-portfolio-featured" : ""}`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="gold-portfolio-overlay">
+                  <span className="gold-portfolio-category">{item.category}</span>
+                  <h3 className="gold-portfolio-title">{item.title}</h3>
+                  <span className="gold-portfolio-location">{item.location}</span>
+                  {item.surface && item.duration && item.budgetRange && (
+                    <div className="gold-portfolio-data">
+                      <span className="gold-portfolio-badge gold-portfolio-badge-surface">
+                        <Ruler />
+                        {item.surface} m²
+                      </span>
+                      <span className="gold-portfolio-badge gold-portfolio-badge-duration">
+                        <Calendar />
+                        {item.duration} sem.
+                      </span>
+                      <span className="gold-portfolio-badge gold-portfolio-badge-budget">
+                        <Euro />
+                        {formatBudget(item.budgetRange.min, item.budgetRange.max)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="gold-portfolio-cta">
+            <a href="#contact" className="gold-btn-secondary">
+              <span>Demander un devis pour votre projet</span>
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Trust Badges */}
       <section className="gold-trust">
         <div className="gold-container">
@@ -395,81 +515,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="realisations" className="gold-portfolio">
-        <div className="gold-container">
-          <div className="gold-section-header">
-            <span className="gold-section-label">Portfolio</span>
-            <h2 className="gold-section-title">
-              Nos <span className="gold-text-gradient">Réalisations</span>
-            </h2>
-          </div>
-
-          <div className="gold-portfolio-filters">
-            {portfolioCategories.map((category) => (
-              <button
-                key={category}
-                className={`gold-portfolio-filter ${portfolioFilter === category ? "active" : ""}`}
-                onClick={() => {
-                  setPortfolioFilter(category);
-                  trackPortfolioFilter(category);
-                }}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          <div className="gold-portfolio-grid">
-            {filteredPortfolio.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`gold-portfolio-item ${index === 0 ? "gold-portfolio-featured" : ""}`}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="gold-portfolio-overlay">
-                  <span className="gold-portfolio-category">{item.category}</span>
-                  <h3 className="gold-portfolio-title">{item.title}</h3>
-                  <span className="gold-portfolio-location">{item.location}</span>
-                  {item.surface && item.duration && item.budgetRange && (
-                    <div className="gold-portfolio-data">
-                      <span className="gold-portfolio-badge gold-portfolio-badge-surface">
-                        <Ruler />
-                        {item.surface} m²
-                      </span>
-                      <span className="gold-portfolio-badge gold-portfolio-badge-duration">
-                        <Calendar />
-                        {item.duration} sem.
-                      </span>
-                      <span className="gold-portfolio-badge gold-portfolio-badge-budget">
-                        <Euro />
-                        {formatBudget(item.budgetRange.min, item.budgetRange.max)}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="gold-portfolio-cta">
-            <a href="#contact" className="gold-btn-secondary">
-              <span>Voir toutes nos réalisations</span>
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <section id="temoignages" className="gold-testimonials">
         <div className="gold-container">
@@ -513,45 +558,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Before/After Showcase */}
-          {beforeAfterItems.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="gold-testimonials-showcase"
-            >
-              <div className="gold-showcase-header">
-                <h3 className="gold-showcase-title">
-                  La Preuve en <span className="gold-text-gradient">Images</span>
-                </h3>
-                <p className="gold-showcase-subtitle">
-                  Découvrez nos transformations avant/après
-                </p>
-              </div>
-              <div className="gold-showcase-grid">
-                {beforeAfterItems.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="gold-showcase-item"
-                  >
-                    <BeforeAfterSlider
-                      beforeImage={item.beforeImage!}
-                      afterImage={item.image}
-                    />
-                    <p className="gold-showcase-item-title">
-                      <strong>{item.title}</strong> • {item.location}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
         </div>
       </section>
 
