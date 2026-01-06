@@ -1830,20 +1830,16 @@ select.gold-input {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 0;
+  width: 3px;
   z-index: 20;
   pointer-events: none;
-}
-
-.before-after-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 3px;
   transform: translateX(-50%);
   background: var(--gold-gradient);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.before-after-line {
+  display: none;
 }
 
 .before-after-handle {

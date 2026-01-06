@@ -4,27 +4,38 @@ import { useEffect, useRef } from "react";
 
 interface Partner {
   name: string;
-  initials: string;
+  color: string;
+  textColor?: string;
 }
 
 const partners: Partner[] = [
-  { name: "Point.P", initials: "P.P" },
-  { name: "Cedeo", initials: "CE" },
-  { name: "BigMat", initials: "BM" },
-  { name: "Leroy Merlin Pro", initials: "LM" },
-  { name: "Saint-Gobain", initials: "SG" },
-  { name: "Würth", initials: "WÜ" },
-  { name: "Rexel", initials: "RX" },
-  { name: "Prolians", initials: "PL" },
+  { name: "Point.P", color: "#e30613", textColor: "#fff" },
+  { name: "Cedeo", color: "#004a99", textColor: "#fff" },
+  { name: "BigMat", color: "#003880", textColor: "#fff" },
+  { name: "Leroy Merlin", color: "#78be20", textColor: "#fff" },
+  { name: "Saint-Gobain", color: "#00539b", textColor: "#fff" },
+  { name: "Würth", color: "#cc0000", textColor: "#fff" },
+  { name: "Rexel", color: "#e6007e", textColor: "#fff" },
+  { name: "Prolians", color: "#ed1c24", textColor: "#fff" },
 ];
 
 function PartnerLogo({ partner }: { partner: Partner }) {
   return (
     <div className="partner-logo-item">
-      <div className="partner-logo-badge">
-        <span className="partner-initials">{partner.initials}</span>
+      <div
+        className="partner-logo-badge"
+        style={{
+          background: `linear-gradient(135deg, ${partner.color} 0%, ${partner.color}dd 100%)`,
+          boxShadow: `0 4px 20px ${partner.color}40`
+        }}
+      >
+        <span
+          className="partner-brand-name"
+          style={{ color: partner.textColor || '#fff' }}
+        >
+          {partner.name}
+        </span>
       </div>
-      <span className="partner-name">{partner.name}</span>
     </div>
   );
 }
@@ -185,7 +196,7 @@ export default function TrustedBy() {
         .marquee-track {
           display: flex;
           width: fit-content;
-          animation: marquee 40s linear infinite;
+          animation: marquee 35s linear infinite;
         }
 
         .marquee-track:hover {
@@ -203,8 +214,8 @@ export default function TrustedBy() {
 
         .marquee-content {
           display: flex;
-          gap: 4rem;
-          padding: 1.5rem 2rem;
+          gap: 2.5rem;
+          padding: 1.5rem 1.25rem;
         }
 
         /* Partner Logo */
@@ -212,64 +223,36 @@ export default function TrustedBy() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 1rem;
-          min-width: 140px;
           cursor: pointer;
           transition: transform 0.3s ease;
         }
 
         .partner-logo-item:hover {
-          transform: translateY(-4px);
+          transform: translateY(-4px) scale(1.02);
         }
 
         .partner-logo-badge {
-          width: 72px;
-          height: 72px;
-          border: 1px solid rgba(212, 175, 55, 0.3);
-          background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, transparent 50%, rgba(212, 175, 55, 0.04) 100%);
+          padding: 0.875rem 1.75rem;
+          border-radius: 6px;
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
           transition: all 0.3s ease;
-        }
-
-        .partner-logo-badge::before {
-          content: "";
-          position: absolute;
-          inset: -1px;
-          background: linear-gradient(135deg, #d4af37 0%, transparent 50%, #d4af37 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          z-index: -1;
+          min-width: 140px;
         }
 
         .partner-logo-item:hover .partner-logo-badge {
-          border-color: #d4af37;
-          background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+          transform: translateY(-2px);
         }
 
-        .partner-initials {
-          font-family: "Cormorant Garamond", Georgia, serif;
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: #d4af37;
-          letter-spacing: 0.05em;
-        }
-
-        .partner-name {
+        .partner-brand-name {
           font-family: system-ui, -apple-system, sans-serif;
-          font-size: 0.75rem;
-          font-weight: 400;
-          color: rgba(255, 255, 255, 0.5);
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
+          font-size: 0.9rem;
+          font-weight: 700;
+          letter-spacing: 0.02em;
           white-space: nowrap;
-          transition: color 0.3s ease;
-        }
-
-        .partner-logo-item:hover .partner-name {
-          color: rgba(212, 175, 55, 0.8);
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         /* Bottom Accent */
@@ -318,24 +301,16 @@ export default function TrustedBy() {
           }
 
           .marquee-content {
-            gap: 2.5rem;
-          }
-
-          .partner-logo-item {
-            min-width: 100px;
+            gap: 1.5rem;
           }
 
           .partner-logo-badge {
-            width: 56px;
-            height: 56px;
+            padding: 0.625rem 1.25rem;
+            min-width: 110px;
           }
 
-          .partner-initials {
-            font-size: 1.125rem;
-          }
-
-          .partner-name {
-            font-size: 0.625rem;
+          .partner-brand-name {
+            font-size: 0.75rem;
           }
 
           .marquee-fade {
