@@ -157,13 +157,13 @@ export const SERVICES = [
 export const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    title: "Cuisine Moderne sur Mesure",
+    title: "Terrasse Bois avec Barbecue",
     category: "Rénovation",
     location: "Île-de-France",
-    image: "/portfolio/cuisine-moderne-01.jpg",
-    surface: 12,
+    image: "/portfolio/terrasse-bois-apres-01.jpg",
+    surface: 25,
     duration: 3,
-    budgetRange: { min: 8000, max: 12000 },
+    budgetRange: { min: 8000, max: 15000 },
   },
   {
     id: 2,
@@ -199,13 +199,13 @@ export const PORTFOLIO_ITEMS = [
   },
   {
     id: 5,
-    title: "Terrasse Bois avec Barbecue",
+    title: "Cuisine Moderne sur Mesure",
     category: "Rénovation",
     location: "Île-de-France",
-    image: "/portfolio/terrasse-bois-apres-01.jpg",
-    surface: 25,
+    image: "/portfolio/cuisine-moderne-01.jpg",
+    surface: 12,
     duration: 3,
-    budgetRange: { min: 8000, max: 15000 },
+    budgetRange: { min: 8000, max: 12000 },
   },
   {
     id: 6,
