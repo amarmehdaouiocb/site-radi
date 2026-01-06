@@ -161,6 +161,9 @@ export const PORTFOLIO_ITEMS = [
     category: "Rénovation",
     location: "Île-de-France",
     image: "/portfolio/cuisine-moderne-01.jpg",
+    surface: 12,
+    duration: 3,
+    budgetRange: { min: 8000, max: 12000 },
   },
   {
     id: 2,
@@ -169,6 +172,9 @@ export const PORTFOLIO_ITEMS = [
     location: "Île-de-France",
     image: "/portfolio/sdb-mosaique-apres-03.jpg",
     beforeImage: "/portfolio/sdb-mosaique-avant-01.jpg",
+    surface: 6,
+    duration: 2,
+    budgetRange: { min: 6000, max: 9000 },
   },
   {
     id: 3,
@@ -177,6 +183,9 @@ export const PORTFOLIO_ITEMS = [
     location: "Île-de-France",
     image: "/portfolio/piscine-apres-01.jpg",
     beforeImage: "/portfolio/piscine-avant-01.jpg",
+    surface: 32,
+    duration: 8,
+    budgetRange: { min: 25000, max: 35000 },
   },
   {
     id: 4,
@@ -184,6 +193,9 @@ export const PORTFOLIO_ITEMS = [
     category: "Carrelage",
     location: "Île-de-France",
     image: "/portfolio/sdb-marbre-apres-01.jpg",
+    surface: 8,
+    duration: 2,
+    budgetRange: { min: 7000, max: 10000 },
   },
   {
     id: 5,
@@ -191,6 +203,9 @@ export const PORTFOLIO_ITEMS = [
     category: "Rénovation",
     location: "Île-de-France",
     image: "/portfolio/terrasse-bois-apres-01.jpg",
+    surface: 25,
+    duration: 3,
+    budgetRange: { min: 8000, max: 15000 },
   },
   {
     id: 6,
@@ -198,6 +213,9 @@ export const PORTFOLIO_ITEMS = [
     category: "Carrelage",
     location: "Île-de-France",
     image: "/portfolio/terrasse-pierre-apres-02.jpg",
+    surface: 40,
+    duration: 4,
+    budgetRange: { min: 12000, max: 18000 },
   },
   {
     id: 7,
@@ -205,6 +223,9 @@ export const PORTFOLIO_ITEMS = [
     category: "Rénovation",
     location: "Île-de-France",
     image: "/portfolio/escalier-design-apres-01.jpg",
+    surface: 15,
+    duration: 2,
+    budgetRange: { min: 5000, max: 8000 },
   },
   {
     id: 8,
@@ -212,6 +233,9 @@ export const PORTFOLIO_ITEMS = [
     category: "Rénovation",
     location: "Île-de-France",
     image: "/portfolio/renovation-couloir-apres-01.jpg",
+    surface: 75,
+    duration: 6,
+    budgetRange: { min: 35000, max: 50000 },
   },
 ];
 

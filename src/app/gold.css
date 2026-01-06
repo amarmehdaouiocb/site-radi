@@ -1646,3 +1646,318 @@ select.gold-input {
   font-size: 1rem;
   color: var(--gold-primary);
 }
+
+/* ============================================
+   BEFORE/AFTER SLIDER STYLES
+   ============================================ */
+
+.before-after-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.before-after-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--gold-text);
+}
+
+.before-after-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-bg-card);
+}
+
+.before-after-image {
+  position: absolute;
+  inset: 0;
+}
+
+.before-after-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.before-after-before {
+  z-index: 2;
+}
+
+.before-after-after {
+  z-index: 1;
+}
+
+.before-after-label {
+  position: absolute;
+  top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--gold-border);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+.before-after-label-before {
+  left: 1rem;
+  border-left: 2px solid var(--gold-primary);
+}
+
+.before-after-label-after {
+  right: 1rem;
+  border-right: 2px solid var(--gold-primary);
+}
+
+.before-after-slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.before-after-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: var(--gold-gradient);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.before-after-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: var(--gold-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  pointer-events: auto;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.before-after-arrows {
+  width: 24px;
+  height: 24px;
+  color: var(--gold-bg);
+}
+
+.before-after-hint {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--gold-border);
+  font-size: 0.75rem;
+  color: var(--gold-text-muted);
+  white-space: nowrap;
+  z-index: 15;
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   BEFORE/AFTER SHOWCASE SECTION
+   ============================================ */
+
+.gold-before-after-showcase {
+  padding: 4rem 0;
+  background: var(--gold-bg-elevated);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+}
+
+.gold-before-after-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .gold-before-after-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gold-before-after-card {
+  background: var(--gold-bg-card);
+  border: 1px solid var(--gold-border);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.gold-before-after-card:hover {
+  border-color: var(--gold-primary);
+}
+
+/* ============================================
+   PORTFOLIO DATA BADGES
+   ============================================ */
+
+.gold-portfolio-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.gold-portfolio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  font-size: 0.7rem;
+  color: var(--gold-primary-light);
+  white-space: nowrap;
+}
+
+.gold-portfolio-badge svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.8;
+}
+
+.gold-portfolio-badge-surface {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.gold-portfolio-badge-duration {
+  background: rgba(100, 150, 200, 0.1);
+  border-color: rgba(100, 150, 200, 0.2);
+  color: #a0c4e8;
+}
+
+.gold-portfolio-badge-budget {
+  background: rgba(80, 180, 120, 0.1);
+  border-color: rgba(80, 180, 120, 0.2);
+  color: #7dd3a0;
+}
+
+/* Portfolio overlay adjustments for new data */
+.gold-portfolio-overlay {
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.7) 40%,
+    transparent 70%
+  );
+}
+
+.gold-portfolio-item:hover .gold-portfolio-data {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gold-portfolio-data {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease 0.1s;
+}
+
+/* Featured item data always visible */
+.gold-portfolio-featured .gold-portfolio-data {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   TESTIMONIALS BEFORE/AFTER SECTION
+   ============================================ */
+
+.gold-testimonials-showcase {
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--gold-border);
+}
+
+.gold-showcase-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gold-showcase-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.5rem;
+}
+
+.gold-showcase-subtitle {
+  font-family: var(--font-elegant);
+  font-size: 1rem;
+  color: var(--gold-text-muted);
+}
+
+.gold-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .gold-showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gold-showcase-item {
+  position: relative;
+}
+
+.gold-showcase-item-title {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--gold-text-muted);
+}
+
+.gold-showcase-item-title strong {
+  color: var(--gold-primary);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .before-after-container {
+    aspect-ratio: 1/1;
+  }
+
+  .before-after-handle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .before-after-arrows {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gold-portfolio-badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+}

@@ -18,11 +18,24 @@ import {
   CheckCircle,
   Menu,
   X,
+  Ruler,
+  Calendar,
+  Euro,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
 import { trackFormSubmit, trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
 import TrustedBy from "@/components/TrustedBy";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import "./gold.css";
+
+// Helper function to format budget
+const formatBudget = (min: number, max: number) => {
+  const formatK = (n: number) => n >= 1000 ? `${Math.round(n / 1000)}k` : n.toString();
+  return `${formatK(min)} - ${formatK(max)}€`;
+};
+
+// Get portfolio items with before/after images
+const beforeAfterItems = PORTFOLIO_ITEMS.filter(item => item.beforeImage);
 
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -427,6 +440,22 @@ export default function HomePage() {
                   <span className="gold-portfolio-category">{item.category}</span>
                   <h3 className="gold-portfolio-title">{item.title}</h3>
                   <span className="gold-portfolio-location">{item.location}</span>
+                  {item.surface && item.duration && item.budgetRange && (
+                    <div className="gold-portfolio-data">
+                      <span className="gold-portfolio-badge gold-portfolio-badge-surface">
+                        <Ruler />
+                        {item.surface} m²
+                      </span>
+                      <span className="gold-portfolio-badge gold-portfolio-badge-duration">
+                        <Calendar />
+                        {item.duration} sem.
+                      </span>
+                      <span className="gold-portfolio-badge gold-portfolio-badge-budget">
+                        <Euro />
+                        {formatBudget(item.budgetRange.min, item.budgetRange.max)}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -481,6 +510,46 @@ export default function HomePage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Before/After Showcase */}
+          {beforeAfterItems.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="gold-testimonials-showcase"
+            >
+              <div className="gold-showcase-header">
+                <h3 className="gold-showcase-title">
+                  La Preuve en <span className="gold-text-gradient">Images</span>
+                </h3>
+                <p className="gold-showcase-subtitle">
+                  Découvrez nos transformations avant/après
+                </p>
+              </div>
+              <div className="gold-showcase-grid">
+                {beforeAfterItems.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="gold-showcase-item"
+                  >
+                    <BeforeAfterSlider
+                      beforeImage={item.beforeImage!}
+                      afterImage={item.image}
+                    />
+                    <p className="gold-showcase-item-title">
+                      <strong>{item.title}</strong> • {item.location}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
 
