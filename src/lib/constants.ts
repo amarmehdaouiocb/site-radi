@@ -237,6 +237,26 @@ export const PORTFOLIO_ITEMS = [
     duration: 6,
     budgetRange: { min: 35000, max: 50000 },
   },
+  {
+    id: 9,
+    title: "Aménagement de Combles",
+    category: "Rénovation",
+    location: "Île-de-France",
+    image: "/portfolio/combles-apres-04.jpg",
+    surface: 45,
+    duration: 5,
+    budgetRange: { min: 25000, max: 40000 },
+  },
+  {
+    id: 10,
+    title: "Terrasse Travertin",
+    category: "Carrelage",
+    location: "Île-de-France",
+    image: "/portfolio/terrasse-travertin-apres-01.jpg",
+    surface: 60,
+    duration: 3,
+    budgetRange: { min: 15000, max: 25000 },
+  },
 ];
 
 export const TESTIMONIALS = [
