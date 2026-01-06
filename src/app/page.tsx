@@ -480,6 +480,8 @@ export default function HomePage() {
             </h2>
           </div>
 
+          <div className="gold-quote-icon">"</div>
+
           <div className="gold-testimonials-grid">
             {TESTIMONIALS.map((testimonial, index) => (
               <motion.div
