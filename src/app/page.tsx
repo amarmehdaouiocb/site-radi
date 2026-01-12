@@ -22,7 +22,7 @@ import {
   Calendar,
   Euro,
 } from "lucide-react";
-import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
+import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS, HERO_GALLERY } from "@/lib/constants";
 import { trackFormSubmit, trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
 import TrustedBy from "@/components/TrustedBy";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
@@ -126,13 +126,13 @@ export default function HomePage() {
       <header className="gold-header">
         <div className="gold-container">
           <a href="/" className="gold-logo">
-            <div className="gold-logo-icon">
-              <span>RA</span>
-            </div>
-            <div className="gold-logo-text">
-              <span className="gold-logo-name">{SITE_CONFIG.name}</span>
-              <span className="gold-logo-tagline">Excellence & Prestige</span>
-            </div>
+            <Image
+              src="/logos/ra-batiment/svg/noBgColor.svg"
+              alt="RA Bâtiment"
+              width={360}
+              height={120}
+              className="gold-logo-img"
+            />
           </a>
 
           <nav className="gold-nav gold-nav-desktop">
@@ -319,7 +319,31 @@ export default function HomePage() {
             </div>
           ))}
         </motion.div>
-      </section>
+
+        {/* Hero Marquee Gallery */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.4 }}
+          className="hero-marquee"
+        >
+          <div className="hero-marquee-track">
+            {[...HERO_GALLERY, ...HERO_GALLERY].map((src, i) => (
+              <div key={i} className="hero-marquee-item">
+                <Image
+                  src={src}
+                  alt={`Réalisation ${(i % HERO_GALLERY.length) + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 380px, 550px"
+                />
+                <div className="hero-marquee-item-overlay" />
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        </section>
 
       {/* Réalisations Section - Before/After + Portfolio */}
       <section id="realisations" className="gold-portfolio">
@@ -675,10 +699,13 @@ export default function HomePage() {
           <div className="gold-footer-content">
             <div className="gold-footer-brand">
               <div className="gold-logo">
-                <div className="gold-logo-icon">
-                  <span>RA</span>
-                </div>
-                <span className="gold-logo-name">{SITE_CONFIG.name}</span>
+                <Image
+                  src="/logos/ra-batiment/svg/noBgColor.svg"
+                  alt="RA Bâtiment"
+                  width={120}
+                  height={120}
+                  className="gold-logo-img"
+                />
               </div>
               <p>L&apos;excellence au service de vos projets.</p>
             </div>
