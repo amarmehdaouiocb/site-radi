@@ -22,6 +22,15 @@ export const VIDEOS = [
   // { id: "VIDEO_ID_2", title: "Construction Piscine", project: "piscine" },
 ];
 
+// Images pour le slideshow Hero - Meilleures photos "après"
+export const HERO_GALLERY = [
+  "/portfolio/terrasse-travertin-apres-01.jpg",
+  "/portfolio/sdb-mosaique-apres-03.jpg",
+  "/portfolio/combles-apres-04.jpg",
+  "/portfolio/terrasse-bois-apres-01.jpg",
+  "/portfolio/escalier-design-apres-01.jpg",
+];
+
 // Images réelles des réalisations RA Bâtiment
 export const IMAGES = {
   hero: "/portfolio/terrasse-bois-apres-01.jpg",
