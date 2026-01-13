@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facture - RA Bâtiment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold-primary: #d4af37;
+      --gold-light: #f4e4bc;
+      --gold-dark: #b8972e;
+      --bg-white: #ffffff;
+      --bg-light: #fafafa;
+      --text-dark: #1a1a1a;
+      --text-muted: #666666;
+      --border: #e0e0e0;
+      --border-gold: rgba(212, 175, 55, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .document {
+      width: 210mm;
+      min-height: 297mm;
+      background: var(--bg-white);
+      padding: 15mm;
+      position: relative;
+    }
+
+    /* Decorative top border */
+    .document::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light), var(--gold-primary), var(--gold-dark));
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10mm;
+      padding-bottom: 8mm;
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 5mm;
+    }
+
+    .logo-icon {
+      width: 18mm;
+      height: 18mm;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-light), var(--gold-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon span {
+      font-family: 'Playfair Display', serif;
+      font-size: 16pt;
+      font-weight: 700;
+      color: #0a0a0a;
+      letter-spacing: 2px;
+    }
+
+    .company-info h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18pt;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 2mm;
+    }
+
+    .company-details {
+      font-size: 8pt;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .document-title {
+      text-align: right;
+    }
+
+    .document-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24pt;
+      font-weight: 600;
+      color: var(--gold-primary);
+      margin-bottom: 3mm;
+    }
+
+    .document-meta {
+      font-size: 9pt;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .document-meta strong {
+      color: var(--text-dark);
+    }
+
+    .ref-devis {
+      display: inline-block;
+      margin-top: 2mm;
+      padding: 1mm 3mm;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      font-size: 8pt;
+    }
+
+    /* Parties */
+    .parties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10mm;
+      margin-bottom: 10mm;
+    }
+
+    .party-box {
+      padding: 5mm;
+      border: 1px solid var(--border);
+      background: var(--bg-light);
+    }
+
+    .party-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 3mm;
+      padding-bottom: 2mm;
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .party-box p {
+      font-size: 9pt;
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+
+    .party-box .placeholder {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Object */
+    .object-section {
+      margin-bottom: 8mm;
+      padding: 4mm 5mm;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.1));
+      border-left: 3px solid var(--gold-primary);
+    }
+
+    .object-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--gold-dark);
+      margin-bottom: 2mm;
+    }
+
+    .object-section p {
+      font-size: 9pt;
+      color: var(--text-dark);
+    }
+
+    /* Table */
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8mm;
+    }
+
+    .items-table thead {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+    }
+
+    .items-table th {
+      font-size: 8pt;
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4mm 3mm;
+      text-align: left;
+    }
+
+    .items-table th:nth-child(2),
+    .items-table th:nth-child(3),
+    .items-table th:nth-child(4),
+    .items-table th:nth-child(5) {
+      text-align: center;
+    }
+
+    .items-table th:last-child {
+      text-align: right;
+    }
+
+    .items-table td {
+      font-size: 9pt;
+      padding: 4mm 3mm;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dark);
+    }
+
+    .items-table td:nth-child(2),
+    .items-table td:nth-child(3),
+    .items-table td:nth-child(4),
+    .items-table td:nth-child(5) {
+      text-align: center;
+    }
+
+    .items-table td:last-child {
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .items-table tbody tr:nth-child(even) {
+      background: var(--bg-light);
+    }
+
+    .items-table .placeholder-row td {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Totals */
+    .totals-section {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8mm;
+    }
+
+    .totals-box {
+      width: 70mm;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 2mm 0;
+      font-size: 9pt;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .totals-row.total-ht {
+      font-weight: 500;
+    }
+
+    .totals-row.tva {
+      color: var(--text-muted);
+    }
+
+    .totals-row.total-ttc {
+      font-family: 'Playfair Display', serif;
+      font-size: 12pt;
+      font-weight: 600;
+      color: var(--gold-dark);
+      border-bottom: 2px solid var(--gold-primary);
+      padding: 3mm 0;
+    }
+
+    /* Payment Info */
+    .payment-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8mm;
+      margin-bottom: 8mm;
+    }
+
+    .payment-box {
+      padding: 5mm;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+    }
+
+    .payment-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--gold-dark);
+      margin-bottom: 3mm;
+    }
+
+    .payment-box p {
+      font-size: 8pt;
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+
+    .payment-box .placeholder {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .iban-row {
+      font-family: monospace;
+      font-size: 9pt;
+      letter-spacing: 1px;
+      margin-top: 2mm;
+    }
+
+    /* Legal Mentions */
+    .legal-section {
+      padding: 4mm 5mm;
+      background: #f8f8f8;
+      border: 1px solid var(--border);
+      margin-bottom: 8mm;
+    }
+
+    .legal-section h4 {
+      font-size: 8pt;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2mm;
+    }
+
+    .legal-section p {
+      font-size: 7pt;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Status Badge */
+    .status-badge {
+      position: absolute;
+      top: 25mm;
+      right: 15mm;
+      padding: 2mm 5mm;
+      font-size: 9pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 2px solid;
+      transform: rotate(-15deg);
+    }
+
+    .status-badge.pending {
+      color: #e67e22;
+      border-color: #e67e22;
+      background: rgba(230, 126, 34, 0.1);
+    }
+
+    .status-badge.paid {
+      color: #27ae60;
+      border-color: #27ae60;
+      background: rgba(39, 174, 96, 0.1);
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 15mm;
+      right: 15mm;
+      padding-top: 5mm;
+      border-top: 1px solid var(--border-gold);
+      font-size: 7pt;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .document {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 10mm;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="document">
+    <!-- Status Badge (uncomment one) -->
+    <!-- <div class="status-badge pending">En attente</div> -->
+    <!-- <div class="status-badge paid">Payée</div> -->
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <span>RA</span>
+        </div>
+        <div class="company-info">
+          <h1>RA Bâtiment</h1>
+          <div class="company-details">
+            5 rue de la Gaîté, 93000 Bobigny<br>
+            Tél : 06 23 30 44 45<br>
+            Email : ra.solution@myyahoo.com<br>
+            SIRET : 933 728 610 00017
+          </div>
+        </div>
+      </div>
+      <div class="document-title">
+        <h2>FACTURE</h2>
+        <div class="document-meta">
+          <strong>N°</strong> FA-2025-001<br>
+          <strong>Date :</strong> __/__/____<br>
+          <strong>Échéance :</strong> __/__/____ (30 jours)<br>
+          <span class="ref-devis">Réf. Devis : DEV-2025-XXX</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parties -->
+    <div class="parties">
+      <div class="party-box">
+        <h3>Émetteur</h3>
+        <p>
+          <strong>RA Bâtiment</strong><br>
+          5 rue de la Gaîté<br>
+          93000 Bobigny<br>
+          Tél : 06 23 30 44 45<br>
+          SIRET : 933 728 610 00017
+        </p>
+      </div>
+      <div class="party-box">
+        <h3>Facturer à</h3>
+        <p>
+          <span class="placeholder">[Nom du client]</span><br>
+          <span class="placeholder">[Adresse]</span><br>
+          <span class="placeholder">[Code postal, Ville]</span><br>
+          <span class="placeholder">[Téléphone]</span><br>
+          <span class="placeholder">[Email]</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Object -->
+    <div class="object-section">
+      <h3>Objet</h3>
+      <p><span class="placeholder">[Description des travaux réalisés]</span></p>
+    </div>
+
+    <!-- Items Table -->
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th style="width: 40%;">Description</th>
+          <th style="width: 10%;">Qté</th>
+          <th style="width: 10%;">Unité</th>
+          <th style="width: 15%;">P.U. HT</th>
+          <th style="width: 10%;">TVA</th>
+          <th style="width: 15%;">Total HT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="placeholder-row">
+          <td>[Prestation 1 - ex: Démolition cloison]</td>
+          <td>1</td>
+          <td>forfait</td>
+          <td>XXX,XX €</td>
+          <td>10%</td>
+          <td>XXX,XX €</td>
+        </tr>
+        <tr class="placeholder-row">
+          <td>[Prestation 2 - ex: Pose carrelage]</td>
+          <td>XX</td>
+          <td>m²</td>
+          <td>XX,XX €</td>
+          <td>10%</td>
+          <td>XXX,XX €</td>
+        </tr>
+        <tr class="placeholder-row">
+          <td>[Fournitures - ex: Carrelage grès cérame]</td>
+          <td>XX</td>
+          <td>m²</td>
+          <td>XX,XX €</td>
+          <td>20%</td>
+          <td>XXX,XX €</td>
+        </tr>
+        <tr class="placeholder-row">
+          <td>[Prestation 3]</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Totals -->
+    <div class="totals-section">
+      <div class="totals-box">
+        <div class="totals-row total-ht">
+          <span>Total HT</span>
+          <span>X XXX,XX €</span>
+        </div>
+        <div class="totals-row tva">
+          <span>TVA 10% (travaux)</span>
+          <span>XXX,XX €</span>
+        </div>
+        <div class="totals-row tva">
+          <span>TVA 20% (fournitures)</span>
+          <span>XXX,XX €</span>
+        </div>
+        <div class="totals-row total-ttc">
+          <span>Total TTC</span>
+          <span>X XXX,XX €</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Info -->
+    <div class="payment-section">
+      <div class="payment-box">
+        <h4>Conditions de règlement</h4>
+        <p>
+          Paiement à réception de facture<br>
+          Échéance : 30 jours<br>
+          Mode de paiement : Virement bancaire
+        </p>
+      </div>
+      <div class="payment-box">
+        <h4>Coordonnées bancaires</h4>
+        <p>
+          <strong>Banque :</strong> <span class="placeholder">[Nom de la banque]</span><br>
+          <strong>IBAN :</strong>
+          <span class="iban-row placeholder">[FR76 XXXX XXXX XXXX XXXX XXXX XXX]</span><br>
+          <strong>BIC :</strong> <span class="placeholder">[XXXXXXXX]</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Legal Mentions -->
+    <div class="legal-section">
+      <h4>Mentions légales</h4>
+      <p>
+        En cas de retard de paiement, une indemnité forfaitaire de 40€ pour frais de recouvrement sera due (Art. L.441-6 et D.441-5 du Code de commerce).<br>
+        Taux des pénalités de retard : 3 fois le taux d'intérêt légal en vigueur.<br>
+        Pas d'escompte pour paiement anticipé.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      RA Bâtiment — SIRET : 933 728 610 00017<br>
+      5 rue de la Gaîté, 93000 Bobigny — Tél : 06 23 30 44 45 — Email : ra.solution@myyahoo.com
+    </div>
+  </div>
+</body>
+</html>
