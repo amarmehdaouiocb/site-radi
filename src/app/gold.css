@@ -1114,6 +1114,27 @@
   background: var(--gold-gradient);
 }
 
+.gold-contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gold-contact-details-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .gold-contact-details-row {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+}
+
 .gold-contact-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1310,6 +1331,316 @@ select.gold-input {
 .gold-btn-primary:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+/* =====================================================
+   QUOTE FORM STYLES
+   ===================================================== */
+
+.quote-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quote-section {
+  background: var(--gold-bg-card);
+  border: 1px solid var(--gold-border);
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .quote-section {
+    padding: 2rem;
+  }
+}
+
+.quote-section-animate {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quote-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--gold-text);
+  margin-bottom: 0.5rem;
+}
+
+.quote-step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--gold-primary);
+  color: var(--gold-bg);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.quote-section-desc {
+  color: var(--gold-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Services Grid */
+.quote-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .quote-services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.quote-service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.quote-service-card:hover {
+  border-color: var(--gold-primary);
+}
+
+.quote-service-selected {
+  border-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.quote-service-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  padding: 0.25rem 0.5rem;
+  background: var(--gold-primary);
+  color: var(--gold-bg);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.quote-service-check {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-primary);
+}
+
+.quote-service-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--gold-primary);
+}
+
+.quote-service-title {
+  font-size: 0.85rem;
+  color: var(--gold-text);
+  font-weight: 500;
+}
+
+/* Features Accordion */
+.quote-features-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quote-feature-group {
+  border: 1px solid var(--gold-border);
+  background: var(--gold-bg);
+}
+
+.quote-feature-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gold-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.quote-feature-header:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.quote-feature-header svg {
+  color: var(--gold-primary);
+}
+
+.quote-feature-service-name {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quote-feature-count {
+  font-size: 0.75rem;
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.15);
+  padding: 0.2rem 0.5rem;
+}
+
+.quote-feature-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding: 0 1.25rem 1.25rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+@media (min-width: 640px) {
+  .quote-feature-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.quote-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.quote-feature-item:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.quote-feature-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.quote-feature-checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--gold-primary);
+}
+
+.quote-feature-item input[type="checkbox"]:checked + .quote-feature-checkbox {
+  border-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.quote-feature-label {
+  font-size: 0.85rem;
+  color: var(--gold-text-muted);
+}
+
+/* Project Info Grid */
+.quote-project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .quote-project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.quote-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quote-field-full {
+  grid-column: 1 / -1;
+}
+
+.quote-label {
+  font-size: 0.85rem;
+  color: var(--gold-text-muted);
+  font-weight: 500;
+}
+
+/* Contact Grid */
+.quote-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .quote-contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Submit Section */
+.quote-submit-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quote-hint {
+  font-size: 0.9rem;
+  color: var(--gold-text-subtle);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Select dropdown arrow */
+select.gold-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
 }
 
 /* Footer */
