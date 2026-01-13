@@ -223,7 +223,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       }
     } catch {
       setFormStatus("error");
-      setFormMessage("Erreur de connexion. Veuillez reessayer.");
+      setFormMessage("Erreur de connexion. Veuillez réessayer.");
     }
   };
 
@@ -234,11 +234,15 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       {/* Section 1: Service Selection */}
       <div className="quote-section">
         <h3 className="quote-section-title">
-          <span className="quote-step-number">1</span>
-          Quels services vous interessent ? *
+          <span className="quote-step-badge">
+            <span className="quote-step-current">1</span>
+            <span className="quote-step-separator">/</span>
+            <span className="quote-step-total">4</span>
+          </span>
+          Quels services vous intéressent ? *
         </h3>
         <p className="quote-section-desc">
-          Selectionnez un ou plusieurs services
+          Sélectionnez un ou plusieurs services
         </p>
 
         <div className="quote-services-grid">
@@ -254,7 +258,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                 onClick={() => toggleService(service.id)}
               >
                 {service.popular && (
-                  <span className="quote-service-badge">Plus demande</span>
+                  <span className="quote-service-badge">Plus demandé</span>
                 )}
                 <div className="quote-service-check">
                   {isSelected && <CheckCircle className="w-5 h-5" />}
@@ -271,11 +275,15 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       {hasSelectedServices && (
         <div className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
-            <span className="quote-step-number">2</span>
-            Precisez vos besoins
+            <span className="quote-step-badge">
+              <span className="quote-step-current">2</span>
+              <span className="quote-step-separator">/</span>
+              <span className="quote-step-total">4</span>
+            </span>
+            Précisez vos besoins
           </h3>
           <p className="quote-section-desc">
-            Selectionnez les pieces et prestations concernees (optionnel)
+            Sélectionnez les pièces et prestations concernées (optionnel)
           </p>
 
           <div className="quote-features-container">
@@ -299,7 +307,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                     <span className="quote-feature-service-name">
                       {service.title}
                       {totalCount > 0 && (
-                        <span className="quote-feature-count">{totalCount} selectionne{totalCount > 1 ? "s" : ""}</span>
+                        <span className="quote-feature-count">{totalCount} sélectionné{totalCount > 1 ? "s" : ""}</span>
                       )}
                     </span>
                     {isExpanded ? (
@@ -314,7 +322,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                       {/* Room Selection */}
                       {applicableRooms.length > 0 && (
                         <div className="quote-rooms-section">
-                          <p className="quote-rooms-label">Pieces concernees :</p>
+                          <p className="quote-rooms-label">Pièces concernées :</p>
                           <div className="quote-rooms-grid">
                             {applicableRooms.map((room) => {
                               const isChecked = (formData.selectedRooms[serviceId] || []).includes(room.value);
@@ -373,11 +381,15 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       {hasSelectedServices && (
         <div className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
-            <span className="quote-step-number">3</span>
+            <span className="quote-step-badge">
+              <span className="quote-step-current">3</span>
+              <span className="quote-step-separator">/</span>
+              <span className="quote-step-total">4</span>
+            </span>
             Informations sur votre projet
           </h3>
           <p className="quote-section-desc">
-            Ces informations sont optionnelles mais nous aident a mieux vous repondre
+            Ces informations sont optionnelles mais nous aident à mieux vous répondre
           </p>
 
           <div className="quote-project-grid">
@@ -393,7 +405,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className="quote-field">
-              <label className="quote-label">Surface estimee (m²)</label>
+              <label className="quote-label">Surface estimée (m²)</label>
               <input
                 type="number"
                 className="gold-input"
@@ -411,7 +423,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
               >
-                <option value="">Selectionnez votre budget</option>
+                <option value="">Sélectionnez votre budget</option>
                 {BUDGET_OPTIONS.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -421,7 +433,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className="quote-field">
-              <label className="quote-label">Delai souhaite</label>
+              <label className="quote-label">Délai souhaité</label>
               <select
                 className="gold-input"
                 value={formData.timeline}
@@ -443,11 +455,15 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       {hasSelectedServices && (
         <div className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
-            <span className="quote-step-number">4</span>
-            Vos coordonnees *
+            <span className="quote-step-badge">
+              <span className="quote-step-current">4</span>
+              <span className="quote-step-separator">/</span>
+              <span className="quote-step-total">4</span>
+            </span>
+            Vos coordonnées *
           </h3>
           <p className="quote-section-desc">
-            Telephone ou email obligatoire
+            Téléphone ou email obligatoire
           </p>
 
           <div className="quote-contact-grid">
@@ -464,7 +480,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className="quote-field">
-              <label className="quote-label">Votre telephone</label>
+              <label className="quote-label">Votre téléphone</label>
               <input
                 type="tel"
                 className="gold-input"
@@ -488,16 +504,16 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
           {formData.phone.trim() === "" && formData.email.trim() === "" && (
             <p className="quote-contact-hint">
-              Veuillez renseigner au moins un moyen de contact (telephone ou email)
+              Veuillez renseigner au moins un moyen de contact (téléphone ou email)
             </p>
           )}
 
           <div className="quote-field quote-field-full">
-            <label className="quote-label">Message complementaire (optionnel)</label>
+            <label className="quote-label">Message complémentaire (optionnel)</label>
             <textarea
               className="gold-input"
               rows={3}
-              placeholder="Decrivez votre projet ou ajoutez des precisions..."
+              placeholder="Décrivez votre projet ou ajoutez des précisions..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             />
@@ -512,9 +528,9 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             />
             <span className="gold-checkbox-mark" />
             <span className="gold-checkbox-text">
-              J&apos;accepte que mes donnees soient utilisees pour traiter ma demande.{" "}
+              J&apos;accepte que mes données soient utilisées pour traiter ma demande.{" "}
               <a href="/mentions-legales" target="_blank" rel="noopener noreferrer">
-                Politique de confidentialite
+                Politique de confidentialité
               </a>
             </span>
           </label>
@@ -525,7 +541,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       <div className="quote-submit-section">
         {!hasSelectedServices && (
           <p className="quote-hint">
-            Selectionnez au moins un service pour continuer
+            Sélectionnez au moins un service pour continuer
           </p>
         )}
 
@@ -542,7 +558,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           ) : formStatus === "success" ? (
             <>
               <CheckCircle className="w-5 h-5" />
-              <span>Demande envoyee !</span>
+              <span>Demande envoyée !</span>
             </>
           ) : (
             <>
@@ -559,7 +575,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         )}
 
         <p className="gold-form-reassurance">
-          Reponse sous 24h - Sans engagement
+          Réponse sous 24h - Sans engagement
         </p>
       </div>
     </form>
