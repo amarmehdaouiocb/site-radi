@@ -1643,6 +1643,126 @@ select.gold-input {
   padding-right: 2.5rem;
 }
 
+/* Room Selection */
+.quote-rooms-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(212, 175, 55, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.quote-rooms-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gold-text-muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quote-rooms-title svg {
+  color: var(--gold-primary);
+}
+
+.quote-rooms-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quote-room-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.8rem;
+}
+
+.quote-room-item:hover {
+  border-color: var(--gold-primary);
+}
+
+.quote-room-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.quote-room-checkbox {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--gold-primary);
+}
+
+.quote-room-item input[type="checkbox"]:checked + .quote-room-checkbox {
+  border-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.quote-room-label {
+  color: var(--gold-text-muted);
+  transition: color 0.2s ease;
+}
+
+.quote-room-item:hover .quote-room-label {
+  color: var(--gold-text);
+}
+
+.quote-room-item input[type="checkbox"]:checked ~ .quote-room-label {
+  color: var(--gold-text);
+}
+
+/* Feature content wrapper */
+.quote-feature-content {
+  padding: 0 1.25rem 1.25rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+/* Features grid within content */
+.quote-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .quote-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Contact hint text */
+.quote-contact-hint {
+  font-size: 0.8rem;
+  color: var(--gold-text-muted);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Room count badge */
+.quote-rooms-count {
+  font-size: 0.7rem;
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.15);
+  padding: 0.15rem 0.4rem;
+  margin-left: auto;
+}
+
 /* Footer */
 .gold-footer {
   padding: 4rem 0 2rem;

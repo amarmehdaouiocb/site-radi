@@ -60,10 +60,10 @@ export const SERVICES = [
     features: [
       "Rénovation de cuisine sur mesure",
       "Transformation de salle de bain",
-      "Pose de parquet et carrelage",
       "Peinture et revêtements muraux",
       "Aménagement de combles",
       "Création de dressing",
+      "Rénovation complète appartement",
     ],
   },
   {
@@ -81,6 +81,8 @@ export const SERVICES = [
       "Extension de maison",
       "Ouverture de murs porteurs",
       "Création de fondations",
+      "Construction de dalle",
+      "Construction de murs",
       "Ravalement de façade",
       "Terrassement",
     ],
@@ -121,7 +123,7 @@ export const SERVICES = [
       "Pose de prises et interrupteurs",
       "Éclairage intérieur et extérieur",
       "Domotique et automatismes",
-      "Dépannage urgent",
+      "Rénovation électrique complète",
     ],
   },
   {
@@ -140,7 +142,9 @@ export const SERVICES = [
       "Effets décoratifs",
       "Pose de papier peint",
       "Laquage de boiseries",
-      "Traitement des fissures",
+      "Application d'enduit",
+      "Enduit décoratif",
+      "Crépi intérieur/extérieur",
     ],
   },
   {
@@ -153,12 +157,51 @@ export const SERVICES = [
     icon: "Grid3X3",
     image: IMAGES.services.carrelage,
     features: [
-      "Pose de carrelage sol",
+      "Pose de carrelage sol intérieur",
+      "Pose de carrelage sol extérieur",
       "Pose de faïence murale",
       "Mosaïque décorative",
-      "Carrelage grand format",
       "Joints et finitions",
-      "Rénovation de sols",
+      "Rénovation totale de sols",
+    ],
+  },
+  {
+    id: "renovation-exterieure",
+    slug: "renovation-exterieure",
+    title: "Rénovation Extérieure",
+    description:
+      "Aménagement et rénovation de vos espaces extérieurs : terrasse, jardin, clôture.",
+    longDescription:
+      "Nous transformons vos espaces extérieurs avec des aménagements durables et esthétiques. Terrasses, clôtures, allées, pergolas : nous créons l'extérieur de vos rêves.",
+    icon: "TreePine",
+    image: "/portfolio/terrasse-bois-apres-01.jpg",
+    features: [
+      "Terrasse bois ou composite",
+      "Terrasse béton / carrelée",
+      "Clôture et portail",
+      "Aménagement jardin",
+      "Allées et pavage",
+      "Pergola et abri de jardin",
+    ],
+  },
+  {
+    id: "piscine",
+    slug: "piscine",
+    title: "Piscine",
+    description:
+      "Construction, rénovation et aménagement de piscines.",
+    longDescription:
+      "Nous réalisons la construction et la rénovation de piscines en béton ou coque. De la conception à la finition, nous vous accompagnons pour créer votre espace aquatique.",
+    icon: "Waves",
+    image: "/portfolio/piscine-apres-01.jpg",
+    popular: true,
+    features: [
+      "Construction piscine béton",
+      "Construction piscine coque",
+      "Rénovation de piscine",
+      "Plage de piscine",
+      "Local technique",
+      "Margelles et finitions",
     ],
   },
 ];
@@ -181,6 +224,32 @@ export const TIMELINE_OPTIONS = [
   { value: "plus-6-mois", label: "Dans plus de 6 mois" },
   { value: "flexible", label: "Flexible / Pas de date précise" },
 ];
+
+// Options de pièces pour le formulaire de devis
+export const ROOM_OPTIONS = [
+  { value: "cuisine", label: "Cuisine" },
+  { value: "salle-de-bain", label: "Salle de bain" },
+  { value: "wc", label: "WC" },
+  { value: "chambre", label: "Chambre" },
+  { value: "salon", label: "Salon / Séjour" },
+  { value: "couloir", label: "Couloir / Entrée" },
+  { value: "bureau", label: "Bureau" },
+  { value: "buanderie", label: "Buanderie" },
+  { value: "terrasse", label: "Terrasse" },
+  { value: "garage", label: "Garage" },
+  { value: "combles", label: "Combles" },
+  { value: "cave", label: "Cave / Sous-sol" },
+  { value: "exterieur", label: "Extérieur / Jardin" },
+];
+
+// Mapping services → pièces applicables
+export const SERVICE_ROOMS: Record<string, string[]> = {
+  renovation: ["cuisine", "salle-de-bain", "wc", "chambre", "salon", "couloir", "bureau", "combles"],
+  plomberie: ["cuisine", "salle-de-bain", "wc", "buanderie"],
+  electricite: ["cuisine", "salle-de-bain", "wc", "chambre", "salon", "couloir", "bureau", "garage", "exterieur"],
+  peinture: ["cuisine", "salle-de-bain", "wc", "chambre", "salon", "couloir", "bureau", "combles", "exterieur"],
+  carrelage: ["cuisine", "salle-de-bain", "wc", "couloir", "terrasse", "exterieur"],
+};
 
 export const PORTFOLIO_ITEMS = [
   {
