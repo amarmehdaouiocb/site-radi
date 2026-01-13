@@ -163,6 +163,25 @@ export const SERVICES = [
   },
 ];
 
+// Options de budget pour le formulaire de devis
+export const BUDGET_OPTIONS = [
+  { value: "moins-5k", label: "Moins de 5 000 €" },
+  { value: "5k-10k", label: "5 000 € - 10 000 €" },
+  { value: "10k-20k", label: "10 000 € - 20 000 €" },
+  { value: "20k-50k", label: "20 000 € - 50 000 €" },
+  { value: "plus-50k", label: "Plus de 50 000 €" },
+  { value: "ne-sait-pas", label: "Je ne sais pas encore" },
+];
+
+// Options de délai pour le formulaire de devis
+export const TIMELINE_OPTIONS = [
+  { value: "urgent", label: "Urgent (< 1 mois)" },
+  { value: "1-3-mois", label: "Dans 1 à 3 mois" },
+  { value: "3-6-mois", label: "Dans 3 à 6 mois" },
+  { value: "plus-6-mois", label: "Dans plus de 6 mois" },
+  { value: "flexible", label: "Flexible / Pas de date précise" },
+];
+
 export const PORTFOLIO_ITEMS = [
   {
     id: 1,

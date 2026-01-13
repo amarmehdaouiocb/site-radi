@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect, FormEvent } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,8 +14,6 @@ import {
   Clock,
   Award,
   ChevronDown,
-  Loader2,
-  CheckCircle,
   Menu,
   X,
   Ruler,
@@ -23,9 +21,10 @@ import {
   Euro,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS, HERO_GALLERY } from "@/lib/constants";
-import { trackFormSubmit, trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
+import { trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
 import TrustedBy from "@/components/TrustedBy";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import QuoteForm from "@/components/QuoteForm";
 import "./gold.css";
 
 // Helper function to format budget
@@ -46,15 +45,7 @@ export default function HomePage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
 
-  // Form state
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    message: "",
-  });
-  const [rgpdAccepted, setRgpdAccepted] = useState(false);
-  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [formMessage, setFormMessage] = useState("");
+  // UI state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [portfolioFilter, setPortfolioFilter] = useState<string>("Tous");
   const [hideStickyCta, setHideStickyCta] = useState(false);
@@ -90,35 +81,6 @@ export default function HomePage() {
   const filteredPortfolio = portfolioFilter === "Tous"
     ? PORTFOLIO_ITEMS
     : PORTFOLIO_ITEMS.filter(item => item.category === portfolioFilter);
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setFormStatus("loading");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setFormStatus("success");
-        setFormMessage(data.message);
-        setFormData({ name: "", phone: "", message: "" });
-        setRgpdAccepted(false);
-        trackFormSubmit("contact_form");
-      } else {
-        setFormStatus("error");
-        setFormMessage(data.error || "Une erreur est survenue.");
-      }
-    } catch {
-      setFormStatus("error");
-      setFormMessage("Erreur de connexion. Veuillez réessayer.");
-    }
-  };
 
   return (
     <div className="gold-variant">
@@ -591,105 +553,36 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="gold-contact">
         <div className="gold-container">
-          <div className="gold-contact-grid">
-            <div className="gold-contact-info">
-              <span className="gold-section-label">Contact</span>
+          {/* Header with contact info */}
+          <div className="gold-contact-header">
+            <div className="gold-section-header">
+              <span className="gold-section-label">Demande de Devis</span>
               <h2 className="gold-section-title">
                 Parlons de Votre <span className="gold-text-gradient">Projet</span>
               </h2>
-              <p className="gold-contact-desc">
-                Bénéficiez d&apos;une consultation personnalisée et d&apos;un devis
-                détaillé sous 24 heures.
+              <p className="gold-contact-desc" style={{ maxWidth: "600px", margin: "0 auto" }}>
+                Qualifiez votre besoin en quelques clics et recevez un devis personnalise sous 24 heures.
               </p>
-
-              <div className="gold-contact-details">
-                <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-contact-item">
-                  <Phone className="w-5 h-5" />
-                  <span>{SITE_CONFIG.phone}</span>
-                </a>
-                <a href={`mailto:${SITE_CONFIG.email}`} className="gold-contact-item">
-                  <Mail className="w-5 h-5" />
-                  <span>{SITE_CONFIG.email}</span>
-                </a>
-                <div className="gold-contact-item">
-                  <MapPin className="w-5 h-5" />
-                  <span>{SITE_CONFIG.address}</span>
-                </div>
-              </div>
             </div>
 
-            <form className="gold-contact-form" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Votre nom"
-                className="gold-input"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-              />
-              <input
-                type="tel"
-                placeholder="Votre téléphone"
-                className="gold-input"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                required
-              />
-              <textarea
-                placeholder="Décrivez votre projet..."
-                rows={4}
-                className="gold-input"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                required
-              />
-              <label className="gold-checkbox">
-                <input
-                  type="checkbox"
-                  checked={rgpdAccepted}
-                  onChange={(e) => setRgpdAccepted(e.target.checked)}
-                  required
-                />
-                <span className="gold-checkbox-mark" />
-                <span className="gold-checkbox-text">
-                  J&apos;accepte que mes données soient utilisées pour traiter ma demande.{" "}
-                  <a href="/mentions-legales" target="_blank" rel="noopener noreferrer">
-                    Politique de confidentialité
-                  </a>
-                </span>
-              </label>
-              <button
-                type="submit"
-                className="gold-btn-primary gold-btn-full"
-                disabled={formStatus === "loading"}
-              >
-                {formStatus === "loading" ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    <span>Envoi en cours...</span>
-                  </>
-                ) : formStatus === "success" ? (
-                  <>
-                    <CheckCircle className="w-5 h-5" />
-                    <span>Envoyé !</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Recevoir mon devis gratuit sous 24h</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </>
-                )}
-              </button>
-              {formMessage && (
-                <p className={`gold-form-message ${formStatus === "error" ? "gold-form-error" : "gold-form-success"}`}>
-                  {formMessage}
-                </p>
-              )}
-              <p className="gold-form-reassurance">
-                ✓ Réponse sous 24h • Sans engagement
-              </p>
-            </form>
+            <div className="gold-contact-details-row">
+              <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-contact-item" onClick={() => trackPhoneClick("contact_section")}>
+                <Phone className="w-5 h-5" />
+                <span>{SITE_CONFIG.phone}</span>
+              </a>
+              <a href={`mailto:${SITE_CONFIG.email}`} className="gold-contact-item">
+                <Mail className="w-5 h-5" />
+                <span>{SITE_CONFIG.email}</span>
+              </a>
+              <div className="gold-contact-item">
+                <MapPin className="w-5 h-5" />
+                <span>{SITE_CONFIG.address}</span>
+              </div>
+            </div>
           </div>
+
+          {/* Quote Form */}
+          <QuoteForm />
         </div>
       </section>
 
