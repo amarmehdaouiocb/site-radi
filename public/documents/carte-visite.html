@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte de Visite - RA Bâtiment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold-primary: #d4af37;
+      --gold-light: #f4e4bc;
+      --gold-dark: #b8972e;
+      --bg-dark: #0a0a0a;
+      --bg-elevated: #111111;
+      --text-light: #f5f5f5;
+      --text-muted: #a0a0a0;
+      --border: #2a2a2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    h2 {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+    }
+
+    .card {
+      width: 85mm;
+      height: 55mm;
+      background: var(--bg-dark);
+      border: 1px solid var(--gold-primary);
+      position: relative;
+      overflow: hidden;
+      page-break-inside: avoid;
+    }
+
+    /* Recto */
+    .card-front {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12mm;
+      text-align: center;
+    }
+
+    .card-front::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    .card-front::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    .logo-container {
+      margin-bottom: 4mm;
+    }
+
+    .logo-icon {
+      width: 18mm;
+      height: 18mm;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-light), var(--gold-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 3mm;
+      position: relative;
+    }
+
+    .logo-icon span {
+      font-family: 'Playfair Display', serif;
+      font-size: 16pt;
+      font-weight: 700;
+      color: var(--bg-dark);
+      letter-spacing: 2px;
+    }
+
+    .company-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14pt;
+      font-weight: 600;
+      color: var(--text-light);
+      letter-spacing: 1px;
+      margin-bottom: 2mm;
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 8pt;
+      color: var(--gold-primary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Verso */
+    .card-back {
+      display: flex;
+      flex-direction: column;
+      padding: 6mm 8mm;
+    }
+
+    .card-back::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    .back-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4mm;
+    }
+
+    .contact-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 11pt;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .contact-role {
+      font-size: 7pt;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1mm;
+    }
+
+    .qr-code {
+      width: 14mm;
+      height: 14mm;
+      background: white;
+      padding: 1mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-code img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .qr-placeholder {
+      font-size: 5pt;
+      color: #666;
+      text-align: center;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+      flex: 1;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      font-size: 7pt;
+      color: var(--text-muted);
+    }
+
+    .contact-item svg {
+      width: 3mm;
+      height: 3mm;
+      color: var(--gold-primary);
+      flex-shrink: 0;
+    }
+
+    .contact-item a {
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .services-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5mm;
+      margin-top: 3mm;
+      padding-top: 3mm;
+      border-top: 1px solid var(--border);
+    }
+
+    .service-tag {
+      font-size: 5pt;
+      color: var(--gold-primary);
+      padding: 0.8mm 2mm;
+      border: 0.5px solid var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .siret {
+      font-size: 5pt;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: auto;
+      padding-top: 2mm;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      h2 {
+        display: none;
+      }
+
+      .card {
+        margin: 0;
+        box-shadow: none;
+      }
+
+      @page {
+        size: 85mm 55mm;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Recto</h2>
+  <div class="card card-front">
+    <div class="logo-container">
+      <div class="logo-icon">
+        <span>RA</span>
+      </div>
+      <div class="company-name">RA Bâtiment</div>
+      <div class="tagline">Excellence & Prestige</div>
+    </div>
+  </div>
+
+  <h2>Verso</h2>
+  <div class="card card-back">
+    <div class="back-header">
+      <div>
+        <div class="contact-name">Reda</div>
+        <div class="contact-role">Gérant</div>
+      </div>
+      <div class="qr-code">
+        <!-- QR Code généré via API -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://ra-batiment.fr&bgcolor=ffffff&color=0a0a0a" alt="QR Code site web">
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <a href="tel:0623304445">06 23 30 44 45</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <a href="mailto:ra.solution@myyahoo.com">ra.solution@myyahoo.com</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span>5 rue de la Gaîté, 93000 Bobigny</span>
+      </div>
+    </div>
+
+    <div class="services-row">
+      <span class="service-tag">Rénovation</span>
+      <span class="service-tag">Maçonnerie</span>
+      <span class="service-tag">Plomberie</span>
+      <span class="service-tag">Électricité</span>
+      <span class="service-tag">Peinture</span>
+      <span class="service-tag">Carrelage</span>
+    </div>
+
+    <div class="siret">SIRET : 933 728 610 00017</div>
+  </div>
+</body>
+</html>

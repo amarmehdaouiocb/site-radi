@@ -88,10 +88,10 @@ function generateQuoteEmailHtml(data: QuoteFormData): string {
       <div style="background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%); padding: 20px; text-align: center;">
         <table align="center" style="margin-bottom: 15px;">
           <tr>
-            <td style="background: #0a0a0a; padding: 12px 16px; border: 1px solid #d4af37;">
-              <span style="font-family: Georgia, serif; font-size: 24px; font-weight: bold; color: #d4af37; letter-spacing: 2px;">RA</span>
+            <td style="vertical-align: middle;">
+              <img src="https://ra-batiment.fr/logos/ra-batiment/png/232893795.png" alt="RA Batiment" width="70" height="70" style="display: block; border: 2px solid #d4af37;">
             </td>
-            <td style="padding-left: 12px; text-align: left;">
+            <td style="padding-left: 12px; text-align: left; vertical-align: middle;">
               <div style="font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #0a0a0a;">RA Batiment</div>
               <div style="font-family: Georgia, serif; font-size: 11px; color: #333; letter-spacing: 1px;">Excellence & Prestige</div>
             </td>
@@ -192,10 +192,10 @@ function generateLegacyEmailHtml(data: LegacyFormData): string {
       <div style="background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%); padding: 20px; text-align: center;">
         <table align="center" style="margin-bottom: 15px;">
           <tr>
-            <td style="background: #0a0a0a; padding: 12px 16px; border: 1px solid #d4af37;">
-              <span style="font-family: Georgia, serif; font-size: 24px; font-weight: bold; color: #d4af37; letter-spacing: 2px;">RA</span>
+            <td style="vertical-align: middle;">
+              <img src="https://ra-batiment.fr/logos/ra-batiment/png/232893795.png" alt="RA Batiment" width="70" height="70" style="display: block; border: 2px solid #d4af37;">
             </td>
-            <td style="padding-left: 12px; text-align: left;">
+            <td style="padding-left: 12px; text-align: left; vertical-align: middle;">
               <div style="font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #0a0a0a;">RA Batiment</div>
               <div style="font-family: Georgia, serif; font-size: 11px; color: #333; letter-spacing: 1px;">Excellence & Prestige</div>
             </td>
