@@ -12,18 +12,22 @@ import {
   ArrowRight,
   ChevronDown,
   ChevronUp,
+  TreePine,
+  Waves,
 } from "lucide-react";
-import { SERVICES, BUDGET_OPTIONS, TIMELINE_OPTIONS } from "@/lib/constants";
+import { SERVICES, BUDGET_OPTIONS, TIMELINE_OPTIONS, ROOM_OPTIONS, SERVICE_ROOMS } from "@/lib/constants";
 import { trackFormSubmit } from "@/lib/analytics";
 
 // Map icon names to components
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Home,
-  Brick: Home, // Fallback since Brick may not exist
+  Brick: Home, // Fallback
   Droplets,
   Zap,
   Paintbrush,
   Grid3X3,
+  TreePine,
+  Waves,
 };
 
 // Custom Brick icon as SVG
@@ -40,12 +44,14 @@ const BrickIcon = ({ className }: { className?: string }) => (
 interface QuoteFormData {
   services: string[];
   selectedFeatures: Record<string, string[]>;
+  selectedRooms: Record<string, string[]>;
   surface: string;
   budget: string;
   timeline: string;
   city: string;
   name: string;
   phone: string;
+  email: string;
   message: string;
   rgpdAccepted: boolean;
 }
@@ -58,12 +64,14 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   const [formData, setFormData] = useState<QuoteFormData>({
     services: [],
     selectedFeatures: {},
+    selectedRooms: {},
     surface: "",
     budget: "",
     timeline: "",
     city: "",
     name: "",
     phone: "",
+    email: "",
     message: "",
     rgpdAccepted: false,
   });
@@ -80,10 +88,12 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         ? prev.services.filter((id) => id !== serviceId)
         : [...prev.services, serviceId];
 
-      // Clean up features if service is deselected
+      // Clean up features and rooms if service is deselected
       const newFeatures = { ...prev.selectedFeatures };
+      const newRooms = { ...prev.selectedRooms };
       if (isSelected) {
         delete newFeatures[serviceId];
+        delete newRooms[serviceId];
       }
 
       // Auto-expand the service when selected
@@ -95,6 +105,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         ...prev,
         services: newServices,
         selectedFeatures: newFeatures,
+        selectedRooms: newRooms,
       };
     });
   };
@@ -117,6 +128,24 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     });
   };
 
+  // Toggle room selection
+  const toggleRoom = (serviceId: string, room: string) => {
+    setFormData((prev) => {
+      const serviceRooms = prev.selectedRooms[serviceId] || [];
+      const isSelected = serviceRooms.includes(room);
+
+      return {
+        ...prev,
+        selectedRooms: {
+          ...prev.selectedRooms,
+          [serviceId]: isSelected
+            ? serviceRooms.filter((r) => r !== room)
+            : [...serviceRooms, room],
+        },
+      };
+    });
+  };
+
   // Toggle service accordion
   const toggleServiceAccordion = (serviceId: string) => {
     setExpandedServices((prev) =>
@@ -132,14 +161,18 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     return iconMap[iconName] || Home;
   };
 
+  // Get applicable rooms for a service
+  const getServiceRooms = (serviceId: string) => {
+    const roomIds = SERVICE_ROOMS[serviceId] || [];
+    return ROOM_OPTIONS.filter((room) => roomIds.includes(room.value));
+  };
+
   // Check if form can be submitted
+  // Required: services, name, (phone OR email), rgpdAccepted
   const canSubmit =
     formData.services.length > 0 &&
     formData.name.trim() !== "" &&
-    formData.phone.trim() !== "" &&
-    formData.city.trim() !== "" &&
-    formData.budget !== "" &&
-    formData.timeline !== "" &&
+    (formData.phone.trim() !== "" || formData.email.trim() !== "") &&
     formData.rgpdAccepted;
 
   // Handle form submission
@@ -169,12 +202,14 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           setFormData({
             services: [],
             selectedFeatures: {},
+            selectedRooms: {},
             surface: "",
             budget: "",
             timeline: "",
             city: "",
             name: "",
             phone: "",
+            email: "",
             message: "",
             rgpdAccepted: false,
           });
@@ -188,7 +223,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       }
     } catch {
       setFormStatus("error");
-      setFormMessage("Erreur de connexion. Veuillez réessayer.");
+      setFormMessage("Erreur de connexion. Veuillez reessayer.");
     }
   };
 
@@ -200,7 +235,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       <div className="quote-section">
         <h3 className="quote-section-title">
           <span className="quote-step-number">1</span>
-          Quels services vous interessent ?
+          Quels services vous interessent ? *
         </h3>
         <p className="quote-section-desc">
           Selectionnez un ou plusieurs services
@@ -232,7 +267,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         </div>
       </div>
 
-      {/* Section 2: Features per service (dynamic) */}
+      {/* Section 2: Rooms & Features per service (dynamic) */}
       {hasSelectedServices && (
         <div className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
@@ -240,7 +275,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             Precisez vos besoins
           </h3>
           <p className="quote-section-desc">
-            Selectionnez les prestations concernees (optionnel)
+            Selectionnez les pieces et prestations concernees (optionnel)
           </p>
 
           <div className="quote-features-container">
@@ -249,7 +284,10 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               if (!service) return null;
 
               const isExpanded = expandedServices.includes(serviceId);
-              const selectedCount = (formData.selectedFeatures[serviceId] || []).length;
+              const selectedFeatureCount = (formData.selectedFeatures[serviceId] || []).length;
+              const selectedRoomCount = (formData.selectedRooms[serviceId] || []).length;
+              const totalCount = selectedFeatureCount + selectedRoomCount;
+              const applicableRooms = getServiceRooms(serviceId);
 
               return (
                 <div key={serviceId} className="quote-feature-group">
@@ -260,8 +298,8 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                   >
                     <span className="quote-feature-service-name">
                       {service.title}
-                      {selectedCount > 0 && (
-                        <span className="quote-feature-count">{selectedCount} selectionne{selectedCount > 1 ? "s" : ""}</span>
+                      {totalCount > 0 && (
+                        <span className="quote-feature-count">{totalCount} selectionne{totalCount > 1 ? "s" : ""}</span>
                       )}
                     </span>
                     {isExpanded ? (
@@ -272,24 +310,56 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                   </button>
 
                   {isExpanded && (
-                    <div className="quote-feature-list">
-                      {service.features.map((feature) => {
-                        const isChecked = (formData.selectedFeatures[serviceId] || []).includes(feature);
+                    <div className="quote-feature-content">
+                      {/* Room Selection */}
+                      {applicableRooms.length > 0 && (
+                        <div className="quote-rooms-section">
+                          <p className="quote-rooms-label">Pieces concernees :</p>
+                          <div className="quote-rooms-grid">
+                            {applicableRooms.map((room) => {
+                              const isChecked = (formData.selectedRooms[serviceId] || []).includes(room.value);
 
-                        return (
-                          <label key={feature} className="quote-feature-item">
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              onChange={() => toggleFeature(serviceId, feature)}
-                            />
-                            <span className="quote-feature-checkbox">
-                              {isChecked && <CheckCircle className="w-4 h-4" />}
-                            </span>
-                            <span className="quote-feature-label">{feature}</span>
-                          </label>
-                        );
-                      })}
+                              return (
+                                <label key={room.value} className="quote-room-item">
+                                  <input
+                                    type="checkbox"
+                                    checked={isChecked}
+                                    onChange={() => toggleRoom(serviceId, room.value)}
+                                  />
+                                  <span className="quote-room-checkbox">
+                                    {isChecked && <CheckCircle className="w-3 h-3" />}
+                                  </span>
+                                  <span className="quote-room-label">{room.label}</span>
+                                </label>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Features Selection */}
+                      <div className="quote-feature-list">
+                        <p className="quote-rooms-label">Prestations :</p>
+                        <div className="quote-features-grid">
+                          {service.features.map((feature) => {
+                            const isChecked = (formData.selectedFeatures[serviceId] || []).includes(feature);
+
+                            return (
+                              <label key={feature} className="quote-feature-item">
+                                <input
+                                  type="checkbox"
+                                  checked={isChecked}
+                                  onChange={() => toggleFeature(serviceId, feature)}
+                                />
+                                <span className="quote-feature-checkbox">
+                                  {isChecked && <CheckCircle className="w-4 h-4" />}
+                                </span>
+                                <span className="quote-feature-label">{feature}</span>
+                              </label>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -299,24 +369,26 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         </div>
       )}
 
-      {/* Section 3: Project Info */}
+      {/* Section 3: Project Info (optional) */}
       {hasSelectedServices && (
         <div className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
             <span className="quote-step-number">3</span>
             Informations sur votre projet
           </h3>
+          <p className="quote-section-desc">
+            Ces informations sont optionnelles mais nous aident a mieux vous repondre
+          </p>
 
           <div className="quote-project-grid">
             <div className="quote-field">
-              <label className="quote-label">Ville du chantier *</label>
+              <label className="quote-label">Ville du chantier</label>
               <input
                 type="text"
                 className="gold-input"
                 placeholder="Ex: Paris 15e, Bobigny..."
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                required
               />
             </div>
 
@@ -333,12 +405,11 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className="quote-field">
-              <label className="quote-label">Budget approximatif *</label>
+              <label className="quote-label">Budget approximatif</label>
               <select
                 className="gold-input"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                required
               >
                 <option value="">Selectionnez votre budget</option>
                 {BUDGET_OPTIONS.map((option) => (
@@ -350,12 +421,11 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className="quote-field">
-              <label className="quote-label">Delai souhaite *</label>
+              <label className="quote-label">Delai souhaite</label>
               <select
                 className="gold-input"
                 value={formData.timeline}
                 onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                required
               >
                 <option value="">Quand souhaitez-vous commencer ?</option>
                 {TIMELINE_OPTIONS.map((option) => (
@@ -374,8 +444,11 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         <div className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
             <span className="quote-step-number">4</span>
-            Vos coordonnees
+            Vos coordonnees *
           </h3>
+          <p className="quote-section-desc">
+            Telephone ou email obligatoire
+          </p>
 
           <div className="quote-contact-grid">
             <div className="quote-field">
@@ -391,17 +464,33 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className="quote-field">
-              <label className="quote-label">Votre telephone *</label>
+              <label className="quote-label">Votre telephone</label>
               <input
                 type="tel"
                 className="gold-input"
                 placeholder="06 12 34 56 78"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                required
+              />
+            </div>
+
+            <div className="quote-field">
+              <label className="quote-label">Votre email</label>
+              <input
+                type="email"
+                className="gold-input"
+                placeholder="jean.dupont@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
           </div>
+
+          {formData.phone.trim() === "" && formData.email.trim() === "" && (
+            <p className="quote-contact-hint">
+              Veuillez renseigner au moins un moyen de contact (telephone ou email)
+            </p>
+          )}
 
           <div className="quote-field quote-field-full">
             <label className="quote-label">Message complementaire (optionnel)</label>
