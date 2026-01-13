@@ -199,7 +199,6 @@ export const SERVICES = [
       "Construction piscine béton",
       "Construction piscine coque",
       "Rénovation de piscine",
-      "Plage de piscine",
       "Local technique",
       "Margelles et finitions",
     ],

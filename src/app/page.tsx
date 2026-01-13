@@ -14,11 +14,13 @@ import {
   Clock,
   Award,
   ChevronDown,
+  ChevronUp,
   Menu,
   X,
   Ruler,
   Calendar,
   Euro,
+  FileText,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS, HERO_GALLERY } from "@/lib/constants";
 import { trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
@@ -49,8 +51,9 @@ export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [portfolioFilter, setPortfolioFilter] = useState<string>("Tous");
   const [hideStickyCta, setHideStickyCta] = useState(false);
+  const [showDesktopCta, setShowDesktopCta] = useState(false);
 
-  // Hide sticky CTA on scroll down, show on scroll up
+  // Handle scroll for sticky CTAs
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -62,8 +65,11 @@ export default function HomePage() {
           const scrollingDown = currentScrollY > lastScrollY;
           const scrolledPastThreshold = currentScrollY > 300;
 
-          // Hide when scrolling down and past threshold, show when scrolling up
+          // Hide mobile CTA when scrolling down and past threshold
           setHideStickyCta(scrollingDown && scrolledPastThreshold);
+
+          // Show desktop CTA when scrolled past threshold
+          setShowDesktopCta(scrolledPastThreshold);
 
           lastScrollY = currentScrollY;
           ticking = false;
@@ -642,6 +648,25 @@ export default function HomePage() {
         >
           <span>Devis gratuit</span>
           <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+
+      {/* Desktop Sticky CTA - bottom right */}
+      <div className={`gold-desktop-sticky ${showDesktopCta ? "" : "gold-sticky-hidden"}`}>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="gold-back-to-top"
+          aria-label="Retour en haut"
+        >
+          <ChevronUp size={20} />
+        </button>
+        <a
+          href="#contact"
+          className="gold-sticky-cta-desktop"
+          onClick={() => trackCtaClick("devis_gratuit", "sticky_desktop")}
+        >
+          <FileText size={18} />
+          <span>Devis Gratuit</span>
         </a>
       </div>
     </div>
