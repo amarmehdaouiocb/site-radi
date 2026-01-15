@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flyer V3 - RA Bâtiment | Luxury Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f0d88a;
+      --gold-dark: #9c7f28;
+      --bronze: #b87333;
+      --black: #0a0a0a;
+      --charcoal: #151515;
+      --gray-dark: #1e1e1e;
+      --white: #ffffff;
+      --white-soft: rgba(255,255,255,0.9);
+      --white-muted: rgba(255,255,255,0.6);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px;
+    }
+
+    .flyer {
+      width: 148mm;
+      height: 210mm;
+      background: linear-gradient(180deg, var(--black) 0%, var(--charcoal) 50%, var(--gray-dark) 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Double gold border frame */
+    .flyer::before {
+      content: '';
+      position: absolute;
+      inset: 3mm;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .flyer::after {
+      content: '';
+      position: absolute;
+      inset: 5mm;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Header Section */
+    .header-lux {
+      padding: 12mm 12mm 8mm;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo-lux {
+      width: 22mm;
+      height: 22mm;
+      margin: 0 auto 4mm;
+    }
+
+    .logo-lux svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .brand-lux {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20pt;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 4px;
+      margin-bottom: 2mm;
+    }
+
+    .slogan-lux {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 11pt;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .divider-lux {
+      width: 30mm;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 6mm auto 0;
+    }
+
+    /* Realizations Section */
+    .realizations-section {
+      padding: 6mm 12mm;
+    }
+
+    .section-title-lux {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 9pt;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 5mm;
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+    }
+
+    .photo-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--charcoal), var(--gray-dark));
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.05) 50%, transparent 60%);
+    }
+
+    .photo-label {
+      font-size: 6pt;
+      color: var(--white-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Experience Circle */
+    .experience-section {
+      padding: 6mm 12mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8mm;
+    }
+
+    .exp-circle {
+      width: 28mm;
+      height: 28mm;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .exp-circle::before {
+      content: '';
+      position: absolute;
+      inset: 2mm;
+      border-radius: 50%;
+      background: var(--black);
+    }
+
+    .exp-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .exp-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20pt;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .exp-label {
+      font-size: 5pt;
+      color: var(--white-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .exp-text {
+      flex: 1;
+    }
+
+    .exp-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14pt;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 2mm;
+    }
+
+    .exp-subtext {
+      font-size: 7pt;
+      font-weight: 300;
+      color: var(--white-muted);
+      line-height: 1.5;
+    }
+
+    /* Trust Badges */
+    .trust-section-lux {
+      padding: 5mm 12mm;
+      background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.05));
+    }
+
+    .trust-grid-lux {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2mm;
+    }
+
+    .trust-item-lux {
+      text-align: center;
+      padding: 3mm 2mm;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(212, 175, 55, 0.02));
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .trust-icon-lux {
+      width: 6mm;
+      height: 6mm;
+      color: var(--gold);
+      margin: 0 auto 2mm;
+    }
+
+    .trust-value-lux {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--gold-light);
+      display: block;
+    }
+
+    .trust-label-lux {
+      font-size: 5pt;
+      font-weight: 400;
+      color: var(--white-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Services */
+    .services-lux {
+      padding: 5mm 12mm;
+    }
+
+    .services-list-lux {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2mm 4mm;
+    }
+
+    .service-tag-lux {
+      font-size: 6pt;
+      font-weight: 400;
+      color: var(--white-muted);
+      padding: 1.5mm 3mm;
+      border: 1px solid rgba(255,255,255,0.15);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* CTA */
+    .cta-lux {
+      padding: 6mm 12mm;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .cta-title-lux {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13pt;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4mm;
+    }
+
+    .cta-button-lux {
+      display: inline-block;
+      padding: 4mm 12mm;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+      color: var(--black);
+      font-size: 9pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.3),
+        0 4px 8px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .cta-phone-lux {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18pt;
+      font-weight: 500;
+      color: var(--gold);
+      display: block;
+      margin: 4mm 0 2mm;
+      letter-spacing: 2px;
+    }
+
+    .cta-email-lux {
+      font-size: 8pt;
+      font-weight: 300;
+      color: var(--white-muted);
+    }
+
+    /* Footer */
+    .footer-lux {
+      padding: 4mm 12mm 8mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .footer-left-lux {
+      font-size: 6pt;
+      font-weight: 300;
+      color: var(--white-muted);
+      line-height: 1.6;
+    }
+
+    .footer-right-lux {
+      text-align: right;
+    }
+
+    .zone-lux {
+      font-size: 7pt;
+      font-weight: 500;
+      color: var(--gold);
+      padding: 2mm 4mm;
+      border: 1px solid var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .qr-small {
+      width: 12mm;
+      height: 12mm;
+      margin-top: 2mm;
+    }
+
+    .qr-small img {
+      width: 100%;
+      height: 100%;
+      background: white;
+      padding: 1mm;
+    }
+
+    /* Print */
+    @media print {
+      body { background: white; padding: 0; }
+      .flyer { margin: 0; }
+      @page { size: 148mm 210mm; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="flyer">
+    <!-- Header -->
+    <div class="header-lux">
+      <div class="logo-lux">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+          <defs>
+            <linearGradient id="goldGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#9c7f28"/>
+              <stop offset="50%" stop-color="#f0d88a"/>
+              <stop offset="100%" stop-color="#d4af37"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#goldGradient3)" transform="translate(5,5) scale(0.95)">
+            <path d="M17.486,64.162C22.54,57.44,33.251,44.06,38.324,37.345l5.178-6.862l-3.121-2.593l-3.078-2.644l-5.9,6.252C25.63,37.623,14.229,50.42,8.447,56.526c-1.456,1.536-2.181,3.494-2.047,5.507c0.226,3.384,2.649,5.409,5.998,5.068C14.405,66.897,16.215,65.854,17.486,64.162z"/>
+            <path d="M69.601,24.758c-0.767-0.65-1.543-1.3-2.319-1.949c-0.865-0.725-1.73-1.46-2.585-2.186c-0.295-0.254-0.578-0.342-0.962-0.313c-0.201,0.015-2.009,0.199-2.511,0.246l-0.155,0.012c-1.811,0.138-2.746-0.665-2.924-2.519l-0.054-0.465c-0.05-0.41-0.089-0.812-0.102-1.225c-0.014-0.542-0.238-0.948-0.75-1.397c-2.621-2.285-5.715-4.994-8.796-7.777c-1.304-1.18-2.79-2.097-4.545-2.792c-3.881-1.564-7.542-1.92-11.197-1.109c-1.806,0.398-3.493,1.069-5.099,2.032c-0.877,0.526-0.526,1.89,0.496,1.904c1.963,0.027,3.745,0.371,5.44,1.032c3.935,1.541,6.377,4.87,6.526,8.897c0.067,1.853-0.317,3.695-1.139,5.468c1.16,0.988,2.341,2.002,3.503,3c0.993,0.845,1.958,1.682,2.854,2.451c1.028-1.118,1.269-1.338,1.47-1.482c1.259-0.868,2.752-1.074,4.015-0.553c0.409,0.171,0.814,0.426,1.198,0.755c1.738,1.45,2.187,3.486,1.226,5.482c0.402,0.328,0.804,0.657,1.206,0.985c1.61,1.331,3.287,2.703,4.957,3.984c0.244,0.184,0.445,0.288,0.573,0.279c0.064-0.005,0.263-0.057,0.641-0.398l7.294-8.502l1.916-2.39C70.163,25.736,70.27,25.324,69.601,24.758z"/>
+            <path d="M4.38,19.902c0.033-0.022,0.062-0.05,0.085-0.085c0.006-0.009,0.011-0.017,0.017-0.026c0.025-0.033,0.046-0.067,0.067-0.102c0.042-0.064,0.083-0.127,0.125-0.191c0.179-0.273,0.357-0.546,0.536-0.818c0.243-0.371,0.486-0.741,0.728-1.112c0.262-0.4,0.524-0.8,0.786-1.2c0.236-0.361,0.472-0.721,0.708-1.082c0.165-0.253,0.331-0.506,0.496-0.759c0.097-0.149,0.197-0.301,0.198-0.485c0.002-0.215-0.102-0.428-0.285-0.54c-0.114-0.07-0.229-0.139-0.342-0.212l-3.537-2.272c-1.444-0.928-2.697-1.732-2.837-1.822L0.429,8.75C0.227,8.621-0.037,8.765-0.04,9.006l-0.011,0.831c-0.003,0.218-0.01,0.425-0.017,0.623c-0.015,0.434-0.03,0.844,0.003,1.266c0.273,3.446,1.25,6.137,2.902,8c0.037,0.042,0.074,0.083,0.113,0.126c0.005,0.005,0.01,0.008,0.015,0.013c0.007,0.009,0.012,0.018,0.019,0.027c0.346,0.39,0.96,0.406,1.371,0.036C4.365,19.92,4.371,19.91,4.38,19.902z"/>
+            <path d="M29.227,29.444c-1.894,2.014-4.426,4.775-7.128,7.736c-2.293-3.031-4.845-5.822-8.145-7.766c-2.153-1.256-4.546-1.954-7.038-2.103c-1.206-0.06-2.831-0.05-3.499-1.276c-0.479-0.847,0.608-1.745,1.037-2.393c1.097-1.655,2.173-3.3,3.26-4.945c1.555-2.353,3.12-4.706,4.676-7.058C11.77,11.2,9.637,9.835,8.969,9.396C7.244,8.289,5.46,7.123,3.955,5.737l-0.07-0.07C3.656,5.408,3.586,5.039,3.705,4.72c0.199-0.518,0.718-0.788,2.233-1.176c0.798-0.209,1.645-0.379,1.844-0.409c1.625-0.189,3.19-0.219,4.666-0.06c2.423,0.269,5.822,1.146,8.285,3.918l0.1,0.13c1.376,1.595,2.333,3.559,2.712,5.643c0.369,1.984-0.339,3.968-0.14,5.972c0.159,1.645,0.678,3.21,1.465,4.656c1.186,2.193,2.861,4.028,4.556,5.842L29.227,29.444z"/>
+            <path d="M54.559,60.917c-0.668,3.808-3.778,6.261-7.736,6.081c-2.363-0.11-4.386-1.176-5.692-3.011c-1.127-1.575-2.243-3.15-3.37-4.735c-2.014-2.841-4.028-5.673-6.041-8.514c2.891-3.689,5.762-7.357,7.936-10.199c4.357,4.785,8.723,9.561,13.149,14.286C54.339,56.471,54.967,58.634,54.559,60.917z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="brand-lux">RA Bâtiment</div>
+      <div class="slogan-lux">L'Art de Bâtir le Prestige</div>
+      <div class="divider-lux"></div>
+    </div>
+
+    <!-- Realizations -->
+    <div class="realizations-section">
+      <div class="section-title-lux">Nos Réalisations</div>
+      <div class="photos-grid">
+        <div class="photo-placeholder"><span class="photo-label">Rénovation</span></div>
+        <div class="photo-placeholder"><span class="photo-label">Maçonnerie</span></div>
+        <div class="photo-placeholder"><span class="photo-label">Intérieur</span></div>
+        <div class="photo-placeholder"><span class="photo-label">Extérieur</span></div>
+      </div>
+    </div>
+
+    <!-- Experience Circle -->
+    <div class="experience-section">
+      <div class="exp-circle">
+        <div class="exp-inner">
+          <span class="exp-number">15+</span>
+          <span class="exp-label">Années</span>
+        </div>
+      </div>
+      <div class="exp-text">
+        <div class="exp-headline">Une expertise forgée<br>par l'excellence</div>
+        <div class="exp-subtext">Plus de 500 projets réalisés en Île-de-France.<br>Satisfaction client garantie.</div>
+      </div>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-section-lux">
+      <div class="trust-grid-lux">
+        <div class="trust-item-lux">
+          <svg class="trust-icon-lux" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12l2 2 4-4"/>
+            <circle cx="12" cy="12" r="10"/>
+          </svg>
+          <span class="trust-value-lux">Gratuit</span>
+          <span class="trust-label-lux">Devis</span>
+        </div>
+        <div class="trust-item-lux">
+          <svg class="trust-icon-lux" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <span class="trust-value-lux">24h</span>
+          <span class="trust-label-lux">Réponse</span>
+        </div>
+        <div class="trust-item-lux">
+          <svg class="trust-icon-lux" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span class="trust-value-lux">10 ans</span>
+          <span class="trust-label-lux">Garantie</span>
+        </div>
+        <div class="trust-item-lux">
+          <svg class="trust-icon-lux" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/>
+          </svg>
+          <span class="trust-value-lux">5/5</span>
+          <span class="trust-label-lux">Avis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="services-lux">
+      <div class="services-list-lux">
+        <span class="service-tag-lux">Rénovation</span>
+        <span class="service-tag-lux">Maçonnerie</span>
+        <span class="service-tag-lux">Plomberie</span>
+        <span class="service-tag-lux">Électricité</span>
+        <span class="service-tag-lux">Peinture</span>
+        <span class="service-tag-lux">Carrelage</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-lux">
+      <div class="cta-title-lux">Demandez votre devis gratuit</div>
+      <span class="cta-button-lux">Sans Engagement</span>
+      <span class="cta-phone-lux">06 23 30 44 45</span>
+      <span class="cta-email-lux">ra.solution@myyahoo.com</span>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-lux">
+      <div class="footer-left-lux">
+        5 rue de la Gaîté, 93000 Bobigny<br>
+        SIRET : 933 728 610 00017
+      </div>
+      <div class="footer-right-lux">
+        <span class="zone-lux">Île-de-France</span>
+        <div class="qr-small">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://ra-batiment.fr&bgcolor=ffffff&color=0a0a0a" alt="QR">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
