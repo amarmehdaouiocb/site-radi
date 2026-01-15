@@ -297,8 +297,8 @@ function generateConfirmationEmailHtml(data: QuoteFormData): string {
 
         <p style="color: #666; font-size: 14px; line-height: 1.6;">
           En attendant, n'hésitez pas à nous contacter directement :<br>
-          <strong>Téléphone :</strong> <a href="tel:0623304445" style="color: #d4af37;">06 23 30 44 45</a><br>
-          <strong>Email :</strong> <a href="mailto:ra.solution@myyahoo.com" style="color: #d4af37;">ra.solution@myyahoo.com</a>
+          <strong>Téléphone :</strong> <a href="tel:0749894696" style="color: #d4af37;">07 49 89 46 96</a><br>
+          <strong>Email :</strong> <a href="mailto:contact@ra-batiment.fr" style="color: #d4af37;">contact@ra-batiment.fr</a>
         </p>
       </div>
 
@@ -360,7 +360,7 @@ export async function POST(request: NextRequest) {
       // Send email to professional
       await resend.emails.send({
         from: "RA Batiment <onboarding@resend.dev>",
-        to: process.env.CONTACT_EMAIL || "ra.solution@myyahoo.com",
+        to: process.env.CONTACT_EMAIL || "contact@ra-batiment.fr",
         subject: `Nouvelle demande de devis - ${clientName}`,
         html: emailHtml,
       });
@@ -392,7 +392,7 @@ export async function POST(request: NextRequest) {
       // Send email to professional (legacy form has no client email)
       await resend.emails.send({
         from: "RA Batiment <onboarding@resend.dev>",
-        to: process.env.CONTACT_EMAIL || "ra.solution@myyahoo.com",
+        to: process.env.CONTACT_EMAIL || "contact@ra-batiment.fr",
         subject: `Nouvelle demande de devis - ${clientName}`,
         html: emailHtml,
       });
