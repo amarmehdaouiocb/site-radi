@@ -2893,3 +2893,388 @@ select.gold-input {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+/* ============================================
+   QUOTE FORM UI IMPROVEMENTS
+   ============================================ */
+
+/* 1. Progress Bar */
+.quote-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: var(--gold-bg-card);
+  border: 1px solid var(--gold-border);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.quote-progress-track {
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  background: var(--gold-border);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.quote-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--gold-primary);
+  transition: width 0.4s ease-out;
+}
+
+.quote-progress-steps {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quote-progress-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold-bg);
+  border: 2px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-text-muted);
+  transition: all 0.3s ease;
+}
+
+.quote-progress-step.active .quote-progress-dot {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+}
+
+.quote-progress-step.completed .quote-progress-dot {
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  color: var(--gold-bg);
+}
+
+.quote-progress-label {
+  font-size: 0.7rem;
+  color: var(--gold-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.quote-progress-step.active .quote-progress-label,
+.quote-progress-step.completed .quote-progress-label {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--gold-primary);
+}
+
+@media (max-width: 640px) {
+  .quote-progress {
+    padding: 1rem;
+  }
+  .quote-progress-track {
+    left: 1rem;
+    right: 1rem;
+  }
+  .quote-progress-dot {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+  .quote-progress-label {
+    display: none;
+  }
+}
+
+/* 2. Micro-interactions - Selection Pop */
+@keyframes selectPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.quote-service-card.quote-service-selected {
+  animation: selectPop 0.3s ease-out;
+}
+
+.quote-service-check svg {
+  animation: checkBounce 0.4s ease-out;
+}
+
+.quote-service-card:active {
+  transform: scale(0.98);
+}
+
+/* 3. Section Completion Indicator */
+.quote-section-complete {
+  position: relative;
+}
+
+.quote-section-complete::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #10b981;
+}
+
+.quote-section-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  color: white;
+  margin-left: 0.5rem;
+  animation: checkBounce 0.4s ease-out;
+}
+
+.quote-section-check svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* 4. Accordion Animations */
+.quote-feature-content {
+  overflow: hidden;
+  animation: accordionOpen 0.3s ease-out;
+}
+
+@keyframes accordionOpen {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+.quote-feature-header svg {
+  transition: transform 0.3s ease;
+}
+
+.quote-feature-header[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+/* 5. Enhanced Input Fields */
+.quote-field-enhanced {
+  position: relative;
+}
+
+.quote-field-enhanced .quote-label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-text-muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: transparent;
+  padding: 0 0.25rem;
+}
+
+.quote-field-enhanced .gold-input:focus ~ .quote-label,
+.quote-field-enhanced .gold-input:not(:placeholder-shown) ~ .quote-label {
+  top: 0;
+  font-size: 0.75rem;
+  color: var(--gold-primary);
+  background: var(--gold-bg-card);
+}
+
+.quote-field-enhanced .gold-input {
+  padding-left: 2.75rem;
+}
+
+.quote-field-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-text-muted);
+  transition: color 0.2s ease;
+  pointer-events: none;
+}
+
+.quote-field-enhanced .gold-input:focus ~ .quote-field-icon {
+  color: var(--gold-primary);
+}
+
+.gold-input:focus {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+/* Input validation states */
+.quote-field-valid .gold-input {
+  border-color: #10b981;
+}
+
+.quote-field-valid .quote-field-icon {
+  color: #10b981;
+}
+
+.quote-field-invalid .gold-input {
+  border-color: #ef4444;
+}
+
+/* 6. Submit Button Enhancements */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+}
+
+.gold-btn-primary.quote-btn-ready {
+  animation: pulse 2s infinite;
+}
+
+.gold-btn-primary:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.gold-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Success animation */
+@keyframes successPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.gold-btn-primary.quote-btn-success {
+  background: #10b981 !important;
+  animation: successPop 0.3s ease-out;
+}
+
+/* 7. Mobile Sticky Button */
+@media (max-width: 768px) {
+  .quote-submit-section {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--gold-bg);
+    padding: 1rem;
+    margin: 0 -1rem -1rem -1rem;
+    border-top: 1px solid var(--gold-border);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+
+  .quote-submit-section .gold-form-reassurance {
+    margin-bottom: 0;
+  }
+}
+
+/* Touch feedback on mobile */
+@media (hover: none) {
+  .quote-service-card:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  .quote-feature-item:active,
+  .quote-room-item:active {
+    background: rgba(212, 175, 55, 0.15);
+  }
+}
+
+/* 8. Empty State */
+.quote-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.quote-empty-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gold-primary);
+  opacity: 0.6;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.quote-empty-text {
+  color: var(--gold-text-muted);
+  font-size: 0.95rem;
+  max-width: 280px;
+}
+
+.quote-empty-arrow {
+  color: var(--gold-primary);
+  opacity: 0.5;
+  animation: pointUp 1s ease-in-out infinite;
+}
+
+@keyframes pointUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}

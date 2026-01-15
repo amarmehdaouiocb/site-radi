@@ -11,9 +11,14 @@ import {
   Loader2,
   ArrowRight,
   ChevronDown,
-  ChevronUp,
   TreePine,
   Waves,
+  User,
+  Phone,
+  Mail,
+  MapPin,
+  Check,
+  MousePointerClick,
 } from "lucide-react";
 import { SERVICES, BUDGET_OPTIONS, TIMELINE_OPTIONS, ROOM_OPTIONS, SERVICE_ROOMS } from "@/lib/constants";
 import { trackFormSubmit } from "@/lib/analytics";
@@ -229,10 +234,70 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   const hasSelectedServices = formData.services.length > 0;
 
+  // Calculate current step for progress bar
+  const getCurrentStep = () => {
+    if (!hasSelectedServices) return 1;
+    if (formData.name.trim() === "" || (!formData.phone.trim() && !formData.email.trim())) return 4;
+    return 4;
+  };
+
+  // Check section completion
+  const isStep1Complete = hasSelectedServices;
+  const isStep2Complete = hasSelectedServices; // Features are optional
+  const isStep3Complete = hasSelectedServices; // Project info is optional
+  const isStep4Complete =
+    formData.name.trim() !== "" &&
+    (formData.phone.trim() !== "" || formData.email.trim() !== "");
+
+  const currentStep = getCurrentStep();
+  const progressPercent = hasSelectedServices
+    ? (isStep4Complete ? 100 : 75)
+    : 0;
+
+  // Progress bar labels
+  const steps = [
+    { num: 1, label: "Services" },
+    { num: 2, label: "Détails" },
+    { num: 3, label: "Projet" },
+    { num: 4, label: "Contact" },
+  ];
+
   return (
     <form className="quote-form" onSubmit={handleSubmit}>
+      {/* Progress Bar */}
+      <div className="quote-progress">
+        <div className="quote-progress-track">
+          <div
+            className="quote-progress-fill"
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+        <div className="quote-progress-steps">
+          {steps.map((step) => {
+            const isCompleted =
+              (step.num === 1 && isStep1Complete) ||
+              (step.num === 2 && isStep2Complete && hasSelectedServices) ||
+              (step.num === 3 && isStep3Complete && hasSelectedServices) ||
+              (step.num === 4 && isStep4Complete);
+            const isActive = step.num === currentStep || (step.num <= currentStep && hasSelectedServices);
+
+            return (
+              <div
+                key={step.num}
+                className={`quote-progress-step ${isActive ? "active" : ""} ${isCompleted ? "completed" : ""}`}
+              >
+                <div className="quote-progress-dot">
+                  {isCompleted ? <Check className="w-4 h-4" /> : step.num}
+                </div>
+                <span className="quote-progress-label">{step.label}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Section 1: Service Selection */}
-      <div className="quote-section">
+      <div className={`quote-section ${isStep1Complete ? "quote-section-complete" : ""}`}>
         <h3 className="quote-section-title">
           <span className="quote-step-badge">
             <span className="quote-step-current">1</span>
@@ -240,6 +305,11 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             <span className="quote-step-total">4</span>
           </span>
           Quels services vous intéressent ? *
+          {isStep1Complete && (
+            <span className="quote-section-check">
+              <Check />
+            </span>
+          )}
         </h3>
         <p className="quote-section-desc">
           Sélectionnez un ou plusieurs services
@@ -303,6 +373,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                     type="button"
                     className="quote-feature-header"
                     onClick={() => toggleServiceAccordion(serviceId)}
+                    aria-expanded={isExpanded}
                   >
                     <span className="quote-feature-service-name">
                       {service.title}
@@ -310,11 +381,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                         <span className="quote-feature-count">{totalCount} sélectionné{totalCount > 1 ? "s" : ""}</span>
                       )}
                     </span>
-                    {isExpanded ? (
-                      <ChevronUp className="w-5 h-5" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5" />
-                    )}
+                    <ChevronDown className="w-5 h-5" />
                   </button>
 
                   {isExpanded && (
@@ -393,15 +460,16 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           </p>
 
           <div className="quote-project-grid">
-            <div className="quote-field">
-              <label className="quote-label">Ville du chantier</label>
+            <div className={`quote-field quote-field-enhanced ${formData.city.trim() ? "quote-field-valid" : ""}`}>
+              <MapPin className="w-4 h-4 quote-field-icon" />
               <input
                 type="text"
                 className="gold-input"
-                placeholder="Ex: Paris 15e, Bobigny..."
+                placeholder=" "
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
               />
+              <label className="quote-label">Ville du chantier</label>
             </div>
 
             <div className="quote-field">
@@ -453,7 +521,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
       {/* Section 4: Contact Info */}
       {hasSelectedServices && (
-        <div className="quote-section quote-section-animate">
+        <div className={`quote-section quote-section-animate ${isStep4Complete ? "quote-section-complete" : ""}`}>
           <h3 className="quote-section-title">
             <span className="quote-step-badge">
               <span className="quote-step-current">4</span>
@@ -461,44 +529,52 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               <span className="quote-step-total">4</span>
             </span>
             Vos coordonnées *
+            {isStep4Complete && (
+              <span className="quote-section-check">
+                <Check />
+              </span>
+            )}
           </h3>
           <p className="quote-section-desc">
             Téléphone ou email obligatoire
           </p>
 
           <div className="quote-contact-grid">
-            <div className="quote-field">
-              <label className="quote-label">Votre nom *</label>
+            <div className={`quote-field quote-field-enhanced ${formData.name.trim() ? "quote-field-valid" : ""}`}>
+              <User className="w-4 h-4 quote-field-icon" />
               <input
                 type="text"
                 className="gold-input"
-                placeholder="Jean Dupont"
+                placeholder=" "
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
               />
+              <label className="quote-label">Votre nom *</label>
             </div>
 
-            <div className="quote-field">
-              <label className="quote-label">Votre téléphone</label>
+            <div className={`quote-field quote-field-enhanced ${formData.phone.trim() ? "quote-field-valid" : ""}`}>
+              <Phone className="w-4 h-4 quote-field-icon" />
               <input
                 type="tel"
                 className="gold-input"
-                placeholder="06 12 34 56 78"
+                placeholder=" "
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
+              <label className="quote-label">Votre téléphone</label>
             </div>
 
-            <div className="quote-field">
-              <label className="quote-label">Votre email</label>
+            <div className={`quote-field quote-field-enhanced ${formData.email.trim() ? "quote-field-valid" : ""}`}>
+              <Mail className="w-4 h-4 quote-field-icon" />
               <input
                 type="email"
                 className="gold-input"
-                placeholder="jean.dupont@email.com"
+                placeholder=" "
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
+              <label className="quote-label">Votre email</label>
             </div>
           </div>
 
@@ -540,14 +616,17 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       {/* Submit Button */}
       <div className="quote-submit-section">
         {!hasSelectedServices && (
-          <p className="quote-hint">
-            Sélectionnez au moins un service pour continuer
-          </p>
+          <div className="quote-empty-state">
+            <MousePointerClick className="quote-empty-icon" />
+            <p className="quote-empty-text">
+              Sélectionnez un ou plusieurs services ci-dessus pour commencer votre demande de devis
+            </p>
+          </div>
         )}
 
         <button
           type="submit"
-          className="gold-btn-primary gold-btn-full"
+          className={`gold-btn-primary gold-btn-full ${canSubmit && formStatus === "idle" ? "quote-btn-ready" : ""} ${formStatus === "success" ? "quote-btn-success" : ""}`}
           disabled={!canSubmit || formStatus === "loading"}
         >
           {formStatus === "loading" ? (
