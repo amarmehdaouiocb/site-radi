@@ -6,22 +6,22 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
-  Mail,
+  Envelope,
   MapPin,
   ArrowRight,
-  Sparkles,
+  Sparkle,
   Shield,
   Clock,
-  Award,
-  ChevronDown,
-  ChevronUp,
-  Menu,
+  Trophy,
+  CaretDown,
+  CaretUp,
+  List,
   X,
   Ruler,
   Calendar,
-  Euro,
+  CurrencyEur,
   FileText,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS, HERO_GALLERY } from "@/lib/constants";
 
 // Alt tags descriptifs pour les images du marquee hero
@@ -152,7 +152,7 @@ export default function HomePage() {
             aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <List className="w-6 h-6" />}
           </button>
         </div>
 
@@ -203,7 +203,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.2 }}
             className="gold-hero-badge"
           >
-            <Award className="w-4 h-4" />
+            <Trophy className="w-4 h-4" />
             <span>Artisan d&apos;Excellence depuis 15 ans</span>
           </motion.div>
 
@@ -279,7 +279,7 @@ export default function HomePage() {
             className="gold-hero-scroll"
           >
             <span>Découvrir</span>
-            <ChevronDown className="w-5 h-5 animate-bounce" />
+            <CaretDown className="w-5 h-5 animate-bounce" />
           </motion.div>
         </div>
 
@@ -428,7 +428,7 @@ export default function HomePage() {
                         {item.duration} sem.
                       </span>
                       <span className="gold-portfolio-badge gold-portfolio-badge-budget">
-                        <Euro />
+                        <CurrencyEur />
                         {formatBudget(item.budgetRange.min, item.budgetRange.max)}
                       </span>
                     </div>
@@ -454,8 +454,8 @@ export default function HomePage() {
             {[
               { icon: Shield, label: "Garantie Décennale", desc: "Protection totale" },
               { icon: Clock, label: "Devis Gratuit", desc: "Sans engagement" },
-              { icon: Award, label: "Assurance RC Pro", desc: "Couverture complète" },
-              { icon: Sparkles, label: "Réponse 24h", desc: "Réactivité garantie" },
+              { icon: Trophy, label: "Assurance RC Pro", desc: "Couverture complète" },
+              { icon: Sparkle, label: "Réponse 24h", desc: "Réactivité garantie" },
             ].map((item) => (
               <div key={item.label} className="gold-trust-item">
                 <div className="gold-trust-icon">
@@ -495,7 +495,7 @@ export default function HomePage() {
               >
                 <div className="gold-testimonial-stars">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Sparkles key={i} className="w-4 h-4" />
+                    <Sparkle key={i} className="w-4 h-4" />
                   ))}
                 </div>
                 <blockquote className="gold-testimonial-quote">
@@ -541,7 +541,7 @@ export default function HomePage() {
                 <span>{SITE_CONFIG.phone}</span>
               </a>
               <a href={`mailto:${SITE_CONFIG.email}`} className="gold-contact-item">
-                <Mail className="w-5 h-5" />
+                <Envelope className="w-5 h-5" />
                 <span>{SITE_CONFIG.email}</span>
               </a>
               <div className="gold-contact-item">
@@ -621,7 +621,7 @@ export default function HomePage() {
           className="gold-back-to-top"
           aria-label="Retour en haut"
         >
-          <ChevronUp size={20} />
+          <CaretUp size={20} />
         </button>
         <a
           href="#contact"

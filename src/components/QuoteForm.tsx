@@ -2,35 +2,36 @@
 
 import { useState, useEffect, useRef, FormEvent, useCallback } from "react";
 import {
-  Home,
-  Droplets,
-  Zap,
-  Paintbrush,
-  Grid3X3,
+  House,
+  Drop,
+  Lightning,
+  PaintBrush,
+  GridFour,
   CheckCircle,
-  Loader2,
+  CircleNotch,
   ArrowRight,
-  ChevronDown,
-  TreePine,
+  CaretDown,
+  Tree,
   Waves,
   User,
   Phone,
-  Mail,
+  Envelope,
   Check,
-  MousePointerClick,
-} from "lucide-react";
+  CursorClick,
+} from "@phosphor-icons/react";
 import { SERVICES, BUDGET_OPTIONS, TIMELINE_OPTIONS, ROOM_OPTIONS, SERVICE_ROOMS } from "@/lib/constants";
 import { trackFormSubmit } from "@/lib/analytics";
 
 // Map icon names to components
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Home,
-  Brick: Home, // Fallback
-  Droplets,
-  Zap,
-  Paintbrush,
-  Grid3X3,
-  TreePine,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const iconMap: Record<string, React.ComponentType<any>> = {
+  Home: House,
+  Brick: House, // Fallback
+  Droplets: Drop,
+  Zap: Lightning,
+  Paintbrush: PaintBrush,
+  Grid3X3: GridFour,
+  TreePine: Tree,
   Waves,
 };
 
@@ -213,7 +214,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   // Get icon component
   const getIcon = (iconName: string) => {
     if (iconName === "Brick") return BrickIcon;
-    return iconMap[iconName] || Home;
+    return iconMap[iconName] || House;
   };
 
   // Get applicable rooms for a service
@@ -294,33 +295,38 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     }
   }, [hasSelectedServices]);
 
-  // Handle fixed progress bar on scroll (only after interaction)
+  // Show fixed progress bar immediately on first interaction
+  useEffect(() => {
+    if (hasFormInteraction && !isProgressFixed && !isProgressHiding) {
+      setIsProgressFixed(true);
+    }
+  }, [hasFormInteraction, isProgressFixed, isProgressHiding]);
+
+  // Handle hide/show on scroll (hide when original is visible, show when scrolled past)
   useEffect(() => {
     if (!hasFormInteraction) return;
 
     const handleScroll = () => {
       if (progressRef.current) {
         const rect = progressRef.current.getBoundingClientRect();
-        const shouldBeFixed = rect.top < 0;
+        // Original progress bar is visible in viewport (with some margin)
+        const originalIsVisible = rect.top >= -10;
 
-        if (shouldBeFixed && !isProgressFixed && !isProgressHiding) {
-          // Show with slide-down animation
-          setIsProgressFixed(true);
-          setIsProgressHiding(false);
-        } else if (!shouldBeFixed && isProgressFixed && !isProgressHiding) {
-          // Hide with slide-up animation
+        if (originalIsVisible && isProgressFixed && !isProgressHiding) {
+          // Hide with slide-up animation when original is visible
           setIsProgressHiding(true);
-          // Remove element after animation completes
           setTimeout(() => {
             setIsProgressFixed(false);
             setIsProgressHiding(false);
-          }, 300); // Match CSS animation duration
+          }, 300);
+        } else if (!originalIsVisible && !isProgressFixed && !isProgressHiding) {
+          // Show again when scrolled past original
+          setIsProgressFixed(true);
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasFormInteraction, isProgressFixed, isProgressHiding]);
 
@@ -446,7 +452,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         {/* Continue indicator when step 2 is available */}
         {isStep1Complete && visibleSteps.includes(2) && (
           <div className="quote-continue-hint">
-            <ChevronDown className="w-5 h-5" />
+            <CaretDown className="w-5 h-5" />
             <span>Continuez ci-dessous</span>
           </div>
         )}
@@ -492,7 +498,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                         <span className="quote-feature-count">{totalCount} sélectionné{totalCount > 1 ? "s" : ""}</span>
                       )}
                     </span>
-                    <ChevronDown className="w-5 h-5" />
+                    <CaretDown className="w-5 h-5" />
                   </button>
 
                   {isExpanded && (
@@ -702,7 +708,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className={`quote-field quote-field-enhanced ${formData.email.trim() ? "quote-field-valid" : ""}`}>
-              <Mail className="w-4 h-4 quote-field-icon" />
+              <Envelope className="w-4 h-4 quote-field-icon" />
               <input
                 type="email"
                 className="gold-input"
@@ -753,7 +759,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       <div className="quote-submit-section">
         {!hasSelectedServices && (
           <div className="quote-empty-state">
-            <MousePointerClick className="quote-empty-icon" />
+            <CursorClick className="quote-empty-icon" />
             <p className="quote-empty-text">
               Sélectionnez un ou plusieurs services ci-dessus pour commencer votre demande de devis
             </p>
@@ -767,7 +773,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         >
           {formStatus === "loading" ? (
             <>
-              <Loader2 className="w-5 h-5 animate-spin" />
+              <CircleNotch className="w-5 h-5 animate-spin" />
               <span>Envoi en cours...</span>
             </>
           ) : formStatus === "success" ? (

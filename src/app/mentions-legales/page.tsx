@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowLeft, Building2, Phone, Mail, MapPin, FileText } from "lucide-react";
+import { ArrowLeft, Buildings, Phone, Envelope, MapPin, FileText } from "@phosphor-icons/react";
+import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 import "../gold.css";
 
@@ -11,13 +12,14 @@ export default function MentionsLegales() {
       <header className="gold-header">
         <div className="gold-container">
           <a href="/" className="gold-logo">
-            <div className="gold-logo-icon">
-              <span>RA</span>
-            </div>
-            <div className="gold-logo-text">
-              <span className="gold-logo-name">{SITE_CONFIG.name}</span>
-              <span className="gold-logo-tagline">Excellence & Prestige</span>
-            </div>
+            <Image
+              src="/logo.svg"
+              alt={SITE_CONFIG.name}
+              width={180}
+              height={60}
+              className="gold-logo-img"
+              priority
+            />
           </a>
 
           <a href="/" className="gold-cta-button">
@@ -60,7 +62,7 @@ export default function MentionsLegales() {
                   alignItems: "center",
                   justifyContent: "center"
                 }}>
-                  <Building2 className="w-5 h-5" style={{ color: "var(--gold-bg)" }} />
+                  <Buildings className="w-5 h-5" style={{ color: "var(--gold-bg)" }} />
                 </div>
                 <h2 style={{
                   fontFamily: "var(--font-display)",
@@ -154,7 +156,7 @@ export default function MentionsLegales() {
                     transition: "color 0.3s"
                   }}
                 >
-                  <Mail className="w-4 h-4" style={{ color: "var(--gold-primary)" }} />
+                  <Envelope className="w-4 h-4" style={{ color: "var(--gold-primary)" }} />
                   <span>{SITE_CONFIG.email}</span>
                 </a>
 

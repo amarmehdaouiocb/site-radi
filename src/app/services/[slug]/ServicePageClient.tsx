@@ -5,31 +5,31 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Phone,
-  Mail,
+  Envelope,
   MapPin,
   ArrowRight,
   ArrowLeft,
   CheckCircle,
   Shield,
   Clock,
-  Award,
-  Home,
-  Droplets,
-  Zap,
-  Paintbrush,
-  Grid3X3,
-} from "lucide-react";
+  Trophy,
+  House,
+  Drop,
+  Lightning,
+  PaintBrush,
+  GridFour,
+} from "@phosphor-icons/react";
 import { SITE_CONFIG, SERVICES } from "@/lib/constants";
 import "../../gold.css";
 
 // Icon mapping
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Home,
+  Home: House,
   Brick: Shield, // Using Shield as fallback for Brick
-  Droplets,
-  Zap,
-  Paintbrush,
-  Grid3X3,
+  Droplets: Drop,
+  Zap: Lightning,
+  Paintbrush: PaintBrush,
+  Grid3X3: GridFour,
 };
 
 interface Service {
@@ -51,7 +51,7 @@ interface ServicePageClientProps {
 export default function ServicePageClient({ service }: ServicePageClientProps) {
   // Get other services for recommendations
   const otherServices = SERVICES.filter((s) => s.id !== service.id).slice(0, 3);
-  const IconComponent = iconMap[service.icon] || Home;
+  const IconComponent = iconMap[service.icon] || House;
 
   return (
     <div className="gold-variant">
@@ -160,7 +160,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
             {[
               { icon: Shield, label: "Garantie Décennale", desc: "Protection totale" },
               { icon: Clock, label: "Devis sous 24h", desc: "Sans engagement" },
-              { icon: Award, label: "Artisan Certifié", desc: "Qualité garantie" },
+              { icon: Trophy, label: "Artisan Certifié", desc: "Qualité garantie" },
             ].map((item) => (
               <div key={item.label} className="gold-trust-item">
                 <div className="gold-trust-icon">
@@ -222,7 +222,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
 
           <div className="gold-services-grid gold-services-grid-small">
             {otherServices.map((otherService, index) => {
-              const OtherIcon = iconMap[otherService.icon] || Home;
+              const OtherIcon = iconMap[otherService.icon] || House;
               return (
                 <motion.div
                   key={otherService.id}
@@ -280,7 +280,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
                   {SITE_CONFIG.phone}
                 </a>
                 <a href={`mailto:${SITE_CONFIG.email}`}>
-                  <Mail className="w-4 h-4" />
+                  <Envelope className="w-4 h-4" />
                   {SITE_CONFIG.email}
                 </a>
                 <span>
