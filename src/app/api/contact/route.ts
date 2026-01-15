@@ -245,6 +245,75 @@ function generateLegacyEmailHtml(data: LegacyFormData): string {
   `;
 }
 
+// Generate HTML for client confirmation email
+function generateConfirmationEmailHtml(data: QuoteFormData): string {
+  const servicesList = data.services
+    .map((serviceId) => getServiceTitle(serviceId))
+    .join(", ");
+
+  return `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <div style="background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%); padding: 30px; text-align: center;">
+        <table align="center" style="margin-bottom: 15px;">
+          <tr>
+            <td style="vertical-align: middle;">
+              <img src="https://ra-batiment.fr/logos/ra-batiment/png/232893795.png" alt="RA Batiment" width="70" height="70" style="display: block; border: 2px solid #d4af37;">
+            </td>
+            <td style="padding-left: 12px; text-align: left; vertical-align: middle;">
+              <div style="font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #0a0a0a;">RA Bâtiment</div>
+              <div style="font-family: Georgia, serif; font-size: 11px; color: #333; letter-spacing: 1px;">Excellence & Prestige</div>
+            </td>
+          </tr>
+        </table>
+        <h1 style="color: #0a0a0a; margin: 0; font-size: 24px;">Merci pour votre demande !</h1>
+      </div>
+
+      <div style="padding: 30px; background: #f9f9f9;">
+        <p style="color: #0a0a0a; font-size: 16px; line-height: 1.6;">
+          Bonjour <strong>${data.name}</strong>,
+        </p>
+
+        <p style="color: #0a0a0a; font-size: 16px; line-height: 1.6;">
+          Nous avons bien reçu votre demande de devis et nous vous en remercions.
+        </p>
+
+        <div style="background: white; padding: 20px; border-left: 4px solid #d4af37; margin: 20px 0;">
+          <h3 style="color: #0a0a0a; margin: 0 0 10px 0; font-size: 16px;">Récapitulatif de votre demande :</h3>
+          <p style="color: #666; margin: 0;">
+            <strong>Services demandés :</strong> ${servicesList}
+          </p>
+          ${data.city ? `<p style="color: #666; margin: 5px 0 0 0;"><strong>Ville :</strong> ${data.city}</p>` : ""}
+          ${data.surface ? `<p style="color: #666; margin: 5px 0 0 0;"><strong>Surface :</strong> ${data.surface} m²</p>` : ""}
+          ${data.budget ? `<p style="color: #666; margin: 5px 0 0 0;"><strong>Budget :</strong> ${getBudgetLabel(data.budget)}</p>` : ""}
+          ${data.timeline ? `<p style="color: #666; margin: 5px 0 0 0;"><strong>Délai souhaité :</strong> ${getTimelineLabel(data.timeline)}</p>` : ""}
+        </div>
+
+        <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p style="color: #2e7d32; margin: 0; font-size: 15px;">
+            <strong>&#x2713; Prochaine étape :</strong><br>
+            Notre équipe vous recontactera sous <strong>24 heures</strong> pour discuter de votre projet et vous proposer un devis personnalisé.
+          </p>
+        </div>
+
+        <p style="color: #666; font-size: 14px; line-height: 1.6;">
+          En attendant, n'hésitez pas à nous contacter directement :<br>
+          <strong>Téléphone :</strong> <a href="tel:0623304445" style="color: #d4af37;">06 23 30 44 45</a><br>
+          <strong>Email :</strong> <a href="mailto:ra.solution@myyahoo.com" style="color: #d4af37;">ra.solution@myyahoo.com</a>
+        </p>
+      </div>
+
+      <div style="background: #0a0a0a; padding: 20px; text-align: center;">
+        <p style="color: #d4af37; margin: 0 0 10px 0; font-size: 14px;">
+          RA Bâtiment - Excellence & Prestige
+        </p>
+        <p style="color: #888; margin: 0; font-size: 12px;">
+          5 rue de la Gaîté, 93000 Bobigny | Lun - Sam: 8h - 19h
+        </p>
+      </div>
+    </div>
+  `;
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Initialize Resend client at runtime (not build time)
@@ -287,6 +356,25 @@ export async function POST(request: NextRequest) {
 
       emailHtml = generateQuoteEmailHtml(body);
       clientName = name;
+
+      // Send email to professional
+      await resend.emails.send({
+        from: "RA Batiment <onboarding@resend.dev>",
+        to: process.env.CONTACT_EMAIL || "ra.solution@myyahoo.com",
+        subject: `Nouvelle demande de devis - ${clientName}`,
+        html: emailHtml,
+      });
+
+      // Send confirmation email to client (if email provided)
+      if (email) {
+        const confirmationHtml = generateConfirmationEmailHtml(body);
+        await resend.emails.send({
+          from: "RA Batiment <onboarding@resend.dev>",
+          to: email,
+          subject: "Confirmation de votre demande de devis - RA Bâtiment",
+          html: confirmationHtml,
+        });
+      }
     } else {
       // Legacy simple form (backwards compatibility)
       const { name, phone, message } = body as LegacyFormData;
@@ -300,15 +388,15 @@ export async function POST(request: NextRequest) {
 
       emailHtml = generateLegacyEmailHtml(body as LegacyFormData);
       clientName = name;
-    }
 
-    // Send email
-    await resend.emails.send({
-      from: "RA Batiment <onboarding@resend.dev>",
-      to: process.env.CONTACT_EMAIL || "ra.solution@myyahoo.com",
-      subject: `Nouvelle demande de devis - ${clientName}`,
-      html: emailHtml,
-    });
+      // Send email to professional (legacy form has no client email)
+      await resend.emails.send({
+        from: "RA Batiment <onboarding@resend.dev>",
+        to: process.env.CONTACT_EMAIL || "ra.solution@myyahoo.com",
+        subject: `Nouvelle demande de devis - ${clientName}`,
+        html: emailHtml,
+      });
+    }
 
     return NextResponse.json(
       { success: true, message: "Votre demande a été envoyée avec succès." },
