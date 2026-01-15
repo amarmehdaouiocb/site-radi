@@ -2968,12 +2968,14 @@ select.gold-input {
   z-index: 50;
 }
 
-/* Fixed progress bar (appears when scrolled past original) */
+/* Fixed progress bar (appears on interaction) */
 .quote-progress-fixed {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  margin: 0;
   background: rgba(22, 22, 22, 0.98);
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.2);

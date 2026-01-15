@@ -5,13 +5,13 @@ import { useState, FormEvent } from "react";
 import Image from "next/image";
 import {
   Phone,
-  Mail,
+  Envelope,
   MapPin,
   ArrowRight,
   Star,
-  Loader2,
+  CircleNotch,
   CheckCircle,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
 import "./editorial.css";
 
@@ -321,7 +321,7 @@ export default function EditorialVariant() {
                   <span>{SITE_CONFIG.phone}</span>
                 </a>
                 <a href={`mailto:${SITE_CONFIG.email}`} className="ed-contact-item">
-                  <Mail />
+                  <Envelope />
                   <span>{SITE_CONFIG.email}</span>
                 </a>
                 <div className="ed-contact-item">
@@ -391,7 +391,7 @@ export default function EditorialVariant() {
               >
                 {formStatus === "loading" ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <CircleNotch className="w-4 h-4 animate-spin" />
                     <span>Envoi en cours...</span>
                   </>
                 ) : formStatus === "success" ? (
