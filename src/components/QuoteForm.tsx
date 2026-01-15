@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent, useCallback } from "react";
 import {
   Home,
   Droplets,
@@ -83,6 +83,15 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
   const [expandedServices, setExpandedServices] = useState<string[]>([]);
+  const [visibleSteps, setVisibleSteps] = useState<number[]>([1]);
+
+  // Scroll to a specific step
+  const scrollToStep = useCallback((stepNum: number) => {
+    setTimeout(() => {
+      const element = document.getElementById(`quote-step-${stepNum}`);
+      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100); // Small delay to let the element render
+  }, []);
 
   // Toggle service selection
   const toggleService = (serviceId: string) => {
@@ -233,20 +242,51 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   const hasSelectedServices = formData.services.length > 0;
 
+  // Sequencing effect: show steps progressively when step 1 is complete
+  useEffect(() => {
+    if (hasSelectedServices && !visibleSteps.includes(2)) {
+      // Step 2 appears immediately
+      setVisibleSteps(prev => [...prev, 2]);
+      scrollToStep(2);
+
+      // Step 3 after 500ms
+      const timer1 = setTimeout(() => {
+        setVisibleSteps(prev => [...prev, 3]);
+        scrollToStep(3);
+
+        // Step 4 after another 500ms
+        const timer2 = setTimeout(() => {
+          setVisibleSteps(prev => [...prev, 4]);
+          scrollToStep(4);
+        }, 500);
+
+        return () => clearTimeout(timer2);
+      }, 500);
+
+      return () => clearTimeout(timer1);
+    }
+  }, [hasSelectedServices, visibleSteps, scrollToStep]);
+
+  // Reset visible steps when all services are deselected
+  useEffect(() => {
+    if (!hasSelectedServices && visibleSteps.length > 1) {
+      setVisibleSteps([1]);
+    }
+  }, [hasSelectedServices, visibleSteps.length]);
+
   // Check section completion
   const isStep1Complete = hasSelectedServices;
-  const hasStartedStep4 = formData.name.trim() !== "" || formData.phone.trim() !== "" || formData.email.trim() !== "";
   const isStep4Complete =
     formData.name.trim() !== "" &&
     (formData.phone.trim() !== "" || formData.email.trim() !== "");
 
   // Progress bar: 4 dots at 0%, 33%, 66%, 100% (space-between)
-  // Fill should reach the position of the current/completed step
+  // Fill follows the visible steps progression
   const getProgressPercent = () => {
-    if (!hasSelectedServices) return 0;           // Avant step 1
+    if (!isStep1Complete) return 0;               // Avant step 1
     if (isStep4Complete) return 100;              // Step 4 complet → fin
-    if (hasStartedStep4) return 66;               // En train de remplir step 4 → atteint step 3
-    return 33;                                    // Step 1 complet → atteint step 2
+    if (visibleSteps.includes(4)) return 66;      // Step 4 visible → atteint dot 3
+    return 33;                                    // Step 1 complet → atteint dot 2
   };
 
   const progressPercent = getProgressPercent();
@@ -340,8 +380,8 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       </div>
 
       {/* Section 2: Rooms & Features per service (dynamic) */}
-      {hasSelectedServices && (
-        <div className="quote-section quote-section-animate">
+      {visibleSteps.includes(2) && (
+        <div id="quote-step-2" className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
             <span className="quote-step-badge">
               <span className="quote-step-current">2</span>
@@ -443,8 +483,8 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       )}
 
       {/* Section 3: Project Info (optional) */}
-      {hasSelectedServices && (
-        <div className="quote-section quote-section-animate">
+      {visibleSteps.includes(3) && (
+        <div id="quote-step-3" className="quote-section quote-section-animate">
           <h3 className="quote-section-title">
             <span className="quote-step-badge">
               <span className="quote-step-current">3</span>
@@ -517,8 +557,8 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       )}
 
       {/* Section 4: Contact Info */}
-      {hasSelectedServices && (
-        <div className={`quote-section quote-section-animate ${isStep4Complete ? "quote-section-complete" : ""}`}>
+      {visibleSteps.includes(4) && (
+        <div id="quote-step-4" className={`quote-section quote-section-animate ${isStep4Complete ? "quote-section-complete" : ""}`}>
           <h3 className="quote-section-title">
             <span className="quote-step-badge">
               <span className="quote-step-current">4</span>
