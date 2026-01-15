@@ -75,7 +75,7 @@ body {
   color: var(--ra-text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip; /* Use clip instead of hidden to preserve sticky behavior */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 

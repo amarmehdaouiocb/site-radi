@@ -91,6 +91,13 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top on page load (prevent browser scroll restoration) unless there's a hash
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   // Get unique categories for filter
   const portfolioCategories = ["Tous", ...Array.from(new Set(PORTFOLIO_ITEMS.map(item => item.category)))];
   const filteredPortfolio = portfolioFilter === "Tous"
