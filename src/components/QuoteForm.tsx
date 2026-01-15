@@ -84,8 +84,17 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   const [formMessage, setFormMessage] = useState("");
   const [expandedServices, setExpandedServices] = useState<string[]>([]);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([1]);
+  const [hasFormInteraction, setHasFormInteraction] = useState(false);
   const [isProgressFixed, setIsProgressFixed] = useState(false);
+  const [isProgressHiding, setIsProgressHiding] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
+
+  // Mark form as interacted (enables fixed progress bar)
+  const handleFormInteraction = useCallback(() => {
+    if (!hasFormInteraction) {
+      setHasFormInteraction(true);
+    }
+  }, [hasFormInteraction]);
 
   // Reveal the next step (no auto-scroll)
   const revealNextStep = useCallback((currentStep: number) => {
@@ -120,6 +129,9 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   // Toggle service selection
   const toggleService = (serviceId: string) => {
+    // Mark form as interacted on first click
+    handleFormInteraction();
+
     setFormData((prev) => {
       const isSelected = prev.services.includes(serviceId);
       const newServices = isSelected
@@ -276,26 +288,41 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   useEffect(() => {
     if (!hasSelectedServices) {
       setVisibleSteps([1]);
+      setHasFormInteraction(false);
       setIsProgressFixed(false);
+      setIsProgressHiding(false);
     }
   }, [hasSelectedServices]);
 
-  // Handle fixed progress bar on scroll
+  // Handle fixed progress bar on scroll (only after interaction)
   useEffect(() => {
-    if (!hasSelectedServices) return;
+    if (!hasFormInteraction) return;
 
     const handleScroll = () => {
       if (progressRef.current) {
         const rect = progressRef.current.getBoundingClientRect();
-        // Fix when the progress bar scrolls above the viewport
-        setIsProgressFixed(rect.top < 0);
+        const shouldBeFixed = rect.top < 0;
+
+        if (shouldBeFixed && !isProgressFixed && !isProgressHiding) {
+          // Show with slide-down animation
+          setIsProgressFixed(true);
+          setIsProgressHiding(false);
+        } else if (!shouldBeFixed && isProgressFixed && !isProgressHiding) {
+          // Hide with slide-up animation
+          setIsProgressHiding(true);
+          // Remove element after animation completes
+          setTimeout(() => {
+            setIsProgressFixed(false);
+            setIsProgressHiding(false);
+          }, 300); // Match CSS animation duration
+        }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check initial state
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasSelectedServices]);
+  }, [hasFormInteraction, isProgressFixed, isProgressHiding]);
 
   // Check section completion
   const isStep1Complete = hasSelectedServices;
@@ -365,9 +392,9 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         {renderProgressContent()}
       </div>
 
-      {/* Fixed Progress Bar (appears when scrolled and services selected) */}
-      {hasSelectedServices && isProgressFixed && (
-        <div className="quote-progress quote-progress-fixed">
+      {/* Fixed Progress Bar (appears when scrolled after form interaction) */}
+      {hasFormInteraction && isProgressFixed && (
+        <div className={`quote-progress quote-progress-fixed ${isProgressHiding ? 'quote-progress-hiding' : ''}`}>
           {renderProgressContent()}
         </div>
       )}
