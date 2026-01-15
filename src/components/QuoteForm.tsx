@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, FormEvent, useCallback } from "react";
+import { useState, useEffect, useRef, FormEvent, useCallback } from "react";
 import {
   Home,
   Droplets,
@@ -84,6 +84,8 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   const [formMessage, setFormMessage] = useState("");
   const [expandedServices, setExpandedServices] = useState<string[]>([]);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([1]);
+  const [isProgressFixed, setIsProgressFixed] = useState(false);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   // Reveal the next step (no auto-scroll)
   const revealNextStep = useCallback((currentStep: number) => {
@@ -274,7 +276,25 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   useEffect(() => {
     if (!hasSelectedServices) {
       setVisibleSteps([1]);
+      setIsProgressFixed(false);
     }
+  }, [hasSelectedServices]);
+
+  // Handle fixed progress bar on scroll
+  useEffect(() => {
+    if (!hasSelectedServices) return;
+
+    const handleScroll = () => {
+      if (progressRef.current) {
+        const rect = progressRef.current.getBoundingClientRect();
+        // Fix when the progress bar scrolls above the viewport
+        setIsProgressFixed(rect.top < 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check initial state
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [hasSelectedServices]);
 
   // Check section completion
@@ -302,42 +322,55 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     { num: 4, label: "Contact" },
   ];
 
+  // Render progress bar content (reused for normal and fixed versions)
+  const renderProgressContent = () => (
+    <>
+      <div className="quote-progress-track">
+        <div
+          className="quote-progress-fill"
+          style={{ width: `${progressPercent}%` }}
+        />
+      </div>
+      <div className="quote-progress-steps">
+        {steps.map((step) => {
+          const isCompleted =
+            (step.num === 1 && isStep1Complete) ||
+            (step.num === 4 && isStep4Complete);
+          const isVisible = visibleSteps.includes(step.num);
+          const isClickable = isVisible;
+
+          return (
+            <button
+              key={step.num}
+              type="button"
+              className={`quote-progress-step ${isVisible ? "active" : ""} ${isCompleted ? "completed" : ""} ${isClickable ? "clickable" : ""}`}
+              onClick={() => isClickable && scrollToStep(step.num)}
+              disabled={!isClickable}
+            >
+              <div className="quote-progress-dot">
+                {isCompleted ? <Check className="w-4 h-4" /> : step.num}
+              </div>
+              <span className="quote-progress-label">{step.label}</span>
+            </button>
+          );
+        })}
+      </div>
+    </>
+  );
+
   return (
     <form className="quote-form" onSubmit={handleSubmit}>
-      {/* Progress Bar - sticky when form started */}
-      <div className={`quote-progress ${hasSelectedServices ? "quote-progress-sticky" : ""}`}>
-        <div className="quote-progress-track">
-          <div
-            className="quote-progress-fill"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-        <div className="quote-progress-steps">
-          {steps.map((step) => {
-            // Steps 2 et 3 sont optionnels, on les marque comme "actifs" (pas completed) quand on y est
-            const isCompleted =
-              (step.num === 1 && isStep1Complete) ||
-              (step.num === 4 && isStep4Complete);
-            const isVisible = visibleSteps.includes(step.num);
-            const isClickable = isVisible;
-
-            return (
-              <button
-                key={step.num}
-                type="button"
-                className={`quote-progress-step ${isVisible ? "active" : ""} ${isCompleted ? "completed" : ""} ${isClickable ? "clickable" : ""}`}
-                onClick={() => isClickable && scrollToStep(step.num)}
-                disabled={!isClickable}
-              >
-                <div className="quote-progress-dot">
-                  {isCompleted ? <Check className="w-4 h-4" /> : step.num}
-                </div>
-                <span className="quote-progress-label">{step.label}</span>
-              </button>
-            );
-          })}
-        </div>
+      {/* Original Progress Bar (used for position reference) */}
+      <div ref={progressRef} className="quote-progress">
+        {renderProgressContent()}
       </div>
+
+      {/* Fixed Progress Bar (appears when scrolled and services selected) */}
+      {hasSelectedServices && isProgressFixed && (
+        <div className="quote-progress quote-progress-fixed">
+          {renderProgressContent()}
+        </div>
+      )}
 
       {/* Section 1: Service Selection */}
       <div id="quote-step-1" className={`quote-section ${isStep1Complete ? "quote-section-complete" : ""}`}>
