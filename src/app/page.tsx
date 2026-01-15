@@ -23,6 +23,15 @@ import {
   FileText,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS, HERO_GALLERY } from "@/lib/constants";
+
+// Alt tags descriptifs pour les images du marquee hero
+const HERO_GALLERY_ALTS = [
+  "Terrasse travertin réalisée par RA Bâtiment",
+  "Salle de bain mosaïque moderne - rénovation complète",
+  "Aménagement de combles avec velux",
+  "Terrasse bois avec barbecue intégré",
+  "Escalier design bois et métal sur mesure",
+];
 import { trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
 import TrustedBy from "@/components/TrustedBy";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
@@ -174,7 +183,7 @@ export default function HomePage() {
         <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="gold-hero-bg">
           <Image
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
-            alt="Luxury interior"
+            alt="Intérieur rénové de standing - RA Bâtiment artisan BTP"
             fill
             priority
             className="object-cover"
@@ -300,7 +309,7 @@ export default function HomePage() {
               <div key={i} className="hero-marquee-item">
                 <Image
                   src={src}
-                  alt={`Réalisation ${(i % HERO_GALLERY.length) + 1}`}
+                  alt={HERO_GALLERY_ALTS[i % HERO_GALLERY.length]}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 380px, 550px"
