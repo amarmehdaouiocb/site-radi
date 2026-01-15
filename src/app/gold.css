@@ -3097,7 +3097,7 @@ select.gold-input {
 
 .quote-field-enhanced .quote-label {
   position: absolute;
-  left: 1rem;
+  left: 2.75rem; /* Align with input text (after icon) */
   top: 50%;
   transform: translateY(-50%);
   color: var(--gold-text-muted);
@@ -3130,7 +3130,8 @@ select.gold-input {
   pointer-events: none;
 }
 
-.quote-field-enhanced .gold-input:focus ~ .quote-field-icon {
+/* Use :focus-within on parent since icon comes before input in DOM */
+.quote-field-enhanced:focus-within .quote-field-icon {
   color: var(--gold-primary);
 }
 

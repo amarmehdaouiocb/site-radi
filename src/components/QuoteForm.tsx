@@ -16,7 +16,6 @@ import {
   User,
   Phone,
   Mail,
-  MapPin,
   Check,
   MousePointerClick,
 } from "lucide-react";
@@ -234,25 +233,31 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   const hasSelectedServices = formData.services.length > 0;
 
-  // Calculate current step for progress bar
-  const getCurrentStep = () => {
-    if (!hasSelectedServices) return 1;
-    if (formData.name.trim() === "" || (!formData.phone.trim() && !formData.email.trim())) return 4;
-    return 4;
-  };
-
   // Check section completion
   const isStep1Complete = hasSelectedServices;
-  const isStep2Complete = hasSelectedServices; // Features are optional
-  const isStep3Complete = hasSelectedServices; // Project info is optional
   const isStep4Complete =
     formData.name.trim() !== "" &&
     (formData.phone.trim() !== "" || formData.email.trim() !== "");
 
+  // Calculate current step and progress
+  const getCurrentStep = () => {
+    if (!hasSelectedServices) return 1;
+    if (!isStep4Complete) return 4;
+    return 4;
+  };
+
   const currentStep = getCurrentStep();
-  const progressPercent = hasSelectedServices
-    ? (isStep4Complete ? 100 : 75)
-    : 0;
+
+  // Progress: 25% par étape complétée
+  const getProgressPercent = () => {
+    if (!hasSelectedServices) return 0;
+    // Step 1 done = 25%, steps 2-3 sont optionnels donc on considère 75% quand on arrive à step 4
+    // Step 4 complet = 100%
+    if (isStep4Complete) return 100;
+    return 75; // Services sélectionnés, en cours de remplir les infos
+  };
+
+  const progressPercent = getProgressPercent();
 
   // Progress bar labels
   const steps = [
@@ -274,12 +279,13 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         </div>
         <div className="quote-progress-steps">
           {steps.map((step) => {
+            // Steps 2 et 3 sont optionnels, on les marque comme "actifs" (pas completed) quand on y est
             const isCompleted =
               (step.num === 1 && isStep1Complete) ||
-              (step.num === 2 && isStep2Complete && hasSelectedServices) ||
-              (step.num === 3 && isStep3Complete && hasSelectedServices) ||
               (step.num === 4 && isStep4Complete);
-            const isActive = step.num === currentStep || (step.num <= currentStep && hasSelectedServices);
+            const isActive =
+              (step.num === 1) ||
+              (step.num >= 2 && step.num <= 4 && hasSelectedServices);
 
             return (
               <div
@@ -460,16 +466,15 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           </p>
 
           <div className="quote-project-grid">
-            <div className={`quote-field quote-field-enhanced ${formData.city.trim() ? "quote-field-valid" : ""}`}>
-              <MapPin className="w-4 h-4 quote-field-icon" />
+            <div className="quote-field">
+              <label className="quote-label">Ville du chantier</label>
               <input
                 type="text"
                 className="gold-input"
-                placeholder=" "
+                placeholder="Ex: Paris 15e, Bobigny..."
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
               />
-              <label className="quote-label">Ville du chantier</label>
             </div>
 
             <div className="quote-field">
