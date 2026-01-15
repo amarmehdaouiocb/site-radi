@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, FormEvent, useCallback } from "react";
+import { useState, useEffect, useRef, FormEvent, useCallback } from "react";
 import {
   Home,
   Droplets,
@@ -84,6 +84,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   const [formMessage, setFormMessage] = useState("");
   const [expandedServices, setExpandedServices] = useState<string[]>([]);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([1]);
+  const sequenceStartedRef = useRef(false);
 
   // Scroll to a specific step
   const scrollToStep = useCallback((stepNum: number) => {
@@ -244,7 +245,9 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   // Sequencing effect: show steps progressively when step 1 is complete
   useEffect(() => {
-    if (hasSelectedServices && !visibleSteps.includes(2)) {
+    if (hasSelectedServices && !sequenceStartedRef.current) {
+      sequenceStartedRef.current = true;
+
       // Step 2 appears immediately
       setVisibleSteps(prev => [...prev, 2]);
       scrollToStep(2);
@@ -253,26 +256,28 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       const timer1 = setTimeout(() => {
         setVisibleSteps(prev => [...prev, 3]);
         scrollToStep(3);
-
-        // Step 4 after another 500ms
-        const timer2 = setTimeout(() => {
-          setVisibleSteps(prev => [...prev, 4]);
-          scrollToStep(4);
-        }, 500);
-
-        return () => clearTimeout(timer2);
       }, 500);
 
-      return () => clearTimeout(timer1);
+      // Step 4 after 1000ms
+      const timer2 = setTimeout(() => {
+        setVisibleSteps(prev => [...prev, 4]);
+        scrollToStep(4);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
     }
-  }, [hasSelectedServices, visibleSteps, scrollToStep]);
+  }, [hasSelectedServices, scrollToStep]);
 
   // Reset visible steps when all services are deselected
   useEffect(() => {
-    if (!hasSelectedServices && visibleSteps.length > 1) {
+    if (!hasSelectedServices) {
+      sequenceStartedRef.current = false;
       setVisibleSteps([1]);
     }
-  }, [hasSelectedServices, visibleSteps.length]);
+  }, [hasSelectedServices]);
 
   // Check section completion
   const isStep1Complete = hasSelectedServices;
