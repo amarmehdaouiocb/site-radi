@@ -133,7 +133,7 @@ export const SERVICES = [
     description:
       "Peinture intérieure et extérieure, finitions décoratives soignées.",
     longDescription:
-      "Nos peintres professionnels réalisent tous vos travaux de peinture avec des finitions impeccables. Peinture intérieure, extérieure, effets décoratifs : nous sublimous vos espaces avec des produits de qualité.",
+      "Nos peintres professionnels réalisent tous vos travaux de peinture avec des finitions impeccables. Peinture intérieure, extérieure, effets décoratifs : nous sublimons vos espaces avec des produits de qualité.",
     icon: "Paintbrush",
     image: IMAGES.services.peinture,
     features: [

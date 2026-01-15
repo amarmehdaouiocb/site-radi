@@ -71,7 +71,7 @@ function generateQuoteEmailHtml(data: QuoteFormData): string {
           ? `<ul style="margin: 5px 0 0 20px; padding: 0; color: #666;">
               ${features.map((f) => `<li style="margin: 3px 0;">${f}</li>`).join("")}
             </ul>`
-          : '<span style="color: #999; font-size: 13px; margin-left: 20px;">Demande generale</span>';
+          : '<span style="color: #999; font-size: 13px; margin-left: 20px;">Demande générale</span>';
 
       return `
         <div style="margin-bottom: 15px;">
@@ -103,7 +103,7 @@ function generateQuoteEmailHtml(data: QuoteFormData): string {
       <div style="padding: 30px; background: #f9f9f9;">
         <!-- Client Info -->
         <h2 style="color: #0a0a0a; border-bottom: 2px solid #d4af37; padding-bottom: 10px; margin-top: 0;">
-          Coordonnees du client
+          Coordonnées du client
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
           <tr>
@@ -111,7 +111,7 @@ function generateQuoteEmailHtml(data: QuoteFormData): string {
             <td style="padding: 8px 0; color: #0a0a0a;">${data.name}</td>
           </tr>
           ${data.phone ? `<tr>
-            <td style="padding: 8px 0; color: #666;"><strong>Telephone :</strong></td>
+            <td style="padding: 8px 0; color: #666;"><strong>Téléphone :</strong></td>
             <td style="padding: 8px 0;">
               <a href="tel:${data.phone}" style="color: #d4af37; font-weight: bold; font-size: 16px;">${data.phone}</a>
             </td>
@@ -135,7 +135,7 @@ function generateQuoteEmailHtml(data: QuoteFormData): string {
         <!-- Project Details -->
         ${(data.city || data.surface || data.budget || data.timeline) ? `
         <h2 style="color: #0a0a0a; border-bottom: 2px solid #d4af37; padding-bottom: 10px;">
-          Details du projet
+          Détails du projet
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
           ${data.city ? `<tr>
@@ -151,7 +151,7 @@ function generateQuoteEmailHtml(data: QuoteFormData): string {
             <td style="padding: 8px 0; color: #0a0a0a; font-weight: bold;">${getBudgetLabel(data.budget)}</td>
           </tr>` : ""}
           ${data.timeline ? `<tr>
-            <td style="padding: 8px 0; color: #666;"><strong>Delai :</strong></td>
+            <td style="padding: 8px 0; color: #666;"><strong>Délai :</strong></td>
             <td style="padding: 8px 0; color: #0a0a0a;">${getTimelineLabel(data.timeline)}</td>
           </tr>` : ""}
         </table>` : ""}
@@ -171,7 +171,7 @@ function generateQuoteEmailHtml(data: QuoteFormData): string {
 
         <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px;">
           <p style="color: #856404; margin: 0; font-size: 14px;">
-            &#x26A1; <strong>Rappel :</strong> Contacter le client sous 24h ${data.phone ? `au <a href="tel:${data.phone}" style="color: #856404;">${data.phone}</a>` : ""}${data.phone && data.email ? " ou " : ""}${data.email ? `par email a <a href="mailto:${data.email}" style="color: #856404;">${data.email}</a>` : ""}
+            &#x26A1; <strong>Rappel :</strong> Contacter le client sous 24h ${data.phone ? `au <a href="tel:${data.phone}" style="color: #856404;">${data.phone}</a>` : ""}${data.phone && data.email ? " ou " : ""}${data.email ? `par email à <a href="mailto:${data.email}" style="color: #856404;">${data.email}</a>` : ""}
           </p>
         </div>
       </div>
@@ -215,7 +215,7 @@ function generateLegacyEmailHtml(data: LegacyFormData): string {
             <td style="padding: 10px 0; color: #0a0a0a;">${data.name}</td>
           </tr>
           <tr>
-            <td style="padding: 10px 0; color: #666;"><strong>Telephone :</strong></td>
+            <td style="padding: 10px 0; color: #666;"><strong>Téléphone :</strong></td>
             <td style="padding: 10px 0; color: #0a0a0a;">
               <a href="tel:${data.phone}" style="color: #d4af37;">${data.phone}</a>
             </td>
@@ -268,7 +268,7 @@ export async function POST(request: NextRequest) {
       // Validation
       if (!services || services.length === 0) {
         return NextResponse.json(
-          { error: "Veuillez selectionner au moins un service." },
+          { error: "Veuillez sélectionner au moins un service." },
           { status: 400 }
         );
       }
@@ -280,7 +280,7 @@ export async function POST(request: NextRequest) {
       }
       if (!phone && !email) {
         return NextResponse.json(
-          { error: "Veuillez fournir un numero de telephone ou une adresse email." },
+          { error: "Veuillez fournir un numéro de téléphone ou une adresse email." },
           { status: 400 }
         );
       }
@@ -311,7 +311,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Votre demande a ete envoyee avec succes." },
+      { success: true, message: "Votre demande a été envoyée avec succès." },
       { status: 200 }
     );
   } catch (error) {
