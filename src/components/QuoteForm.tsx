@@ -105,6 +105,17 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     revealNextStep(3);
   }, [revealNextStep]);
 
+  // Scroll to a specific step (for progress bar navigation)
+  const scrollToStep = useCallback((stepNum: number) => {
+    const element = document.getElementById(`quote-step-${stepNum}`);
+    if (element) {
+      const headerOffset = 80; // Account for sticky progress bar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  }, []);
+
   // Toggle service selection
   const toggleService = (serviceId: string) => {
     setFormData((prev) => {
@@ -293,8 +304,8 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   return (
     <form className="quote-form" onSubmit={handleSubmit}>
-      {/* Progress Bar */}
-      <div className="quote-progress">
+      {/* Progress Bar - sticky when form started */}
+      <div className={`quote-progress ${hasSelectedServices ? "quote-progress-sticky" : ""}`}>
         <div className="quote-progress-track">
           <div
             className="quote-progress-fill"
@@ -307,27 +318,29 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             const isCompleted =
               (step.num === 1 && isStep1Complete) ||
               (step.num === 4 && isStep4Complete);
-            const isActive =
-              (step.num === 1) ||
-              (step.num >= 2 && step.num <= 4 && hasSelectedServices);
+            const isVisible = visibleSteps.includes(step.num);
+            const isClickable = isVisible;
 
             return (
-              <div
+              <button
                 key={step.num}
-                className={`quote-progress-step ${isActive ? "active" : ""} ${isCompleted ? "completed" : ""}`}
+                type="button"
+                className={`quote-progress-step ${isVisible ? "active" : ""} ${isCompleted ? "completed" : ""} ${isClickable ? "clickable" : ""}`}
+                onClick={() => isClickable && scrollToStep(step.num)}
+                disabled={!isClickable}
               >
                 <div className="quote-progress-dot">
                   {isCompleted ? <Check className="w-4 h-4" /> : step.num}
                 </div>
                 <span className="quote-progress-label">{step.label}</span>
-              </div>
+              </button>
             );
           })}
         </div>
       </div>
 
       {/* Section 1: Service Selection */}
-      <div className={`quote-section ${isStep1Complete ? "quote-section-complete" : ""}`}>
+      <div id="quote-step-1" className={`quote-section ${isStep1Complete ? "quote-section-complete" : ""}`}>
         <h3 className="quote-section-title">
           <span className="quote-step-badge">
             <span className="quote-step-current">1</span>

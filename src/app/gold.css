@@ -2965,6 +2965,19 @@ select.gold-input {
   border: 1px solid var(--gold-border);
   margin-bottom: 0.5rem;
   position: relative;
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+/* Sticky progress bar when form has started */
+.quote-progress-sticky {
+  position: sticky;
+  top: 0;
+  background: rgba(22, 22, 22, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-color: var(--gold-primary);
+  border-width: 0 0 1px 0;
 }
 
 .quote-progress-track {
@@ -3000,6 +3013,25 @@ select.gold-input {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  /* Button reset */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
+}
+
+.quote-progress-step.clickable {
+  cursor: pointer;
+}
+
+.quote-progress-step.clickable:hover .quote-progress-dot {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.2);
+}
+
+.quote-progress-step:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .quote-progress-dot {
