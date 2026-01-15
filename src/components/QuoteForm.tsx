@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, FormEvent, useCallback } from "react";
+import { useState, useEffect, FormEvent, useCallback } from "react";
 import {
   Home,
   Droplets,
@@ -84,15 +84,26 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   const [formMessage, setFormMessage] = useState("");
   const [expandedServices, setExpandedServices] = useState<string[]>([]);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([1]);
-  const sequenceStartedRef = useRef(false);
 
-  // Scroll to a specific step
-  const scrollToStep = useCallback((stepNum: number) => {
-    setTimeout(() => {
-      const element = document.getElementById(`quote-step-${stepNum}`);
-      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100); // Small delay to let the element render
+  // Reveal the next step (no auto-scroll)
+  const revealNextStep = useCallback((currentStep: number) => {
+    setVisibleSteps(prev => {
+      const nextStep = currentStep + 1;
+      if (nextStep <= 4 && !prev.includes(nextStep)) {
+        return [...prev, nextStep];
+      }
+      return prev;
+    });
   }, []);
+
+  // Interaction handlers to reveal next steps
+  const handleStep2Interaction = useCallback(() => {
+    revealNextStep(2);
+  }, [revealNextStep]);
+
+  const handleStep3Interaction = useCallback(() => {
+    revealNextStep(3);
+  }, [revealNextStep]);
 
   // Toggle service selection
   const toggleService = (serviceId: string) => {
@@ -113,6 +124,11 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       // Auto-expand the service when selected
       if (!isSelected && !expandedServices.includes(serviceId)) {
         setExpandedServices((prev) => [...prev, serviceId]);
+      }
+
+      // Reveal step 2 when selecting a service (not deselecting)
+      if (!isSelected) {
+        revealNextStep(1);
       }
 
       return {
@@ -243,38 +259,9 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   const hasSelectedServices = formData.services.length > 0;
 
-  // Sequencing effect: show steps progressively when step 1 is complete
-  useEffect(() => {
-    if (hasSelectedServices && !sequenceStartedRef.current) {
-      sequenceStartedRef.current = true;
-
-      // Step 2 appears immediately
-      setVisibleSteps(prev => [...prev, 2]);
-      scrollToStep(2);
-
-      // Step 3 after 500ms
-      const timer1 = setTimeout(() => {
-        setVisibleSteps(prev => [...prev, 3]);
-        scrollToStep(3);
-      }, 500);
-
-      // Step 4 after 1000ms
-      const timer2 = setTimeout(() => {
-        setVisibleSteps(prev => [...prev, 4]);
-        scrollToStep(4);
-      }, 1000);
-
-      return () => {
-        clearTimeout(timer1);
-        clearTimeout(timer2);
-      };
-    }
-  }, [hasSelectedServices, scrollToStep]);
-
   // Reset visible steps when all services are deselected
   useEffect(() => {
     if (!hasSelectedServices) {
-      sequenceStartedRef.current = false;
       setVisibleSteps([1]);
     }
   }, [hasSelectedServices]);
@@ -382,6 +369,14 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             );
           })}
         </div>
+
+        {/* Continue indicator when step 2 is available */}
+        {isStep1Complete && visibleSteps.includes(2) && (
+          <div className="quote-continue-hint">
+            <ChevronDown className="w-5 h-5" />
+            <span>Continuez ci-dessous</span>
+          </div>
+        )}
       </div>
 
       {/* Section 2: Rooms & Features per service (dynamic) */}
@@ -415,7 +410,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                   <button
                     type="button"
                     className="quote-feature-header"
-                    onClick={() => toggleServiceAccordion(serviceId)}
+                    onClick={() => { toggleServiceAccordion(serviceId); handleStep2Interaction(); }}
                     aria-expanded={isExpanded}
                   >
                     <span className="quote-feature-service-name">
@@ -442,7 +437,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                                   <input
                                     type="checkbox"
                                     checked={isChecked}
-                                    onChange={() => toggleRoom(serviceId, room.value)}
+                                    onChange={() => { toggleRoom(serviceId, room.value); handleStep2Interaction(); }}
                                   />
                                   <span className="quote-room-checkbox">
                                     {isChecked && <CheckCircle className="w-3 h-3" />}
@@ -467,7 +462,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                                 <input
                                   type="checkbox"
                                   checked={isChecked}
-                                  onChange={() => toggleFeature(serviceId, feature)}
+                                  onChange={() => { toggleFeature(serviceId, feature); handleStep2Interaction(); }}
                                 />
                                 <span className="quote-feature-checkbox">
                                   {isChecked && <CheckCircle className="w-4 h-4" />}
@@ -484,6 +479,17 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               );
             })}
           </div>
+
+          {/* Skip button for step 2 */}
+          {!visibleSteps.includes(3) && (
+            <button
+              type="button"
+              className="quote-skip-btn"
+              onClick={() => revealNextStep(2)}
+            >
+              Passer cette étape <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       )}
 
@@ -510,6 +516,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                 className="gold-input"
                 placeholder="Ex: Paris 15e, Bobigny..."
                 value={formData.city}
+                onFocus={handleStep3Interaction}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
               />
             </div>
@@ -522,6 +529,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                 placeholder="Ex: 45"
                 min="0"
                 value={formData.surface}
+                onFocus={handleStep3Interaction}
                 onChange={(e) => setFormData({ ...formData, surface: e.target.value })}
               />
             </div>
@@ -531,6 +539,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               <select
                 className="gold-input"
                 value={formData.budget}
+                onFocus={handleStep3Interaction}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
               >
                 <option value="">Sélectionnez votre budget</option>
@@ -547,6 +556,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               <select
                 className="gold-input"
                 value={formData.timeline}
+                onFocus={handleStep3Interaction}
                 onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
               >
                 <option value="">Quand souhaitez-vous commencer ?</option>
@@ -558,6 +568,17 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               </select>
             </div>
           </div>
+
+          {/* Skip button for step 3 */}
+          {!visibleSteps.includes(4) && (
+            <button
+              type="button"
+              className="quote-skip-btn"
+              onClick={() => revealNextStep(3)}
+            >
+              Passer cette étape <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       )}
 
