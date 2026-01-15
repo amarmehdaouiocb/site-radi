@@ -359,7 +359,7 @@ export async function POST(request: NextRequest) {
 
       // Send email to professional
       await resend.emails.send({
-        from: "RA Batiment <onboarding@resend.dev>",
+        from: "RA Bâtiment <noreply@ra-batiment.fr>",
         to: process.env.CONTACT_EMAIL || "contact@ra-batiment.fr",
         subject: `Nouvelle demande de devis - ${clientName}`,
         html: emailHtml,
@@ -369,7 +369,7 @@ export async function POST(request: NextRequest) {
       if (email) {
         const confirmationHtml = generateConfirmationEmailHtml(body);
         await resend.emails.send({
-          from: "RA Batiment <onboarding@resend.dev>",
+          from: "RA Bâtiment <noreply@ra-batiment.fr>",
           to: email,
           subject: "Confirmation de votre demande de devis - RA Bâtiment",
           html: confirmationHtml,
@@ -391,7 +391,7 @@ export async function POST(request: NextRequest) {
 
       // Send email to professional (legacy form has no client email)
       await resend.emails.send({
-        from: "RA Batiment <onboarding@resend.dev>",
+        from: "RA Bâtiment <noreply@ra-batiment.fr>",
         to: process.env.CONTACT_EMAIL || "contact@ra-batiment.fr",
         subject: `Nouvelle demande de devis - ${clientName}`,
         html: emailHtml,
