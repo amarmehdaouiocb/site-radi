@@ -1,0 +1,509 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   GALLERY STYLES - 4 Modern Gallery Variants
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. MARQUEE GALLERY - Infinite Scrolling Banners
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.marquee-gallery {
+  padding: 6rem 0;
+  background: var(--gold-bg);
+  overflow: hidden;
+}
+
+.marquee-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+}
+
+.marquee-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+
+.marquee-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--gold-text);
+}
+
+.marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--gold-bg), transparent);
+}
+
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--gold-bg), transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+.marquee-item:hover {
+  transform: scale(1.05);
+}
+
+.marquee-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.marquee-item:hover .marquee-item-overlay {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. BENTO GALLERY - Modern Grid Layout
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.bento-gallery {
+  padding: 6rem 2rem;
+  background: var(--gold-bg);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bento-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.bento-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+
+.bento-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--gold-text);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .bento-item.col-span-2 { grid-column: span 2; }
+  .bento-item.row-span-2 { grid-row: span 1; }
+}
+
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-item.col-span-2 { grid-column: span 1; }
+}
+
+.bento-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.bento-item.col-span-1 { grid-column: span 1; }
+.bento-item.col-span-2 { grid-column: span 2; }
+.bento-item.row-span-1 { grid-row: span 1; }
+.bento-item.row-span-2 { grid-row: span 2; }
+
+.bento-item img {
+  transition: transform 0.6s ease;
+}
+
+.bento-item:hover img {
+  transform: scale(1.1);
+}
+
+.bento-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bento-item:hover .bento-item-overlay {
+  opacity: 1;
+}
+
+.bento-item-label {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--gold-text);
+}
+
+.bento-item-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(212, 175, 55, 0.1) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.bento-item:hover .bento-item-shine {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. CAROUSEL GALLERY - Full Width Showcase
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.carousel-gallery {
+  padding: 6rem 0;
+  background: var(--gold-bg);
+}
+
+.carousel-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+}
+
+.carousel-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+
+.carousel-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--gold-text);
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    border-radius: 0;
+    aspect-ratio: 4/3;
+  }
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+}
+
+.carousel-slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem;
+  color: var(--gold-text);
+}
+
+.carousel-slide-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.carousel-slide-content p {
+  font-family: var(--font-elegant);
+  font-size: 1.1rem;
+  color: var(--gold-text-muted);
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-nav:hover {
+  background: var(--gold-primary);
+  color: var(--gold-bg);
+  border-color: var(--gold-primary);
+}
+
+.carousel-prev { left: 2rem; }
+.carousel-next { right: 2rem; }
+
+@media (max-width: 768px) {
+  .carousel-nav {
+    width: 44px;
+    height: 44px;
+  }
+  .carousel-prev { left: 1rem; }
+  .carousel-next { right: 1rem; }
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--gold-primary);
+  transform: scale(1.2);
+}
+
+.carousel-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.carousel-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.carousel-progress-bar {
+  height: 100%;
+  background: var(--gold-gradient);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   4. CARDS 3D GALLERY - Stacked Cards Effect
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cards3d-gallery {
+  padding: 6rem 2rem;
+  background: var(--gold-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cards3d-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.cards3d-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+
+.cards3d-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--gold-text);
+}
+
+.cards3d-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  perspective: 1500px;
+}
+
+.cards3d-stack {
+  position: relative;
+  width: 350px;
+  height: 450px;
+  transform-style: preserve-3d;
+}
+
+.cards3d-card {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.cards3d-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+}
+
+.cards3d-card-category {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cards3d-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--gold-text);
+}
+
+.cards3d-card-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.cards3d-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  pointer-events: none;
+}
+
+.cards3d-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cards3d-glow {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+}
+
+@media (max-width: 768px) {
+  .cards3d-stack {
+    width: 280px;
+    height: 380px;
+  }
+  .cards3d-card {
+    width: 250px;
+    height: 330px;
+  }
+}
