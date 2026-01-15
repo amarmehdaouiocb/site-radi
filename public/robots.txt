@@ -11,6 +11,7 @@ Sitemap: https://ra-solution.fr/sitemap.xml
 Disallow: /api/
 Disallow: /_next/
 Disallow: /v1/
+Disallow: /demo/
 
 # Autoriser les crawlers d'images
 User-agent: Googlebot-Image

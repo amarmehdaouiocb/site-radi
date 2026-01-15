@@ -404,3 +404,32 @@ export const NAV_LINKS = [
   { href: "#testimonials", label: "Avis" },
   { href: "#contact", label: "Contact" },
 ];
+
+// FAQ pour le schema SEO
+export const FAQS = [
+  {
+    question: "Quel est le délai pour obtenir un devis ?",
+    answer:
+      "Nous vous fournissons un devis détaillé sous 24 heures après votre demande. Ce devis est gratuit et sans engagement.",
+  },
+  {
+    question: "Intervenez-vous dans toute l'Île-de-France ?",
+    answer:
+      "Oui, RA Bâtiment intervient dans toute la région Île-de-France, soit un rayon de 50km autour de Paris, incluant les départements 75, 77, 78, 91, 92, 93, 94 et 95.",
+  },
+  {
+    question: "Quelles garanties proposez-vous ?",
+    answer:
+      "Nous sommes couverts par une garantie décennale et une assurance RC Pro. Tous nos travaux sont garantis pour votre tranquillité.",
+  },
+  {
+    question: "Pouvez-vous gérer un projet de A à Z ?",
+    answer:
+      "Absolument ! Nous proposons des rénovations clé en main : de la conception à la livraison, en passant par tous les corps de métier (maçonnerie, plomberie, électricité, peinture, carrelage).",
+  },
+  {
+    question: "Quels sont vos horaires d'intervention ?",
+    answer:
+      "Nous intervenons du lundi au samedi, de 8h à 19h. Pour les urgences, n'hésitez pas à nous contacter.",
+  },
+];

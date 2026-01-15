@@ -2,12 +2,26 @@ import type { Metadata } from "next";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import FAQSchema from "@/components/FAQSchema";
+import { FAQS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ra-solution.fr"),
   title: {
     default: "RA Bâtiment | Artisan Multi-Services BTP Île-de-France",
     template: "%s | RA Bâtiment",
+  },
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  appleWebApp: {
+    title: "RA Bâtiment",
+    statusBarStyle: "black-translucent",
   },
   description:
     "Artisan de confiance pour vos travaux en Île-de-France. Rénovation, maçonnerie, plomberie, électricité, peinture, carrelage. Devis gratuit sous 24h. Garantie décennale.",
@@ -82,6 +96,7 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <head>
         <LocalBusinessSchema />
+        <FAQSchema faqs={FAQS} />
       </head>
       <body className="antialiased">
         <GoogleAnalytics />

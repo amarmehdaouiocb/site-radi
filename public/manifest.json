@@ -1,0 +1,28 @@
+{
+  "name": "RA Bâtiment - Artisan Multi-Services BTP",
+  "short_name": "RA Bâtiment",
+  "description": "Artisan de confiance pour vos travaux en Île-de-France. Rénovation, maçonnerie, plomberie, électricité.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d4af37",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
