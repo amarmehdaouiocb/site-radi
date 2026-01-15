@@ -2965,19 +2965,33 @@ select.gold-input {
   border: 1px solid var(--gold-border);
   margin-bottom: 0.5rem;
   position: relative;
-  transition: all 0.3s ease;
   z-index: 50;
 }
 
-/* Sticky progress bar when form has started */
-.quote-progress-sticky {
-  position: sticky;
+/* Fixed progress bar (appears when scrolled past original) */
+.quote-progress-fixed {
+  position: fixed;
   top: 0;
-  background: rgba(22, 22, 22, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border-color: var(--gold-primary);
-  border-width: 0 0 1px 0;
+  left: 0;
+  right: 0;
+  background: rgba(22, 22, 22, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.2);
+  border: none;
+  border-bottom: 1px solid var(--gold-primary);
+  z-index: 1000;
+  animation: slideDownFixed 0.3s ease-out;
+}
+
+@keyframes slideDownFixed {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .quote-progress-track {
