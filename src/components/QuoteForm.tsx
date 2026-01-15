@@ -235,26 +235,18 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   // Check section completion
   const isStep1Complete = hasSelectedServices;
+  const hasStartedStep4 = formData.name.trim() !== "" || formData.phone.trim() !== "" || formData.email.trim() !== "";
   const isStep4Complete =
     formData.name.trim() !== "" &&
     (formData.phone.trim() !== "" || formData.email.trim() !== "");
 
-  // Calculate current step and progress
-  const getCurrentStep = () => {
-    if (!hasSelectedServices) return 1;
-    if (!isStep4Complete) return 4;
-    return 4;
-  };
-
-  const currentStep = getCurrentStep();
-
-  // Progress: 25% par étape complétée
+  // Progress bar: 4 dots at 0%, 33%, 66%, 100% (space-between)
+  // Fill should reach the position of the current/completed step
   const getProgressPercent = () => {
-    if (!hasSelectedServices) return 0;
-    // Step 1 done = 25%, steps 2-3 sont optionnels donc on considère 75% quand on arrive à step 4
-    // Step 4 complet = 100%
-    if (isStep4Complete) return 100;
-    return 75; // Services sélectionnés, en cours de remplir les infos
+    if (!hasSelectedServices) return 0;           // Avant step 1
+    if (isStep4Complete) return 100;              // Step 4 complet → fin
+    if (hasStartedStep4) return 66;               // En train de remplir step 4 → atteint step 3
+    return 33;                                    // Step 1 complet → atteint step 2
   };
 
   const progressPercent = getProgressPercent();
