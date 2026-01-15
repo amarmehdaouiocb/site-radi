@@ -113,7 +113,6 @@ export default function HomePage() {
           </a>
 
           <nav className="gold-nav gold-nav-desktop">
-            <a href="#services">Services</a>
             <a href="#realisations">Réalisations</a>
             <a href="#temoignages">Témoignages</a>
             <a href="#contact">Contact</a>
@@ -160,7 +159,6 @@ export default function HomePage() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
               <a href="#realisations" onClick={() => setMobileMenuOpen(false)}>Réalisations</a>
               <a href="#temoignages" onClick={() => setMobileMenuOpen(false)}>Témoignages</a>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
@@ -466,56 +464,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="gold-services">
-        <div className="gold-container">
-          <div className="gold-section-header">
-            <span className="gold-section-label">Nos Expertises</span>
-            <h2 className="gold-section-title">
-              Des Services <span className="gold-text-gradient">d&apos;Exception</span>
-            </h2>
-            <p className="gold-section-desc">
-              Chaque projet est traité avec le plus grand soin,
-              alliant savoir-faire traditionnel et techniques modernes.
-            </p>
-          </div>
-
-          <div className="gold-services-grid">
-            {SERVICES.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="gold-service-card"
-              >
-                <div className="gold-service-image">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="gold-service-overlay" />
-                  {"popular" in service && service.popular && (
-                    <span className="gold-service-badge">Plus demandé</span>
-                  )}
-                </div>
-                <div className="gold-service-content">
-                  <span className="gold-service-number">0{index + 1}</span>
-                  <h3 className="gold-service-title">{service.title}</h3>
-                  <p className="gold-service-desc">{service.description}</p>
-                  <Link href={`/services/${service.slug}`} className="gold-service-link">
-                    En savoir plus <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <section id="temoignages" className="gold-testimonials">
         <div className="gold-container">
@@ -618,7 +566,6 @@ export default function HomePage() {
               <p>L&apos;excellence au service de vos projets.</p>
             </div>
             <div className="gold-footer-links">
-              <a href="#services">Services</a>
               <a href="#realisations">Réalisations</a>
               <a href="#temoignages">Témoignages</a>
               <a href="#contact">Contact</a>
