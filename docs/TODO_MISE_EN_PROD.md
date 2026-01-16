@@ -122,7 +122,7 @@ from: "RA Solution <contact@ra-solution.fr>",
 3. Remplir :
    - Catégorie : "Entreprise de rénovation"
    - Adresse : 5 rue de la Gaîté, 93000 Bobigny
-   - Téléphone : 06 23 30 44 45
+   - Téléphone : +33 6 89 12 46 21
    - Horaires : Lun-Sam 8h-19h
    - Site web : https://ra-solution.fr
 4. Vérifier (courrier postal ou téléphone)

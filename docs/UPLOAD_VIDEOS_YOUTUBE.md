@@ -46,7 +46,7 @@ Découvrez notre réalisation : rénovation complète d'une salle de bain en Îl
 ✅ WC suspendu
 ✅ Douche à l'italienne
 
-📞 Devis gratuit : 06 23 30 44 45
+📞 Devis gratuit : +33 6 89 12 46 21
 🌐 Site : [URL du site]
 
 #renovation #salledebain #artisan #BTP #IleDeFrance

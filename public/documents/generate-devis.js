@@ -71,7 +71,7 @@ const doc = new Document({
           new Paragraph({
             alignment: AlignmentType.CENTER,
             children: [
-              new TextRun({ text: "5 rue de la Gaîté, 93000 Bobigny — Tél : 06 23 30 44 45 — Email : ra.solution@myyahoo.com", size: 14, color: TEXT_MUTED })
+              new TextRun({ text: "5 rue de la Gaîté, 93000 Bobigny — Tél : +33 6 89 12 46 21 — Email : ra.solution@myyahoo.com", size: 14, color: TEXT_MUTED })
             ]
           })
         ]
@@ -116,7 +116,7 @@ const doc = new Document({
                             children: [
                               new Paragraph({ style: "CompanyName", children: [new TextRun("RA Bâtiment")] }),
                               new Paragraph({ children: [new TextRun({ text: "5 rue de la Gaîté, 93000 Bobigny", size: 16, color: TEXT_MUTED })] }),
-                              new Paragraph({ children: [new TextRun({ text: "Tél : 06 23 30 44 45", size: 16, color: TEXT_MUTED })] }),
+                              new Paragraph({ children: [new TextRun({ text: "Tél : +33 6 89 12 46 21", size: 16, color: TEXT_MUTED })] }),
                               new Paragraph({ children: [new TextRun({ text: "Email : ra.solution@myyahoo.com", size: 16, color: TEXT_MUTED })] }),
                               new Paragraph({ children: [new TextRun({ text: "SIRET : 933 728 610 00017", size: 16, color: TEXT_MUTED })] })
                             ]
@@ -173,7 +173,7 @@ const doc = new Document({
                   new Paragraph({ spacing: { before: 100 }, children: [new TextRun({ text: "RA Bâtiment", size: 18, bold: true, color: TEXT_DARK })] }),
                   new Paragraph({ children: [new TextRun({ text: "5 rue de la Gaîté", size: 18, color: TEXT_DARK })] }),
                   new Paragraph({ children: [new TextRun({ text: "93000 Bobigny", size: 18, color: TEXT_DARK })] }),
-                  new Paragraph({ children: [new TextRun({ text: "Tél : 06 23 30 44 45", size: 18, color: TEXT_DARK })] }),
+                  new Paragraph({ children: [new TextRun({ text: "Tél : +33 6 89 12 46 21", size: 18, color: TEXT_DARK })] }),
                   new Paragraph({ children: [new TextRun({ text: "SIRET : 933 728 610 00017", size: 18, color: TEXT_DARK })] })
                 ]
               }),

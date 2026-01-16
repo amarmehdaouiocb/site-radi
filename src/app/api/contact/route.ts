@@ -297,7 +297,7 @@ function generateConfirmationEmailHtml(data: QuoteFormData): string {
 
         <p style="color: #666; font-size: 14px; line-height: 1.6;">
           En attendant, n'hésitez pas à nous contacter directement :<br>
-          <strong>Téléphone :</strong> <a href="tel:0749894696" style="color: #d4af37;">07 49 89 46 96</a><br>
+          <strong>Téléphone :</strong> <a href="tel:+33689124621" style="color: #d4af37;">+33 6 89 12 46 21</a><br>
           <strong>Email :</strong> <a href="mailto:contact@ra-batiment.fr" style="color: #d4af37;">contact@ra-batiment.fr</a>
         </p>
       </div>

@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   tagline: "Artisan Multi-Services BTP",
   description:
     "Votre artisan de confiance en Île-de-France pour tous vos travaux de rénovation, maçonnerie, plomberie, électricité et plus encore.",
-  phone: "07 49 89 46 96",
+  phone: "+33 6 89 12 46 21",
   email: "contact@ra-batiment.fr",
   address: "5 rue de la Gaîté, 93000 Bobigny",
   siret: "933 728 610 00017",
