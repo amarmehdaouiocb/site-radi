@@ -1,6 +1,13 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 import { SERVICES, BUDGET_OPTIONS, TIMELINE_OPTIONS, ROOM_OPTIONS } from "@/lib/constants";
+import {
+  generateQuoteDocument,
+  generateQuoteNumber,
+  formDataToLineItems,
+  buildProjectDescription,
+  type QuoteFormData as QuoteFormDataType,
+} from "@/lib/quote-generator";
 
 // New structured quote form data
 interface QuoteFormData {
@@ -357,12 +364,38 @@ export async function POST(request: NextRequest) {
       emailHtml = generateQuoteEmailHtml(body);
       clientName = name;
 
-      // Send email to professional
+      // Generate Word quote document
+      const quoteNumber = generateQuoteNumber();
+      const currentDate = new Date().toLocaleDateString("fr-FR");
+      const projectDescription = buildProjectDescription(body as QuoteFormDataType);
+      const lineItems = formDataToLineItems(body as QuoteFormDataType);
+
+      const docBuffer = await generateQuoteDocument({
+        quoteNumber,
+        date: currentDate,
+        clientName: name,
+        clientCity: body.city,
+        clientPhone: phone,
+        clientEmail: email,
+        projectDescription,
+        lineItems,
+        surface: body.surface,
+        budget: body.budget,
+        timeline: body.timeline,
+      });
+
+      // Send email to professional WITH Word quote attachment
       await resend.emails.send({
         from: "RA Bâtiment <noreply@ra-batiment.fr>",
         to: process.env.CONTACT_EMAIL || "contact@ra-batiment.fr",
         subject: `Nouvelle demande de devis - ${clientName}`,
         html: emailHtml,
+        attachments: [
+          {
+            filename: `Devis-${quoteNumber}.docx`,
+            content: docBuffer,
+          },
+        ],
       });
 
       // Send confirmation email to client (if email provided)
