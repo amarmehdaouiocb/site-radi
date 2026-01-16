@@ -13,6 +13,7 @@ import {
   CaretDown,
   Tree,
   Waves,
+  Wall,
   User,
   Phone,
   Envelope,
@@ -26,7 +27,7 @@ import { trackFormSubmit } from "@/lib/analytics";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const iconMap: Record<string, React.ComponentType<any>> = {
   Home: House,
-  Brick: House, // Fallback
+  Brick: Wall,
   Droplets: Drop,
   Zap: Lightning,
   Paintbrush: PaintBrush,
@@ -34,17 +35,6 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   TreePine: Tree,
   Waves,
 };
-
-// Custom Brick icon as SVG
-const BrickIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="1" y="4" width="22" height="6" rx="1" />
-    <rect x="1" y="14" width="22" height="6" rx="1" />
-    <line x1="12" y1="4" x2="12" y2="10" />
-    <line x1="6" y1="14" x2="6" y2="20" />
-    <line x1="18" y1="14" x2="18" y2="20" />
-  </svg>
-);
 
 interface QuoteFormData {
   services: string[];
@@ -213,7 +203,6 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   // Get icon component
   const getIcon = (iconName: string) => {
-    if (iconName === "Brick") return BrickIcon;
     return iconMap[iconName] || House;
   };
 

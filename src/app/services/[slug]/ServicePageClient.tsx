@@ -18,6 +18,9 @@ import {
   Lightning,
   PaintBrush,
   GridFour,
+  Tree,
+  Waves,
+  Wall,
 } from "@phosphor-icons/react";
 import { SITE_CONFIG, SERVICES } from "@/lib/constants";
 import "../../gold.css";
@@ -25,11 +28,13 @@ import "../../gold.css";
 // Icon mapping
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Home: House,
-  Brick: Shield, // Using Shield as fallback for Brick
+  Brick: Wall,
   Droplets: Drop,
   Zap: Lightning,
   Paintbrush: PaintBrush,
   Grid3X3: GridFour,
+  TreePine: Tree,
+  Waves: Waves,
 };
 
 interface Service {
