@@ -73,10 +73,11 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
   const [visibleSteps, setVisibleSteps] = useState<number[]>([1]);
   const [hasFormInteraction, setHasFormInteraction] = useState(false);
   const [isProgressFixed, setIsProgressFixed] = useState(false);
-  const [isProgressHiding, setIsProgressHiding] = useState(false);
   const [isOriginalHidden, setIsOriginalHidden] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const lastScrollY = useRef(0);
+  const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Mark form as interacted (enables fixed progress bar)
   const handleFormInteraction = useCallback(() => {
@@ -278,55 +279,51 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       setVisibleSteps([1]);
       setHasFormInteraction(false);
       setIsProgressFixed(false);
-      setIsProgressHiding(false);
       setIsOriginalHidden(false);
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+        hideTimeoutRef.current = null;
+      }
     }
   }, [hasSelectedServices]);
 
-  // Show sticky immediately on first interaction, hide original
-  useEffect(() => {
-    if (hasFormInteraction && !isProgressFixed && !isProgressHiding) {
-      setIsOriginalHidden(true);
-      setIsProgressFixed(true);
-    }
-  }, [hasFormInteraction, isProgressFixed, isProgressHiding]);
-
-  // Handle sticky visibility: hide when leaving the form section, re-show when returning
+  // Handle sticky progress bar visibility based on scroll position
+  // Simple logic: sticky when original is above viewport AND within form section
   useEffect(() => {
     if (!hasFormInteraction) return;
 
     const handleScroll = () => {
-      if (!formRef.current || isProgressHiding) return;
+      if (!formRef.current || !progressRef.current) return;
 
       const formRect = formRef.current.getBoundingClientRect();
+      const progressRect = progressRef.current.getBoundingClientRect();
 
-      // Use different thresholds for entering vs leaving (hysteresis) to avoid oscillation
-      // Hide when: scrolled above form (form top > 200) OR scrolled below form (form bottom < 0)
-      const isAboveForm = formRect.top > 200;
-      const isBelowForm = formRect.bottom < 0;
-      const isOutsideForm = isAboveForm || isBelowForm;
+      // Original progress bar is above viewport (scrolled past it)
+      const originalIsAboveViewport = progressRect.bottom < 0;
 
-      // Show when: form is clearly in view (top < 150 AND bottom > 100)
-      const isInsideForm = formRect.top < 150 && formRect.bottom > 100;
+      // We're still within the form section (form bottom hasn't scrolled above viewport)
+      const withinFormSection = formRect.bottom > 150;
 
-      if (isProgressFixed && isOutsideForm) {
-        // Leaving form section: hide sticky, show original
-        setIsProgressHiding(true);
-        setTimeout(() => {
-          setIsProgressFixed(false);
-          setIsProgressHiding(false);
-          setIsOriginalHidden(false);
-        }, 300);
-      } else if (!isProgressFixed && isInsideForm) {
-        // Back in form section: show sticky, hide original
+      // Show sticky when: scrolled past original AND still in form section
+      const shouldBeFixed = originalIsAboveViewport && withinFormSection;
+
+      if (shouldBeFixed && !isProgressFixed) {
+        // Show sticky
         setIsOriginalHidden(true);
         setIsProgressFixed(true);
+      } else if (!shouldBeFixed && isProgressFixed) {
+        // Hide sticky
+        setIsProgressFixed(false);
+        setIsOriginalHidden(false);
       }
     };
 
+    // Initial check
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasFormInteraction, isProgressFixed, isProgressHiding]);
+  }, [hasFormInteraction, isProgressFixed]);
 
   // Check section completion
   const isStep1Complete = hasSelectedServices;
@@ -398,7 +395,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
       {/* Fixed Progress Bar (appears when scrolled within form section) */}
       {hasFormInteraction && isProgressFixed && (
-        <div className={`quote-progress quote-progress-fixed ${isProgressHiding ? 'quote-progress-hiding' : 'quote-progress-showing'}`}>
+        <div className="quote-progress quote-progress-fixed quote-progress-showing">
           {renderProgressContent()}
         </div>
       )}
