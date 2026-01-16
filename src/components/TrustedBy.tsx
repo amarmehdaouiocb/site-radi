@@ -43,7 +43,7 @@ function PartnerLogo({ partner, index }: { partner: Partner; index: number }) {
 
 export default function TrustedBy() {
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-[#0a0a0a] via-[#111111] to-[#0a0a0a] overflow-hidden">
+    <section className="gold-trusted-by relative py-20 px-6 overflow-hidden">
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
 
@@ -68,10 +68,10 @@ export default function TrustedBy() {
         {/* Marquee */}
         <div className="relative w-full overflow-hidden">
           {/* Left fade */}
-          <div className="absolute top-0 bottom-0 left-0 w-[100px] z-10 pointer-events-none bg-gradient-to-r from-[#0a0a0a] to-transparent" />
+          <div className="gold-trusted-fade-left absolute top-0 bottom-0 left-0 w-[100px] z-10 pointer-events-none" />
 
           {/* Right fade */}
-          <div className="absolute top-0 bottom-0 right-0 w-[100px] z-10 pointer-events-none bg-gradient-to-l from-[#0a0a0a] to-transparent" />
+          <div className="gold-trusted-fade-right absolute top-0 bottom-0 right-0 w-[100px] z-10 pointer-events-none" />
 
           {/* Track - deux sets identiques pour boucle infinie */}
           <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
@@ -91,7 +91,7 @@ export default function TrustedBy() {
         {/* Bottom accent */}
         <div className="flex items-center justify-center gap-4 mt-12">
           <span className="text-[#d4af37] text-xs opacity-60">◆</span>
-          <span className="font-cormorant text-sm italic text-white/40 tracking-wider">
+          <span className="gold-trusted-subtitle font-cormorant text-sm italic tracking-wider">
             Nos fournisseurs partenaires
           </span>
           <span className="text-[#d4af37] text-xs opacity-60">◆</span>

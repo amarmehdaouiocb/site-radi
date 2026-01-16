@@ -156,6 +156,7 @@ export const SERVICES = [
       "Spécialistes de la pose de carrelage, nous intervenons pour tous vos projets de revêtement sol et mur. Carrelage, faïence, mosaïque : nous garantissons une pose parfaite et durable.",
     icon: "Grid3X3",
     image: IMAGES.services.carrelage,
+    popular: true,
     features: [
       "Pose de carrelage sol intérieur",
       "Pose de carrelage sol extérieur",
@@ -194,7 +195,6 @@ export const SERVICES = [
       "Nous réalisons la construction et la rénovation de piscines en béton ou coque. De la conception à la finition, nous vous accompagnons pour créer votre espace aquatique.",
     icon: "Waves",
     image: "/portfolio/piscine-apres-01.jpg",
-    popular: true,
     features: [
       "Construction piscine béton",
       "Construction piscine coque",

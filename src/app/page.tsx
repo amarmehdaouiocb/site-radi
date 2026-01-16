@@ -22,6 +22,7 @@ import CurrencyEuroIcon from "@/components/ui/currency-euro-icon";
 // Phosphor fallback for icons not in Its Hover
 import { Ruler, Calendar } from "@phosphor-icons/react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS, HERO_GALLERY } from "@/lib/constants";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Alt tags descriptifs pour les images du marquee hero
 const HERO_GALLERY_ALTS = [
@@ -132,6 +133,7 @@ export default function HomePage() {
             <PhoneVolume size={16} />
             <span>{SITE_CONFIG.phone}</span>
           </a>
+          <ThemeToggle />
           <div className="gold-header-cta-group">
             <a
               href="#contact"
@@ -550,7 +552,7 @@ export default function HomePage() {
                 Parlons de Votre <span className="gold-text-gradient">Projet</span>
               </h2>
               <p className="gold-contact-desc" style={{ maxWidth: "600px", margin: "0 auto" }}>
-                Qualifiez votre besoin en quelques clics et recevez un devis personnalise sous 24 heures.
+                Qualifiez votre besoin en quelques clics et recevez un devis personnalisé sous 24 heures.
               </p>
             </div>
 
