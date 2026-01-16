@@ -291,19 +291,25 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     }
   }, [hasFormInteraction, isProgressFixed, isProgressHiding]);
 
-  // Handle sticky visibility: hide when leaving the form section
+  // Handle sticky visibility: hide when leaving the form section, re-show when returning
   useEffect(() => {
-    if (!hasFormInteraction || !isProgressFixed) return;
+    if (!hasFormInteraction) return;
 
     const handleScroll = () => {
-      if (!formRef.current) return;
+      if (!formRef.current || isProgressHiding) return;
 
       const formRect = formRef.current.getBoundingClientRect();
 
-      // Check if we're within the form section
-      const isWithinFormSection = formRect.top < window.innerHeight && formRect.bottom > 100;
+      // Use different thresholds for entering vs leaving (hysteresis) to avoid oscillation
+      // Hide when: scrolled above form (form top > 200) OR scrolled below form (form bottom < 0)
+      const isAboveForm = formRect.top > 200;
+      const isBelowForm = formRect.bottom < 0;
+      const isOutsideForm = isAboveForm || isBelowForm;
 
-      if (!isWithinFormSection && !isProgressHiding) {
+      // Show when: form is clearly in view (top < 150 AND bottom > 100)
+      const isInsideForm = formRect.top < 150 && formRect.bottom > 100;
+
+      if (isProgressFixed && isOutsideForm) {
         // Leaving form section: hide sticky, show original
         setIsProgressHiding(true);
         setTimeout(() => {
@@ -311,26 +317,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           setIsProgressHiding(false);
           setIsOriginalHidden(false);
         }, 300);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasFormInteraction, isProgressFixed, isProgressHiding]);
-
-  // Re-show sticky when scrolling back into form section (after it was hidden)
-  useEffect(() => {
-    if (!hasFormInteraction || isProgressFixed || isProgressHiding) return;
-
-    const handleScroll = () => {
-      if (!formRef.current) return;
-
-      const formRect = formRef.current.getBoundingClientRect();
-
-      // Check if we're back within the form section
-      const isWithinFormSection = formRect.top < window.innerHeight && formRect.bottom > 100;
-
-      if (isWithinFormSection) {
+      } else if (!isProgressFixed && isInsideForm) {
         // Back in form section: show sticky, hide original
         setIsOriginalHidden(true);
         setIsProgressFixed(true);
