@@ -1,25 +1,12 @@
 /**
  * Générateur de devis Word pour RA Bâtiment
- * Utilise la librairie docx pour créer des documents .docx
+ * Utilise le template existant et remplace les placeholders
  */
 
-import {
-  Document,
-  Packer,
-  Paragraph,
-  Table,
-  TableRow,
-  TableCell,
-  TextRun,
-  AlignmentType,
-  BorderStyle,
-  WidthType,
-  VerticalAlign,
-  TableLayoutType,
-  convertInchesToTwip,
-  PageOrientation,
-} from "docx";
-import { SITE_CONFIG, SERVICES, ROOM_OPTIONS } from "./constants";
+import { promises as fs } from "fs";
+import path from "path";
+import JSZip from "jszip";
+import { SERVICES, ROOM_OPTIONS } from "./constants";
 
 // ============================================================================
 // TYPES
@@ -102,11 +89,6 @@ export function formDataToLineItems(
     }
   }
 
-  // Ajouter des lignes vides supplémentaires pour compléter manuellement
-  while (items.length < 8) {
-    items.push({ description: "" });
-  }
-
   return items;
 }
 
@@ -127,787 +109,173 @@ export function buildProjectDescription(data: QuoteFormData): string {
 }
 
 // ============================================================================
-// STYLES CONSTANTS
+// TEMPLATE MANIPULATION
 // ============================================================================
 
-const COLORS = {
-  gold: "D4AF37",
-  goldDark: "B8972E",
-  black: "1A1A1A",
-  gray: "666666",
-  lightGray: "E0E0E0",
-  white: "FFFFFF",
-};
-
-const FONT = {
-  title: "Cambria",
-  body: "Calibri",
-};
-
-// ============================================================================
-// DOCUMENT BUILDING FUNCTIONS
-// ============================================================================
-
-function buildHeader(quoteNumber: string, date: string): Paragraph[] {
-  return [
-    // Nom de l'entreprise
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: SITE_CONFIG.name,
-          bold: true,
-          size: 36,
-          font: FONT.title,
-          color: COLORS.black,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    // Tagline
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: "Excellence & Prestige",
-          italics: true,
-          size: 20,
-          font: FONT.body,
-          color: COLORS.gold,
-        }),
-      ],
-      spacing: { after: 200 },
-    }),
-    // Coordonnées
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${SITE_CONFIG.address} | Tél : ${SITE_CONFIG.phone}`,
-          size: 18,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-      spacing: { after: 50 },
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `Email : ${SITE_CONFIG.email} | SIRET : ${SITE_CONFIG.siret}`,
-          size: 18,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-      spacing: { after: 400 },
-    }),
-    // Titre DEVIS
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: "DEVIS",
-          bold: true,
-          size: 48,
-          font: FONT.title,
-          color: COLORS.gold,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    // Numéro et date
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: `N° ${quoteNumber}`,
-          bold: true,
-          size: 20,
-          font: FONT.body,
-          color: COLORS.black,
-        }),
-      ],
-      spacing: { after: 50 },
-    }),
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: `Date : ${date}`,
-          size: 20,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-      spacing: { after: 50 },
-    }),
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: "Validité : 30 jours",
-          size: 20,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-      spacing: { after: 400 },
-    }),
-  ];
+/**
+ * Échappe les caractères spéciaux XML
+ */
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
 }
 
-function buildClientSection(data: QuoteDocumentData): (Paragraph | Table)[] {
-  const borderStyle = {
-    style: BorderStyle.SINGLE,
-    size: 1,
-    color: COLORS.lightGray,
-  };
+/**
+ * Remplace un placeholder dans le XML en préservant le style
+ * Le placeholder peut être fragmenté sur plusieurs <w:t> elements
+ */
+function replacePlaceholder(
+  xml: string,
+  placeholder: string,
+  value: string
+): string {
+  const escapedValue = escapeXml(value);
 
-  const clientTable = new Table({
-    width: { size: 100, type: WidthType.PERCENTAGE },
-    layout: TableLayoutType.FIXED,
-    rows: [
-      // Header row
-      new TableRow({
-        children: [
-          new TableCell({
-            width: { size: 50, type: WidthType.PERCENTAGE },
-            shading: { fill: COLORS.gold },
-            children: [
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: "ÉMETTEUR",
-                    bold: true,
-                    size: 18,
-                    font: FONT.body,
-                    color: COLORS.white,
-                  }),
-                ],
-                spacing: { before: 100, after: 100 },
-              }),
-            ],
-            borders: {
-              top: borderStyle,
-              bottom: borderStyle,
-              left: borderStyle,
-              right: borderStyle,
-            },
-          }),
-          new TableCell({
-            width: { size: 50, type: WidthType.PERCENTAGE },
-            shading: { fill: COLORS.gold },
-            children: [
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: "CLIENT",
-                    bold: true,
-                    size: 18,
-                    font: FONT.body,
-                    color: COLORS.white,
-                  }),
-                ],
-                spacing: { before: 100, after: 100 },
-              }),
-            ],
-            borders: {
-              top: borderStyle,
-              bottom: borderStyle,
-              left: borderStyle,
-              right: borderStyle,
-            },
-          }),
-        ],
-      }),
-      // Content row
-      new TableRow({
-        children: [
-          new TableCell({
-            width: { size: 50, type: WidthType.PERCENTAGE },
-            children: [
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: SITE_CONFIG.name,
-                    bold: true,
-                    size: 20,
-                    font: FONT.body,
-                  }),
-                ],
-                spacing: { before: 100 },
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: SITE_CONFIG.address,
-                    size: 18,
-                    font: FONT.body,
-                    color: COLORS.gray,
-                  }),
-                ],
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: `Tél : ${SITE_CONFIG.phone}`,
-                    size: 18,
-                    font: FONT.body,
-                    color: COLORS.gray,
-                  }),
-                ],
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: `SIRET : ${SITE_CONFIG.siret}`,
-                    size: 18,
-                    font: FONT.body,
-                    color: COLORS.gray,
-                  }),
-                ],
-                spacing: { after: 100 },
-              }),
-            ],
-            borders: {
-              top: borderStyle,
-              bottom: borderStyle,
-              left: borderStyle,
-              right: borderStyle,
-            },
-          }),
-          new TableCell({
-            width: { size: 50, type: WidthType.PERCENTAGE },
-            children: [
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: data.clientName || "[Nom du client]",
-                    bold: true,
-                    size: 20,
-                    font: FONT.body,
-                  }),
-                ],
-                spacing: { before: 100 },
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: data.clientCity || "[Ville]",
-                    size: 18,
-                    font: FONT.body,
-                    color: data.clientCity ? COLORS.black : COLORS.gray,
-                  }),
-                ],
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: data.clientPhone
-                      ? `Tél : ${data.clientPhone}`
-                      : "[Téléphone]",
-                    size: 18,
-                    font: FONT.body,
-                    color: data.clientPhone ? COLORS.black : COLORS.gray,
-                  }),
-                ],
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: data.clientEmail
-                      ? `Email : ${data.clientEmail}`
-                      : "[Email]",
-                    size: 18,
-                    font: FONT.body,
-                    color: data.clientEmail ? COLORS.black : COLORS.gray,
-                  }),
-                ],
-                spacing: { after: 100 },
-              }),
-            ],
-            borders: {
-              top: borderStyle,
-              bottom: borderStyle,
-              left: borderStyle,
-              right: borderStyle,
-            },
-          }),
-        ],
-      }),
-    ],
-  });
+  // Essayer d'abord un remplacement simple
+  if (xml.includes(placeholder)) {
+    return xml.replace(new RegExp(escapeRegex(placeholder), "g"), escapedValue);
+  }
 
-  return [
-    clientTable,
-    new Paragraph({ spacing: { after: 300 } }),
-  ];
+  return xml;
 }
 
-function buildObjectSection(projectDescription: string): Paragraph[] {
-  return [
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: "OBJET DU DEVIS",
-          bold: true,
-          size: 22,
-          font: FONT.title,
-          color: COLORS.goldDark,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: projectDescription,
-          size: 20,
-          font: FONT.body,
-        }),
-      ],
-      spacing: { after: 300 },
-    }),
-  ];
+/**
+ * Échappe les caractères spéciaux pour RegExp
+ */
+function escapeRegex(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function buildItemsTable(lineItems: Array<{ description: string }>): Table {
-  const borderStyle = {
-    style: BorderStyle.SINGLE,
-    size: 1,
-    color: COLORS.lightGray,
-  };
+/**
+ * Génère une ligne de prestation pour le tableau (copie du format template)
+ */
+function generatePrestationRow(description: string, isEven: boolean): string {
+  const bgColor = isEven ? "FFFFFF" : "FAFAFA";
+  const escapedDesc = escapeXml(description);
+  const hasContent = description.trim().length > 0;
 
-  const headerRow = new TableRow({
-    children: [
-      new TableCell({
-        width: { size: 40, type: WidthType.PERCENTAGE },
-        shading: { fill: COLORS.gold },
-        verticalAlign: VerticalAlign.CENTER,
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Description",
-                bold: true,
-                size: 18,
-                font: FONT.body,
-                color: COLORS.white,
-              }),
-            ],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 80, after: 80 },
-          }),
-        ],
-        borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-      }),
-      new TableCell({
-        width: { size: 10, type: WidthType.PERCENTAGE },
-        shading: { fill: COLORS.gold },
-        verticalAlign: VerticalAlign.CENTER,
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Qté",
-                bold: true,
-                size: 18,
-                font: FONT.body,
-                color: COLORS.white,
-              }),
-            ],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 80, after: 80 },
-          }),
-        ],
-        borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-      }),
-      new TableCell({
-        width: { size: 10, type: WidthType.PERCENTAGE },
-        shading: { fill: COLORS.gold },
-        verticalAlign: VerticalAlign.CENTER,
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Unité",
-                bold: true,
-                size: 18,
-                font: FONT.body,
-                color: COLORS.white,
-              }),
-            ],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 80, after: 80 },
-          }),
-        ],
-        borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-      }),
-      new TableCell({
-        width: { size: 15, type: WidthType.PERCENTAGE },
-        shading: { fill: COLORS.gold },
-        verticalAlign: VerticalAlign.CENTER,
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "P.U. HT",
-                bold: true,
-                size: 18,
-                font: FONT.body,
-                color: COLORS.white,
-              }),
-            ],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 80, after: 80 },
-          }),
-        ],
-        borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-      }),
-      new TableCell({
-        width: { size: 10, type: WidthType.PERCENTAGE },
-        shading: { fill: COLORS.gold },
-        verticalAlign: VerticalAlign.CENTER,
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "TVA",
-                bold: true,
-                size: 18,
-                font: FONT.body,
-                color: COLORS.white,
-              }),
-            ],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 80, after: 80 },
-          }),
-        ],
-        borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-      }),
-      new TableCell({
-        width: { size: 15, type: WidthType.PERCENTAGE },
-        shading: { fill: COLORS.gold },
-        verticalAlign: VerticalAlign.CENTER,
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Total HT",
-                bold: true,
-                size: 18,
-                font: FONT.body,
-                color: COLORS.white,
-              }),
-            ],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 80, after: 80 },
-          }),
-        ],
-        borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-      }),
-    ],
-  });
+  // Style pour les cellules avec contenu vs placeholder
+  const textColor = hasContent ? "1A1A1A" : "666666";
+  const isItalic = !hasContent;
+  const rPrStyle = isItalic
+    ? `<w:rPr><w:i/><w:iCs/><w:color w:val="${textColor}"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr>`
+    : `<w:rPr><w:color w:val="${textColor}"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr>`;
 
-  const dataRows = lineItems.map(
-    (item, index) =>
-      new TableRow({
-        children: [
-          new TableCell({
-            width: { size: 40, type: WidthType.PERCENTAGE },
-            shading: { fill: index % 2 === 0 ? COLORS.white : "FAFAFA" },
-            children: [
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: item.description || "",
-                    size: 18,
-                    font: FONT.body,
-                    color: item.description ? COLORS.black : COLORS.gray,
-                  }),
-                ],
-                spacing: { before: 60, after: 60 },
-              }),
-            ],
-            borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-          }),
-          new TableCell({
-            width: { size: 10, type: WidthType.PERCENTAGE },
-            shading: { fill: index % 2 === 0 ? COLORS.white : "FAFAFA" },
-            children: [
-              new Paragraph({
-                children: [new TextRun({ text: "", size: 18, font: FONT.body })],
-                alignment: AlignmentType.CENTER,
-                spacing: { before: 60, after: 60 },
-              }),
-            ],
-            borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-          }),
-          new TableCell({
-            width: { size: 10, type: WidthType.PERCENTAGE },
-            shading: { fill: index % 2 === 0 ? COLORS.white : "FAFAFA" },
-            children: [
-              new Paragraph({
-                children: [new TextRun({ text: "", size: 18, font: FONT.body })],
-                alignment: AlignmentType.CENTER,
-                spacing: { before: 60, after: 60 },
-              }),
-            ],
-            borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-          }),
-          new TableCell({
-            width: { size: 15, type: WidthType.PERCENTAGE },
-            shading: { fill: index % 2 === 0 ? COLORS.white : "FAFAFA" },
-            children: [
-              new Paragraph({
-                children: [new TextRun({ text: "", size: 18, font: FONT.body })],
-                alignment: AlignmentType.RIGHT,
-                spacing: { before: 60, after: 60 },
-              }),
-            ],
-            borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-          }),
-          new TableCell({
-            width: { size: 10, type: WidthType.PERCENTAGE },
-            shading: { fill: index % 2 === 0 ? COLORS.white : "FAFAFA" },
-            children: [
-              new Paragraph({
-                children: [new TextRun({ text: "", size: 18, font: FONT.body })],
-                alignment: AlignmentType.CENTER,
-                spacing: { before: 60, after: 60 },
-              }),
-            ],
-            borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-          }),
-          new TableCell({
-            width: { size: 15, type: WidthType.PERCENTAGE },
-            shading: { fill: index % 2 === 0 ? COLORS.white : "FAFAFA" },
-            children: [
-              new Paragraph({
-                children: [new TextRun({ text: "", size: 18, font: FONT.body })],
-                alignment: AlignmentType.RIGHT,
-                spacing: { before: 60, after: 60 },
-              }),
-            ],
-            borders: { top: borderStyle, bottom: borderStyle, left: borderStyle, right: borderStyle },
-          }),
-        ],
-      })
-  );
-
-  return new Table({
-    width: { size: 100, type: WidthType.PERCENTAGE },
-    layout: TableLayoutType.FIXED,
-    rows: [headerRow, ...dataRows],
-  });
+  return `<w:tr><w:tc><w:tcPr><w:tcW w:type="dxa" w:w="4000"/><w:tcBorders><w:top w:val="single" w:color="E0E0E0" w:sz="1"/><w:left w:val="single" w:color="E0E0E0" w:sz="1"/><w:bottom w:val="single" w:color="E0E0E0" w:sz="1"/><w:right w:val="single" w:color="E0E0E0" w:sz="1"/></w:tcBorders><w:shd w:fill="${bgColor}" w:val="clear"/></w:tcPr><w:p><w:r>${rPrStyle}<w:t xml:space="preserve">${escapedDesc || ""}</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:type="dxa" w:w="1000"/><w:tcBorders><w:top w:val="single" w:color="E0E0E0" w:sz="1"/><w:left w:val="single" w:color="E0E0E0" w:sz="1"/><w:bottom w:val="single" w:color="E0E0E0" w:sz="1"/><w:right w:val="single" w:color="E0E0E0" w:sz="1"/></w:tcBorders><w:shd w:fill="${bgColor}" w:val="clear"/></w:tcPr><w:p><w:pPr><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:color w:val="1A1A1A"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr><w:t xml:space="preserve"></w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:type="dxa" w:w="1000"/><w:tcBorders><w:top w:val="single" w:color="E0E0E0" w:sz="1"/><w:left w:val="single" w:color="E0E0E0" w:sz="1"/><w:bottom w:val="single" w:color="E0E0E0" w:sz="1"/><w:right w:val="single" w:color="E0E0E0" w:sz="1"/></w:tcBorders><w:shd w:fill="${bgColor}" w:val="clear"/></w:tcPr><w:p><w:pPr><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:color w:val="1A1A1A"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr><w:t xml:space="preserve"></w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:type="dxa" w:w="1500"/><w:tcBorders><w:top w:val="single" w:color="E0E0E0" w:sz="1"/><w:left w:val="single" w:color="E0E0E0" w:sz="1"/><w:bottom w:val="single" w:color="E0E0E0" w:sz="1"/><w:right w:val="single" w:color="E0E0E0" w:sz="1"/></w:tcBorders><w:shd w:fill="${bgColor}" w:val="clear"/></w:tcPr><w:p><w:pPr><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:color w:val="1A1A1A"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr><w:t xml:space="preserve"></w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:type="dxa" w:w="1000"/><w:tcBorders><w:top w:val="single" w:color="E0E0E0" w:sz="1"/><w:left w:val="single" w:color="E0E0E0" w:sz="1"/><w:bottom w:val="single" w:color="E0E0E0" w:sz="1"/><w:right w:val="single" w:color="E0E0E0" w:sz="1"/></w:tcBorders><w:shd w:fill="${bgColor}" w:val="clear"/></w:tcPr><w:p><w:pPr><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:color w:val="1A1A1A"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr><w:t xml:space="preserve">10%</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:type="dxa" w:w="1500"/><w:tcBorders><w:top w:val="single" w:color="E0E0E0" w:sz="1"/><w:left w:val="single" w:color="E0E0E0" w:sz="1"/><w:bottom w:val="single" w:color="E0E0E0" w:sz="1"/><w:right w:val="single" w:color="E0E0E0" w:sz="1"/></w:tcBorders><w:shd w:fill="${bgColor}" w:val="clear"/></w:tcPr><w:p><w:pPr><w:jc w:val="right"/></w:pPr><w:r><w:rPr><w:b/><w:bCs/><w:color w:val="1A1A1A"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr><w:t xml:space="preserve"></w:t></w:r></w:p></w:tc></w:tr>`;
 }
 
-function buildTotalsSection(): Paragraph[] {
-  return [
-    new Paragraph({ spacing: { after: 200 } }),
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: "Total HT : _________________ €",
-          size: 20,
-          font: FONT.body,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: "TVA 10% (travaux) : _________________ €",
-          size: 20,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: "TVA 20% (fournitures) : _________________ €",
-          size: 20,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    new Paragraph({
-      alignment: AlignmentType.RIGHT,
-      children: [
-        new TextRun({
-          text: "TOTAL TTC : _________________ €",
-          bold: true,
-          size: 24,
-          font: FONT.title,
-          color: COLORS.goldDark,
-        }),
-      ],
-      spacing: { after: 400 },
-    }),
-  ];
-}
+/**
+ * Remplace le tableau des prestations par les lignes dynamiques
+ */
+function replacePrestationsTable(xml: string, lineItems: Array<{ description: string }>): string {
+  // Trouver le début du tableau des prestations (après le header avec DESCRIPTION)
+  // Note: [\s\S]*? est équivalent à .*? avec le flag 's' (dotAll)
+  const headerPattern = /<w:tr><w:trPr><w:tblHeader\/><\/w:trPr><w:tc>[\s\S]*?DESCRIPTION[\s\S]*?<\/w:tr>/;
+  const headerMatch = xml.match(headerPattern);
 
-function buildConditions(): Paragraph[] {
-  const conditions = [
-    "Validité du devis : 30 jours à compter de la date d'émission",
-    "Acompte à la commande : 30% du montant TTC",
-    "Solde à la réception des travaux",
-    "Délai d'exécution : à définir selon planning",
-    "TVA applicable : 10% sur les travaux de rénovation (logement > 2 ans), 20% sur les fournitures",
-    "Garantie décennale incluse pour les travaux de gros œuvre",
-  ];
+  if (!headerMatch) {
+    console.warn("Could not find prestations table header");
+    return xml;
+  }
 
-  return [
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: "CONDITIONS",
-          bold: true,
-          size: 22,
-          font: FONT.title,
-          color: COLORS.goldDark,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    ...conditions.map(
-      (condition) =>
-        new Paragraph({
-          children: [
-            new TextRun({
-              text: `• ${condition}`,
-              size: 18,
-              font: FONT.body,
-              color: COLORS.gray,
-            }),
-          ],
-          spacing: { after: 50 },
-        })
-    ),
-    new Paragraph({ spacing: { after: 300 } }),
-  ];
-}
+  // Trouver la fin du tableau (6 colonnes avec les prestations)
+  // Le tableau se termine avant le tableau des totaux
+  const tableStartIndex = xml.indexOf(headerMatch[0]);
 
-function buildSignatures(): Paragraph[] {
-  return [
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: "SIGNATURES",
-          bold: true,
-          size: 22,
-          font: FONT.title,
-          color: COLORS.goldDark,
-        }),
-      ],
-      spacing: { after: 200 },
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${SITE_CONFIG.name}                                                                          Bon pour accord - Client`,
-          size: 18,
-          font: FONT.body,
-          bold: true,
-        }),
-      ],
-      spacing: { after: 100 },
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: "Signature et cachet                                                                    Date et signature précédée de la mention",
-          size: 16,
-          font: FONT.body,
-          color: COLORS.gray,
-          italics: true,
-        }),
-      ],
-      spacing: { after: 50 },
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: "                                                                                                      \"Bon pour accord\"",
-          size: 16,
-          font: FONT.body,
-          color: COLORS.gray,
-          italics: true,
-        }),
-      ],
-      spacing: { after: 400 },
-    }),
-  ];
-}
+  // Chercher toutes les lignes <w:tr> après le header jusqu'au </w:tbl>
+  const afterHeader = xml.substring(tableStartIndex + headerMatch[0].length);
+  const tableEndMatch = afterHeader.match(/<\/w:tbl>/);
 
-function buildFooter(): Paragraph[] {
-  return [
-    new Paragraph({
-      alignment: AlignmentType.CENTER,
-      children: [
-        new TextRun({
-          text: `${SITE_CONFIG.name} — SIRET : ${SITE_CONFIG.siret}`,
-          size: 16,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-      spacing: { before: 200 },
-    }),
-    new Paragraph({
-      alignment: AlignmentType.CENTER,
-      children: [
-        new TextRun({
-          text: `${SITE_CONFIG.address} — Tél : ${SITE_CONFIG.phone} — Email : ${SITE_CONFIG.email}`,
-          size: 16,
-          font: FONT.body,
-          color: COLORS.gray,
-        }),
-      ],
-    }),
-  ];
+  if (!tableEndMatch) {
+    console.warn("Could not find end of prestations table");
+    return xml;
+  }
+
+  // Générer les nouvelles lignes
+  const minRows = 6; // Minimum de lignes à afficher
+  const items = [...lineItems];
+
+  // Compléter avec des lignes vides si nécessaire
+  while (items.length < minRows) {
+    items.push({ description: "" });
+  }
+
+  const newRows = items
+    .map((item, index) => generatePrestationRow(item.description, index % 2 === 0))
+    .join("");
+
+  // Reconstruire le XML
+  const beforeTable = xml.substring(0, tableStartIndex + headerMatch[0].length);
+  const afterTable = xml.substring(tableStartIndex + headerMatch[0].length + tableEndMatch.index!);
+
+  return beforeTable + newRows + afterTable;
 }
 
 // ============================================================================
 // MAIN GENERATOR FUNCTION
 // ============================================================================
 
+/**
+ * Génère un document de devis à partir du template existant
+ */
 export async function generateQuoteDocument(
   data: QuoteDocumentData
 ): Promise<Buffer> {
-  const doc = new Document({
-    sections: [
-      {
-        properties: {
-          page: {
-            margin: {
-              top: convertInchesToTwip(0.6),
-              bottom: convertInchesToTwip(0.6),
-              left: convertInchesToTwip(0.6),
-              right: convertInchesToTwip(0.6),
-            },
-          },
-        },
-        children: [
-          ...buildHeader(data.quoteNumber, data.date),
-          ...buildClientSection(data),
-          ...buildObjectSection(data.projectDescription),
-          buildItemsTable(data.lineItems),
-          ...buildTotalsSection(),
-          ...buildConditions(),
-          ...buildSignatures(),
-          ...buildFooter(),
-        ],
-      },
-    ],
+  // Chemin vers le template
+  const templatePath = path.join(process.cwd(), "public", "documents", "template-devis.docx");
+
+  // Lire le template
+  const templateBuffer = await fs.readFile(templatePath);
+
+  // Ouvrir le ZIP
+  const zip = await JSZip.loadAsync(templateBuffer);
+
+  // Lire le document.xml
+  const documentXmlFile = zip.file("word/document.xml");
+  if (!documentXmlFile) {
+    throw new Error("document.xml not found in template");
+  }
+
+  let documentXml = await documentXmlFile.async("string");
+
+  // === REMPLACEMENTS DES PLACEHOLDERS ===
+
+  // Numéro de devis
+  documentXml = replacePlaceholder(documentXml, "DEV-2025-001", data.quoteNumber);
+
+  // Date
+  documentXml = replacePlaceholder(documentXml, "__/__/____", data.date);
+
+  // Infos client
+  documentXml = replacePlaceholder(documentXml, "[Nom du client]", data.clientName || "");
+  documentXml = replacePlaceholder(documentXml, "[Adresse]", ""); // Pas d'adresse dans le formulaire
+  documentXml = replacePlaceholder(documentXml, "[Code postal, Ville]", data.clientCity || "");
+  documentXml = replacePlaceholder(documentXml, "[Téléphone]", data.clientPhone || "");
+  documentXml = replacePlaceholder(documentXml, "[Email]", data.clientEmail || "");
+
+  // Objet du devis
+  documentXml = replacePlaceholder(
+    documentXml,
+    "[Description détaillée du projet : travaux de rénovation, maçonnerie, plomberie, etc.]",
+    data.projectDescription
+  );
+
+  // Remplacer le tableau des prestations
+  documentXml = replacePrestationsTable(documentXml, data.lineItems);
+
+  // Mettre à jour le document.xml dans le ZIP
+  zip.file("word/document.xml", documentXml);
+
+  // Générer le buffer final
+  const outputBuffer = await zip.generateAsync({
+    type: "nodebuffer",
+    compression: "DEFLATE",
+    compressionOptions: { level: 9 },
   });
 
-  return Buffer.from(await Packer.toBuffer(doc));
+  return outputBuffer;
 }
