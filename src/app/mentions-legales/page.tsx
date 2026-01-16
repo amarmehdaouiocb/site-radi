@@ -1,6 +1,13 @@
 "use client";
 
-import { ArrowLeft, Buildings, Phone, Envelope, MapPin, FileText } from "@phosphor-icons/react";
+// Its Hover animated icons
+import ArrowNarrowLeftIcon from "@/components/ui/arrow-narrow-left-icon";
+import PhoneVolume from "@/components/ui/phone-volume";
+import MailFilledIcon from "@/components/ui/mail-filled-icon";
+import GlobeIcon from "@/components/ui/globe-icon";
+import FileDescriptionIcon from "@/components/ui/file-description-icon";
+// Phosphor fallback
+import { Buildings } from "@phosphor-icons/react";
 import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 import "../gold.css";
@@ -23,7 +30,7 @@ export default function MentionsLegales() {
           </a>
 
           <a href="/" className="gold-cta-button">
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowNarrowLeftIcon size={16} />
             <span>Retour à l&apos;accueil</span>
           </a>
         </div>
@@ -118,7 +125,7 @@ export default function MentionsLegales() {
                   alignItems: "center",
                   justifyContent: "center"
                 }}>
-                  <FileText className="w-5 h-5" style={{ color: "var(--gold-bg)" }} />
+                  <FileDescriptionIcon size={20} color="var(--gold-bg)" />
                 </div>
                 <h2 style={{
                   fontFamily: "var(--font-display)",
@@ -141,7 +148,7 @@ export default function MentionsLegales() {
                     transition: "color 0.3s"
                   }}
                 >
-                  <Phone className="w-4 h-4" style={{ color: "var(--gold-primary)" }} />
+                  <PhoneVolume size={16} color="var(--gold-primary)" />
                   <span>{SITE_CONFIG.phone}</span>
                 </a>
 
@@ -156,12 +163,12 @@ export default function MentionsLegales() {
                     transition: "color 0.3s"
                   }}
                 >
-                  <Envelope className="w-4 h-4" style={{ color: "var(--gold-primary)" }} />
+                  <MailFilledIcon size={16} color="var(--gold-primary)" />
                   <span>{SITE_CONFIG.email}</span>
                 </a>
 
                 <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", color: "var(--gold-text)" }}>
-                  <MapPin className="w-4 h-4" style={{ color: "var(--gold-primary)", marginTop: "2px" }} />
+                  <GlobeIcon size={16} color="var(--gold-primary)" className="mt-0.5" />
                   <span>{SITE_CONFIG.address}</span>
                 </div>
               </div>

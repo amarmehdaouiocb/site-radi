@@ -4,24 +4,23 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Phone,
-  Envelope,
-  MapPin,
-  ArrowRight,
-  Sparkle,
-  Shield,
-  Clock,
-  Trophy,
-  CaretDown,
-  CaretUp,
-  List,
-  X,
-  Ruler,
-  Calendar,
-  CurrencyEur,
-  FileText,
-} from "@phosphor-icons/react";
+// Its Hover animated icons
+import PhoneVolume from "@/components/ui/phone-volume";
+import MailFilledIcon from "@/components/ui/mail-filled-icon";
+import ArrowNarrowRightIcon from "@/components/ui/arrow-narrow-right-icon";
+import ArrowNarrowUpIcon from "@/components/ui/arrow-narrow-up-icon";
+import SparklesIcon from "@/components/ui/sparkles-icon";
+import ShieldCheck from "@/components/ui/shield-check";
+import ClockIcon from "@/components/ui/clock-icon";
+import StarIcon from "@/components/ui/star-icon";
+import DownChevron from "@/components/ui/down-chevron";
+import ToggleIcon from "@/components/ui/toggle-icon";
+import XIcon from "@/components/ui/x-icon";
+import FileDescriptionIcon from "@/components/ui/file-description-icon";
+import GlobeIcon from "@/components/ui/globe-icon";
+import CurrencyEuroIcon from "@/components/ui/currency-euro-icon";
+// Phosphor fallback for icons not in Its Hover
+import { Ruler, Calendar } from "@phosphor-icons/react";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS, HERO_GALLERY } from "@/lib/constants";
 
 // Alt tags descriptifs pour les images du marquee hero
@@ -130,7 +129,7 @@ export default function HomePage() {
             className="gold-header-phone"
             onClick={() => trackPhoneClick("header")}
           >
-            <Phone className="w-4 h-4" />
+            <PhoneVolume size={16} />
             <span>{SITE_CONFIG.phone}</span>
           </a>
           <div className="gold-header-cta-group">
@@ -140,7 +139,7 @@ export default function HomePage() {
               onClick={() => trackCtaClick("devis_gratuit", "header")}
             >
               <span>Devis Gratuit 24h</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowNarrowRightIcon size={16} />
             </a>
             <span className="gold-header-badge">Réponse garantie</span>
           </div>
@@ -152,7 +151,7 @@ export default function HomePage() {
             aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <List className="w-6 h-6" />}
+            {mobileMenuOpen ? <XIcon size={24} /> : <ToggleIcon size={24} />}
           </button>
         </div>
 
@@ -171,7 +170,7 @@ export default function HomePage() {
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
               <div className="gold-mobile-nav-ctas">
                 <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-mobile-call">
-                  <Phone className="w-5 h-5" />
+                  <PhoneVolume size={20} />
                   <span>Appeler</span>
                 </a>
                 <a href="#contact" className="gold-mobile-quote" onClick={() => setMobileMenuOpen(false)}>
@@ -203,7 +202,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.2 }}
             className="gold-hero-badge"
           >
-            <Trophy className="w-4 h-4" />
+            <StarIcon size={16} />
             <span>Artisan d&apos;Excellence depuis 15 ans</span>
           </motion.div>
 
@@ -241,14 +240,14 @@ export default function HomePage() {
               onClick={() => trackCtaClick("demander_devis", "hero")}
             >
               <span>Demander un Devis</span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowNarrowRightIcon size={20} />
             </a>
             <a
               href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
               className="gold-btn-secondary"
               onClick={() => trackPhoneClick("hero")}
             >
-              <Phone className="w-5 h-5" />
+              <PhoneVolume size={20} />
               <span>{SITE_CONFIG.phone}</span>
             </a>
           </motion.div>
@@ -279,7 +278,7 @@ export default function HomePage() {
             className="gold-hero-scroll"
           >
             <span>Découvrir</span>
-            <CaretDown className="w-5 h-5 animate-bounce" />
+            <DownChevron size={20} className="animate-bounce" />
           </motion.div>
         </div>
 
@@ -428,7 +427,7 @@ export default function HomePage() {
                         {item.duration} sem.
                       </span>
                       <span className="gold-portfolio-badge gold-portfolio-badge-budget">
-                        <CurrencyEur />
+                        <CurrencyEuroIcon size={16} />
                         {formatBudget(item.budgetRange.min, item.budgetRange.max)}
                       </span>
                     </div>
@@ -441,7 +440,7 @@ export default function HomePage() {
           <div className="gold-portfolio-cta">
             <a href="#contact" className="gold-btn-secondary">
               <span>Demander un devis pour votre projet</span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowNarrowRightIcon size={20} />
             </a>
           </div>
         </div>
@@ -451,22 +450,42 @@ export default function HomePage() {
       <section className="gold-trust">
         <div className="gold-container">
           <div className="gold-trust-grid">
-            {[
-              { icon: Shield, label: "Garantie Décennale", desc: "Protection totale" },
-              { icon: Clock, label: "Devis Gratuit", desc: "Sans engagement" },
-              { icon: Trophy, label: "Assurance RC Pro", desc: "Couverture complète" },
-              { icon: Sparkle, label: "Réponse 24h", desc: "Réactivité garantie" },
-            ].map((item) => (
-              <div key={item.label} className="gold-trust-item">
-                <div className="gold-trust-icon">
-                  <item.icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="gold-trust-label">{item.label}</span>
-                  <span className="gold-trust-desc">{item.desc}</span>
-                </div>
+            <div className="gold-trust-item">
+              <div className="gold-trust-icon">
+                <ShieldCheck size={24} />
               </div>
-            ))}
+              <div>
+                <span className="gold-trust-label">Garantie Décennale</span>
+                <span className="gold-trust-desc">Protection totale</span>
+              </div>
+            </div>
+            <div className="gold-trust-item">
+              <div className="gold-trust-icon">
+                <ClockIcon size={24} />
+              </div>
+              <div>
+                <span className="gold-trust-label">Devis Gratuit</span>
+                <span className="gold-trust-desc">Sans engagement</span>
+              </div>
+            </div>
+            <div className="gold-trust-item">
+              <div className="gold-trust-icon">
+                <StarIcon size={24} />
+              </div>
+              <div>
+                <span className="gold-trust-label">Assurance RC Pro</span>
+                <span className="gold-trust-desc">Couverture complète</span>
+              </div>
+            </div>
+            <div className="gold-trust-item">
+              <div className="gold-trust-icon">
+                <SparklesIcon size={24} />
+              </div>
+              <div>
+                <span className="gold-trust-label">Réponse 24h</span>
+                <span className="gold-trust-desc">Réactivité garantie</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -495,7 +514,7 @@ export default function HomePage() {
               >
                 <div className="gold-testimonial-stars">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Sparkle key={i} className="w-4 h-4" />
+                    <SparklesIcon key={i} size={16} />
                   ))}
                 </div>
                 <blockquote className="gold-testimonial-quote">
@@ -537,15 +556,15 @@ export default function HomePage() {
 
             <div className="gold-contact-details-row">
               <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-contact-item" onClick={() => trackPhoneClick("contact_section")}>
-                <Phone className="w-5 h-5" />
+                <PhoneVolume size={20} />
                 <span>{SITE_CONFIG.phone}</span>
               </a>
               <a href={`mailto:${SITE_CONFIG.email}`} className="gold-contact-item">
-                <Envelope className="w-5 h-5" />
+                <MailFilledIcon size={20} />
                 <span>{SITE_CONFIG.email}</span>
               </a>
               <div className="gold-contact-item">
-                <MapPin className="w-5 h-5" />
+                <GlobeIcon size={20} />
                 <span>{SITE_CONFIG.address}</span>
               </div>
             </div>
@@ -601,7 +620,7 @@ export default function HomePage() {
           className="gold-sticky-call"
           onClick={() => trackPhoneClick("sticky_mobile")}
         >
-          <Phone className="w-5 h-5" />
+          <PhoneVolume size={20} />
           <span>Appeler</span>
         </a>
         <a
@@ -610,7 +629,7 @@ export default function HomePage() {
           onClick={() => trackCtaClick("devis_gratuit", "sticky_mobile")}
         >
           <span>Devis gratuit</span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowNarrowRightIcon size={16} />
         </a>
       </div>
 
@@ -621,14 +640,14 @@ export default function HomePage() {
           className="gold-back-to-top"
           aria-label="Retour en haut"
         >
-          <CaretUp size={20} />
+          <ArrowNarrowUpIcon size={20} />
         </button>
         <a
           href="#contact"
           className="gold-sticky-cta-desktop"
           onClick={() => trackCtaClick("devis_gratuit", "sticky_desktop")}
         >
-          <FileText size={18} />
+          <FileDescriptionIcon size={18} />
           <span>Devis Gratuit</span>
         </a>
       </div>

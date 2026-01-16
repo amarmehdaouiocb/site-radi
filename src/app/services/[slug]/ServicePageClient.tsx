@@ -3,37 +3,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Phone,
-  Envelope,
-  MapPin,
-  ArrowRight,
-  ArrowLeft,
-  CheckCircle,
-  Shield,
-  Clock,
-  Trophy,
-  House,
-  Drop,
-  Lightning,
-  PaintBrush,
-  GridFour,
-  Tree,
-  Waves,
-  Wall,
-} from "@phosphor-icons/react";
+// Its Hover animated icons
+import HomeIcon from "@/components/ui/home-icon";
+import PaintIcon from "@/components/ui/paint-icon";
+import TreeIcon from "@/components/ui/tree-icon";
+import PhoneVolume from "@/components/ui/phone-volume";
+import MailFilledIcon from "@/components/ui/mail-filled-icon";
+import GlobeIcon from "@/components/ui/globe-icon";
+import ArrowNarrowRightIcon from "@/components/ui/arrow-narrow-right-icon";
+import ArrowNarrowLeftIcon from "@/components/ui/arrow-narrow-left-icon";
+import CheckedIcon from "@/components/ui/checked-icon";
+import ShieldCheck from "@/components/ui/shield-check";
+import ClockIcon from "@/components/ui/clock-icon";
+import StarIcon from "@/components/ui/star-icon";
+// Phosphor fallback for service icons not in Its Hover
+import { Drop, Lightning, GridFour, Waves, Wall } from "@phosphor-icons/react";
 import { SITE_CONFIG, SERVICES } from "@/lib/constants";
 import "../../gold.css";
 
-// Icon mapping
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Home: House,
+// Icon mapping (hybrid Its Hover + Phosphor)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const iconMap: Record<string, React.ComponentType<any>> = {
+  Home: HomeIcon,
   Brick: Wall,
   Droplets: Drop,
   Zap: Lightning,
-  Paintbrush: PaintBrush,
+  Paintbrush: PaintIcon,
   Grid3X3: GridFour,
-  TreePine: Tree,
+  TreePine: TreeIcon,
   Waves: Waves,
 };
 
@@ -56,7 +53,7 @@ interface ServicePageClientProps {
 export default function ServicePageClient({ service }: ServicePageClientProps) {
   // Get other services for recommendations
   const otherServices = SERVICES.filter((s) => s.id !== service.id).slice(0, 3);
-  const IconComponent = iconMap[service.icon] || House;
+  const IconComponent = iconMap[service.icon] || HomeIcon;
 
   return (
     <div className="gold-variant">
@@ -82,7 +79,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
 
           <div className="gold-header-cta-group">
             <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="gold-header-phone">
-              <Phone className="w-4 h-4" />
+              <PhoneVolume size={16} />
               <span>{SITE_CONFIG.phone}</span>
             </a>
             <Link href="/#contact" className="gold-cta-button gold-cta-small">
@@ -107,7 +104,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
 
         <div className="gold-container gold-service-hero-content">
           <Link href="/#services" className="gold-back-link">
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowNarrowLeftIcon size={16} />
             Retour aux services
           </Link>
 
@@ -124,7 +121,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
             <p className="gold-service-hero-desc">{service.longDescription}</p>
             <Link href="/#contact" className="gold-cta-button">
               Demander un Devis Gratuit
-              <ArrowRight className="w-5 h-5" />
+              <ArrowNarrowRightIcon size={20} />
             </Link>
           </motion.div>
         </div>
@@ -150,7 +147,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="gold-feature-card"
               >
-                <CheckCircle className="w-6 h-6 gold-feature-icon" />
+                <CheckedIcon size={24} className="gold-feature-icon" />
                 <span className="gold-feature-text">{feature}</span>
               </motion.div>
             ))}
@@ -162,21 +159,33 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
       <section className="gold-trust gold-trust-service">
         <div className="gold-container">
           <div className="gold-trust-grid">
-            {[
-              { icon: Shield, label: "Garantie Décennale", desc: "Protection totale" },
-              { icon: Clock, label: "Devis sous 24h", desc: "Sans engagement" },
-              { icon: Trophy, label: "Artisan Certifié", desc: "Qualité garantie" },
-            ].map((item) => (
-              <div key={item.label} className="gold-trust-item">
-                <div className="gold-trust-icon">
-                  <item.icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="gold-trust-label">{item.label}</span>
-                  <span className="gold-trust-desc">{item.desc}</span>
-                </div>
+            <div className="gold-trust-item">
+              <div className="gold-trust-icon">
+                <ShieldCheck size={24} />
               </div>
-            ))}
+              <div>
+                <span className="gold-trust-label">Garantie Décennale</span>
+                <span className="gold-trust-desc">Protection totale</span>
+              </div>
+            </div>
+            <div className="gold-trust-item">
+              <div className="gold-trust-icon">
+                <ClockIcon size={24} />
+              </div>
+              <div>
+                <span className="gold-trust-label">Devis sous 24h</span>
+                <span className="gold-trust-desc">Sans engagement</span>
+              </div>
+            </div>
+            <div className="gold-trust-item">
+              <div className="gold-trust-icon">
+                <StarIcon size={24} />
+              </div>
+              <div>
+                <span className="gold-trust-label">Artisan Certifié</span>
+                <span className="gold-trust-desc">Qualité garantie</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -201,13 +210,13 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
             <div className="gold-service-cta-buttons">
               <Link href="/#contact" className="gold-cta-button">
                 Demander un Devis
-                <ArrowRight className="w-5 h-5" />
+                <ArrowNarrowRightIcon size={20} />
               </Link>
               <a
                 href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
                 className="gold-cta-button gold-cta-outline"
               >
-                <Phone className="w-5 h-5" />
+                <PhoneVolume size={20} />
                 {SITE_CONFIG.phone}
               </a>
             </div>
@@ -227,7 +236,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
 
           <div className="gold-services-grid gold-services-grid-small">
             {otherServices.map((otherService, index) => {
-              const OtherIcon = iconMap[otherService.icon] || House;
+              const OtherIcon = iconMap[otherService.icon] || HomeIcon;
               return (
                 <motion.div
                   key={otherService.id}
@@ -250,7 +259,7 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
                     <h3 className="gold-service-title">{otherService.title}</h3>
                     <p className="gold-service-desc">{otherService.description}</p>
                     <Link href={`/services/${otherService.slug}`} className="gold-service-link">
-                      Découvrir <ArrowRight className="w-4 h-4" />
+                      Découvrir <ArrowNarrowRightIcon size={16} />
                     </Link>
                   </div>
                 </motion.div>
@@ -281,15 +290,15 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
               <h4>Contact</h4>
               <div className="gold-footer-links">
                 <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}>
-                  <Phone className="w-4 h-4" />
+                  <PhoneVolume size={16} />
                   {SITE_CONFIG.phone}
                 </a>
                 <a href={`mailto:${SITE_CONFIG.email}`}>
-                  <Envelope className="w-4 h-4" />
+                  <MailFilledIcon size={16} />
                   {SITE_CONFIG.email}
                 </a>
                 <span>
-                  <MapPin className="w-4 h-4" />
+                  <GlobeIcon size={16} />
                   {SITE_CONFIG.address}
                 </span>
               </div>

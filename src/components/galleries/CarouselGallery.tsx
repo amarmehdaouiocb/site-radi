@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import ArrowNarrowLeftIcon from "@/components/ui/arrow-narrow-left-icon";
+import ArrowNarrowRightIcon from "@/components/ui/arrow-narrow-right-icon";
 import { HERO_GALLERY } from "@/lib/constants";
 
 const carouselItems = [
@@ -85,10 +86,10 @@ export default function CarouselGallery() {
 
         {/* Navigation */}
         <button className="carousel-nav carousel-prev" onClick={prev}>
-          <CaretLeft className="w-8 h-8" />
+          <ArrowNarrowLeftIcon size={32} />
         </button>
         <button className="carousel-nav carousel-next" onClick={next}>
-          <CaretRight className="w-8 h-8" />
+          <ArrowNarrowRightIcon size={32} />
         </button>
 
         {/* Dots */}

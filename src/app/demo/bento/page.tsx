@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft } from "@phosphor-icons/react";
+import ArrowNarrowLeftIcon from "@/components/ui/arrow-narrow-left-icon";
 import BentoGallery from "@/components/galleries/BentoGallery";
 import "../../../app/gold.css";
 import "../../../app/galleries.css";
@@ -12,7 +12,7 @@ export default function BentoDemo() {
       {/* Navigation */}
       <nav className="demo-nav">
         <Link href="/" className="demo-back">
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowNarrowLeftIcon size={16} />
           Retour
         </Link>
         <div className="demo-nav-links">

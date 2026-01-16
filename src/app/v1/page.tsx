@@ -3,15 +3,14 @@
 import { motion } from "framer-motion";
 import { useState, FormEvent } from "react";
 import Image from "next/image";
-import {
-  Phone,
-  Envelope,
-  MapPin,
-  ArrowRight,
-  Star,
-  CircleNotch,
-  CheckCircle,
-} from "@phosphor-icons/react";
+// Its Hover animated icons
+import PhoneVolume from "@/components/ui/phone-volume";
+import MailFilledIcon from "@/components/ui/mail-filled-icon";
+import GlobeIcon from "@/components/ui/globe-icon";
+import ArrowNarrowRightIcon from "@/components/ui/arrow-narrow-right-icon";
+import StarIcon from "@/components/ui/star-icon";
+import RefreshIcon from "@/components/ui/refresh-icon";
+import CheckedIcon from "@/components/ui/checked-icon";
 import { SITE_CONFIG, SERVICES, PORTFOLIO_ITEMS, TESTIMONIALS } from "@/lib/constants";
 import "./editorial.css";
 
@@ -74,7 +73,7 @@ export default function EditorialVariant() {
 
           <a href="#contact" className="ed-header-cta">
             <span>Consultation</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowNarrowRightIcon size={16} />
           </a>
         </div>
       </header>
@@ -124,7 +123,7 @@ export default function EditorialVariant() {
           >
             <a href="#contact" className="ed-btn-primary">
               <span>Demander un Devis</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowNarrowRightIcon size={16} />
             </a>
             <a href="#portfolio" className="ed-btn-secondary">
               <span>Voir le Portfolio</span>
@@ -198,7 +197,7 @@ export default function EditorialVariant() {
                 <h3 className="ed-service-title">{service.title}</h3>
                 <p className="ed-service-desc">{service.description}</p>
                 <a href="#contact" className="ed-service-link">
-                  En savoir plus <ArrowRight className="w-4 h-4" />
+                  En savoir plus <ArrowNarrowRightIcon size={16} />
                 </a>
               </motion.div>
             ))}
@@ -286,7 +285,7 @@ export default function EditorialVariant() {
                     </div>
                     <div className="ed-testimonial-rating">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
+                        <StarIcon key={i} size={16} />
                       ))}
                     </div>
                   </div>
@@ -317,15 +316,15 @@ export default function EditorialVariant() {
 
               <div className="ed-contact-details">
                 <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="ed-contact-item">
-                  <Phone />
+                  <PhoneVolume size={20} />
                   <span>{SITE_CONFIG.phone}</span>
                 </a>
                 <a href={`mailto:${SITE_CONFIG.email}`} className="ed-contact-item">
-                  <Envelope />
+                  <MailFilledIcon size={20} />
                   <span>{SITE_CONFIG.email}</span>
                 </a>
                 <div className="ed-contact-item">
-                  <MapPin />
+                  <GlobeIcon size={20} />
                   <span>{SITE_CONFIG.address}</span>
                 </div>
               </div>
@@ -391,18 +390,18 @@ export default function EditorialVariant() {
               >
                 {formStatus === "loading" ? (
                   <>
-                    <CircleNotch className="w-4 h-4 animate-spin" />
+                    <RefreshIcon size={16} className="animate-spin" />
                     <span>Envoi en cours...</span>
                   </>
                 ) : formStatus === "success" ? (
                   <>
-                    <CheckCircle className="w-4 h-4" />
+                    <CheckedIcon size={16} />
                     <span>Envoyé !</span>
                   </>
                 ) : (
                   <>
                     <span>Envoyer ma demande</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowNarrowRightIcon size={16} />
                   </>
                 )}
               </button>

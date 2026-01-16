@@ -1,38 +1,34 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent, useCallback } from "react";
-import {
-  House,
-  Drop,
-  Lightning,
-  PaintBrush,
-  GridFour,
-  CheckCircle,
-  CircleNotch,
-  ArrowRight,
-  CaretDown,
-  Tree,
-  Waves,
-  Wall,
-  User,
-  Phone,
-  Envelope,
-  Check,
-  CursorClick,
-} from "@phosphor-icons/react";
+// Its Hover animated icons
+import HomeIcon from "@/components/ui/home-icon";
+import PaintIcon from "@/components/ui/paint-icon";
+import TreeIcon from "@/components/ui/tree-icon";
+import CheckedIcon from "@/components/ui/checked-icon";
+import SimpleCheckedIcon from "@/components/ui/simple-checked-icon";
+import RefreshIcon from "@/components/ui/refresh-icon";
+import ArrowNarrowRightIcon from "@/components/ui/arrow-narrow-right-icon";
+import DownChevron from "@/components/ui/down-chevron";
+import UserIcon from "@/components/ui/user-icon";
+import PhoneVolume from "@/components/ui/phone-volume";
+import MailFilledIcon from "@/components/ui/mail-filled-icon";
+import MousePointer2Icon from "@/components/ui/mouse-pointer-2-icon";
+// Phosphor fallback for service icons not in Its Hover
+import { Drop, Lightning, GridFour, Waves, Wall } from "@phosphor-icons/react";
 import { SERVICES, BUDGET_OPTIONS, TIMELINE_OPTIONS, ROOM_OPTIONS, SERVICE_ROOMS } from "@/lib/constants";
 import { trackFormSubmit } from "@/lib/analytics";
 
-// Map icon names to components
+// Map icon names to components (hybrid Its Hover + Phosphor)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const iconMap: Record<string, React.ComponentType<any>> = {
-  Home: House,
+  Home: HomeIcon,
   Brick: Wall,
   Droplets: Drop,
   Zap: Lightning,
-  Paintbrush: PaintBrush,
+  Paintbrush: PaintIcon,
   Grid3X3: GridFour,
-  TreePine: Tree,
+  TreePine: TreeIcon,
   Waves,
 };
 
@@ -203,7 +199,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
   // Get icon component
   const getIcon = (iconName: string) => {
-    return iconMap[iconName] || House;
+    return iconMap[iconName] || HomeIcon;
   };
 
   // Get applicable rooms for a service
@@ -370,7 +366,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               disabled={!isClickable}
             >
               <div className="quote-progress-dot">
-                {isCompleted ? <Check className="w-4 h-4" /> : step.num}
+                {isCompleted ? <SimpleCheckedIcon size={16} /> : step.num}
               </div>
               <span className="quote-progress-label">{step.label}</span>
             </button>
@@ -405,7 +401,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           Quels services vous intéressent ? *
           {isStep1Complete && (
             <span className="quote-section-check">
-              <Check />
+              <SimpleCheckedIcon size={16} />
             </span>
           )}
         </h3>
@@ -429,7 +425,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                   <span className="quote-service-badge">Plus demandé</span>
                 )}
                 <div className="quote-service-check">
-                  {isSelected && <CheckCircle className="w-5 h-5" />}
+                  {isSelected && <CheckedIcon size={20} />}
                 </div>
                 <Icon className="quote-service-icon" />
                 <span className="quote-service-title">{service.title}</span>
@@ -441,7 +437,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         {/* Continue indicator when step 2 is available */}
         {isStep1Complete && visibleSteps.includes(2) && (
           <div className="quote-continue-hint">
-            <CaretDown className="w-5 h-5" />
+            <DownChevron size={20} />
             <span>Continuez ci-dessous</span>
           </div>
         )}
@@ -487,7 +483,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                         <span className="quote-feature-count">{totalCount} sélectionné{totalCount > 1 ? "s" : ""}</span>
                       )}
                     </span>
-                    <CaretDown className="w-5 h-5" />
+                    <DownChevron size={20} />
                   </button>
 
                   {isExpanded && (
@@ -508,7 +504,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                                     onChange={() => { toggleRoom(serviceId, room.value); handleStep2Interaction(); }}
                                   />
                                   <span className="quote-room-checkbox">
-                                    {isChecked && <CheckCircle className="w-3 h-3" />}
+                                    {isChecked && <CheckedIcon size={12} />}
                                   </span>
                                   <span className="quote-room-label">{room.label}</span>
                                 </label>
@@ -533,7 +529,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
                                   onChange={() => { toggleFeature(serviceId, feature); handleStep2Interaction(); }}
                                 />
                                 <span className="quote-feature-checkbox">
-                                  {isChecked && <CheckCircle className="w-4 h-4" />}
+                                  {isChecked && <CheckedIcon size={16} />}
                                 </span>
                                 <span className="quote-feature-label">{feature}</span>
                               </label>
@@ -555,7 +551,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               className="quote-skip-btn"
               onClick={() => revealNextStep(2)}
             >
-              Passer cette étape <ArrowRight className="w-4 h-4" />
+              Passer cette étape <ArrowNarrowRightIcon size={16} />
             </button>
           )}
         </div>
@@ -644,7 +640,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
               className="quote-skip-btn"
               onClick={() => revealNextStep(3)}
             >
-              Passer cette étape <ArrowRight className="w-4 h-4" />
+              Passer cette étape <ArrowNarrowRightIcon size={16} />
             </button>
           )}
         </div>
@@ -662,7 +658,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             Vos coordonnées *
             {isStep4Complete && (
               <span className="quote-section-check">
-                <Check />
+                <SimpleCheckedIcon size={16} />
               </span>
             )}
           </h3>
@@ -672,7 +668,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
           <div className="quote-contact-grid">
             <div className={`quote-field quote-field-enhanced ${formData.name.trim() ? "quote-field-valid" : ""}`}>
-              <User className="w-4 h-4 quote-field-icon" />
+              <UserIcon size={16} className="quote-field-icon" />
               <input
                 type="text"
                 className="gold-input"
@@ -685,7 +681,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className={`quote-field quote-field-enhanced ${formData.phone.trim() ? "quote-field-valid" : ""}`}>
-              <Phone className="w-4 h-4 quote-field-icon" />
+              <PhoneVolume size={16} className="quote-field-icon" />
               <input
                 type="tel"
                 className="gold-input"
@@ -697,7 +693,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             </div>
 
             <div className={`quote-field quote-field-enhanced ${formData.email.trim() ? "quote-field-valid" : ""}`}>
-              <Envelope className="w-4 h-4 quote-field-icon" />
+              <MailFilledIcon size={16} className="quote-field-icon" />
               <input
                 type="email"
                 className="gold-input"
@@ -748,7 +744,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       <div className="quote-submit-section">
         {!hasSelectedServices && (
           <div className="quote-empty-state">
-            <CursorClick className="quote-empty-icon" />
+            <MousePointer2Icon size={48} className="quote-empty-icon" />
             <p className="quote-empty-text">
               Sélectionnez un ou plusieurs services ci-dessus pour commencer votre demande de devis
             </p>
@@ -762,18 +758,18 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         >
           {formStatus === "loading" ? (
             <>
-              <CircleNotch className="w-5 h-5 animate-spin" />
+              <RefreshIcon size={20} className="animate-spin" />
               <span>Envoi en cours...</span>
             </>
           ) : formStatus === "success" ? (
             <>
-              <CheckCircle className="w-5 h-5" />
+              <CheckedIcon size={20} />
               <span>Demande envoyée !</span>
             </>
           ) : (
             <>
               <span>Recevoir mon devis gratuit sous 24h</span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowNarrowRightIcon size={20} />
             </>
           )}
         </button>
