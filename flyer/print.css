@@ -275,7 +275,7 @@ body {
     var(--gold-gradient) border-box;
   padding: 6mm 8mm;
   text-align: center;
-  margin: 4mm 0;
+  margin: 2mm 0 4mm 0;
 }
 
 .cta-title {
@@ -399,7 +399,7 @@ body {
    ─────────────────────────────────────────────────────────────────────────── */
 .verso-header {
   text-align: center;
-  margin-bottom: 5mm;
+  margin-bottom: 4mm;
 }
 
 .section-title {
@@ -415,6 +415,7 @@ body {
   color: var(--gold-mid);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  margin-bottom: 3mm;
 }
 
 /* Services Grid */
@@ -422,7 +423,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3mm 4mm;
-  margin-bottom: 5mm;
+  margin-bottom: 4mm;
 }
 
 .service-item {
@@ -472,7 +473,7 @@ body {
   background: linear-gradient(135deg, var(--black-rich) 0%, var(--black-soft) 100%);
   border: 1px solid var(--black-muted);
   padding: 4mm;
-  margin-bottom: 5mm;
+  margin-bottom: 4mm;
 }
 
 .why-title {
@@ -522,6 +523,7 @@ body {
   background:
     linear-gradient(var(--black-soft), var(--black-soft)) padding-box,
     var(--gold-gradient) border-box;
+  margin-bottom: 4mm;
 }
 
 .contact-grid {
@@ -580,7 +582,7 @@ body {
 /* Verso Footer */
 .verso-footer {
   margin-top: auto;
-  padding-top: 3mm;
+  padding-top: 4mm;
   border-top: 1px solid var(--black-muted);
   display: flex;
   justify-content: space-between;
