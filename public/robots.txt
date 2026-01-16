@@ -1,11 +1,11 @@
-# Robots.txt pour RA Solution
+# Robots.txt pour RA Bâtiment
 # https://www.robotstxt.org/
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://ra-solution.fr/sitemap.xml
+Sitemap: https://ra-batiment.fr/sitemap.xml
 
 # Bloquer les pages techniques
 Disallow: /api/

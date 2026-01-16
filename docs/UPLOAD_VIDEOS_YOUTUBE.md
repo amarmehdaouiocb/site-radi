@@ -1,6 +1,6 @@
 # Upload des vidéos sur YouTube
 
-Guide pour ajouter les vidéos de chantier au site RA Solution.
+Guide pour ajouter les vidéos de chantier au site RA Bâtiment.
 
 ---
 
@@ -21,7 +21,7 @@ Les 2 vidéos MP4 sont dans `/public/portfolio/` :
 
 1. Va sur [studio.youtube.com](https://studio.youtube.com)
 2. Connecte-toi avec un compte Google
-3. Si pas de chaîne : "Créer une chaîne" → Nom : "RA Solution BTP"
+3. Si pas de chaîne : "Créer une chaîne" → Nom : "RA Bâtiment BTP"
 
 ---
 
@@ -35,7 +35,7 @@ Les 2 vidéos MP4 sont dans `/public/portfolio/` :
 
 **Titre** :
 ```
-Rénovation Salle de Bain | RA Solution Artisan BTP
+Rénovation Salle de Bain | RA Bâtiment Artisan BTP
 ```
 
 **Description** :
@@ -138,6 +138,6 @@ import { VIDEOS } from "@/lib/constants";
 ## Bonnes pratiques YouTube
 
 1. **Optimisation SEO** : Inclure "artisan", "BTP", "Île-de-France" dans titre/description
-2. **Vignettes** : Créer des vignettes attractives avec le logo RA Solution
+2. **Vignettes** : Créer des vignettes attractives avec le logo RA Bâtiment
 3. **Playlists** : Créer une playlist "Nos Réalisations"
 4. **Lien retour** : Ajouter le lien du site dans la description

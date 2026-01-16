@@ -1,4 +1,4 @@
-# Audit Conversion Landing Page RA Solution
+# Audit Conversion Landing Page RA Bâtiment
 
 **Date** : 5 Janvier 2026
 **Branche** : `feature/mobile-menu-sticky-cta`
@@ -147,7 +147,7 @@ La landing page presente une identite visuelle premium (noir/or) coherente avec 
 **Recommandations :**
 | Prio | Action |
 |------|--------|
-| P1 | VRAIES photos de chantiers RA Solution |
+| P1 | VRAIES photos de chantiers RA Bâtiment |
 | P2 | Donnees concretes : "45m2 - 3 semaines - 25k EUR" |
 | P2 | CTA "Voir toutes nos realisations" |
 | P3 | Filtrage par type de projet |

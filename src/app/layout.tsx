@@ -6,7 +6,7 @@ import FAQSchema from "@/components/FAQSchema";
 import { FAQS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ra-solution.fr"),
+  metadataBase: new URL("https://ra-batiment.fr"),
   title: {
     default: "RA Bâtiment | Artisan Multi-Services BTP Île-de-France",
     template: "%s | RA Bâtiment",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "RA Bâtiment | Artisan Multi-Services BTP Île-de-France",
     description:
       "Artisan de confiance pour vos travaux en Île-de-France. Rénovation, maçonnerie, plomberie, électricité. Devis gratuit sous 24h.",
-    url: "https://ra-solution.fr",
+    url: "https://ra-batiment.fr",
     siteName: "RA Bâtiment",
     locale: "fr_FR",
     type: "website",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     // google: "votre-code-verification",
   },
   alternates: {
-    canonical: "https://ra-solution.fr",
+    canonical: "https://ra-batiment.fr",
   },
 };
 

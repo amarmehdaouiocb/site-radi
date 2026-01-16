@@ -1,4 +1,4 @@
-# Checklist Mise en Production - RA Solution
+# Checklist Mise en Production - RA Bâtiment
 
 Guide complet pour déployer le site en production.
 
@@ -13,7 +13,7 @@ Guide complet pour déployer le site en production.
 - [Gandi](https://www.gandi.net/) (~15€/an)
 - [Google Domains](https://domains.google/) (maintenant Squarespace)
 
-**Nom suggéré :** `ra-solution.fr` ou `rasolution.fr`
+**Nom suggéré :** `ra-batiment.fr` ou `rasolution.fr`
 
 ### Configuration DNS (après achat)
 
@@ -36,7 +36,7 @@ Les enregistrements DNS dépendent de l'hébergeur choisi (voir section 2).
    NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
    ```
 4. Déployer
-5. Dans Settings > Domains : ajouter `ra-solution.fr`
+5. Dans Settings > Domains : ajouter `ra-batiment.fr`
 6. Configurer DNS chez OVH/Gandi :
    ```
    Type: A     Name: @    Value: 76.76.21.21
@@ -75,7 +75,7 @@ Créer ces variables dans l'hébergeur :
 ### Configurer le domaine d'envoi
 
 1. Aller sur [resend.com](https://resend.com) > Domains
-2. Ajouter `ra-solution.fr`
+2. Ajouter `ra-batiment.fr`
 3. Configurer les DNS :
    ```
    Type: TXT   Name: @              Value: v=spf1 include:resend.com ~all
@@ -83,13 +83,13 @@ Créer ces variables dans l'hébergeur :
    Type: MX    Name: @              Value: feedback-smtp.resend.com (priority 10)
    ```
 4. Vérifier le domaine
-5. Mettre à jour le code pour utiliser `RA Solution <contact@ra-solution.fr>`
+5. Mettre à jour le code pour utiliser `RA Bâtiment <contact@ra-batiment.fr>`
 
 ### Modifier le code (après vérification domaine)
 
 Dans `src/app/api/contact/route.ts` :
 ```typescript
-from: "RA Solution <contact@ra-solution.fr>",
+from: "RA Bâtiment <contact@ra-batiment.fr>",
 ```
 
 ---
@@ -97,9 +97,9 @@ from: "RA Solution <contact@ra-solution.fr>",
 ## 5. Google Search Console
 
 1. Aller sur [search.google.com/search-console](https://search.google.com/search-console)
-2. Ajouter la propriété `https://ra-solution.fr`
+2. Ajouter la propriété `https://ra-batiment.fr`
 3. Vérifier via DNS (ajouter enregistrement TXT)
-4. Soumettre le sitemap : `https://ra-solution.fr/sitemap.xml`
+4. Soumettre le sitemap : `https://ra-batiment.fr/sitemap.xml`
 5. Demander l'indexation de la page d'accueil
 
 ---
@@ -118,13 +118,13 @@ from: "RA Solution <contact@ra-solution.fr>",
 **Important pour le SEO local !**
 
 1. Aller sur [business.google.com](https://business.google.com)
-2. Créer une fiche pour "RA Solution"
+2. Créer une fiche pour "RA Bâtiment"
 3. Remplir :
    - Catégorie : "Entreprise de rénovation"
    - Adresse : 5 rue de la Gaîté, 93000 Bobigny
    - Téléphone : +33 6 89 12 46 21
    - Horaires : Lun-Sam 8h-19h
-   - Site web : https://ra-solution.fr
+   - Site web : https://ra-batiment.fr
 4. Vérifier (courrier postal ou téléphone)
 5. Ajouter des photos des réalisations
 6. Demander des avis aux clients satisfaits
@@ -166,7 +166,7 @@ from: "RA Solution <contact@ra-solution.fr>",
 - [ ] Tester sur différents appareils
 
 ### Mois 1
-- [ ] Vérifier indexation Google (site:ra-solution.fr)
+- [ ] Vérifier indexation Google (site:ra-batiment.fr)
 - [ ] Ajouter premiers avis Google Business
 - [ ] Partager sur réseaux sociaux
 

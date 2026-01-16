@@ -14,13 +14,13 @@ export default function ServiceSchema({ service }: ServiceSchemaProps) {
     "@type": "Service",
     name: service.title,
     description: service.longDescription,
-    url: `https://ra-solution.fr/services/${service.slug}`,
+    url: `https://ra-batiment.fr/services/${service.slug}`,
     image: service.image.startsWith("http")
       ? service.image
-      : `https://ra-solution.fr${service.image}`,
+      : `https://ra-batiment.fr${service.image}`,
     provider: {
       "@type": "LocalBusiness",
-      "@id": "https://ra-solution.fr/#organization",
+      "@id": "https://ra-batiment.fr/#organization",
       name: "RA Bâtiment",
     },
     areaServed: {

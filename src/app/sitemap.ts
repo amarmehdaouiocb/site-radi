@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { SERVICES } from "@/lib/constants";
 
-const BASE_URL = "https://ra-solution.fr";
+const BASE_URL = "https://ra-batiment.fr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Pages statiques

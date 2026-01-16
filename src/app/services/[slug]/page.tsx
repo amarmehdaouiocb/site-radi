@@ -27,7 +27,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `https://ra-solution.fr/services/${slug}`;
+  const canonicalUrl = `https://ra-batiment.fr/services/${slug}`;
 
   return {
     title: `${service.title} | RA Bâtiment - Artisan BTP Île-de-France`,
@@ -80,9 +80,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
   }
 
   const breadcrumbItems = [
-    { name: "Accueil", url: "https://ra-solution.fr" },
-    { name: "Services", url: "https://ra-solution.fr/#services" },
-    { name: service.title, url: `https://ra-solution.fr/services/${service.slug}` },
+    { name: "Accueil", url: "https://ra-batiment.fr" },
+    { name: "Services", url: "https://ra-batiment.fr/#services" },
+    { name: service.title, url: `https://ra-batiment.fr/services/${service.slug}` },
   ];
 
   return (

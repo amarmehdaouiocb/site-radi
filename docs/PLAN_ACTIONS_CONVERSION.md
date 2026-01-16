@@ -1,4 +1,4 @@
-# Plan d'Actions Conversion - RA Solution
+# Plan d'Actions Conversion - RA Bâtiment
 
 **Date** : 5 Janvier 2026
 **Base** : Audit conversion `docs/AUDIT_CONVERSION.md`

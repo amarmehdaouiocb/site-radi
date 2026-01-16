@@ -1,6 +1,6 @@
 # Configuration Google Analytics 4
 
-Guide pour activer le tracking des conversions sur le site RA Solution.
+Guide pour activer le tracking des conversions sur le site RA Bâtiment.
 
 ---
 
@@ -15,12 +15,12 @@ Guide pour activer le tracking des conversions sur le site RA Solution.
 ## 2. Configurer la propriété
 
 ### Étape 1 : Nom du compte
-- Nom du compte : `RA Solution` (ou le nom de ton choix)
+- Nom du compte : `RA Bâtiment` (ou le nom de ton choix)
 - Coche les options de partage selon tes préférences
 - Clique **Suivant**
 
 ### Étape 2 : Propriété
-- Nom de la propriété : `Site RA Solution`
+- Nom de la propriété : `Site RA Bâtiment`
 - Fuseau horaire : `France`
 - Devise : `Euro (€)`
 - Clique **Suivant**

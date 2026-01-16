@@ -1,6 +1,6 @@
-# Variantes de Design - RA Solution
+# Variantes de Design - RA Bâtiment
 
-Ce document présente les variantes de design disponibles pour le site RA Solution.
+Ce document présente les variantes de design disponibles pour le site RA Bâtiment.
 
 ---
 

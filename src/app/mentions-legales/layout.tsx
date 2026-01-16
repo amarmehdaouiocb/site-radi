@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://ra-solution.fr/mentions-legales",
+    canonical: "https://ra-batiment.fr/mentions-legales",
   },
 };
 

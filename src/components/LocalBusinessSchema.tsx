@@ -4,11 +4,11 @@ export default function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://ra-solution.fr/#organization",
+    "@id": "https://ra-batiment.fr/#organization",
     name: SITE_CONFIG.name,
     legalName: SITE_CONFIG.legalName,
     description: SITE_CONFIG.description,
-    url: "https://ra-solution.fr",
+    url: "https://ra-batiment.fr",
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
     address: {
@@ -33,7 +33,7 @@ export default function LocalBusinessSchema() {
       },
     ],
     priceRange: "€€",
-    image: "https://ra-solution.fr/portfolio/terrasse-bois-apres-01.jpg",
+    image: "https://ra-batiment.fr/portfolio/terrasse-bois-apres-01.jpg",
     sameAs: [],
     areaServed: {
       "@type": "GeoCircle",
@@ -53,7 +53,7 @@ export default function LocalBusinessSchema() {
           "@type": "Service",
           name: service.title,
           description: service.description,
-          url: `https://ra-solution.fr/services/${service.slug}`,
+          url: `https://ra-batiment.fr/services/${service.slug}`,
         },
         position: index + 1,
       })),

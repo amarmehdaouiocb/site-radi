@@ -127,7 +127,7 @@ background: linear-gradient(135deg, #905e26 0%, #f5ec9b 50%, #905e26 100%);
 - **Téléphone** : +33 6 89 12 46 21
 - **Email** : contact@ra-batiment.fr
 - **Adresse** : 5 rue de la Gaîté, 93000 Bobigny
-- **Site web** : ra-batiment.netlify.app
+- **Site web** : ra-batiment.fr
 - **Zone** : Île-de-France
 - **Horaires** : Lun - Sam · 8h - 19h
 - **SIRET** : 933 728 610 00017
