@@ -1,0 +1,707 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   RA BATIMENT - Flyer Print-Ready Stylesheet (LIGHT THEME)
+   Format: A5 Portrait (148mm x 210mm) + 3mm Bleed
+   Safe Zone: 5mm internal margin
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FONTS - Premium Typography
+   ─────────────────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CSS VARIABLES - Light Theme Brand Colors
+   ─────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Gold Gradient (darker for light theme) */
+  --gold-dark: #8b6914;
+  --gold-light: #d4af37;
+  --gold-mid: #b8860b;
+  --gold-gradient: linear-gradient(135deg, #8b6914 0%, #d4af37 50%, #8b6914 100%);
+  --gold-gradient-vertical: linear-gradient(180deg, #8b6914 0%, #d4af37 50%, #8b6914 100%);
+  --gold-gradient-soft: linear-gradient(135deg, #a67c00 0%, #c4a35a 50%, #a67c00 100%);
+
+  /* Light Backgrounds */
+  --cream-deep: #faf9f6;
+  --cream-rich: #f5f3ef;
+  --cream-soft: #ffffff;
+  --cream-muted: #e8e6e1;
+
+  /* Text Colors */
+  --text-dark: #1a1a1a;
+  --text-charcoal: #2d2d2d;
+  --text-muted: #5a5a5a;
+  --text-subtle: #8a8a8a;
+
+  /* Print Dimensions */
+  --page-width: 148mm;
+  --page-height: 210mm;
+  --bleed: 3mm;
+  --safe-margin: 5mm;
+  --page-width-bleed: 154mm;  /* 148 + 6 */
+  --page-height-bleed: 216mm; /* 210 + 6 */
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESET & BASE
+   ─────────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10pt;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color-adjust: exact !important;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-dark);
+  background: var(--cream-deep);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PAGE CONTAINER - Print Layout
+   ─────────────────────────────────────────────────────────────────────────── */
+.page {
+  width: var(--page-width-bleed);
+  height: var(--page-height-bleed);
+  position: relative;
+  overflow: hidden;
+  background: var(--cream-deep);
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+.page-content {
+  position: absolute;
+  top: var(--bleed);
+  left: var(--bleed);
+  right: var(--bleed);
+  bottom: var(--bleed);
+  width: var(--page-width);
+  height: var(--page-height);
+  padding: var(--safe-margin);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bleed Background - extends to edges */
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cream-deep);
+  z-index: -1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TYPOGRAPHY - Premium Hierarchy
+   ─────────────────────────────────────────────────────────────────────────── */
+.display-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28pt;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 18pt;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
+}
+
+.headline-gold {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subheadline {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11pt;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--text-charcoal);
+}
+
+.body-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 9pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.label-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 7pt;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-mid);
+}
+
+.caption {
+  font-family: 'Manrope', sans-serif;
+  font-size: 6.5pt;
+  font-weight: 400;
+  color: var(--text-subtle);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GOLD ACCENTS & DECORATIONS
+   ─────────────────────────────────────────────────────────────────────────── */
+.gold-line {
+  height: 1px;
+  background: var(--gold-gradient);
+  width: 100%;
+}
+
+.gold-line-short {
+  height: 1px;
+  background: var(--gold-gradient);
+  width: 40mm;
+}
+
+.gold-line-vertical {
+  width: 1px;
+  background: var(--gold-gradient-vertical);
+  height: 100%;
+}
+
+.gold-border {
+  border: 1px solid var(--gold-dark);
+}
+
+.gold-border-gradient {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--cream-deep), var(--cream-deep)) padding-box,
+              var(--gold-gradient) border-box;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOGO
+   ─────────────────────────────────────────────────────────────────────────── */
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8mm;
+}
+
+.logo {
+  width: 55mm;
+  height: auto;
+}
+
+.logo-small {
+  width: 35mm;
+  height: auto;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RECTO - Front Page Components
+   ─────────────────────────────────────────────────────────────────────────── */
+.recto-header {
+  text-align: center;
+  padding-top: 5mm;
+}
+
+.recto-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 6mm;
+}
+
+.tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10pt;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  color: var(--gold-mid);
+  text-transform: uppercase;
+}
+
+.promise-list {
+  display: flex;
+  justify-content: center;
+  gap: 4mm;
+  flex-wrap: wrap;
+  margin-top: 3mm;
+}
+
+.promise-item {
+  font-size: 8pt;
+  font-weight: 500;
+  color: var(--text-charcoal);
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+}
+
+.promise-separator {
+  color: var(--gold-mid);
+  font-size: 6pt;
+}
+
+/* CTA Block */
+.cta-block {
+  background: linear-gradient(135deg, var(--cream-soft) 0%, var(--cream-rich) 100%);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(135deg, var(--cream-soft) 0%, var(--cream-rich) 100%) padding-box,
+    var(--gold-gradient) border-box;
+  padding: 6mm 8mm;
+  text-align: center;
+  margin: 2mm 0 4mm 0;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 14pt;
+  font-weight: 600;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2mm;
+}
+
+.cta-phone {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16pt;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+  margin-bottom: 3mm;
+}
+
+.qr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3mm;
+  margin-top: 3mm;
+}
+
+.qr-code {
+  width: 22mm;
+  height: 22mm;
+  background: white;
+  padding: 1.5mm;
+  border-radius: 1mm;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--cream-muted);
+}
+
+.qr-code svg,
+.qr-code canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  object-fit: contain;
+}
+
+.qr-label {
+  font-size: 7pt;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+/* Badges */
+.badges-container {
+  display: flex;
+  justify-content: center;
+  gap: 5mm;
+  flex-wrap: wrap;
+  margin-top: 4mm;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5mm;
+  min-width: 28mm;
+}
+
+.badge-icon {
+  width: 8mm;
+  height: 8mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--gold-mid);
+}
+
+.badge-text {
+  font-size: 6.5pt;
+  font-weight: 600;
+  color: var(--text-charcoal);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Footer Band */
+.recto-footer {
+  text-align: center;
+  padding-top: 4mm;
+  border-top: 1px solid var(--cream-muted);
+}
+
+.footer-info {
+  display: flex;
+  justify-content: center;
+  gap: 6mm;
+  font-size: 7.5pt;
+  color: var(--text-muted);
+}
+
+.footer-info span {
+  display: flex;
+  align-items: center;
+  gap: 1.5mm;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VERSO - Back Page Components
+   ─────────────────────────────────────────────────────────────────────────── */
+.verso-header {
+  text-align: center;
+  margin-bottom: 4mm;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 14pt;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 1mm;
+}
+
+.section-subtitle {
+  font-size: 8pt;
+  color: var(--gold-mid);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3mm;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm 4mm;
+  margin-bottom: 4mm;
+}
+
+.service-item {
+  display: flex;
+  gap: 2.5mm;
+  padding: 2.5mm;
+  background: rgba(0, 0, 0, 0.02);
+  border-left: 1.5px solid var(--gold-dark);
+}
+
+.service-icon {
+  width: 5mm;
+  height: 5mm;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0.5mm;
+}
+
+.service-icon svg {
+  width: 4mm;
+  height: 4mm;
+  fill: var(--gold-mid);
+}
+
+.service-content {
+  flex: 1;
+}
+
+.service-name {
+  font-size: 8pt;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 0.5mm;
+}
+
+.service-desc {
+  font-size: 6.5pt;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Why Choose Us */
+.why-section {
+  background: linear-gradient(135deg, var(--cream-soft) 0%, var(--cream-rich) 100%);
+  border: 1px solid var(--cream-muted);
+  padding: 4mm;
+  margin-bottom: 4mm;
+}
+
+.why-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 3mm;
+  text-align: center;
+}
+
+.why-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 3mm;
+}
+
+.why-item {
+  text-align: center;
+  flex: 1;
+}
+
+.why-icon {
+  width: 6mm;
+  height: 6mm;
+  margin: 0 auto 1.5mm;
+}
+
+.why-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--gold-mid);
+}
+
+.why-text {
+  font-size: 7pt;
+  font-weight: 500;
+  color: var(--text-charcoal);
+  line-height: 1.3;
+}
+
+/* Contact Block */
+.contact-block {
+  background: var(--cream-soft);
+  padding: 4mm;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--cream-soft), var(--cream-soft)) padding-box,
+    var(--gold-gradient) border-box;
+  margin-bottom: 4mm;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4mm;
+  align-items: center;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+}
+
+.contact-icon {
+  width: 4mm;
+  height: 4mm;
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--gold-mid);
+}
+
+.contact-text {
+  font-size: 7.5pt;
+  color: var(--text-charcoal);
+}
+
+.contact-text a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5mm;
+}
+
+.contact-qr .qr-code {
+  width: 18mm;
+  height: 18mm;
+}
+
+/* Verso Footer */
+.verso-footer {
+  margin-top: auto;
+  padding-top: 4mm;
+  border-top: 1px solid var(--cream-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siret {
+  font-size: 6pt;
+  color: var(--text-subtle);
+}
+
+.zone-hours {
+  font-size: 6.5pt;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TEXTURE & EFFECTS (Light version)
+   ─────────────────────────────────────────────────────────────────────────── */
+.page-texture {
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Crossed diagonal lines pattern */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8mm,
+      rgba(184, 134, 11, 0.06) 8mm,
+      rgba(184, 134, 11, 0.06) 8.5mm
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8mm,
+      rgba(139, 105, 20, 0.04) 8mm,
+      rgba(139, 105, 20, 0.04) 8.5mm
+    ),
+    /* Subtle radial glow */
+    radial-gradient(ellipse at 20% 30%, rgba(184, 134, 11, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.subtle-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.01;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PRINT MEDIA QUERIES
+   ─────────────────────────────────────────────────────────────────────────── */
+@media print {
+  @page {
+    size: 154mm 216mm;
+    margin: 0;
+  }
+
+  html, body {
+    width: 154mm;
+    height: 216mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    width: 154mm;
+    height: 216mm;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCREEN PREVIEW (development)
+   ─────────────────────────────────────────────────────────────────────────── */
+@media screen {
+  body {
+    background: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20mm;
+    padding: 20mm;
+  }
+
+  .page {
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   UTILITY CLASSES
+   ─────────────────────────────────────────────────────────────────────────── */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 2mm; }
+.gap-3 { gap: 3mm; }
+.gap-4 { gap: 4mm; }
+
+.mt-auto { margin-top: auto; }
+.mb-2 { margin-bottom: 2mm; }
+.mb-3 { margin-bottom: 3mm; }
+.mb-4 { margin-bottom: 4mm; }
