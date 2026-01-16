@@ -32,7 +32,7 @@ Les enregistrements DNS dépendent de l'hébergeur choisi (voir section 2).
 3. Configurer les variables d'environnement :
    ```
    RESEND_API_KEY=re_xxxxx
-   CONTACT_EMAIL=ra.solution@myyahoo.com
+   CONTACT_EMAIL=contact@ra-batiment.fr
    NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
    ```
 4. Déployer
