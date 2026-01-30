@@ -421,7 +421,7 @@ export default function HomePage() {
                   <span className="gold-portfolio-category">{item.category}</span>
                   <h3 className="gold-portfolio-title">{item.title}</h3>
                   <span className="gold-portfolio-location">{item.location}</span>
-                  {item.surface && item.duration && item.budgetRange && (
+                  {item.surface && item.duration && (
                     <div className="gold-portfolio-data">
                       <span className="gold-portfolio-badge gold-portfolio-badge-surface">
                         <Ruler />
@@ -430,10 +430,6 @@ export default function HomePage() {
                       <span className="gold-portfolio-badge gold-portfolio-badge-duration">
                         <Calendar />
                         {item.duration} sem.
-                      </span>
-                      <span className="gold-portfolio-badge gold-portfolio-badge-budget">
-                        <CurrencyEuroIcon size={16} />
-                        {formatBudget(item.budgetRange.min, item.budgetRange.max)}
                       </span>
                     </div>
                   )}
