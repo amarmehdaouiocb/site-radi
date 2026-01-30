@@ -25,7 +25,7 @@ export const VIDEOS = [
 // Images pour le slideshow Hero - Meilleures photos "après"
 export const HERO_GALLERY = [
   "/portfolio/terrasse-travertin-apres-01.jpg",
-  "/portfolio/sdb-marbre-apres-01.jpg",
+  "/portfolio/sdb-marbre.jpeg",
   "/portfolio/combles-apres-04.jpg",
   "/portfolio/terrasse-bois-apres-01.jpg",
   "/portfolio/cuisine-design.jpeg",
