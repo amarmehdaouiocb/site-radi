@@ -12,6 +12,10 @@ export const SITE_CONFIG = {
   address: "5 rue de la Gaîté, 93000 Bobigny",
   siret: "933 728 610 00017",
   hours: "Lun - Sam: 8h - 19h",
+  socials: {
+    instagram: { url: "https://www.instagram.com/ra.batiment/", handle: "ra.batiment" },
+    snapchat: { url: "https://www.snapchat.com/add/rabatiment", handle: "rabatiment" },
+  },
 };
 
 // Vidéos YouTube (ajouter les IDs après upload)

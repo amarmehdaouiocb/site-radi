@@ -1854,6 +1854,30 @@ select.gold-input {
   height: 150px;
 }
 
+.gold-footer-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.gold-footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  color: var(--gold-text-muted);
+  transition: all 0.3s ease;
+}
+
+.gold-footer-socials a:hover {
+  color: var(--gold-primary);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
 .gold-footer-links {
   display: flex;
   gap: 2rem;
