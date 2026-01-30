@@ -2001,10 +2001,13 @@ select.gold-input {
 
 /* ===== Mobile Menu ===== */
 .gold-mobile-menu-toggle {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
   background: transparent;
   border: 1px solid var(--gold-border);
+  border-radius: 8px;
   color: var(--gold-text);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -2016,12 +2019,6 @@ select.gold-input {
 }
 
 @media (max-width: 1023px) {
-  .gold-mobile-menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .gold-nav-desktop,
   .gold-cta-desktop {
     display: none;
@@ -3555,6 +3552,23 @@ select.gold-input {
 
 @media (min-width: 1024px) {
   .gold-theme-toggle {
+    display: flex;
+  }
+}
+
+/* Mobile actions group (theme toggle + menu toggle) */
+.gold-mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 1023px) {
+  .gold-mobile-actions {
+    display: flex;
+  }
+
+  .gold-mobile-actions .gold-theme-toggle {
     display: flex;
   }
 }

@@ -14,7 +14,7 @@ import ShieldCheck from "@/components/ui/shield-check";
 import ClockIcon from "@/components/ui/clock-icon";
 import StarIcon from "@/components/ui/star-icon";
 import DownChevron from "@/components/ui/down-chevron";
-import ToggleIcon from "@/components/ui/toggle-icon";
+import MenuIcon from "@/components/ui/menu-icon";
 import XIcon from "@/components/ui/x-icon";
 import FileDescriptionIcon from "@/components/ui/file-description-icon";
 import GlobeIcon from "@/components/ui/globe-icon";
@@ -27,10 +27,10 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 // Alt tags descriptifs pour les images du marquee hero
 const HERO_GALLERY_ALTS = [
   "Terrasse travertin réalisée par RA Bâtiment",
-  "Salle de bain mosaïque moderne - rénovation complète",
+  "Salle de bain marbre luxe - rénovation complète",
   "Aménagement de combles avec velux",
   "Terrasse bois avec barbecue intégré",
-  "Escalier design bois et métal sur mesure",
+  "Cuisine design moderne - aménagement sur mesure",
 ];
 import { trackCtaClick, trackPhoneClick, trackPortfolioFilter } from "@/lib/analytics";
 import TrustedBy from "@/components/TrustedBy";
@@ -146,15 +146,18 @@ export default function HomePage() {
             <span className="gold-header-badge">Réponse garantie</span>
           </div>
 
-          {/* Mobile menu toggle */}
-          <button
-            className="gold-mobile-menu-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <XIcon size={24} /> : <ToggleIcon size={24} />}
-          </button>
+          {/* Mobile: theme toggle + menu toggle grouped */}
+          <div className="gold-mobile-actions">
+            <ThemeToggle />
+            <button
+              className="gold-mobile-menu-toggle"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile navigation */}
