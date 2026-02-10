@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Courrier RA Bâtiment - Projet de Travaux</title>
+  <style>
+    @page {
+      margin: 2cm;
+      size: A4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .page {
+      width: 17cm;
+      min-height: 25cm;
+      padding: 0;
+    }
+
+    /* En-tête */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2cm;
+      padding-bottom: 0.5cm;
+      border-bottom: 2px solid #1a365d;
+    }
+
+    .logo-section {
+      flex: 1;
+    }
+
+    .logo {
+      font-size: 28pt;
+      font-weight: bold;
+      color: #1a365d;
+      letter-spacing: -1px;
+    }
+
+    .logo-subtitle {
+      font-size: 10pt;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 9pt;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .contact-info strong {
+      color: #1a365d;
+    }
+
+    /* Destinataire */
+    .destinataire {
+      margin: 1.5cm 0;
+      margin-left: 9cm;
+      line-height: 1.8;
+    }
+
+    .destinataire strong {
+      font-size: 11pt;
+    }
+
+    /* Date et lieu */
+    .date-lieu {
+      text-align: right;
+      margin-bottom: 1cm;
+      color: #555;
+    }
+
+    /* Objet */
+    .objet {
+      margin-bottom: 0.8cm;
+    }
+
+    .objet-label {
+      font-weight: bold;
+      color: #1a365d;
+    }
+
+    /* Corps de la lettre */
+    .corps {
+      text-align: justify;
+    }
+
+    .corps p {
+      margin-bottom: 0.5cm;
+    }
+
+    .corps p:first-child {
+      margin-bottom: 0.8cm;
+    }
+
+    /* Liste des services */
+    .services {
+      margin: 0.8cm 0;
+      margin-left: 0.5cm;
+    }
+
+    .services li {
+      margin: 0.3cm 0;
+      padding-left: 0.3cm;
+      list-style: none;
+    }
+
+    .services li::before {
+      content: "✓";
+      color: #1a365d;
+      font-weight: bold;
+      margin-right: 0.3cm;
+    }
+
+    /* Encadré mise en avant */
+    .highlight-box {
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      border-left: 4px solid #1a365d;
+      padding: 0.5cm;
+      margin: 0.8cm 0;
+    }
+
+    /* Contact */
+    .contact-block {
+      margin: 0.8cm 0;
+      padding: 0.4cm;
+      background: #f7fafc;
+      border-radius: 4px;
+    }
+
+    .contact-block strong {
+      color: #1a365d;
+    }
+
+    /* Signature */
+    .signature {
+      margin-top: 1.2cm;
+    }
+
+    .signature-name {
+      margin-top: 1cm;
+      font-weight: bold;
+    }
+
+    .signature-title {
+      color: #666;
+      font-size: 10pt;
+    }
+
+    /* Pied de page */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 8pt;
+      color: #999;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 0.3cm;
+    }
+
+    .footer-line {
+      margin: 2px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- En-tête -->
+    <div class="header">
+      <div class="logo-section">
+        <div class="logo">RA Bâtiment</div>
+        <div class="logo-subtitle">Artisan Multi-Services BTP</div>
+      </div>
+      <div class="contact-info">
+        <strong>📞 06 89 12 46 21</strong><br>
+        📧 contact@ra-batiment.fr<br>
+        🌐 ra-batiment.fr
+      </div>
+    </div>
+
+    <!-- Destinataire -->
+    <div class="destinataire">
+      <strong>{{NOM}}</strong><br>
+      {{ADRESSE}}<br>
+      {{CODE_POSTAL}} {{VILLE}}
+    </div>
+
+    <!-- Date et lieu -->
+    <div class="date-lieu">
+      Bobigny, le {{DATE}}
+    </div>
+
+    <!-- Objet -->
+    <div class="objet">
+      <span class="objet-label">Objet :</span> Votre projet de travaux
+    </div>
+
+    <!-- Corps -->
+    <div class="corps">
+      <p>Madame, Monsieur,</p>
+
+      <p>
+        Nous avons constaté que vous avez un <strong>projet de travaux en cours</strong>
+        au {{ADRESSE}}, {{CODE_POSTAL}} {{VILLE}}.
+      </p>
+
+      <p>
+        <strong>RA Bâtiment</strong>, entreprise de rénovation générale basée en Île-de-France,
+        serait ravie de vous accompagner dans la réalisation de votre projet.
+      </p>
+
+      <p>Notre équipe d'artisans qualifiés intervient sur :</p>
+
+      <ul class="services">
+        <li>Maçonnerie et gros œuvre</li>
+        <li>Rénovation intérieure complète</li>
+        <li>Plomberie et électricité</li>
+        <li>Carrelage, peinture et finitions</li>
+        <li>Aménagements extérieurs</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>Devis gratuit et sans engagement</strong> après visite technique à votre convenance.
+      </div>
+
+      <div class="contact-block">
+        📞 Appelez-nous : <strong>06 89 12 46 21</strong><br>
+        📧 Email : <strong>contact@ra-batiment.fr</strong><br>
+        🌐 Nos réalisations : <strong>ra-batiment.fr</strong>
+      </div>
+    </div>
+
+    <!-- Signature -->
+    <div class="signature">
+      <p>Dans l'attente de votre retour, je vous prie d'agréer, Madame, Monsieur,
+      l'expression de mes salutations distinguées.</p>
+
+      <div class="signature-name">Radi</div>
+      <div class="signature-title">Gérant - RA Bâtiment</div>
+    </div>
+
+    <!-- Pied de page -->
+    <div class="footer">
+      <div class="footer-line">RA Bâtiment - SAS au capital de 1 000 € - SIRET 933 728 610 00017</div>
+      <div class="footer-line">5 rue de la Gaîté, 93000 Bobigny | Garantie décennale - Assurance RC Pro</div>
+    </div>
+  </div>
+</body>
+</html>
