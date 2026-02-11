@@ -19,6 +19,67 @@ const DEPTS_IDF = ['75', '77', '78', '91', '92', '93', '94', '95'];
 // Colonnes importantes (index basé sur le header)
 let COL = {};
 
+// ═══════════════════════════════════════════════════════════════
+// DICTIONNAIRES DE CONVERSION (codes → libellés)
+// ═══════════════════════════════════════════════════════════════
+
+const TYPE_PERMIS = {
+  'PC': 'Permis de Construire',
+  'DP': 'Déclaration Préalable',
+  'PA': 'Permis d\'Aménager',
+  'PD': 'Permis de Démolir'
+};
+
+const NATURE_PROJET = {
+  '1': 'Construction neuve',
+  '2': 'Travaux sur existant'
+};
+
+const ETAT_DOSSIER = {
+  '1': 'Déposé',
+  '2': 'En instruction',
+  '3': 'Sursis à statuer',
+  '4': 'Refusé',
+  '5': 'Autorisé',
+  '6': 'Annulé',
+  '7': 'Chantier ouvert (DOC)',
+  '8': 'Travaux terminés (DAACT)'
+};
+
+const CATEGORIE_DEMANDEUR = {
+  '10': 'Particulier',
+  '20': 'SCI',
+  '30': 'Société privée',
+  '40': 'Organisme HLM',
+  '50': 'Administration publique',
+  '60': 'Autre personne morale'
+};
+
+const DESTINATION = {
+  '1': 'Habitation',
+  '2': 'Hébergement hôtelier',
+  '3': 'Bureaux',
+  '4': 'Commerce',
+  '5': 'Artisanat',
+  '6': 'Industrie',
+  '7': 'Exploitation agricole',
+  '8': 'Entrepôt',
+  '9': 'Service public'
+};
+
+const UTILISATION = {
+  '1': 'Résidence principale',
+  '2': 'Résidence secondaire',
+  '3': 'Location',
+  '9': 'Non déterminé'
+};
+
+// Fonction helper pour convertir un code en libellé
+function toLabel(dict, code) {
+  if (!code) return '';
+  return dict[code] || code;
+}
+
 // Score fraîcheur (par rapport à aujourd'hui)
 function scoreFraicheur(dateAutorisation) {
   if (!dateAutorisation) return 5;
@@ -183,11 +244,12 @@ async function main() {
     }
     stats.recent++;
 
-    // Construire le lead
+    // Construire le lead avec libellés explicites
     const lead = {
       id: stats.recent,
       numPermis: row[COL.NUM_DAU] || '',
-      typePermis: row[COL.TYPE_DAU] || '',
+      typePermis: toLabel(TYPE_PERMIS, row[COL.TYPE_DAU]),
+      etatDossier: toLabel(ETAT_DOSSIER, row[COL.ETAT_DAU]),
       dateAutorisation: dateAuto || '',
       adresse: buildAdresse(row),
       codePostal: row[COL.ADR_CODPOST_TER] || '',
@@ -196,7 +258,10 @@ async function main() {
       surfaceCreee: parseInt(row[COL.SURF_HAB_CREEE]) || 0,
       isExtension,
       isSurelevation,
-      natureProjet: row[COL.NATURE_PROJET_DECLAREE] || '',
+      natureProjet: toLabel(NATURE_PROJET, row[COL.NATURE_PROJET_DECLAREE]),
+      categorieDemandeur: toLabel(CATEGORIE_DEMANDEUR, row[COL.CAT_DEM]),
+      destination: toLabel(DESTINATION, row[COL.DESTINATION_PRINCIPALE]),
+      utilisation: toLabel(UTILISATION, row[COL.UTILISATION]),
       row // Garder la ligne complète pour le scoring
     };
 
@@ -241,11 +306,12 @@ async function main() {
   // Réassigner les IDs
   leads.forEach((lead, i) => lead.id = i + 1);
 
-  // Générer le fichier TSV
+  // Générer le fichier TSV avec libellés explicites
   const headers = [
-    'ID', 'Num_Permis', 'Type_Permis', 'Date_Autorisation',
+    'ID', 'Num_Permis', 'Type_Permis', 'Etat_Dossier', 'Date_Autorisation',
     'Adresse', 'Code_Postal', 'Ville', 'Departement',
     'Surface_Creee', 'Extension', 'Surelevation', 'Nature_Projet',
+    'Categorie_Demandeur', 'Destination', 'Utilisation',
     'Score', 'Priorite', 'Score_Fraicheur', 'Score_Type', 'Score_Surface'
   ];
 
@@ -256,6 +322,7 @@ async function main() {
       lead.id,
       lead.numPermis,
       lead.typePermis,
+      lead.etatDossier,
       lead.dateAutorisation,
       lead.adresse,
       lead.codePostal,
@@ -265,6 +332,9 @@ async function main() {
       lead.isExtension ? 'Oui' : 'Non',
       lead.isSurelevation ? 'Oui' : 'Non',
       lead.natureProjet,
+      lead.categorieDemandeur,
+      lead.destination,
+      lead.utilisation,
       lead.score,
       lead.priorite,
       lead.scoreFraicheur,
@@ -309,6 +379,7 @@ async function main() {
         lead.id,
         lead.numPermis,
         lead.typePermis,
+        lead.etatDossier,
         lead.dateAutorisation,
         lead.adresse,
         lead.codePostal,
@@ -318,6 +389,9 @@ async function main() {
         lead.isExtension ? 'Oui' : 'Non',
         lead.isSurelevation ? 'Oui' : 'Non',
         lead.natureProjet,
+        lead.categorieDemandeur,
+        lead.destination,
+        lead.utilisation,
         lead.score,
         lead.priorite,
         lead.scoreFraicheur,
