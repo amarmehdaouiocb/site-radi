@@ -1,0 +1,701 @@
+ID	Date ajout	Source	Nom	Adresse	Code postal	Ville	Téléphone	Email	Type projet	Surface	Statut	Date contact	Prochain contact	Notes
+1	2026-02-11	DVF - Import auto		15 RUE EMILE AUXERRE	93110	Rosny-sous-Bois			Achat récent	90	Nouveau			Vente 2025-06-30 - 502 000€
+2	2026-02-11	DVF - Import auto		17 RUE ROGER SALENGRO	93150	Le Blanc-Mesnil			Achat récent	71	Nouveau			Vente 2025-06-30 - 325 000€
+3	2026-02-11	DVF - Import auto		23 RUE DANTON	93310	Le Pré-Saint-Gervais			Achat récent	138	Nouveau			Vente 2025-06-30 - 9 161 040€
+4	2026-02-11	DVF - Import auto		31 RUE DU PREFET CHALEIL	93600	Aulnay-sous-Bois			Achat récent	36	Nouveau			Vente 2025-06-30 - 250 000€
+5	2026-02-11	DVF - Import auto		24 AV RULHIERE	93150	Le Blanc-Mesnil			Achat récent	85	Nouveau			Vente 2025-06-30 - 285 000€
+6	2026-02-11	DVF - Import auto		160 AV FRANKLIN	93320	Les Pavillons-sous-Bois			Achat récent	147	Nouveau			Vente 2025-06-30 - 420 000€
+7	2026-02-11	DVF - Import auto		9 IMP LIBERTE	93230	Romainville			Achat récent	75	Nouveau			Vente 2025-06-30 - 645 000€
+8	2026-02-11	DVF - Import auto		5 IMP GAMBETTA	93190	Livry-Gargan			Achat récent	76	Nouveau			Vente 2025-06-30 - 299 000€
+9	2026-02-11	DVF - Import auto		3 ALL SAINTE ANNE	93600	Aulnay-sous-Bois			Achat récent	26	Nouveau			Vente 2025-06-30 - 175 000€
+10	2026-02-11	DVF - Import auto		40 RUE PIERRE BROSSOLETTE	93360	Neuilly-Plaisance			Achat récent	120	Nouveau			Vente 2025-06-30 - 570 000€
+11	2026-02-11	DVF - Import auto		89 AV CHEVREUL	93370	Montfermeil			Achat récent	115	Nouveau			Vente 2025-06-30 - 268 125€
+12	2026-02-11	DVF - Import auto		47 AV LAGACHE	93250	Villemomble			Achat récent	86	Nouveau			Vente 2025-06-30 - 420 000€
+13	2026-02-11	DVF - Import auto		11 RUE MARCELLIN BERTHELOT	93130	Noisy-le-Sec			Achat récent	50	Nouveau			Vente 2025-06-30 - 286 000€
+14	2026-02-11	DVF - Import auto		10 VLA RAYMOND LEFEBVRE	93100	Montreuil			Achat récent	73	Nouveau			Vente 2025-06-27 - 315 000€
+15	2026-02-11	DVF - Import auto		21 RUE GASTON NOREUX	93430	Villetaneuse			Achat récent	124	Nouveau			Vente 2025-06-27 - 325 000€
+16	2026-02-11	DVF - Import auto		6 RUE DES PERRIERS	93370	Montfermeil			Achat récent	24	Nouveau			Vente 2025-06-27 - 125 000€
+17	2026-02-11	DVF - Import auto		6 ALL SAUTIER	93250	Villemomble			Achat récent	73	Nouveau			Vente 2025-06-27 - 349 600€
+18	2026-02-11	DVF - Import auto		58 CHE DE LA REMISE	93470	Coubron			Achat récent	122	Nouveau			Vente 2025-06-27 - 390 000€
+19	2026-02-11	DVF - Import auto		37 AV DES CHATAIGNIERS	93160	Noisy-le-Grand			Achat récent	24	Nouveau			Vente 2025-06-27 - 237 500€
+20	2026-02-11	DVF - Import auto		50 RUE FRANCOIS MITTERRAND	93170	Bagnolet			Achat récent	28	Nouveau			Vente 2025-06-27 - 1 603 000€
+21	2026-02-11	DVF - Import auto		48 RUE FRANCOIS MITTERRAND	93170	Bagnolet			Achat récent	20	Nouveau			Vente 2025-06-27 - 1 603 000€
+22	2026-02-11	DVF - Import auto		46 RUE FRANCOIS MITTERRAND	93170	Bagnolet			Achat récent	60	Nouveau			Vente 2025-06-27 - 1 600 000€
+23	2026-02-11	DVF - Import auto		23 RUE JULES FERRY	93100	Montreuil			Achat récent	55	Nouveau			Vente 2025-06-26 - 660 000€
+24	2026-02-11	DVF - Import auto		23 RUE DES FEDERES	93100	Montreuil			Achat récent	155	Nouveau			Vente 2025-06-26 - 1 560 000€
+25	2026-02-11	DVF - Import auto		34 ALL CHUNA BAJTSZTOK	93190	Livry-Gargan			Achat récent	107	Nouveau			Vente 2025-06-26 - 390 000€
+26	2026-02-11	DVF - Import auto		28 RUE EUGENE VARLIN	93000	Bobigny			Achat récent	83	Nouveau			Vente 2025-06-26 - 325 000€
+27	2026-02-11	DVF - Import auto		20 AV DE DIJON	93220	Gagny			Achat récent	100	Nouveau			Vente 2025-06-25 - 440 000€
+28	2026-02-11	DVF - Import auto		7 RUE PASCAL	93110	Rosny-sous-Bois			Achat récent	61	Nouveau			Vente 2025-06-25 - 250 000€
+29	2026-02-11	DVF - Import auto		53 AV GEORGES SACHET	93420	Villepinte			Achat récent	91	Nouveau			Vente 2025-06-25 - 275 000€
+30	2026-02-11	DVF - Import auto		24 AV LENINE PIERREFITTE-SUR-SEI	93380	Saint-Denis			Achat récent	180	Nouveau			Vente 2025-06-25 - 1 000 000€
+31	2026-02-11	DVF - Import auto		34 RUE DES MOULINS	93370	Montfermeil			Achat récent	97	Nouveau			Vente 2025-06-25 - 463 800€
+32	2026-02-11	DVF - Import auto		73 PAS DES ROSES	93300	Aubervilliers			Achat récent	48	Nouveau			Vente 2025-06-25 - 169 000€
+33	2026-02-11	DVF - Import auto		60 RUE DU LIEUTENANT THOMAS	93170	Bagnolet			Achat récent	108	Nouveau			Vente 2025-06-25 - 900 000€
+34	2026-02-11	DVF - Import auto		68 AV JEAN JAURES	93800	Épinay-sur-Seine			Achat récent	121	Nouveau			Vente 2025-06-25 - 430 000€
+35	2026-02-11	DVF - Import auto		3 PL DE LA REPUBLIQUE	93460	Gournay-sur-Marne			Achat récent	155	Nouveau			Vente 2025-06-25 - 620 000€
+36	2026-02-11	DVF - Import auto		28 BD ANDRE	93250	Villemomble			Achat récent	125	Nouveau			Vente 2025-06-25 - 367 500€
+37	2026-02-11	DVF - Import auto		18 RUE DE BEAUNE	93160	Noisy-le-Grand			Achat récent	76	Nouveau			Vente 2025-06-25 - 405 000€
+38	2026-02-11	DVF - Import auto		5 RUE JULES MEILLIER	93700	Drancy			Achat récent	100	Nouveau			Vente 2025-06-24 - 640 000€
+39	2026-02-11	DVF - Import auto		4 PL DES FETES	93340	Le Raincy			Achat récent	72	Nouveau			Vente 2025-06-24 - 480 000€
+40	2026-02-11	DVF - Import auto		38 AV LOUIS MENARD	93270	Sevran			Achat récent	99	Nouveau			Vente 2025-06-24 - 340 000€
+41	2026-02-11	DVF - Import auto		28 AV DE LA GAITE	93220	Gagny			Achat récent	46	Nouveau			Vente 2025-06-24 - 248 000€
+42	2026-02-11	DVF - Import auto		23 RUE DE PONTOISE	93240	Stains			Achat récent	89	Nouveau			Vente 2025-06-24 - 249 000€
+43	2026-02-11	DVF - Import auto		32 AV GEORGES CLEMENCEAU	93160	Noisy-le-Grand			Achat récent	151	Nouveau			Vente 2025-06-24 - 375 600€
+44	2026-02-11	DVF - Import auto		28 RUE VILLEBOIS MAREUIL	93330	Neuilly-sur-Marne			Achat récent	140	Nouveau			Vente 2025-06-23 - 555 000€
+45	2026-02-11	DVF - Import auto		31 BD ROGER SALENGRO	93130	Noisy-le-Sec			Achat récent	56	Nouveau			Vente 2025-06-23 - 340 000€
+46	2026-02-11	DVF - Import auto		41 RUE POLLET	93600	Aulnay-sous-Bois			Achat récent	30	Nouveau			Vente 2025-06-23 - 160 000€
+47	2026-02-11	DVF - Import auto		11 CHE DU BOIS DE L ETOILE	93220	Gagny			Achat récent	92	Nouveau			Vente 2025-06-23 - 325 000€
+48	2026-02-11	DVF - Import auto		7 ALL DES PERVENCHES	93190	Livry-Gargan			Achat récent	45	Nouveau			Vente 2025-06-23 - 217 000€
+49	2026-02-11	DVF - Import auto		11 RUE DE L ORANGERIE	93250	Villemomble			Achat récent	106	Nouveau			Vente 2025-06-20 - 486 375€
+50	2026-02-11	DVF - Import auto		7 ALL BLANCHE ROSE	93340	Le Raincy			Achat récent	63	Nouveau			Vente 2025-06-20 - 241 000€
+51	2026-02-11	DVF - Import auto		3 VLA BRAZZA	93230	Romainville			Achat récent	31	Nouveau			Vente 2025-06-20 - 162 000€
+52	2026-02-11	DVF - Import auto		17 RUE ROGER LEMAIRE	93600	Aulnay-sous-Bois			Achat récent	87	Nouveau			Vente 2025-06-20 - 372 000€
+53	2026-02-11	DVF - Import auto		31 RUE DE LA PAIX	93240	Stains			Achat récent	149	Nouveau			Vente 2025-06-20 - 345 000€
+54	2026-02-11	DVF - Import auto		74 RUE MARCEL SEMBAT	93350	Le Bourget			Achat récent	57	Nouveau			Vente 2025-06-20 - 449 000€
+55	2026-02-11	DVF - Import auto		17 BD HOCHE	93600	Aulnay-sous-Bois			Achat récent	72	Nouveau			Vente 2025-06-19 - 240 000€
+56	2026-02-11	DVF - Import auto		37 AV AIME	93250	Villemomble			Achat récent	80	Nouveau			Vente 2025-06-19 - 290 000€
+57	2026-02-11	DVF - Import auto		22 QUAI DE LA MARINE	93450	L'Île-Saint-Denis			Achat récent	88	Nouveau			Vente 2025-06-19 - 580 000€
+58	2026-02-11	DVF - Import auto		11 ALL DUNAND	93220	Gagny			Achat récent	65	Nouveau			Vente 2025-06-19 - 280 000€
+59	2026-02-11	DVF - Import auto		15 RUE DU GEN LECLERC	93110	Rosny-sous-Bois			Achat récent	80	Nouveau			Vente 2025-06-19 - 760 000€
+60	2026-02-11	DVF - Import auto		23 RUE GUILLAUME APOLLINAIRE	93200	Saint-Denis			Achat récent	109	Nouveau			Vente 2025-06-18 - 345 000€
+61	2026-02-11	DVF - Import auto		40 VC STR DE LA FERME	93100	Montreuil			Achat récent	96	Nouveau			Vente 2025-06-18 - 310 000€
+62	2026-02-11	DVF - Import auto		45 RUE PAUL BERT	93370	Montfermeil			Achat récent	184	Nouveau			Vente 2025-06-18 - 457 000€
+63	2026-02-11	DVF - Import auto		57 AV DU RAINCY	93600	Aulnay-sous-Bois			Achat récent	117	Nouveau			Vente 2025-06-18 - 462 000€
+64	2026-02-11	DVF - Import auto		12 ALL POTTIER	93320	Les Pavillons-sous-Bois			Achat récent	113	Nouveau			Vente 2025-06-18 - 314 000€
+65	2026-02-11	DVF - Import auto		8 RUE FRANCISCO FERRER	93100	Montreuil			Achat récent	63	Nouveau			Vente 2025-06-18 - 609 650€
+66	2026-02-11	DVF - Import auto		7 RUE HENRY DUNANT	93190	Livry-Gargan			Achat récent	47	Nouveau			Vente 2025-06-17 - 220 000€
+67	2026-02-11	DVF - Import auto		12 AV DES ACACIAS	93170	Bagnolet			Achat récent	65	Nouveau			Vente 2025-06-17 - 320 000€
+68	2026-02-11	DVF - Import auto		28 RUE DES CERISIERS	93700	Drancy			Achat récent	122	Nouveau			Vente 2025-06-17 - 416 520€
+69	2026-02-11	DVF - Import auto		14 RUE DE LA COOPERATION	93240	Stains			Achat récent	86	Nouveau			Vente 2025-06-17 - 275 000€
+70	2026-02-11	DVF - Import auto		54 AV DU GENERAL LECLERC	93420	Villepinte			Achat récent	40	Nouveau			Vente 2025-06-17 - 205 000€
+71	2026-02-11	DVF - Import auto		8 ALL AUGUSTE RENOIR	93460	Gournay-sur-Marne			Achat récent	145	Nouveau			Vente 2025-06-17 - 640 000€
+72	2026-02-11	DVF - Import auto		74 BD CARNOT	93250	Villemomble			Achat récent	75	Nouveau			Vente 2025-06-17 - 436 050€
+73	2026-02-11	DVF - Import auto		9 AV LEBON	93370	Montfermeil			Achat récent	66	Nouveau			Vente 2025-06-17 - 170 000€
+74	2026-02-11	DVF - Import auto		42 ALL JARDIN ANGLAIS	93340	Le Raincy			Achat récent	186	Nouveau			Vente 2025-06-17 - 1 638 000€
+75	2026-02-11	DVF - Import auto		54 RUE DOCTEUR PARAT	93230	Romainville			Achat récent	133	Nouveau			Vente 2025-06-17 - 560 000€
+76	2026-02-11	DVF - Import auto		18 RUE R ET P CHARTON	93250	Villemomble			Achat récent	54	Nouveau			Vente 2025-06-16 - 295 000€
+77	2026-02-11	DVF - Import auto		10 RUE DU COLONEL FABIEN	93300	Aubervilliers			Achat récent	185	Nouveau			Vente 2025-06-16 - 660 380€
+78	2026-02-11	DVF - Import auto		24 AV DES ACACIAS	93600	Aulnay-sous-Bois			Achat récent	96	Nouveau			Vente 2025-06-16 - 440 000€
+79	2026-02-11	DVF - Import auto		118 BD LEFEVRE	93600	Aulnay-sous-Bois			Achat récent	78	Nouveau			Vente 2025-06-16 - 300 000€
+80	2026-02-11	DVF - Import auto		72 RUE D ESTIENNE D ORVES	93110	Rosny-sous-Bois			Achat récent	70	Nouveau			Vente 2025-06-16 - 220 500€
+81	2026-02-11	DVF - Import auto		26 AV JEAN MERMOZ	93460	Gournay-sur-Marne			Achat récent	150	Nouveau			Vente 2025-06-16 - 460 000€
+82	2026-02-11	DVF - Import auto		26 AV VICTOR HUGO	93130	Noisy-le-Sec			Achat récent	124	Nouveau			Vente 2025-06-16 - 510 000€
+83	2026-02-11	DVF - Import auto		11 AV DE PROVENCE	93220	Gagny			Achat récent	71	Nouveau			Vente 2025-06-13 - 310 000€
+84	2026-02-11	DVF - Import auto		28 RUE D ALEMBERT	93170	Bagnolet			Achat récent	65	Nouveau			Vente 2025-06-13 - 320 000€
+85	2026-02-11	DVF - Import auto		10 CHE DE LA MARE GAUDION	93190	Livry-Gargan			Achat récent	100	Nouveau			Vente 2025-06-13 - 440 500€
+86	2026-02-11	DVF - Import auto		151 CHE DE LA COTE DU CHANGE	93370	Montfermeil			Achat récent	105	Nouveau			Vente 2025-06-13 - 310 000€
+87	2026-02-11	DVF - Import auto		3 RUE SIMONE BEAUVOIR	93130	Noisy-le-Sec			Achat récent	125	Nouveau			Vente 2025-06-13 - 466 500€
+88	2026-02-11	DVF - Import auto		14 VLA DES MAUPAS	93800	Épinay-sur-Seine			Achat récent	84	Nouveau			Vente 2025-06-13 - 51 500€
+89	2026-02-11	DVF - Import auto		5 IMP EUGENE CREPIEUX	93360	Neuilly-Plaisance			Achat récent	100	Nouveau			Vente 2025-06-13 - 590 000€
+90	2026-02-11	DVF - Import auto		28 RUE DE BONNEUIL	93200	Saint-Denis			Achat récent	89	Nouveau			Vente 2025-06-13 - 270 000€
+91	2026-02-11	DVF - Import auto		10 RUE LAFONTAINE	93250	Villemomble			Achat récent	58	Nouveau			Vente 2025-06-13 - 275 000€
+92	2026-02-11	DVF - Import auto		3 RUE HENRI 4	93460	Gournay-sur-Marne			Achat récent	100	Nouveau			Vente 2025-06-13 - 290 000€
+93	2026-02-11	DVF - Import auto		7 RUE AMBROISE CROIZAT	93700	Drancy			Achat récent	53	Nouveau			Vente 2025-06-13 - 248 000€
+94	2026-02-11	DVF - Import auto		7 ALL DU MOULIN HARVY	93130	Noisy-le-Sec			Achat récent	90	Nouveau			Vente 2025-06-12 - 330 000€
+95	2026-02-11	DVF - Import auto		4 PL HENRI DUQUENNE	93150	Le Blanc-Mesnil			Achat récent	82	Nouveau			Vente 2025-06-12 - 390 000€
+96	2026-02-11	DVF - Import auto		59 AV DE FREDY	93250	Villemomble			Achat récent	62	Nouveau			Vente 2025-06-11 - 319 000€
+97	2026-02-11	DVF - Import auto		13 RUE DES CELESTINS	93700	Drancy			Achat récent	81	Nouveau			Vente 2025-06-11 - 305 000€
+98	2026-02-11	DVF - Import auto		25 CHE DU BEL AIR	93160	Noisy-le-Grand			Achat récent	128	Nouveau			Vente 2025-06-11 - 460 000€
+99	2026-02-11	DVF - Import auto		30 AV AMPERE	93370	Montfermeil			Achat récent	76	Nouveau			Vente 2025-06-11 - 285 000€
+100	2026-02-11	DVF - Import auto		86 RUE DU GENERAL LECLERC	93370	Montfermeil			Achat récent	50	Nouveau			Vente 2025-06-11 - 224 000€
+101	2026-02-11	DVF - Import auto		23 RUE EMILE DEQUEN	94300	Vincennes			Achat récent	90	Nouveau			Vente 2025-06-19 - 1 280 000€
+102	2026-02-11	DVF - Import auto		17 IMP OCTAVE MIRBEAU	94800	Villejuif			Achat récent	64	Nouveau			Vente 2025-06-18 - 259 000€
+103	2026-02-11	DVF - Import auto		48 RUE DES BEAUMONTS	94120	Fontenay-sous-Bois			Achat récent	55	Nouveau			Vente 2025-06-18 - 635 000€
+104	2026-02-11	DVF - Import auto		7 RUE VALETTE	94100	Saint-Maur-des-Fossés			Achat récent	111	Nouveau			Vente 2025-06-18 - 570 000€
+105	2026-02-11	DVF - Import auto		7 RUE DENIS PAPIN	94120	Fontenay-sous-Bois			Achat récent	164	Nouveau			Vente 2025-06-17 - 765 000€
+106	2026-02-11	DVF - Import auto		137 RUE CHARLES BASSEE	94120	Fontenay-sous-Bois			Achat récent	95	Nouveau			Vente 2025-06-17 - 764 150€
+107	2026-02-11	DVF - Import auto		37 CHE DES PECHEURS	94190	Villeneuve-Saint-Georges			Achat récent	70	Nouveau			Vente 2025-06-17 - 142 000€
+108	2026-02-11	DVF - Import auto		10 RUE DE LA FERME	94100	Saint-Maur-des-Fossés			Achat récent	36	Nouveau			Vente 2025-06-17 - 400 000€
+109	2026-02-11	DVF - Import auto		12 RUE DE LA CARPE	94140	Alfortville			Achat récent	96	Nouveau			Vente 2025-06-16 - 550 000€
+110	2026-02-11	DVF - Import auto		8 RUE MOLIERE	94490	Ormesson-sur-Marne			Achat récent	107	Nouveau			Vente 2025-06-13 - 434 630€
+111	2026-02-11	DVF - Import auto		68 AV BARBES	94100	Saint-Maur-des-Fossés			Achat récent	69	Nouveau			Vente 2025-06-13 - 542 590€
+112	2026-02-11	DVF - Import auto		39 AV JULES VALLES	94500	Champigny-sur-Marne			Achat récent	50	Nouveau			Vente 2025-06-13 - 265 000€
+113	2026-02-11	DVF - Import auto		21 RUE DESIRE RICHEBOIS	94120	Fontenay-sous-Bois			Achat récent	38	Nouveau			Vente 2025-06-13 - 365 399€
+114	2026-02-11	DVF - Import auto		32 RUE JULIETTE DE WILS	94500	Champigny-sur-Marne			Achat récent	68	Nouveau			Vente 2025-06-13 - 380 000€
+115	2026-02-11	DVF - Import auto		3 RUE DU FORT	94400	Vitry-sur-Seine			Achat récent	97	Nouveau			Vente 2025-06-12 - 446 780€
+116	2026-02-11	DVF - Import auto		35 RUE VICTOR HUGO	94880	Noiseau			Achat récent	97	Nouveau			Vente 2025-06-11 - 323 000€
+117	2026-02-11	DVF - Import auto		21 ALL ACHILLE DE THOMASSIN	94520	Périgny			Achat récent	106	Nouveau			Vente 2025-06-11 - 350 000€
+118	2026-02-11	DVF - Import auto		30 AV DE LA GARE	94430	Chennevières-sur-Marne			Achat récent	88	Nouveau			Vente 2025-06-11 - 429 000€
+119	2026-02-11	DVF - Import auto		37 RUE DE LA FERME	94210	Saint-Maur-des-Fossés			Achat récent	80	Nouveau			Vente 2025-06-11 - 490 000€
+120	2026-02-11	DVF - Import auto		59 RUE DU BOIS DES MOINES	94210	Saint-Maur-des-Fossés			Achat récent	57	Nouveau			Vente 2025-06-11 - 365 000€
+121	2026-02-11	DVF - Import auto		87 RUE DE LA CONCORDE	94700	Maisons-Alfort			Achat récent	110	Nouveau			Vente 2025-06-11 - 657 500€
+122	2026-02-11	DVF - Import auto		11 IMP MAHIEU	94100	Saint-Maur-des-Fossés			Achat récent	146	Nouveau			Vente 2025-06-11 - 780 000€
+123	2026-02-11	DVF - Import auto		27 RUE PORCHE FONTAINE	94370	Sucy-en-Brie			Achat récent	142	Nouveau			Vente 2025-06-10 - 410 000€
+124	2026-02-11	DVF - Import auto		12 RUE ALFRED DE MUSSET	94450	Limeil-Brévannes			Achat récent	140	Nouveau			Vente 2025-06-10 - 412 000€
+125	2026-02-11	DVF - Import auto		33 AV GONZALVE	94420	Le Plessis-Trévise			Achat récent	59	Nouveau			Vente 2025-06-10 - 272 500€
+126	2026-02-11	DVF - Import auto		33 RUE PIERRE MARIE DERRIEN	94500	Champigny-sur-Marne			Achat récent	72	Nouveau			Vente 2025-06-06 - 335 000€
+127	2026-02-11	DVF - Import auto		13 RUE JEAN MERMOZ	94160	Saint-Mandé			Achat récent	180	Nouveau			Vente 2025-06-06 - 1 790 000€
+128	2026-02-11	DVF - Import auto		3 RUE VIALA	94210	Saint-Maur-des-Fossés			Achat récent	70	Nouveau			Vente 2025-06-05 - 545 320€
+129	2026-02-11	DVF - Import auto		66 AV MARIE	94500	Champigny-sur-Marne			Achat récent	58	Nouveau			Vente 2025-06-05 - 360 000€
+130	2026-02-11	DVF - Import auto		20 RUE CLAUDE JEAN ROMAIN	94170	Le Perreux-sur-Marne			Achat récent	137	Nouveau			Vente 2025-06-05 - 700 000€
+131	2026-02-11	DVF - Import auto		26 AV DU CENTENAIRE	94210	Saint-Maur-des-Fossés			Achat récent	82	Nouveau			Vente 2025-06-05 - 691 500€
+132	2026-02-11	DVF - Import auto		1 SQ VICTOR HUGO	94490	Ormesson-sur-Marne			Achat récent	100	Nouveau			Vente 2025-06-05 - 505 000€
+133	2026-02-11	DVF - Import auto		18 RUE PARMENTIER	94130	Nogent-sur-Marne			Achat récent	58	Nouveau			Vente 2025-06-04 - 665 000€
+134	2026-02-11	DVF - Import auto		12 RUE DU 42E DE LIGNE	94340	Joinville-le-Pont			Achat récent	77	Nouveau			Vente 2025-06-03 - 435 000€
+135	2026-02-11	DVF - Import auto		100 RUE MAL DE LATTRE DE TASSIGNY	94700	Maisons-Alfort			Achat récent	14	Nouveau			Vente 2025-06-03 - 520 000€
+136	2026-02-11	DVF - Import auto		21 RUE CHARLES SILVESTRI	94300	Vincennes			Achat récent	101	Nouveau			Vente 2025-06-03 - 1 545 750€
+137	2026-02-11	DVF - Import auto		4 RUE POUSSIN	94120	Fontenay-sous-Bois			Achat récent	43	Nouveau			Vente 2025-06-03 - 376 750€
+138	2026-02-11	DVF - Import auto		11 RUE LOUIS MARCHAL	94200	Ivry-sur-Seine			Achat récent	85	Nouveau			Vente 2025-06-02 - 315 000€
+139	2026-02-11	DVF - Import auto		34 RUE DES CEMONCEAUX	94170	Le Perreux-sur-Marne			Achat récent	120	Nouveau			Vente 2025-06-02 - 770 000€
+140	2026-02-11	DVF - Import auto		19 RUE LOUIS BONIN	94310	Orly			Achat récent	275	Nouveau			Vente 2025-06-02 - 340 000€
+141	2026-02-11	DVF - Import auto		145 RUE JULIAN GRIMAU	94400	Vitry-sur-Seine			Achat récent	68	Nouveau			Vente 2025-06-02 - 362 040€
+142	2026-02-11	DVF - Import auto		11 RUE DU DOCTEUR ROUX	94880	Noiseau			Achat récent	23	Nouveau			Vente 2025-06-02 - 200 000€
+143	2026-02-11	DVF - Import auto		9 AV DENIS PAPIN	94100	Saint-Maur-des-Fossés			Achat récent	61	Nouveau			Vente 2025-06-02 - 10 240 000€
+144	2026-02-11	DVF - Import auto		8 AV DES CHATAIGNIERS	94420	Le Plessis-Trévise			Achat récent	183	Nouveau			Vente 2025-06-02 - 635 000€
+145	2026-02-11	DVF - Import auto		11 RUE CHEVREUL	94700	Maisons-Alfort			Achat récent	131	Nouveau			Vente 2025-05-30 - 927 650€
+146	2026-02-11	DVF - Import auto		5 RUE DU BOIS	94120	Fontenay-sous-Bois			Achat récent	137	Nouveau			Vente 2025-05-30 - 1 500 000€
+147	2026-02-11	DVF - Import auto		55 AV DE VALENTON	94190	Villeneuve-Saint-Georges			Achat récent	78	Nouveau			Vente 2025-05-30 - 249 000€
+148	2026-02-11	DVF - Import auto		6 RUE DU CHAPITRE	94370	Sucy-en-Brie			Achat récent	49	Nouveau			Vente 2025-05-28 - 255 000€
+149	2026-02-11	DVF - Import auto		18 RUE ROYALE	94470	Boissy-Saint-Léger			Achat récent	107	Nouveau			Vente 2025-05-28 - 300 000€
+150	2026-02-11	DVF - Import auto		14 RUE CHARLES PERRAULT	94290	Villeneuve-le-Roi			Achat récent	117	Nouveau			Vente 2025-05-28 - 310 000€
+151	2026-02-11	DVF - Import auto		26 RUE VOLTAIRE	94140	Alfortville			Achat récent	18	Nouveau			Vente 2025-05-28 - 90 000€
+152	2026-02-11	DVF - Import auto		85 RUE DE VERDUN	94520	Mandres-les-Roses			Achat récent	158	Nouveau			Vente 2025-05-28 - 318 000€
+153	2026-02-11	DVF - Import auto		23 RUE DES FORESTIERS	94440	Marolles-en-Brie			Achat récent	120	Nouveau			Vente 2025-05-28 - 333 000€
+154	2026-02-11	DVF - Import auto		42 RUE TALMA	94400	Vitry-sur-Seine			Achat récent	100	Nouveau			Vente 2025-05-28 - 440 650€
+155	2026-02-11	DVF - Import auto		13 COUR DE L'ORMOIS - COUR 13	94520	Mandres-les-Roses			Achat récent	69	Nouveau			Vente 2025-05-28 - 260 000€
+156	2026-02-11	DVF - Import auto		33 RUE PASTEUR	94380	Bonneuil-sur-Marne			Achat récent	80	Nouveau			Vente 2025-05-28 - 250 000€
+157	2026-02-11	DVF - Import auto		124 RUE ALBERT KIENERT	94490	Ormesson-sur-Marne			Achat récent	145	Nouveau			Vente 2025-05-28 - 223 584€
+158	2026-02-11	DVF - Import auto		12 ALL DES ORMES	94170	Le Perreux-sur-Marne			Achat récent	130	Nouveau			Vente 2025-05-27 - 1 370 000€
+159	2026-02-11	DVF - Import auto		19 RUE DE LA VILLAGEOISE	94110	Arcueil			Achat récent	160	Nouveau			Vente 2025-05-27 - 669 000€
+160	2026-02-11	DVF - Import auto		6 RUE DE VILLENEUVE	94370	Sucy-en-Brie			Achat récent	60	Nouveau			Vente 2025-05-27 - 250 300€
+161	2026-02-11	DVF - Import auto		31 RUE DES TULIPES	94240	L'Haÿ-les-Roses			Achat récent	130	Nouveau			Vente 2025-05-27 - 646 000€
+162	2026-02-11	DVF - Import auto		56 QUAI LUCIE	94500	Champigny-sur-Marne			Achat récent	35	Nouveau			Vente 2025-05-27 - 370 000€
+163	2026-02-11	DVF - Import auto		51 VOIE REMBRANDT	94400	Vitry-sur-Seine			Achat récent	70	Nouveau			Vente 2025-05-27 - 334 000€
+164	2026-02-11	DVF - Import auto		511 AV MAURICE THOREZ	94500	Champigny-sur-Marne			Achat récent	90	Nouveau			Vente 2025-05-27 - 104 006€
+165	2026-02-11	DVF - Import auto		35 RUE DOCT VAILLANT	94240	L'Haÿ-les-Roses			Achat récent	110	Nouveau			Vente 2025-05-26 - 113 400€
+166	2026-02-11	DVF - Import auto		6 RUE GOUNOD	94500	Champigny-sur-Marne			Achat récent	59	Nouveau			Vente 2025-05-26 - 460 000€
+167	2026-02-11	DVF - Import auto		3 RUE EDME VERNIQUET	94150	Rungis			Achat récent	148	Nouveau			Vente 2025-05-26 - 595 000€
+168	2026-02-11	DVF - Import auto		16 RUE DE STOCKHOLM	94510	La Queue-en-Brie			Achat récent	88	Nouveau			Vente 2025-05-26 - 380 000€
+169	2026-02-11	DVF - Import auto		7 RUE DE LA CHAUMIERE	94360	Bry-sur-Marne			Achat récent	68	Nouveau			Vente 2025-05-26 - 475 000€
+170	2026-02-11	DVF - Import auto		9 RUE HENRI MAGNIER	94480	Ablon-sur-Seine			Achat récent	85	Nouveau			Vente 2025-05-26 - 380 000€
+171	2026-02-11	DVF - Import auto		5 AV SAINT PIERRE	94420	Le Plessis-Trévise			Achat récent	125	Nouveau			Vente 2025-05-26 - 950 000€
+172	2026-02-11	DVF - Import auto		49 RUE SAINT HILAIRE	94210	Saint-Maur-des-Fossés			Achat récent	114	Nouveau			Vente 2025-05-26 - 710 000€
+173	2026-02-11	DVF - Import auto		19 AV MONTRICHARD	94350	Villiers-sur-Marne			Achat récent	84	Nouveau			Vente 2025-05-26 - 460 000€
+174	2026-02-11	DVF - Import auto		20 RUE DIDEROT	94490	Ormesson-sur-Marne			Achat récent	149	Nouveau			Vente 2025-05-26 - 620 000€
+175	2026-02-11	DVF - Import auto		13 IMP DE LA SABLONNIERE	94260	Fresnes			Achat récent	123	Nouveau			Vente 2025-05-23 - 390 000€
+176	2026-02-11	DVF - Import auto		7 RUE CURIE	94270	Le Kremlin-Bicêtre			Achat récent	72	Nouveau			Vente 2025-05-23 - 427 000€
+177	2026-02-11	DVF - Import auto		57 RUE DES CHARDONNERETS	94510	La Queue-en-Brie			Achat récent	87	Nouveau			Vente 2025-05-23 - 280 000€
+178	2026-02-11	DVF - Import auto		24 RUE DES PLANTES	94440	Villecresnes			Achat récent	57	Nouveau			Vente 2025-05-23 - 341 000€
+179	2026-02-11	DVF - Import auto		46 VOIE DAUMIER	94400	Vitry-sur-Seine			Achat récent	88	Nouveau			Vente 2025-05-23 - 418 000€
+180	2026-02-11	DVF - Import auto		17 RUE DU CHEMIN DE FER	94190	Villeneuve-Saint-Georges			Achat récent	80	Nouveau			Vente 2025-05-23 - 222 000€
+181	2026-02-11	DVF - Import auto		7 VLA D IDALIE	94300	Vincennes			Achat récent	154	Nouveau			Vente 2025-05-23 - 1 200 000€
+182	2026-02-11	DVF - Import auto		51 AV RAYMOND POINCARE	94210	Saint-Maur-des-Fossés			Achat récent	160	Nouveau			Vente 2025-05-22 - 846 000€
+183	2026-02-11	DVF - Import auto		9 RUE MARC SEGUIN	94190	Villeneuve-Saint-Georges			Achat récent	67	Nouveau			Vente 2025-05-22 - 205 000€
+184	2026-02-11	DVF - Import auto		30 AV RATEL	94340	Joinville-le-Pont			Achat récent	102	Nouveau			Vente 2025-05-22 - 748 000€
+185	2026-02-11	DVF - Import auto		16 RUE DU ROND POINT	94360	Bry-sur-Marne			Achat récent	131	Nouveau			Vente 2025-05-22 - 769 000€
+186	2026-02-11	DVF - Import auto		37 AV DUNOIS	94240	L'Haÿ-les-Roses			Achat récent	92	Nouveau			Vente 2025-05-21 - 280 000€
+187	2026-02-11	DVF - Import auto		11 RUE LOUIS	94260	Fresnes			Achat récent	120	Nouveau			Vente 2025-05-21 - 650 000€
+188	2026-02-11	DVF - Import auto		40 RUE DU LIEUTENANT DAGORNO	94440	Villecresnes			Achat récent	130	Nouveau			Vente 2025-05-21 - 422 000€
+189	2026-02-11	DVF - Import auto		23 RUE DE TRUCY	94120	Fontenay-sous-Bois			Achat récent	48	Nouveau			Vente 2025-05-21 - 379 000€
+190	2026-02-11	DVF - Import auto		9 AV ANDRE DREYER	94500	Champigny-sur-Marne			Achat récent	91	Nouveau			Vente 2025-05-21 - 372 000€
+191	2026-02-11	DVF - Import auto		47 AV DES MARGUERITES	94290	Villeneuve-le-Roi			Achat récent	56	Nouveau			Vente 2025-05-20 - 330 000€
+192	2026-02-11	DVF - Import auto		110 BD DE LA MARNE	94210	Saint-Maur-des-Fossés			Achat récent	210	Nouveau			Vente 2025-05-20 - 1 369 300€
+193	2026-02-11	DVF - Import auto		36 AV DE BEAUREGARD	94500	Champigny-sur-Marne			Achat récent	125	Nouveau			Vente 2025-05-20 - 320 000€
+194	2026-02-11	DVF - Import auto		65 BD DE STALINGRAD	94500	Champigny-sur-Marne			Achat récent	116	Nouveau			Vente 2025-05-20 - 489 783,28€
+195	2026-02-11	DVF - Import auto		169 AV DE COEUILLY	94500	Champigny-sur-Marne			Achat récent	73	Nouveau			Vente 2025-05-20 - 230 000€
+196	2026-02-11	DVF - Import auto		57 AV MISS CAVELL	94100	Saint-Maur-des-Fossés			Achat récent	26	Nouveau			Vente 2025-05-20 - 260 000€
+197	2026-02-11	DVF - Import auto		30 AV DE LA BANQUE	94210	Saint-Maur-des-Fossés			Achat récent	60	Nouveau			Vente 2025-05-20 - 285 000€
+198	2026-02-11	DVF - Import auto		4 RUE RAPHAEL	94400	Vitry-sur-Seine			Achat récent	87	Nouveau			Vente 2025-05-20 - 523 000€
+199	2026-02-11	DVF - Import auto		81 RUE GUY MOQUET	94500	Champigny-sur-Marne			Achat récent	38	Nouveau			Vente 2025-05-20 - 174 000€
+200	2026-02-11	DVF - Import auto		10 AV CARNOT	94500	Champigny-sur-Marne			Achat récent	25	Nouveau			Vente 2025-05-20 - 103 900€
+201	2026-02-11	DVF - Import auto		13 RUE EMILE LEBLOND	92500	Rueil-Malmaison			Achat récent	158	Nouveau			Vente 2025-06-30 - 1 144 330€
+202	2026-02-11	DVF - Import auto		43 RUE DES ARTS	92700	Colombes			Achat récent	110	Nouveau			Vente 2025-06-30 - 740 000€
+203	2026-02-11	DVF - Import auto		33 RUE DU COTEAU	92350	Le Plessis-Robinson			Achat récent	157	Nouveau			Vente 2025-06-30 - 859 700€
+204	2026-02-11	DVF - Import auto		14 RUE FREDERIC CLEMENT	92380	Garches			Achat récent	221	Nouveau			Vente 2025-06-30 - 2 335 800€
+205	2026-02-11	DVF - Import auto		9 RUE MARCEL SEMBAT	92130	Issy-les-Moulineaux			Achat récent	116	Nouveau			Vente 2025-06-30 - 951 220€
+206	2026-02-11	DVF - Import auto		30 AV DU CLOS TOUTAIN	92420	Vaucresson			Achat récent	150	Nouveau			Vente 2025-06-30 - 1 496 770€
+207	2026-02-11	DVF - Import auto		1 SEN DES MONTQUARTIERS	92140	Clamart			Achat récent	101	Nouveau			Vente 2025-06-30 - 774 400€
+208	2026-02-11	DVF - Import auto		5 AV FLACHAT	92600	Asnières-sur-Seine			Achat récent	116	Nouveau			Vente 2025-06-27 - 890 000€
+209	2026-02-11	DVF - Import auto		45 RUE GAY LUSSAC	92320	Châtillon			Achat récent	106	Nouveau			Vente 2025-06-27 - 830 000€
+210	2026-02-11	DVF - Import auto		4 RUE GEORGES HENRI	92240	Malakoff			Achat récent	83	Nouveau			Vente 2025-06-27 - 480 000€
+211	2026-02-11	DVF - Import auto		4 RUE DU GEN GOURAUD	92190	Meudon			Achat récent	140	Nouveau			Vente 2025-06-27 - 1 265 000€
+212	2026-02-11	DVF - Import auto		38 RUE ENGUEHARD	92220	Bagneux			Achat récent	160	Nouveau			Vente 2025-06-27 - 807 320€
+213	2026-02-11	DVF - Import auto		4 AV DU DOC GILLES	92380	Garches			Achat récent	204	Nouveau			Vente 2025-06-27 - 1 895 000€
+214	2026-02-11	DVF - Import auto		12 RUE LECAILLON	92320	Châtillon			Achat récent	60	Nouveau			Vente 2025-06-27 - 470 000€
+215	2026-02-11	DVF - Import auto		31 RUE ALFRED NOMBLOT	92340	Bourg-la-Reine			Achat récent	120	Nouveau			Vente 2025-06-27 - 912 000€
+216	2026-02-11	DVF - Import auto		30 VLA DES IRIS	92220	Bagneux			Achat récent	70	Nouveau			Vente 2025-06-27 - 433 085€
+217	2026-02-11	DVF - Import auto		28 RUE DES VAUSSOURDS	92500	Rueil-Malmaison			Achat récent	140	Nouveau			Vente 2025-06-26 - 1 117 800€
+218	2026-02-11	DVF - Import auto		42 RUE DES EPIS D OR	92140	Clamart			Achat récent	55	Nouveau			Vente 2025-06-26 - 360 000€
+219	2026-02-11	DVF - Import auto		11 RUE DE LA GARENNE	92310	Sèvres			Achat récent	123	Nouveau			Vente 2025-06-26 - 980 000€
+220	2026-02-11	DVF - Import auto		7 RUE CHARLES LAFFITTE	92200	Neuilly-sur-Seine			Achat récent	250	Nouveau			Vente 2025-06-25 - 3 925 000€
+221	2026-02-11	DVF - Import auto		19 AV DE LA TOUR D AUVERGNE	92700	Colombes			Achat récent	55	Nouveau			Vente 2025-06-25 - 290 000€
+222	2026-02-11	DVF - Import auto		18 AV CENTRALE	92700	Colombes			Achat récent	101	Nouveau			Vente 2025-06-25 - 930 000€
+223	2026-02-11	DVF - Import auto		32 RUE STEFFEN	92600	Asnières-sur-Seine			Achat récent	149	Nouveau			Vente 2025-06-25 - 1 216 000€
+224	2026-02-11	DVF - Import auto		70 RUE DES CERISIERS	92700	Colombes			Achat récent	197	Nouveau			Vente 2025-06-25 - 1 572 500€
+225	2026-02-11	DVF - Import auto		14 RUE DE LA STATION	92700	Colombes			Achat récent	174	Nouveau			Vente 2025-06-25 - 1 415 300€
+226	2026-02-11	DVF - Import auto		13 RUE CHARLES BERNARD METMANN	92200	Neuilly-sur-Seine			Achat récent	161	Nouveau			Vente 2025-06-25 - 2 228 200€
+227	2026-02-11	DVF - Import auto		11 RUE MARCELLIN BERTHELOT	92230	Gennevilliers			Achat récent	43	Nouveau			Vente 2025-06-25 - 199 891€
+228	2026-02-11	DVF - Import auto		29 RUE CARNOT	92100	Boulogne-Billancourt			Achat récent	43	Nouveau			Vente 2025-06-25 - 350 000€
+229	2026-02-11	DVF - Import auto		23 RUE CLAUDE BERNARD	92130	Issy-les-Moulineaux			Achat récent	120	Nouveau			Vente 2025-06-25 - 1 075 200€
+230	2026-02-11	DVF - Import auto		24 AV J B FORTIN	92220	Bagneux			Achat récent	142	Nouveau			Vente 2025-06-25 - 1 000 000€
+231	2026-02-11	DVF - Import auto		17 ALL DES DAMES	92270	Bois-Colombes			Achat récent	77	Nouveau			Vente 2025-06-24 - 653 625€
+232	2026-02-11	DVF - Import auto		43 RUE ANDRE CHENIER	92160	Antony			Achat récent	136	Nouveau			Vente 2025-06-24 - 153 600€
+233	2026-02-11	DVF - Import auto		27 RUE DE LA COTE	92350	Le Plessis-Robinson			Achat récent	135	Nouveau			Vente 2025-06-24 - 785 000€
+234	2026-02-11	DVF - Import auto		4 RUE ALPHONSE PLUCHET	92220	Bagneux			Achat récent	48	Nouveau			Vente 2025-06-24 - 600 000€
+235	2026-02-11	DVF - Import auto		2 RUE DU CHEVAL MOUSSE	92000	Nanterre			Achat récent	111	Nouveau			Vente 2025-06-23 - 425 000€
+236	2026-02-11	DVF - Import auto		6 RUE PAUL LANGEVIN	92160	Antony			Achat récent	41	Nouveau			Vente 2025-06-23 - 600 000€
+237	2026-02-11	DVF - Import auto		28 RUE FREDERIC CLAVEL	92150	Suresnes			Achat récent	141	Nouveau			Vente 2025-06-20 - 1 220 000€
+238	2026-02-11	DVF - Import auto		160 RUE DU PDT SALVADOR ALLENDE	92700	Colombes			Achat récent	106	Nouveau			Vente 2025-06-20 - 630 000€
+239	2026-02-11	DVF - Import auto		12 AV REYNAUD	92270	Bois-Colombes			Achat récent	113	Nouveau			Vente 2025-06-20 - 876 200€
+240	2026-02-11	DVF - Import auto		28 RUE RENE BARTHELEMY	92160	Antony			Achat récent	86	Nouveau			Vente 2025-06-20 - 670 000€
+241	2026-02-11	DVF - Import auto		19 RUE DES MOULINS A VENT	92260	Fontenay-aux-Roses			Achat récent	130	Nouveau			Vente 2025-06-20 - 640 000€
+242	2026-02-11	DVF - Import auto		12 AV TALAMON	92370	Chaville			Achat récent	228	Nouveau			Vente 2025-06-20 - 5 250€
+243	2026-02-11	DVF - Import auto		42 RUE DES CHAILLOTS	92140	Clamart			Achat récent	114	Nouveau			Vente 2025-06-20 - 870 000€
+244	2026-02-11	DVF - Import auto		11 RUE DE REIMS	92160	Antony			Achat récent	245	Nouveau			Vente 2025-06-20 - 1 121 400€
+245	2026-02-11	DVF - Import auto		24 RUE DU MONTOIR	92140	Clamart			Achat récent	160	Nouveau			Vente 2025-06-20 - 1 005 000€
+246	2026-02-11	DVF - Import auto		154 RUE LASEGUE	92320	Châtillon			Achat récent	167	Nouveau			Vente 2025-06-20 - 1 030 000€
+247	2026-02-11	DVF - Import auto		9 RUE EDMOND BLANC	92500	Rueil-Malmaison			Achat récent	78	Nouveau			Vente 2025-06-19 - 606 600€
+248	2026-02-11	DVF - Import auto		109 BD DU MOULIN DE LA TOUR	92350	Le Plessis-Robinson			Achat récent	59	Nouveau			Vente 2025-06-19 - 561 250€
+249	2026-02-11	DVF - Import auto		78 BD DU GEN DE GAULLE	92380	Garches			Achat récent	213	Nouveau			Vente 2025-06-19 - 1 921 520€
+250	2026-02-11	DVF - Import auto		10 RUE DE FONTENAY	92350	Le Plessis-Robinson			Achat récent	87	Nouveau			Vente 2025-06-19 - 425 000€
+251	2026-02-11	DVF - Import auto		8 RUE DES RESERVOIRS	92310	Sèvres			Achat récent	104	Nouveau			Vente 2025-06-19 - 459 500€
+252	2026-02-11	DVF - Import auto		24 RUE JEAN JACQUES ROUSSEAU	92240	Malakoff			Achat récent	150	Nouveau			Vente 2025-06-19 - 1 190 000€
+253	2026-02-11	DVF - Import auto		76 AV ADOLPHE SCHNEIDER	92140	Clamart			Achat récent	110	Nouveau			Vente 2025-06-19 - 625 000€
+254	2026-02-11	DVF - Import auto		18 RUE CUNY	92270	Bois-Colombes			Achat récent	145	Nouveau			Vente 2025-06-18 - 1 045 400€
+255	2026-02-11	DVF - Import auto		23 AV RAYMOND CROLAND	92260	Fontenay-aux-Roses			Achat récent	260	Nouveau			Vente 2025-06-18 - 770 500€
+256	2026-02-11	DVF - Import auto		1 ALL DU RUISSEAU	92160	Antony			Achat récent	157	Nouveau			Vente 2025-06-18 - 1 010 120€
+257	2026-02-11	DVF - Import auto		8 RUE CECILLE DINANT	92140	Clamart			Achat récent	50	Nouveau			Vente 2025-06-18 - 330 000€
+258	2026-02-11	DVF - Import auto		110 RUE VEUVE LACROIX	92000	Nanterre			Achat récent	45	Nouveau			Vente 2025-06-17 - 373 000€
+259	2026-02-11	DVF - Import auto		9 RUE DR GABRIEL LEDERMANN	92310	Sèvres			Achat récent	152	Nouveau			Vente 2025-06-17 - 1 275 400€
+260	2026-02-11	DVF - Import auto		36 AV DE LA REPUBLIQUE	92140	Clamart			Achat récent	55	Nouveau			Vente 2025-06-17 - 286 500€
+261	2026-02-11	DVF - Import auto		10 RUE CANTIN	92400	Courbevoie			Achat récent	85	Nouveau			Vente 2025-06-16 - 1 232 600€
+262	2026-02-11	DVF - Import auto		11 PAS LORNE	92600	Asnières-sur-Seine			Achat récent	58	Nouveau			Vente 2025-06-16 - 420 000€
+263	2026-02-11	DVF - Import auto		15 AV DE CHARLEBOURG	92250	La Garenne-Colombes			Achat récent	157	Nouveau			Vente 2025-06-16 - 1 220 000€
+264	2026-02-11	DVF - Import auto		12 AV JEANNE D ARC	92700	Colombes			Achat récent	130	Nouveau			Vente 2025-06-16 - 1 177 700€
+265	2026-02-11	DVF - Import auto		16 RUE DE CROUY	92140	Clamart			Achat récent	119	Nouveau			Vente 2025-06-16 - 675 000€
+266	2026-02-11	DVF - Import auto		25 RUE JEAN JACQUES ROUSSEAU	92140	Clamart			Achat récent	120	Nouveau			Vente 2025-06-16 - 465 000€
+267	2026-02-11	DVF - Import auto		13 RUE DU ROI DE ROME	92500	Rueil-Malmaison			Achat récent	96	Nouveau			Vente 2025-06-13 - 768 335€
+268	2026-02-11	DVF - Import auto		15 RUE DES MARGUERITES	92500	Rueil-Malmaison			Achat récent	148	Nouveau			Vente 2025-06-13 - 1 204 107,5€
+269	2026-02-11	DVF - Import auto		14 RUE GABRIEL PERI	92700	Colombes			Achat récent	50	Nouveau			Vente 2025-06-13 - 280 000€
+270	2026-02-11	DVF - Import auto		9 RUE BOSMAN	92700	Colombes			Achat récent	130	Nouveau			Vente 2025-06-13 - 1 100 000€
+271	2026-02-11	DVF - Import auto		9 AV CLEMENTINE	92700	Colombes			Achat récent	90	Nouveau			Vente 2025-06-13 - 620 000€
+272	2026-02-11	DVF - Import auto		17 RUE TAHERE	92210	Saint-Cloud			Achat récent	200	Nouveau			Vente 2025-06-13 - 1 890 000€
+273	2026-02-11	DVF - Import auto		66 RUE ADOLPHE PAJEAUD	92160	Antony			Achat récent	152	Nouveau			Vente 2025-06-13 - 858 676€
+274	2026-02-11	DVF - Import auto		3 RUE DE LA PASSERELLE	92370	Chaville			Achat récent	48	Nouveau			Vente 2025-06-13 - 1 000 000€
+275	2026-02-11	DVF - Import auto		30 RUE DE L ANCIENNE MAIRIE	92100	Boulogne-Billancourt			Achat récent	122	Nouveau			Vente 2025-06-13 - 420 000€
+276	2026-02-11	DVF - Import auto		8 AV ROGER SALENGRO	92290	Châtenay-Malabry			Achat récent	112	Nouveau			Vente 2025-06-13 - 820 000€
+277	2026-02-11	DVF - Import auto		6 RUE PASTEUR	92220	Bagneux			Achat récent	70	Nouveau			Vente 2025-06-13 - 510 000€
+278	2026-02-11	DVF - Import auto		40 AV LAZARE HOCHE	92370	Chaville			Achat récent	170	Nouveau			Vente 2025-06-13 - 1 422 900€
+279	2026-02-11	DVF - Import auto		11 RUE DES COMBATTANTS	92370	Chaville			Achat récent	30	Nouveau			Vente 2025-06-13 - 741 000€
+280	2026-02-11	DVF - Import auto		24 AV GEORGES	92700	Colombes			Achat récent	151	Nouveau			Vente 2025-06-12 - 691 750€
+281	2026-02-11	DVF - Import auto		172 RUE DES VOIES DU BOIS	92700	Colombes			Achat récent	80	Nouveau			Vente 2025-06-12 - 550 000€
+282	2026-02-11	DVF - Import auto		11 RUE ALBERT LAURENSON	92100	Boulogne-Billancourt			Achat récent	197	Nouveau			Vente 2025-06-12 - 2 605 000€
+283	2026-02-11	DVF - Import auto		26 RUE DU PROGRES	92700	Colombes			Achat récent	174	Nouveau			Vente 2025-06-11 - 893 050€
+284	2026-02-11	DVF - Import auto		16 RUE DES GRAVIERS	92500	Rueil-Malmaison			Achat récent	85	Nouveau			Vente 2025-06-11 - 587 548,06€
+285	2026-02-11	DVF - Import auto		30 RUE JEAN ALLEMANE	92000	Nanterre			Achat récent	120	Nouveau			Vente 2025-06-11 - 635 060€
+286	2026-02-11	DVF - Import auto		13 AV REYNAUD	92270	Bois-Colombes			Achat récent	95	Nouveau			Vente 2025-06-11 - 1 039 980€
+287	2026-02-11	DVF - Import auto		233 RUE PHILIPPE TRIAIRE	92000	Nanterre			Achat récent	63	Nouveau			Vente 2025-06-11 - 450 000€
+288	2026-02-11	DVF - Import auto		14 RUE FRANCOIS PINSON	92320	Châtillon			Achat récent	117	Nouveau			Vente 2025-06-11 - 853 000€
+289	2026-02-11	DVF - Import auto		50 RUE DES MIMOSAS	92160	Antony			Achat récent	37	Nouveau			Vente 2025-06-11 - 426 250€
+290	2026-02-11	DVF - Import auto		26 VLA CHAMBON	92400	Courbevoie			Achat récent	185	Nouveau			Vente 2025-06-10 - 908 900€
+291	2026-02-11	DVF - Import auto		24 AV LOUIS MEUNIER	92000	Nanterre			Achat récent	66	Nouveau			Vente 2025-06-10 - 430 000€
+292	2026-02-11	DVF - Import auto		42 RUE MONTESQUIEU	92600	Asnières-sur-Seine			Achat récent	172	Nouveau			Vente 2025-06-10 - 1 172 246€
+293	2026-02-11	DVF - Import auto		42 RUE BRASSAT	92700	Colombes			Achat récent	150	Nouveau			Vente 2025-06-10 - 1 400 000€
+294	2026-02-11	DVF - Import auto		17 RUE PAUL CEZANNE	92160	Antony			Achat récent	120	Nouveau			Vente 2025-06-10 - 595 500€
+295	2026-02-11	DVF - Import auto		13 AV JACQUEMINOT	92190	Meudon			Achat récent	170	Nouveau			Vente 2025-06-10 - 1 644 450€
+296	2026-02-11	DVF - Import auto		9 AV DE L ETANG	92500	Rueil-Malmaison			Achat récent	180	Nouveau			Vente 2025-06-06 - 248 637,8€
+297	2026-02-11	DVF - Import auto		21 RUE JEAN JACQUES ROUSSEAU	92500	Rueil-Malmaison			Achat récent	190	Nouveau			Vente 2025-06-06 - 1 136 300€
+298	2026-02-11	DVF - Import auto		20 RUE DE LA TOUR D ARGENT	92160	Antony			Achat récent	128	Nouveau			Vente 2025-06-06 - 745 000€
+299	2026-02-11	DVF - Import auto		14 RUE DU JUBILE	92160	Antony			Achat récent	144	Nouveau			Vente 2025-06-06 - 900 000€
+300	2026-02-11	DVF - Import auto		9 RUE MAURICE HARTMANN	92130	Issy-les-Moulineaux			Achat récent	135	Nouveau			Vente 2025-06-06 - 1 050 050€
+301	2026-02-11	DVF - Import auto		4 RUE FRANCOIS MITTERRAND	77380	Combs-la-Ville			Achat récent	76	Nouveau			Vente 2025-06-30 - 283 000€
+302	2026-02-11	DVF - Import auto		50 ALL DES MARCASSINS	77176	Nandy			Achat récent	113	Nouveau			Vente 2025-06-30 - 350 000€
+303	2026-02-11	DVF - Import auto		10 PL PABLO PICASSO	77720	Mormant			Achat récent	77	Nouveau			Vente 2025-06-30 - 140 000€
+304	2026-02-11	DVF - Import auto		6 BD DES BIENFAITES	77170	Brie-Comte-Robert			Achat récent	84	Nouveau			Vente 2025-06-30 - 321 100€
+305	2026-02-11	DVF - Import auto		8 IMP DU VERGER	77170	Brie-Comte-Robert			Achat récent	122	Nouveau			Vente 2025-06-30 - 375 000€
+306	2026-02-11	DVF - Import auto		7 RUE ARISTIDE BRIAND	77590	Chartrettes			Achat récent	100	Nouveau			Vente 2025-06-30 - 624 400€
+307	2026-02-11	DVF - Import auto		42 RUE DU DOCTEUR ROGER GALBRUN	77170	Brie-Comte-Robert			Achat récent	82	Nouveau			Vente 2025-06-30 - 285 000€
+308	2026-02-11	DVF - Import auto		7 ALL DES TROIS FONTAINES	77176	Savigny-le-Temple			Achat récent	96	Nouveau			Vente 2025-06-30 - 305 000€
+309	2026-02-11	DVF - Import auto		5155 TOURNE MEULE	77760	Villiers-sous-Grez			Achat récent	257	Nouveau			Vente 2025-06-30 - 290 000€
+310	2026-02-11	DVF - Import auto		29 RUE DES CHANTIERS	77330	Ozoir-la-Ferrière			Achat récent	117	Nouveau			Vente 2025-06-30 - 700 000€
+311	2026-02-11	DVF - Import auto		28 ALL DU LAVOIR	77270	Villeparisis			Achat récent	80	Nouveau			Vente 2025-06-30 - 288 000€
+312	2026-02-11	DVF - Import auto		20 ALL DE LA FONTAINE	77400	Saint-Thibault-des-Vignes			Achat récent	169	Nouveau			Vente 2025-06-30 - 599 000€
+313	2026-02-11	DVF - Import auto		18 RUE DE L ECHELLE	77540	Le Plessis-Feu-Aussoux			Achat récent	142	Nouveau			Vente 2025-06-30 - 350 000€
+314	2026-02-11	DVF - Import auto		21 RUE DU MONTGRAS	77520	Donnemarie-Dontilly			Achat récent	72	Nouveau			Vente 2025-06-30 - 188 000€
+315	2026-02-11	DVF - Import auto		32 RUE PIERRE AUGUSTIN CARON	77280	Othis			Achat récent	150	Nouveau			Vente 2025-06-30 - 419 000€
+316	2026-02-11	DVF - Import auto		2 PL DES TILLEULS	77520	Cessoy-en-Montois			Achat récent	105	Nouveau			Vente 2025-06-30 - 200 000€
+317	2026-02-11	DVF - Import auto		2 RUE DE VERDUN	77270	Villeparisis			Achat récent	84	Nouveau			Vente 2025-06-30 - 80 000€
+318	2026-02-11	DVF - Import auto		50 RUE JEAN JAURES	77100	Meaux			Achat récent	40	Nouveau			Vente 2025-06-30 - 258 380€
+319	2026-02-11	DVF - Import auto		18 RUE DE COURTRY	77181	Le Pin			Achat récent	110	Nouveau			Vente 2025-06-30 - 335 000€
+320	2026-02-11	DVF - Import auto		18 ALL EDENWOOD	77700	Magny-le-Hongre			Achat récent	333	Nouveau			Vente 2025-06-30 - 2 150 000€
+321	2026-02-11	DVF - Import auto		8 RUE DU ROTY	77148	Salins			Achat récent	150	Nouveau			Vente 2025-06-28 - 280 000€
+322	2026-02-11	DVF - Import auto		5 RUE SAINT LAURENT	77148	Laval-en-Brie			Achat récent	119	Nouveau			Vente 2025-06-28 - 167 000€
+323	2026-02-11	DVF - Import auto		25 RES LA VOULZIE	77650	Sainte-Colombe			Achat récent	97	Nouveau			Vente 2025-06-28 - 90 000€
+324	2026-02-11	DVF - Import auto		2 RUE DU PORT AUX RALES	77126	Égligny			Achat récent	50	Nouveau			Vente 2025-06-28 - 200 000€
+325	2026-02-11	DVF - Import auto		8 RUE DE VILLEMARECHAL	77710	Nanteau-sur-Lunain			Achat récent	97	Nouveau			Vente 2025-06-27 - 225 000€
+326	2026-02-11	DVF - Import auto		89 AV D ARMAINVILLIERS	77150	Lésigny			Achat récent	120	Nouveau			Vente 2025-06-27 - 376 000€
+327	2026-02-11	DVF - Import auto		13 RUE CREUSE	77390	Yèbles			Achat récent	73	Nouveau			Vente 2025-06-27 - 280 850€
+328	2026-02-11	DVF - Import auto		100 RUE CHARLES DE GAULLE	77720	Mormant			Achat récent	39	Nouveau			Vente 2025-06-27 - 50 000€
+329	2026-02-11	DVF - Import auto		16 AV DES CHATAIGNIERS	77170	Brie-Comte-Robert			Achat récent	102	Nouveau			Vente 2025-06-27 - 290 000€
+330	2026-02-11	DVF - Import auto		33 AV D'ESPAGNE	77176	Savigny-le-Temple			Achat récent	157	Nouveau			Vente 2025-06-27 - 458 325€
+331	2026-02-11	DVF - Import auto		10 RUE DES VANNEAUX	77680	Roissy-en-Brie			Achat récent	126	Nouveau			Vente 2025-06-27 - 380 000€
+332	2026-02-11	DVF - Import auto		6 RUE DES PETITS JARDINS	77410	Fresnes-sur-Marne			Achat récent	93	Nouveau			Vente 2025-06-27 - 390 000€
+333	2026-02-11	DVF - Import auto		7 RUE JEAN-PAUL SARTRE	77124	Villenoy			Achat récent	106	Nouveau			Vente 2025-06-27 - 286 300€
+334	2026-02-11	DVF - Import auto		3 RLE COLAS	77400	Dampmart			Achat récent	126	Nouveau			Vente 2025-06-27 - 455 000€
+335	2026-02-11	DVF - Import auto		5259 RUE DE PARIS	77141	Vaudoy-en-Brie			Achat récent	93	Nouveau			Vente 2025-06-27 - 250 000€
+336	2026-02-11	DVF - Import auto		29 RUE PASTEUR	77400	Gouvernes			Achat récent	68	Nouveau			Vente 2025-06-27 - 375 000€
+337	2026-02-11	DVF - Import auto		2 RUE DE LA MAIRIE	77520	Vimpelles			Achat récent	140	Nouveau			Vente 2025-06-27 - 165 000€
+338	2026-02-11	DVF - Import auto		7 RUE ROMAIN ROLLAND	77580	Bouleurs			Achat récent	79	Nouveau			Vente 2025-06-27 - 385 000€
+339	2026-02-11	DVF - Import auto		15 RUE RENE JARRY	77650	Chalmaison			Achat récent	90	Nouveau			Vente 2025-06-27 - 190€
+340	2026-02-11	DVF - Import auto		27 AV DES ABBESSES	77500	Chelles			Achat récent	93	Nouveau			Vente 2025-06-27 - 415 000€
+341	2026-02-11	DVF - Import auto		27 RUE DES SEMAILLES	77600	Chanteloup-en-Brie			Achat récent	89	Nouveau			Vente 2025-06-27 - 356 750€
+342	2026-02-11	DVF - Import auto		23 RUE DE VERDUN	77270	Villeparisis			Achat récent	52	Nouveau			Vente 2025-06-27 - 160 000€
+343	2026-02-11	DVF - Import auto		47 AV JACQUES HEUCLIN	77340	Pontault-Combault			Achat récent	154	Nouveau			Vente 2025-06-26 - 410 000€
+344	2026-02-11	DVF - Import auto		49 RUE MARCEL PAUL	77340	Pontault-Combault			Achat récent	100	Nouveau			Vente 2025-06-26 - 348 000€
+345	2026-02-11	DVF - Import auto		9 ALL DES HIRONDELLES	77380	Combs-la-Ville			Achat récent	91	Nouveau			Vente 2025-06-26 - 270 000€
+346	2026-02-11	DVF - Import auto		6 RUE AUGUSTE ALLONGE	77780	Bourron-Marlotte			Achat récent	150	Nouveau			Vente 2025-06-26 - 1 200 000€
+347	2026-02-11	DVF - Import auto		12 RUE DE MILLY	77930	Perthes			Achat récent	120	Nouveau			Vente 2025-06-26 - 360 000€
+348	2026-02-11	DVF - Import auto		3 CHE DU MILIEU DES PLANTES	77111	Solers			Achat récent	139	Nouveau			Vente 2025-06-26 - 365 850€
+349	2026-02-11	DVF - Import auto		2 RTE DE DORMELLES	77130	Dormelles			Achat récent	191	Nouveau			Vente 2025-06-26 - 654 259,25€
+350	2026-02-11	DVF - Import auto		10 ALL DES ACACIAS	77930	Perthes			Achat récent	120	Nouveau			Vente 2025-06-26 - 428 430€
+351	2026-02-11	DVF - Import auto		17 RUE DE L ORMOIS	77660	Changis-sur-Marne			Achat récent	138	Nouveau			Vente 2025-06-26 - 244 000€
+352	2026-02-11	DVF - Import auto		19 RUE DE CESSOY	77520	Sognolles-en-Montois			Achat récent	140	Nouveau			Vente 2025-06-26 - 240 000€
+353	2026-02-11	DVF - Import auto		8 RUE DU FOUR	77480	Bray-sur-Seine			Achat récent	62	Nouveau			Vente 2025-06-26 - 115 000€
+354	2026-02-11	DVF - Import auto		10 RLE DU CLOS COURTANT	77100	Nanteuil-lès-Meaux			Achat récent	98	Nouveau			Vente 2025-06-26 - 330 000€
+355	2026-02-11	DVF - Import auto		30 RUE D ORGEMONT	77400	Lagny-sur-Marne			Achat récent	126	Nouveau			Vente 2025-06-26 - 489 000€
+356	2026-02-11	DVF - Import auto		7 RUE DES BERLAUDEURS	77700	Bailly-Romainvilliers			Achat récent	88	Nouveau			Vente 2025-06-26 - 304 024€
+357	2026-02-11	DVF - Import auto		5 RUE CLAUDE GAUTIER	77970	Jouy-le-Châtel			Achat récent	50	Nouveau			Vente 2025-06-26 - 87 000€
+358	2026-02-11	DVF - Import auto		5670 CHE DE LA REPUBLIQUE	77515	Pommeuse			Achat récent	82	Nouveau			Vente 2025-06-26 - 250 000€
+359	2026-02-11	DVF - Import auto		4 ALL DU BEARN	77410	Claye-Souilly			Achat récent	91	Nouveau			Vente 2025-06-26 - 263 620€
+360	2026-02-11	DVF - Import auto		3 CITE DES CORBERANTES	77114	Gouaix			Achat récent	92	Nouveau			Vente 2025-06-26 - 115 500€
+361	2026-02-11	DVF - Import auto		8 RUE DE L ESPOIR	77230	Moussy-le-Vieux			Achat récent	60	Nouveau			Vente 2025-06-26 - 213 000€
+362	2026-02-11	DVF - Import auto		1 RUE DU PUITS	77171	Léchelle			Achat récent	60	Nouveau			Vente 2025-06-26 - 35 000€
+363	2026-02-11	DVF - Import auto		15 RUE RASPAIL	77100	Mareuil-lès-Meaux			Achat récent	57	Nouveau			Vente 2025-06-26 - 197 000€
+364	2026-02-11	DVF - Import auto		7 RUE DU JEU D ARC	77230	Dammartin-en-Goële			Achat récent	70	Nouveau			Vente 2025-06-26 - 200 000€
+365	2026-02-11	DVF - Import auto		64 AV JEAN JAURES	77360	Vaires-sur-Marne			Achat récent	118	Nouveau			Vente 2025-06-26 - 67 463,8€
+366	2026-02-11	DVF - Import auto		5 RUE DE NOISY	77130	Ville-Saint-Jacques			Achat récent	85	Nouveau			Vente 2025-06-25 - 182 000€
+367	2026-02-11	DVF - Import auto		6 LA TUILERIE	77710	Vaux-sur-Lunain			Achat récent	90	Nouveau			Vente 2025-06-25 - 169 000€
+368	2026-02-11	DVF - Import auto		24 RUE HENRI MATISSE	77000	La Rochette			Achat récent	150	Nouveau			Vente 2025-06-25 - 559 000€
+369	2026-02-11	DVF - Import auto		14 RUE DE FORBLEU	77390	Beauvoir			Achat récent	110	Nouveau			Vente 2025-06-25 - 200 000€
+370	2026-02-11	DVF - Import auto		14 RUE DU PRE AUX MOUTONS	77170	Servon			Achat récent	198	Nouveau			Vente 2025-06-25 - 545 000€
+371	2026-02-11	DVF - Import auto		52 PL MASSENET	77620	Égreville			Achat récent	90	Nouveau			Vente 2025-06-25 - 130 000€
+372	2026-02-11	DVF - Import auto		2 RUE DANTON	77330	Ozoir-la-Ferrière			Achat récent	89	Nouveau			Vente 2025-06-25 - 330 200€
+373	2026-02-11	DVF - Import auto		11 RUE JEAN DE MONTAIGU	77390	Ozouer-le-Voulgis			Achat récent	112	Nouveau			Vente 2025-06-25 - 136 000€
+374	2026-02-11	DVF - Import auto		3 RUE DES ECOLES	77550	Limoges-Fourches			Achat récent	139	Nouveau			Vente 2025-06-25 - 174 384€
+375	2026-02-11	DVF - Import auto		15 RUE DU CLOS FLEURI	77310	Saint-Fargeau-Ponthierry			Achat récent	90	Nouveau			Vente 2025-06-25 - 290 000€
+376	2026-02-11	DVF - Import auto		9 SQ DE LA COUTURE	77580	Crécy-la-Chapelle			Achat récent	88	Nouveau			Vente 2025-06-25 - 238 800€
+377	2026-02-11	DVF - Import auto		33 RUE VINCENT VAN GOGH	77124	Crégy-lès-Meaux			Achat récent	99	Nouveau			Vente 2025-06-25 - 323 000€
+378	2026-02-11	DVF - Import auto		16 RUE SAINT REMY	77090	Collégien			Achat récent	139	Nouveau			Vente 2025-06-25 - 566 000€
+379	2026-02-11	DVF - Import auto		1 RUE DES LARRIS	77470	Trilport			Achat récent	91	Nouveau			Vente 2025-06-25 - 375 000€
+380	2026-02-11	DVF - Import auto		40 RUE DES SABLONS	77400	Thorigny-sur-Marne			Achat récent	101	Nouveau			Vente 2025-06-25 - 356 100€
+381	2026-02-11	DVF - Import auto		3 RUE DU VIEUX CHATEAU	77520	Montigny-Lencoup			Achat récent	100	Nouveau			Vente 2025-06-25 - 90 000€
+382	2026-02-11	DVF - Import auto		27 RUE PASTEUR	77100	Nanteuil-lès-Meaux			Achat récent	67	Nouveau			Vente 2025-06-25 - 195 000€
+383	2026-02-11	DVF - Import auto		9 RUE CLOTILDE BATAILLE	77410	Messy			Achat récent	99	Nouveau			Vente 2025-06-25 - 348 750€
+384	2026-02-11	DVF - Import auto		9014 LA PRAIRIE	77450	Esbly			Achat récent	44	Nouveau			Vente 2025-06-25 - 200 000€
+385	2026-02-11	DVF - Import auto		1 RTE DE CHAUMES	77540	Bernay-Vilbert			Achat récent	94	Nouveau			Vente 2025-06-25 - 195 000€
+386	2026-02-11	DVF - Import auto		9 RUE DES BAULNES	77580	Crécy-la-Chapelle			Achat récent	100	Nouveau			Vente 2025-06-25 - 364 000€
+387	2026-02-11	DVF - Import auto		24 CHE DES FOSSES ROUGES	77700	Chessy			Achat récent	12	Nouveau			Vente 2025-06-25 - 1 201 118,5€
+388	2026-02-11	DVF - Import auto		69 AV JEAN JAURES	77420	Champs-sur-Marne			Achat récent	134	Nouveau			Vente 2025-06-25 - 581 000€
+389	2026-02-11	DVF - Import auto		2 RTE DE HERME	77114	Noyen-sur-Seine			Achat récent	146	Nouveau			Vente 2025-06-25 - 155 000€
+390	2026-02-11	DVF - Import auto		42 ALL DE LA MARE A DUMEZ	77230	Dammartin-en-Goële			Achat récent	98	Nouveau			Vente 2025-06-25 - 354 000€
+391	2026-02-11	DVF - Import auto		1 RUE LAVOISIER	77184	Émerainville			Achat récent	86	Nouveau			Vente 2025-06-25 - 365 000€
+392	2026-02-11	DVF - Import auto		91 LA MUSSINE	77820	Le Châtelet-en-Brie			Achat récent	35	Nouveau			Vente 2025-06-24 - 145 000€
+393	2026-02-11	DVF - Import auto		73 RUE JEAN COCTEAU	77330	Ozoir-la-Ferrière			Achat récent	104	Nouveau			Vente 2025-06-24 - 365 000€
+394	2026-02-11	DVF - Import auto		13 RUE DE L ARBRE SEC	77300	Fontainebleau			Achat récent	62	Nouveau			Vente 2025-06-24 - 430 000€
+395	2026-02-11	DVF - Import auto		7 RTE DE FLAGY	77710	Villemaréchal			Achat récent	155	Nouveau			Vente 2025-06-24 - 95 000€
+396	2026-02-11	DVF - Import auto		13 CHE DE TAILLEPIED	77166	Évry-Grégy-sur-Yerre			Achat récent	140	Nouveau			Vente 2025-06-24 - 399 700€
+397	2026-02-11	DVF - Import auto		20 RUE DE LA GARENNE	77240	Cesson			Achat récent	84	Nouveau			Vente 2025-06-24 - 113 000€
+398	2026-02-11	DVF - Import auto		2 RUE BERTHELOT	77220	Gretz-Armainvilliers			Achat récent	62	Nouveau			Vente 2025-06-24 - 255 000€
+399	2026-02-11	DVF - Import auto		40 AV CHARLES ROUXEL	77340	Pontault-Combault			Achat récent	84	Nouveau			Vente 2025-06-24 - 290 000€
+400	2026-02-11	DVF - Import auto		16 CHE DES ETOISIES	77400	Lagny-sur-Marne			Achat récent	142	Nouveau			Vente 2025-06-24 - 536 900€
+401	2026-02-11	DVF - Import auto		18 AV DES BAUGES	78370	Plaisir			Achat récent	73	Nouveau			Vente 2025-06-30 - 258 400€
+402	2026-02-11	DVF - Import auto		29 AV DE LA PETITE VILLEDIEU	78990	Élancourt			Achat récent	116	Nouveau			Vente 2025-06-30 - 352 750€
+403	2026-02-11	DVF - Import auto		2 CHE DES SABLES	78550	Bazainville			Achat récent	98	Nouveau			Vente 2025-06-30 - 340 000€
+404	2026-02-11	DVF - Import auto		16 ALL DU MISSISSIPI	78160	Marly-le-Roi			Achat récent	110	Nouveau			Vente 2025-06-30 - 640 800€
+405	2026-02-11	DVF - Import auto		3 RUE DES COTEAUX	78160	Marly-le-Roi			Achat récent	55	Nouveau			Vente 2025-06-30 - 375 000€
+406	2026-02-11	DVF - Import auto		45 RUE JOHNSON	78600	Maisons-Laffitte			Achat récent	110	Nouveau			Vente 2025-06-30 - 817 900€
+407	2026-02-11	DVF - Import auto		117 RUE DE PARIS	78470	Saint-Rémy-lès-Chevreuse			Achat récent	215	Nouveau			Vente 2025-06-30 - 930 949€
+408	2026-02-11	DVF - Import auto		9 ALL DU PETIT EPEAUTRE	78120	Sonchamp			Achat récent	114	Nouveau			Vente 2025-06-30 - 395 000€
+409	2026-02-11	DVF - Import auto		1 IMP DE LA FORET	78450	Villepreux			Achat récent	123	Nouveau			Vente 2025-06-30 - 476 000€
+410	2026-02-11	DVF - Import auto		46 RUE DU MONT OLIVET	78500	Sartrouville			Achat récent	123	Nouveau			Vente 2025-06-30 - 478 000€
+411	2026-02-11	DVF - Import auto		36 RUE APOLLINAIRE	78955	Carrières-sous-Poissy			Achat récent	140	Nouveau			Vente 2025-06-30 - 398 900€
+412	2026-02-11	DVF - Import auto		2 RUE AUX PAQUETS	78270	Limetz-Villez			Achat récent	48	Nouveau			Vente 2025-06-30 - 90 000€
+413	2026-02-11	DVF - Import auto		42 RTE DU PONTEL	78650	Beynes			Achat récent	121	Nouveau			Vente 2025-06-30 - 461 500€
+414	2026-02-11	DVF - Import auto		7 RUE GALLIENI	78300	Poissy			Achat récent	90	Nouveau			Vente 2025-06-30 - 525 000€
+415	2026-02-11	DVF - Import auto		2 CHE DES SAMSONS	78125	Raizeux			Achat récent	254	Nouveau			Vente 2025-06-30 - 401 000€
+416	2026-02-11	DVF - Import auto		9 RUE ROGER SALENGRO	78300	Poissy			Achat récent	68	Nouveau			Vente 2025-06-30 - 220 000€
+417	2026-02-11	DVF - Import auto		29 ALL DES CHEVREUILS	78480	Verneuil-sur-Seine			Achat récent	145	Nouveau			Vente 2025-06-30 - 480 000€
+418	2026-02-11	DVF - Import auto		3 ALL FRANCOIS COUPERIN	78114	Magny-les-Hameaux			Achat récent	140	Nouveau			Vente 2025-06-30 - 570 000€
+419	2026-02-11	DVF - Import auto		3 RUE FRAGONARD	78000	Versailles			Achat récent	117	Nouveau			Vente 2025-06-30 - 799 000€
+420	2026-02-11	DVF - Import auto		40 RUE DES ECOUVILLIERS	78700	Conflans-Sainte-Honorine			Achat récent	176	Nouveau			Vente 2025-06-30 - 572 000€
+421	2026-02-11	DVF - Import auto		43 RUE DE MAULE	78580	Bazemont			Achat récent	145	Nouveau			Vente 2025-06-30 - 722 600€
+422	2026-02-11	DVF - Import auto		303 ALL PAUL DENIS HUET	78955	Carrières-sous-Poissy			Achat récent	121	Nouveau			Vente 2025-06-30 - 487 500€
+423	2026-02-11	DVF - Import auto		57 RTE DE MILON	78470	Saint-Rémy-lès-Chevreuse			Achat récent	75	Nouveau			Vente 2025-06-30 - 307 200€
+424	2026-02-11	DVF - Import auto		9001 SEN DES JARDINS NOUVEAUX	78510	Triel-sur-Seine			Achat récent	90	Nouveau			Vente 2025-06-30 - 335 000€
+425	2026-02-11	DVF - Import auto		6 SEN DU MONTOIR	78800	Houilles			Achat récent	111	Nouveau			Vente 2025-06-30 - 784 000€
+426	2026-02-11	DVF - Import auto		14 RUE DE LA VIERGE	78640	Villiers-Saint-Frédéric			Achat récent	171	Nouveau			Vente 2025-06-30 - 556 000€
+427	2026-02-11	DVF - Import auto		20 CHE DE LA CROIX DAMPLY	78440	Montalet-le-Bois			Achat récent	140	Nouveau			Vente 2025-06-28 - 392 695€
+428	2026-02-11	DVF - Import auto		89 RTE DE MAISON BLANCHE	78320	Lévis-Saint-Nom			Achat récent	111	Nouveau			Vente 2025-06-28 - 444 415€
+429	2026-02-11	DVF - Import auto		2 RUE DES MARECHAUX	78580	Maule			Achat récent	80	Nouveau			Vente 2025-06-28 - 137 750€
+430	2026-02-11	DVF - Import auto		1 RUE DE LA JONCHEE	78920	Ecquevilly			Achat récent	92	Nouveau			Vente 2025-06-27 - 260 000€
+431	2026-02-11	DVF - Import auto		4 RUE AMPERE	78110	Le Vésinet			Achat récent	115	Nouveau			Vente 2025-06-27 - 880 000€
+432	2026-02-11	DVF - Import auto		13 RUE DE CAUX	78310	Maurepas			Achat récent	105	Nouveau			Vente 2025-06-27 - 305 000€
+433	2026-02-11	DVF - Import auto		6 AV MONTAIGNE	78960	Voisins-le-Bretonneux			Achat récent	151	Nouveau			Vente 2025-06-27 - 480 000€
+434	2026-02-11	DVF - Import auto		36 AV DES FONTENELLES	78510	Triel-sur-Seine			Achat récent	150	Nouveau			Vente 2025-06-27 - 670 000€
+435	2026-02-11	DVF - Import auto		29 RUE RABELAIS	78120	Rambouillet			Achat récent	180	Nouveau			Vente 2025-06-27 - 577 000€
+436	2026-02-11	DVF - Import auto		3 ALL DU BERTHE HENRI	78490	Galluis			Achat récent	148	Nouveau			Vente 2025-06-27 - 540 000€
+437	2026-02-11	DVF - Import auto		27 RUE ST VINCENT	78580	Maule			Achat récent	47	Nouveau			Vente 2025-06-27 - 75 000€
+438	2026-02-11	DVF - Import auto		7 RUE DES CHATRAS	78730	Saint-Arnoult-en-Yvelines			Achat récent	186	Nouveau			Vente 2025-06-27 - 405 000€
+439	2026-02-11	DVF - Import auto		35 CHE MILIEU DES HAUTS PICARDS	78160	Marly-le-Roi			Achat récent	173	Nouveau			Vente 2025-06-27 - 820 000€
+440	2026-02-11	DVF - Import auto		180 BAS BRETEUIL	78670	Villennes-sur-Seine			Achat récent	166	Nouveau			Vente 2025-06-27 - 730 000€
+441	2026-02-11	DVF - Import auto		806 RTE DES YVELINES	78830	Bullion			Achat récent	126	Nouveau			Vente 2025-06-27 - 560 000€
+442	2026-02-11	DVF - Import auto		15 ALL DES EGLANTINES	78480	Verneuil-sur-Seine			Achat récent	102	Nouveau			Vente 2025-06-27 - 420 000€
+443	2026-02-11	DVF - Import auto		35 AV DU MAL JOFFRE	78400	Chatou			Achat récent	144	Nouveau			Vente 2025-06-27 - 1 422 000€
+444	2026-02-11	DVF - Import auto		32 RUE DU STADE	78120	Rambouillet			Achat récent	104	Nouveau			Vente 2025-06-27 - 307 500€
+445	2026-02-11	DVF - Import auto		1 RUE DU MOULIN D OLIVET	78550	Houdan			Achat récent	130	Nouveau			Vente 2025-06-27 - 360 000€
+446	2026-02-11	DVF - Import auto		7 RUE DES HAUTES BOVETTES	78440	Issou			Achat récent	115	Nouveau			Vente 2025-06-27 - 271 150€
+447	2026-02-11	DVF - Import auto		111 RUE RAYMOND LEFEVRE	78760	Jouars-Pontchartrain			Achat récent	82	Nouveau			Vente 2025-06-27 - 299 000€
+448	2026-02-11	DVF - Import auto		10 PL DE LORRAINE	78200	Magnanville			Achat récent	93	Nouveau			Vente 2025-06-27 - 272 000€
+449	2026-02-11	DVF - Import auto		14 RUE DU VAL	78570	Chanteloup-les-Vignes			Achat récent	82	Nouveau			Vente 2025-06-27 - 290 000€
+450	2026-02-11	DVF - Import auto		307 RUE DE L EGLISE	78910	Civry-la-Forêt			Achat récent	206	Nouveau			Vente 2025-06-27 - 574 708€
+451	2026-02-11	DVF - Import auto		123 RUE DE MONTAMETS	78630	Orgeval			Achat récent	77	Nouveau			Vente 2025-06-27 - 973 440€
+452	2026-02-11	DVF - Import auto		2 IMP DU CHEMIN VERT	78800	Houilles			Achat récent	175	Nouveau			Vente 2025-06-27 - 754 319€
+453	2026-02-11	DVF - Import auto		108 RUE DU GEN LECLERC	78400	Chatou			Achat récent	108	Nouveau			Vente 2025-06-27 - 746 600€
+454	2026-02-11	DVF - Import auto		1 RUE MAUVE	78990	Élancourt			Achat récent	84	Nouveau			Vente 2025-06-26 - 285 000€
+455	2026-02-11	DVF - Import auto		20 RUE CASSINI	78580	Les Alluets-le-Roi			Achat récent	111	Nouveau			Vente 2025-06-26 - 318 330€
+456	2026-02-11	DVF - Import auto		174 RUE DU GEN DE GAULLE	78740	Vaux-sur-Seine			Achat récent	69	Nouveau			Vente 2025-06-26 - 220 000€
+457	2026-02-11	DVF - Import auto		19 CRS DE PROVENCE	78450	Villepreux			Achat récent	95	Nouveau			Vente 2025-06-26 - 300 000€
+458	2026-02-11	DVF - Import auto		2 PL PHILIPPE LE BEL	78990	Élancourt			Achat récent	104	Nouveau			Vente 2025-06-26 - 316 174€
+459	2026-02-11	DVF - Import auto		1 ALL DES ABELIAS	78450	Chavenay			Achat récent	223	Nouveau			Vente 2025-06-26 - 715 000€
+460	2026-02-11	DVF - Import auto		34 RUE DES FRERES LEIRIS	78510	Triel-sur-Seine			Achat récent	109	Nouveau			Vente 2025-06-26 - 385 000€
+461	2026-02-11	DVF - Import auto		283 AV PASTEUR	78630	Orgeval			Achat récent	128	Nouveau			Vente 2025-06-26 - 572 000€
+462	2026-02-11	DVF - Import auto		34 CHE DU PONT D HERVILLE	78520	Guernes			Achat récent	78	Nouveau			Vente 2025-06-26 - 230 000€
+463	2026-02-11	DVF - Import auto		28 RUE PIERRE CURIE	78190	Trappes			Achat récent	52	Nouveau			Vente 2025-06-26 - 305 000€
+464	2026-02-11	DVF - Import auto		77 RUE GUY MOQUET	78500	Sartrouville			Achat récent	138	Nouveau			Vente 2025-06-26 - 405 000€
+465	2026-02-11	DVF - Import auto		4 RUE CHRISTINE	78680	Épône			Achat récent	93	Nouveau			Vente 2025-06-26 - 308 000€
+466	2026-02-11	DVF - Import auto		23 CHE PHILIPPE NOIRET	78750	Mareil-Marly			Achat récent	109	Nouveau			Vente 2025-06-25 - 691 000€
+467	2026-02-11	DVF - Import auto		2 RUE DE L ECHIQUIER	78760	Jouars-Pontchartrain			Achat récent	180	Nouveau			Vente 2025-06-25 - 631 195€
+468	2026-02-11	DVF - Import auto		10 RUE FRIEDRICH ENGELS	78370	Plaisir			Achat récent	144	Nouveau			Vente 2025-06-25 - 573 000€
+469	2026-02-11	DVF - Import auto		1 RUE DE CHAMBORD	78760	Jouars-Pontchartrain			Achat récent	98	Nouveau			Vente 2025-06-25 - 650 000€
+470	2026-02-11	DVF - Import auto		123 BD MAURICE BERTEAUX	78420	Carrières-sur-Seine			Achat récent	96	Nouveau			Vente 2025-06-25 - 622 000€
+471	2026-02-11	DVF - Import auto		2 RTE DE LA BOISSIERE	78125	Hermeray			Achat récent	50	Nouveau			Vente 2025-06-25 - 93 000€
+472	2026-02-11	DVF - Import auto		11 RUE DE L ETANG	78320	La Verrière			Achat récent	65	Nouveau			Vente 2025-06-25 - 357 830€
+473	2026-02-11	DVF - Import auto		6 GR GRANDE RUE	78580	Maule			Achat récent	119	Nouveau			Vente 2025-06-25 - 380 000€
+474	2026-02-11	DVF - Import auto		7 ALL DE LA VENERIE	78610	Le Perray-en-Yvelines			Achat récent	134	Nouveau			Vente 2025-06-25 - 468 620€
+475	2026-02-11	DVF - Import auto		4 RUE DE LA CROIX ROMPUE	78260	Achères			Achat récent	92	Nouveau			Vente 2025-06-25 - 295 000€
+476	2026-02-11	DVF - Import auto		26 RUE DE LA HARPE	78610	Saint-Léger-en-Yvelines			Achat récent	250	Nouveau			Vente 2025-06-25 - 1 050 000€
+477	2026-02-11	DVF - Import auto		5 AV DE LA SOURCE	78380	Bougival			Achat récent	170	Nouveau			Vente 2025-06-25 - 1 017 850€
+478	2026-02-11	DVF - Import auto		133 RUE DU GEN DE GAULLE	78740	Vaux-sur-Seine			Achat récent	126	Nouveau			Vente 2025-06-25 - 650 000€
+479	2026-02-11	DVF - Import auto		2 ALL DE NORMANDIE	78200	Magnanville			Achat récent	95	Nouveau			Vente 2025-06-25 - 255 580€
+480	2026-02-11	DVF - Import auto		5 RUE DU PAVE	78490	Le Tremblay-sur-Mauldre			Achat récent	188	Nouveau			Vente 2025-06-25 - 629 100€
+481	2026-02-11	DVF - Import auto		21 RUE FRANCOIS COENT	78111	Dammartin-en-Serve			Achat récent	58	Nouveau			Vente 2025-06-25 - 171 400€
+482	2026-02-11	DVF - Import auto		78 AV DES BAUGES	78370	Plaisir			Achat récent	73	Nouveau			Vente 2025-06-25 - 246 400€
+483	2026-02-11	DVF - Import auto		5 RUE DES MOISSONS	78370	Plaisir			Achat récent	122	Nouveau			Vente 2025-06-25 - 470 000€
+484	2026-02-11	DVF - Import auto		4 IMP DU COLOMBIER	78420	Carrières-sur-Seine			Achat récent	92	Nouveau			Vente 2025-06-24 - 538 745€
+485	2026-02-11	DVF - Import auto		2 CLOS DU RU	78630	Orgeval			Achat récent	130	Nouveau			Vente 2025-06-24 - 580 800€
+486	2026-02-11	DVF - Import auto		9 RUE DE L YSER	78200	Mantes-la-Jolie			Achat récent	171	Nouveau			Vente 2025-06-24 - 525 000€
+487	2026-02-11	DVF - Import auto		11 RUE JACQUES PREVERT	78480	Verneuil-sur-Seine			Achat récent	110	Nouveau			Vente 2025-06-24 - 395 000€
+488	2026-02-11	DVF - Import auto		1 RUE DU BAS DE LA PLAINE	78500	Sartrouville			Achat récent	48	Nouveau			Vente 2025-06-24 - 330 000€
+489	2026-02-11	DVF - Import auto		1 RUE DE LA RIGOLE	78280	Guyancourt			Achat récent	168	Nouveau			Vente 2025-06-24 - 710 000€
+490	2026-02-11	DVF - Import auto		4 AV D ANJOU	78450	Villepreux			Achat récent	81	Nouveau			Vente 2025-06-24 - 351 000€
+491	2026-02-11	DVF - Import auto		10 RLE DU GOUFFEE	78700	Conflans-Sainte-Honorine			Achat récent	117	Nouveau			Vente 2025-06-24 - 450 000€
+492	2026-02-11	DVF - Import auto		29 RUE DU PARC	78920	Ecquevilly			Achat récent	100	Nouveau			Vente 2025-06-24 - 368 900€
+493	2026-02-11	DVF - Import auto		22 AV DE LORRAINE	78110	Le Vésinet			Achat récent	103	Nouveau			Vente 2025-06-24 - 1 200 000€
+494	2026-02-11	DVF - Import auto		21 RUE MASSENET	78500	Sartrouville			Achat récent	71	Nouveau			Vente 2025-06-24 - 445 000€
+495	2026-02-11	DVF - Import auto		24 RUE PAUL DOUMER	78130	Les Mureaux			Achat récent	63	Nouveau			Vente 2025-06-24 - 185 000€
+496	2026-02-11	DVF - Import auto		56 RUE DE LA PAIX	78390	Bois-d'Arcy			Achat récent	73	Nouveau			Vente 2025-06-23 - 378 000€
+497	2026-02-11	DVF - Import auto		50 RUE RAYMOND PATENOTRE	78120	Rambouillet			Achat récent	198	Nouveau			Vente 2025-06-23 - 511 200€
+498	2026-02-11	DVF - Import auto		35 BD ANGIBOUT	78740	Vaux-sur-Seine			Achat récent	115	Nouveau			Vente 2025-06-23 - 436 000€
+499	2026-02-11	DVF - Import auto		16 ALL DU VAL DE CROUI	78620	L'Étang-la-Ville			Achat récent	129	Nouveau			Vente 2025-06-23 - 830 000€
+500	2026-02-11	DVF - Import auto		1 RUE ANDRE TOURAUD	78440	Guitrancourt			Achat récent	190	Nouveau			Vente 2025-06-23 - 784 450€
+501	2026-02-11	DVF - Import auto		11 ALL DES MESANGES	91830	Le Coudray-Montceaux			Achat récent	155	Nouveau			Vente 2025-06-30 - 389 650€
+502	2026-02-11	DVF - Import auto		21 RUE BUFFON	91700	Sainte-Geneviève-des-Bois			Achat récent	99	Nouveau			Vente 2025-06-30 - 324 500€
+503	2026-02-11	DVF - Import auto		3 RUE DES PRIMEVERES	91610	Ballancourt-sur-Essonne			Achat récent	57	Nouveau			Vente 2025-06-30 - 234 600€
+504	2026-02-11	DVF - Import auto		4 RUE DE BRETIGNY	91310	Longpont-sur-Orge			Achat récent	162	Nouveau			Vente 2025-06-30 - 430 060€
+505	2026-02-11	DVF - Import auto		12 SQ AGRIPPA D AUBIGNE	91250	Saint-Germain-lès-Corbeil			Achat récent	105	Nouveau			Vente 2025-06-30 - 330 000€
+506	2026-02-11	DVF - Import auto		7 RTE DE SACLAY	91430	Vauhallan			Achat récent	134	Nouveau			Vente 2025-06-30 - 562 300€
+507	2026-02-11	DVF - Import auto		8 RUE DE MARCHAIS	91820	Boutigny-sur-Essonne			Achat récent	150	Nouveau			Vente 2025-06-27 - 350 000€
+508	2026-02-11	DVF - Import auto		25 RUE LANTARA	91490	Milly-la-Forêt			Achat récent	148	Nouveau			Vente 2025-06-27 - 410 000€
+509	2026-02-11	DVF - Import auto		44 RUE LA FONTAINE	91540	Mennecy			Achat récent	96	Nouveau			Vente 2025-06-27 - 252 000€
+510	2026-02-11	DVF - Import auto		24 SQ MAURICE RAVEL	91310	Longpont-sur-Orge			Achat récent	96	Nouveau			Vente 2025-06-27 - 100 000€
+511	2026-02-11	DVF - Import auto		7 AV DES CHENES	91170	Viry-Châtillon			Achat récent	126	Nouveau			Vente 2025-06-26 - 282 000€
+512	2026-02-11	DVF - Import auto		9 RUE DE TIGERY	91250	Saint-Germain-lès-Corbeil			Achat récent	182	Nouveau			Vente 2025-06-26 - 1 585 000€
+513	2026-02-11	DVF - Import auto		4 RUE DES MIMOSAS	91470	Limours			Achat récent	130	Nouveau			Vente 2025-06-26 - 390 000€
+514	2026-02-11	DVF - Import auto		36 RUE DES COEURS	91370	Verrières-le-Buisson			Achat récent	123	Nouveau			Vente 2025-06-25 - 680 300€
+515	2026-02-11	DVF - Import auto		5 RUE LOUISE	91230	Montgeron			Achat récent	98	Nouveau			Vente 2025-06-25 - 541 900€
+516	2026-02-11	DVF - Import auto		5 RUE ALEXANDRE DUMAS	91330	Yerres			Achat récent	136	Nouveau			Vente 2025-06-25 - 451 850€
+517	2026-02-11	DVF - Import auto		18 RUE DE LA VILLAGEOISE	91120	Palaiseau			Achat récent	130	Nouveau			Vente 2025-06-25 - 435 000€
+518	2026-02-11	DVF - Import auto		178 AV JULES VALLES	91200	Athis-Mons			Achat récent	95	Nouveau			Vente 2025-06-24 - 245 000€
+519	2026-02-11	DVF - Import auto		11 AV DE VERDUN	91470	Limours			Achat récent	115	Nouveau			Vente 2025-06-24 - 492 000€
+520	2026-02-11	DVF - Import auto		54 RUE D'ANGOULEME	91100	Corbeil-Essonnes			Achat récent	155	Nouveau			Vente 2025-06-24 - 296 500€
+521	2026-02-11	DVF - Import auto		42 RUE LECONTE DE LISLE	91540	Mennecy			Achat récent	201	Nouveau			Vente 2025-06-24 - 522 000€
+522	2026-02-11	DVF - Import auto		30 RUE DE LA MAIRIE	91160	Champlan			Achat récent	45	Nouveau			Vente 2025-06-23 - 135 000€
+523	2026-02-11	DVF - Import auto		38 RUE SAINT DENIS	91290	La Norville			Achat récent	55	Nouveau			Vente 2025-06-23 - 230 000€
+524	2026-02-11	DVF - Import auto		19 GR GRANDE RUE	91470	Limours			Achat récent	65	Nouveau			Vente 2025-06-23 - 99 804,71€
+525	2026-02-11	DVF - Import auto		21 RUE DE LA ROCHE D'AMOUR	91540	Fontenay-le-Vicomte			Achat récent	113	Nouveau			Vente 2025-06-20 - 340 000€
+526	2026-02-11	DVF - Import auto		114 RUE PIERRE ET MARIE CURIE	91550	Paray-Vieille-Poste			Achat récent	96	Nouveau			Vente 2025-06-20 - 370 000€
+527	2026-02-11	DVF - Import auto		8 AV PAUL VAILLANT COUTURIER	91270	Vigneux-sur-Seine			Achat récent	120	Nouveau			Vente 2025-06-20 - 331 500€
+528	2026-02-11	DVF - Import auto		44 RUE DES PETITES FONTAINES	91490	Milly-la-Forêt			Achat récent	147	Nouveau			Vente 2025-06-18 - 604 350€
+529	2026-02-11	DVF - Import auto		72 RTE DE MONTLHERY	91400	Orsay			Achat récent	150	Nouveau			Vente 2025-06-18 - 524 316€
+530	2026-02-11	DVF - Import auto		4 AV DE CONSTANTINOPLE	91600	Savigny-sur-Orge			Achat récent	92	Nouveau			Vente 2025-06-17 - 410 000€
+531	2026-02-11	DVF - Import auto		29 AV DES LILAS	91210	Draveil			Achat récent	56	Nouveau			Vente 2025-06-17 - 135 000€
+532	2026-02-11	DVF - Import auto		5 RUE VICTOR HUGO	91240	Saint-Michel-sur-Orge			Achat récent	47	Nouveau			Vente 2025-06-17 - 239 000€
+533	2026-02-11	DVF - Import auto		54 RUE DE TIGERY	91250	Saint-Germain-lès-Corbeil			Achat récent	116	Nouveau			Vente 2025-06-17 - 373 000€
+534	2026-02-11	DVF - Import auto		35 RUE DE LA GLACIERE	91230	Montgeron			Achat récent	81	Nouveau			Vente 2025-06-17 - 266 000€
+535	2026-02-11	DVF - Import auto		46 RUE VOLTAIRE	91460	Marcoussis			Achat récent	190	Nouveau			Vente 2025-06-17 - 390 000€
+536	2026-02-11	DVF - Import auto		19 RUE DES CHEVREAUX	91250	Saint-Germain-lès-Corbeil			Achat récent	85	Nouveau			Vente 2025-06-16 - 370 000€
+537	2026-02-11	DVF - Import auto		13 RUE VOLTAIRE	91160	Longjumeau			Achat récent	67	Nouveau			Vente 2025-06-16 - 280 000€
+538	2026-02-11	DVF - Import auto		186 RUE DE BELLEVUE	91330	Yerres			Achat récent	91	Nouveau			Vente 2025-06-16 - 462 600€
+539	2026-02-11	DVF - Import auto		18 RUE DES PEUPLIERS	91360	Villemoisson-sur-Orge			Achat récent	97	Nouveau			Vente 2025-06-16 - 262 000€
+540	2026-02-11	DVF - Import auto		1 RUE DE LA JUSTICE	91470	Forges-les-Bains			Achat récent	109	Nouveau			Vente 2025-06-16 - 287 000€
+541	2026-02-11	DVF - Import auto		18 BD GEORGES MICHEL	91100	Corbeil-Essonnes			Achat récent	188	Nouveau			Vente 2025-06-16 - 400 000€
+542	2026-02-11	DVF - Import auto		10 RUE MARCEAU	91120	Palaiseau			Achat récent	165	Nouveau			Vente 2025-06-16 - 625 000€
+543	2026-02-11	DVF - Import auto		18 RUE D ORSAY	91470	Limours			Achat récent	128	Nouveau			Vente 2025-06-13 - 588 200€
+544	2026-02-11	DVF - Import auto		28 RUE DU GD NOYER	91620	La Ville-du-Bois			Achat récent	113	Nouveau			Vente 2025-06-13 - 356 900€
+545	2026-02-11	DVF - Import auto		13 RUE DE L ABREUVOIR	91470	Limours			Achat récent	153	Nouveau			Vente 2025-06-13 - 371 500€
+546	2026-02-11	DVF - Import auto		70 AV LINNE	91600	Savigny-sur-Orge			Achat récent	96	Nouveau			Vente 2025-06-13 - 387 000€
+547	2026-02-11	DVF - Import auto		26 RUE DU 8 MAI 1945	91550	Paray-Vieille-Poste			Achat récent	66	Nouveau			Vente 2025-06-13 - 260 000€
+548	2026-02-11	DVF - Import auto		55 CHE DE LA FERTE-ALAIS	91790	Boissy-sous-Saint-Yon			Achat récent	102	Nouveau			Vente 2025-06-13 - 283 000€
+549	2026-02-11	DVF - Import auto		29 RUE FROMAGERE	91310	Linas			Achat récent	149	Nouveau			Vente 2025-06-13 - 350 000€
+550	2026-02-11	DVF - Import auto		6 ALL DES MARAICHERS	91310	Montlhéry			Achat récent	123	Nouveau			Vente 2025-06-13 - 415 000€
+551	2026-02-11	DVF - Import auto		20 ALL PABLO PICASSO	91240	Saint-Michel-sur-Orge			Achat récent	132	Nouveau			Vente 2025-06-13 - 408 000€
+552	2026-02-11	DVF - Import auto		1 RUE DE L'IMPRIMERIE	91280	Saint-Pierre-du-Perray			Achat récent	77	Nouveau			Vente 2025-06-13 - 245 250€
+553	2026-02-11	DVF - Import auto		5 RUE GRANDE RUE	91150	Morigny-Champigny			Achat récent	96	Nouveau			Vente 2025-06-13 - 340 000€
+554	2026-02-11	DVF - Import auto		78 RUE DE LA JUSTICE	91230	Montgeron			Achat récent	84	Nouveau			Vente 2025-06-13 - 320 000€
+555	2026-02-11	DVF - Import auto		8 RUE PIERRE CURIE	91600	Savigny-sur-Orge			Achat récent	130	Nouveau			Vente 2025-06-13 - 394 350€
+556	2026-02-11	DVF - Import auto		1 VLA RAVEL	91470	Limours			Achat récent	60	Nouveau			Vente 2025-06-12 - 243 000€
+557	2026-02-11	DVF - Import auto		26 CHE DES PROCESSIONS	91310	Linas			Achat récent	115	Nouveau			Vente 2025-06-12 - 413 600€
+558	2026-02-11	DVF - Import auto		56 BD JEAN JAURES	91100	Corbeil-Essonnes			Achat récent	86	Nouveau			Vente 2025-06-11 - 184 600€
+559	2026-02-11	DVF - Import auto		68 RTE DE MARCOUSSIS	91310	Montlhéry			Achat récent	107	Nouveau			Vente 2025-06-11 - 439 600€
+560	2026-02-11	DVF - Import auto		3 RUE MASSENET	91230	Montgeron			Achat récent	98	Nouveau			Vente 2025-06-11 - 405 000€
+561	2026-02-11	DVF - Import auto		96 AV DU PARC	91230	Montgeron			Achat récent	76	Nouveau			Vente 2025-06-11 - 210 000€
+562	2026-02-11	DVF - Import auto		17 ALL DE LA VILLA SAINT JOSEPH	91210	Draveil			Achat récent	112	Nouveau			Vente 2025-06-11 - 343 140€
+563	2026-02-11	DVF - Import auto		21 RUE DES ROSSIGNOLS	91450	Soisy-sur-Seine			Achat récent	138	Nouveau			Vente 2025-06-11 - 485 500€
+564	2026-02-11	DVF - Import auto		30 RUE DU 11 NOVEMBRE	91700	Sainte-Geneviève-des-Bois			Achat récent	65	Nouveau			Vente 2025-06-11 - 164 504€
+565	2026-02-11	DVF - Import auto		42 RUE DU BOIS DES PRES HAUTS	91280	Saint-Pierre-du-Perray			Achat récent	179	Nouveau			Vente 2025-06-10 - 470 000€
+566	2026-02-11	DVF - Import auto		25 RUE DES HERSES	91810	Vert-le-Grand			Achat récent	168	Nouveau			Vente 2025-06-10 - 400 000€
+567	2026-02-11	DVF - Import auto		6 RUE DE MONTESQUIOU	91640	Briis-sous-Forges			Achat récent	137	Nouveau			Vente 2025-06-10 - 382 500€
+568	2026-02-11	DVF - Import auto		14 RUE DES TILLEULS	91490	Courances			Achat récent	168	Nouveau			Vente 2025-06-10 - 660 000€
+569	2026-02-11	DVF - Import auto		16 RUE DU BOSQUET	91600	Savigny-sur-Orge			Achat récent	68	Nouveau			Vente 2025-06-10 - 260 000€
+570	2026-02-11	DVF - Import auto		58 RUE DES LILAS	91630	Marolles-en-Hurepoix			Achat récent	88	Nouveau			Vente 2025-06-10 - 273 200€
+571	2026-02-11	DVF - Import auto		5 CHE DES CARRIERES	91180	Saint-Germain-lès-Arpajon			Achat récent	80	Nouveau			Vente 2025-06-10 - 255 000€
+572	2026-02-11	DVF - Import auto		6 IMP DES TILLEULS	91750	Chevannes			Achat récent	70	Nouveau			Vente 2025-06-10 - 195 000€
+573	2026-02-11	DVF - Import auto		8 RUE VILLA DES BOIS	91440	Bures-sur-Yvette			Achat récent	145	Nouveau			Vente 2025-06-10 - 420 000€
+574	2026-02-11	DVF - Import auto		33 RUE HONORE DE BALZAC	91860	Épinay-sous-Sénart			Achat récent	95	Nouveau			Vente 2025-06-10 - 215 000€
+575	2026-02-11	DVF - Import auto		10 RUE ERNEST GERVAISE	91800	Brunoy			Achat récent	73	Nouveau			Vente 2025-06-10 - 280 000€
+576	2026-02-11	DVF - Import auto		66 RUE D'ENFER	91240	Saint-Michel-sur-Orge			Achat récent	84	Nouveau			Vente 2025-06-09 - 275 000€
+577	2026-02-11	DVF - Import auto		18 RUE DE LA BIGOTTE	91750	Champcueil			Achat récent	104	Nouveau			Vente 2025-06-09 - 270 000€
+578	2026-02-11	DVF - Import auto		3 RUE DE MACHERY	91470	Angervilliers			Achat récent	72	Nouveau			Vente 2025-06-06 - 170 100€
+579	2026-02-11	DVF - Import auto		6 CLOS DE LORMOY	91310	Longpont-sur-Orge			Achat récent	85	Nouveau			Vente 2025-06-06 - 297 956€
+580	2026-02-11	DVF - Import auto		1 RUE DES MIMOSAS	91280	Saint-Pierre-du-Perray			Achat récent	78	Nouveau			Vente 2025-06-06 - 291 000€
+581	2026-02-11	DVF - Import auto		2 AV LANNES	91190	Gif-sur-Yvette			Achat récent	47	Nouveau			Vente 2025-06-06 - 317 650€
+582	2026-02-11	DVF - Import auto		45 RUE HENRI BARBUSSE	91330	Yerres			Achat récent	84	Nouveau			Vente 2025-06-06 - 280 000€
+583	2026-02-11	DVF - Import auto		196 RUE DU BOIS DE CHATRES	91220	Brétigny-sur-Orge			Achat récent	156	Nouveau			Vente 2025-06-06 - 470 000€
+584	2026-02-11	DVF - Import auto		12 RUE DE LA LIBERATION	91070	Bondoufle			Achat récent	140	Nouveau			Vente 2025-06-06 - 390 000€
+585	2026-02-11	DVF - Import auto		15 RUE DE MONTLHERY	91240	Saint-Michel-sur-Orge			Achat récent	65	Nouveau			Vente 2025-06-06 - 165 000€
+586	2026-02-11	DVF - Import auto		14 RUE DU 8 MAI	91700	Sainte-Geneviève-des-Bois			Achat récent	90	Nouveau			Vente 2025-06-06 - 418 000€
+587	2026-02-11	DVF - Import auto		30 RUE DU FONDS DE CALAIS	91360	Villemoisson-sur-Orge			Achat récent	74	Nouveau			Vente 2025-06-06 - 391 000€
+588	2026-02-11	DVF - Import auto		32 RUE DE GRAVIGNY	91160	Longjumeau			Achat récent	82	Nouveau			Vente 2025-06-06 - 339 000€
+589	2026-02-11	DVF - Import auto		13 SQ BLAISE CENDRARS	91250	Saint-Germain-lès-Corbeil			Achat récent	123	Nouveau			Vente 2025-06-06 - 384 000€
+590	2026-02-11	DVF - Import auto		46 RUE DES PIERRERIES	91330	Yerres			Achat récent	66	Nouveau			Vente 2025-06-05 - 350 000€
+591	2026-02-11	DVF - Import auto		24 RUE SAINT HUBERT	91330	Yerres			Achat récent	126	Nouveau			Vente 2025-06-05 - 550 000€
+592	2026-02-11	DVF - Import auto		11 RUE LABOURBE	91600	Savigny-sur-Orge			Achat récent	63	Nouveau			Vente 2025-06-04 - 308 400€
+593	2026-02-11	DVF - Import auto		20 AV YVES DE MONTCHEUIL	91230	Montgeron			Achat récent	76	Nouveau			Vente 2025-06-04 - 320 000€
+594	2026-02-11	DVF - Import auto		5 RUE CAMILLE CLAUDEL	91100	Corbeil-Essonnes			Achat récent	77	Nouveau			Vente 2025-06-04 - 235 000€
+595	2026-02-11	DVF - Import auto		14 RUE DE LA PRAIRIE	91750	Chevannes			Achat récent	147	Nouveau			Vente 2025-06-04 - 470 000€
+596	2026-02-11	DVF - Import auto		39 CHE DE MOIGNY	91490	Oncy-sur-École			Achat récent	188	Nouveau			Vente 2025-06-04 - 615 550€
+597	2026-02-11	DVF - Import auto		14 IMP DU COUVENT	91330	Yerres			Achat récent	83	Nouveau			Vente 2025-06-04 - 380 000€
+598	2026-02-11	DVF - Import auto		10 IMP DU MOULIN	91180	Saint-Germain-lès-Arpajon			Achat récent	108	Nouveau			Vente 2025-06-04 - 450 000€
+599	2026-02-11	DVF - Import auto		30 RUE DE LA CHATAIGNERAIE	91700	Sainte-Geneviève-des-Bois			Achat récent	46	Nouveau			Vente 2025-06-04 - 253 000€
+600	2026-02-11	DVF - Import auto		9064 RTE DE FONTAINEBLEAU	91490	Milly-la-Forêt			Achat récent	240	Nouveau			Vente 2025-06-04 - 970 000€
+601	2026-02-11	DVF - Import auto		32 RUE DU CHEMIN DE FER	95460	Ézanville			Achat récent	165	Nouveau			Vente 2025-06-19 - 444 800€
+602	2026-02-11	DVF - Import auto		7 RUE GABRIEL PERI	95670	Marly-la-Ville			Achat récent	73	Nouveau			Vente 2025-06-19 - 250 000€
+603	2026-02-11	DVF - Import auto		14 RUE JULIEN BOURSIER	95400	Villiers-le-Bel			Achat récent	76	Nouveau			Vente 2025-06-18 - 200 000€
+604	2026-02-11	DVF - Import auto		15 RUE PIERRE CURIE	95390	Saint-Prix			Achat récent	118	Nouveau			Vente 2025-06-18 - 579 000€
+605	2026-02-11	DVF - Import auto		46 BD LA REPUBLIQUE	95600	Eaubonne			Achat récent	30	Nouveau			Vente 2025-06-17 - 368 000€
+606	2026-02-11	DVF - Import auto		2 RUE HAMEAU DU VAL VALTRET	95670	Marly-la-Ville			Achat récent	88	Nouveau			Vente 2025-06-17 - 235 000€
+607	2026-02-11	DVF - Import auto		28 ALL DES MYOSOTIS	95180	Menucourt			Achat récent	81	Nouveau			Vente 2025-06-16 - 313 000€
+608	2026-02-11	DVF - Import auto		66 RUE DU MARECHAL FOCH	95150	Taverny			Achat récent	120	Nouveau			Vente 2025-06-13 - 415 000€
+609	2026-02-11	DVF - Import auto		5 RUE SAINT JEAN	95810	Épiais-Rhus			Achat récent	96	Nouveau			Vente 2025-06-13 - 332 700€
+610	2026-02-11	DVF - Import auto		2 RUE MURAT	95570	Bouffémont			Achat récent	100	Nouveau			Vente 2025-06-13 - 300 000€
+611	2026-02-11	DVF - Import auto		17 RUE GUY ET GERARD TAILLEUR	95660	Champagne-sur-Oise			Achat récent	53	Nouveau			Vente 2025-06-13 - 221 160€
+612	2026-02-11	DVF - Import auto		14 RUE DES ROSES	95100	Argenteuil			Achat récent	45	Nouveau			Vente 2025-06-12 - 185 000€
+613	2026-02-11	DVF - Import auto		22 RUE DES MARECHAUX	95300	Pontoise			Achat récent	117	Nouveau			Vente 2025-06-12 - 35 000€
+614	2026-02-11	DVF - Import auto		10 RUE DE L EGLISE	95490	Vauréal			Achat récent	95	Nouveau			Vente 2025-06-11 - 390 000€
+615	2026-02-11	DVF - Import auto		78 AV ALEXANDRE RIBOT	95130	Le Plessis-Bouchard			Achat récent	246	Nouveau			Vente 2025-06-10 - 530 000€
+616	2026-02-11	DVF - Import auto		13 RUE BRUNE	95570	Bouffémont			Achat récent	87	Nouveau			Vente 2025-06-10 - 205 000€
+617	2026-02-11	DVF - Import auto		10 AV GAMBETTA	95870	Bezons			Achat récent	28	Nouveau			Vente 2025-06-10 - 55 000€
+618	2026-02-11	DVF - Import auto		37 RUE DE PARIS	95720	Le Mesnil-Aubry			Achat récent	31	Nouveau			Vente 2025-06-10 - 52 500€
+619	2026-02-11	DVF - Import auto		29 RUE LUCIEN CLEMENT	95130	Franconville			Achat récent	91	Nouveau			Vente 2025-06-10 - 343 720€
+620	2026-02-11	DVF - Import auto		30 RUE ALFRED DE MUSSET	95500	Gonesse			Achat récent	66	Nouveau			Vente 2025-06-10 - 205 000€
+621	2026-02-11	DVF - Import auto		11 RUE CHARLES GOUNOD	95170	Deuil-la-Barre			Achat récent	81	Nouveau			Vente 2025-06-06 - 394 500€
+622	2026-02-11	DVF - Import auto		18 RUE DU CHAUFOUR	95270	Chaumontel			Achat récent	120	Nouveau			Vente 2025-06-06 - 321 600€
+623	2026-02-11	DVF - Import auto		21 RUE DES CRESSONNIERES	95110	Sannois			Achat récent	56	Nouveau			Vente 2025-06-05 - 277 000€
+624	2026-02-11	DVF - Import auto		7 CHE DU RU	95630	Mériel			Achat récent	78	Nouveau			Vente 2025-06-05 - 273 000€
+625	2026-02-11	DVF - Import auto		33 RUE DES CALLAIS	95600	Eaubonne			Achat récent	123	Nouveau			Vente 2025-06-05 - 720 000€
+626	2026-02-11	DVF - Import auto		14 PAS DU BATEAU IVRE	95800	Cergy			Achat récent	91	Nouveau			Vente 2025-06-05 - 143 860€
+627	2026-02-11	DVF - Import auto		21 RUE MAURICE RECHSTEINER	95100	Argenteuil			Achat récent	63	Nouveau			Vente 2025-06-05 - 282 500€
+628	2026-02-11	DVF - Import auto		7 RLE AUX MOINES	95450	Vigny			Achat récent	104	Nouveau			Vente 2025-06-05 - 310 000€
+629	2026-02-11	DVF - Import auto		56 RUE DE LA PAIX	95320	Saint-Leu-la-Forêt			Achat récent	110	Nouveau			Vente 2025-06-05 - 700 000€
+630	2026-02-11	DVF - Import auto		206 RUE DU GAL LECLERC	95130	Franconville			Achat récent	61	Nouveau			Vente 2025-06-05 - 600 000€
+631	2026-02-11	DVF - Import auto		16 RUE PASTEUR	95260	Beaumont-sur-Oise			Achat récent	65	Nouveau			Vente 2025-06-05 - 207 000€
+632	2026-02-11	DVF - Import auto		10 RUE DU VENT D AUTAN	95610	Éragny			Achat récent	112	Nouveau			Vente 2025-06-04 - 222 000€
+633	2026-02-11	DVF - Import auto		8 SQ DE PORT BOU	95380	Louvres			Achat récent	85	Nouveau			Vente 2025-06-04 - 214 900€
+634	2026-02-11	DVF - Import auto		46 RUE DE LA FOLIE	95100	Argenteuil			Achat récent	108	Nouveau			Vente 2025-06-04 - 346 890€
+635	2026-02-11	DVF - Import auto		47 RUE DE LA REPUBLIQUE	95160	Montmorency			Achat récent	90	Nouveau			Vente 2025-06-04 - 340 000€
+636	2026-02-11	DVF - Import auto		9003 SEN DES FRECULS	95390	Saint-Prix			Achat récent	103	Nouveau			Vente 2025-06-03 - 350 000€
+637	2026-02-11	DVF - Import auto		36 RUE DE VAUCELLES	95150	Taverny			Achat récent	198	Nouveau			Vente 2025-06-03 - 750 000€
+638	2026-02-11	DVF - Import auto		12 RUE DES MATHOUZINES	95170	Deuil-la-Barre			Achat récent	51	Nouveau			Vente 2025-06-03 - 185 000€
+639	2026-02-11	DVF - Import auto		8 ALL CHRISTIAN	95150	Taverny			Achat récent	60	Nouveau			Vente 2025-06-03 - 322 000€
+640	2026-02-11	DVF - Import auto		91 RUE DE SANNOIS	95120	Ermont			Achat récent	72	Nouveau			Vente 2025-06-03 - 535 000€
+641	2026-02-11	DVF - Import auto		24 RUE AUGUSTE DELAUNE	95100	Argenteuil			Achat récent	71	Nouveau			Vente 2025-06-03 - 225 000€
+642	2026-02-11	DVF - Import auto		52 RUE DE LA LIBERATION	95740	Frépillon			Achat récent	64	Nouveau			Vente 2025-06-03 - 263 300€
+643	2026-02-11	DVF - Import auto		22 RUE MARIE GARREAU	95870	Bezons			Achat récent	72	Nouveau			Vente 2025-06-03 - 260 000€
+644	2026-02-11	DVF - Import auto		29 RUE DES SILLONS DE BOULANGER	95470	Saint-Witz			Achat récent	155	Nouveau			Vente 2025-06-03 - 535 000€
+645	2026-02-11	DVF - Import auto		25 RUE DE MALLEVILLE	95880	Enghien-les-Bains			Achat récent	269	Nouveau			Vente 2025-06-03 - 965 000€
+646	2026-02-11	DVF - Import auto		43 RUE DE LABBEVILLE	95690	Nesles-la-Vallée			Achat récent	35	Nouveau			Vente 2025-06-03 - 102 000€
+647	2026-02-11	DVF - Import auto		71 RUE DE PARIS	95720	Le Mesnil-Aubry			Achat récent	102	Nouveau			Vente 2025-06-02 - 340 000€
+648	2026-02-11	DVF - Import auto		20 LE CLOS DES GATINES	95270	Luzarches			Achat récent	180	Nouveau			Vente 2025-06-02 - 561 900€
+649	2026-02-11	DVF - Import auto		3 RUE PASCAL	95270	Chaumontel			Achat récent	113	Nouveau			Vente 2025-06-02 - 364 800€
+650	2026-02-11	DVF - Import auto		54 RUE SAINTE HONORINE	95220	Herblay-sur-Seine			Achat récent	75	Nouveau			Vente 2025-06-02 - 364 000€
+651	2026-02-11	DVF - Import auto		35 RUE MAURICE RAVEL	95220	Herblay-sur-Seine			Achat récent	99	Nouveau			Vente 2025-06-02 - 507 500€
+652	2026-02-11	DVF - Import auto		8 RUE DES MARADAS VERTS	95000	Pontoise			Achat récent	109	Nouveau			Vente 2025-06-02 - 274 000€
+653	2026-02-11	DVF - Import auto		13 RUE DE CERNAY	95110	Sannois			Achat récent	163	Nouveau			Vente 2025-06-02 - 550 850€
+654	2026-02-11	DVF - Import auto		1 RUE DE VIARMES	95270	Seugy			Achat récent	85	Nouveau			Vente 2025-05-31 - 120 978€
+655	2026-02-11	DVF - Import auto		15 RUE ELA CONSTANTINIDE	95190	Goussainville			Achat récent	48	Nouveau			Vente 2025-05-30 - 235 000€
+656	2026-02-11	DVF - Import auto		2 AV REY DE FORESTA	95160	Montmorency			Achat récent	115	Nouveau			Vente 2025-05-30 - 670 000€
+657	2026-02-11	DVF - Import auto		32 RUE DU BOIS MESLE	95600	Eaubonne			Achat récent	103	Nouveau			Vente 2025-05-30 - 593 200€
+658	2026-02-11	DVF - Import auto		33 BD DU GENERAL DE GAULLE	95200	Sarcelles			Achat récent	90	Nouveau			Vente 2025-05-30 - 280 000€
+659	2026-02-11	DVF - Import auto		2 CHE DE LA RAVINE DE JOUY	95280	Jouy-le-Moutier			Achat récent	243	Nouveau			Vente 2025-05-28 - 605 700€
+660	2026-02-11	DVF - Import auto		18 RUE DE MONTMORENCY	95680	Montlignon			Achat récent	72	Nouveau			Vente 2025-05-28 - 430 000€
+661	2026-02-11	DVF - Import auto		9001 RUE HONORE DE BALZAC	95840	Villiers-Adam			Achat récent	240	Nouveau			Vente 2025-05-28 - 707 130€
+662	2026-02-11	DVF - Import auto		22 RUE FONTAINE	95300	Pontoise			Achat récent	67	Nouveau			Vente 2025-05-28 - 297 250€
+663	2026-02-11	DVF - Import auto		18 GR GRANDE RUE	95690	Frouville			Achat récent	125	Nouveau			Vente 2025-05-28 - 543 200€
+664	2026-02-11	DVF - Import auto		152 RUE D OMBREVAL	95330	Domont			Achat récent	91	Nouveau			Vente 2025-05-28 - 358 000€
+665	2026-02-11	DVF - Import auto		91 RUE DU MAL GALLIENI	95120	Ermont			Achat récent	75	Nouveau			Vente 2025-05-28 - 400 000€
+666	2026-02-11	DVF - Import auto		20 RUE DU HEAULME	95640	Marines			Achat récent	137	Nouveau			Vente 2025-05-28 - 550 000€
+667	2026-02-11	DVF - Import auto		8 RUE DU CHATEAU MOLL	95690	Hédouville			Achat récent	72	Nouveau			Vente 2025-05-28 - 265 000€
+668	2026-02-11	DVF - Import auto		20 RUE HENRI BARBUSSE	95210	Saint-Gratien			Achat récent	125	Nouveau			Vente 2025-05-28 - 530 000€
+669	2026-02-11	DVF - Import auto		6 ALL RASPAIL	95600	Eaubonne			Achat récent	73	Nouveau			Vente 2025-05-28 - 379 000€
+670	2026-02-11	DVF - Import auto		17 RUE DE PARMAIN	95690	Nesles-la-Vallée			Achat récent	160	Nouveau			Vente 2025-05-28 - 477 900€
+671	2026-02-11	DVF - Import auto		32 RUE DE LA VIEILLE FRANCE	95840	Béthemont-la-Forêt			Achat récent	114	Nouveau			Vente 2025-05-28 - 356 000€
+672	2026-02-11	DVF - Import auto		10 RUE DE CERGY	95520	Osny			Achat récent	86	Nouveau			Vente 2025-05-28 - 262 000€
+673	2026-02-11	DVF - Import auto		4 AV HELOISE	95390	Saint-Prix			Achat récent	67	Nouveau			Vente 2025-05-27 - 320 000€
+674	2026-02-11	DVF - Import auto		10 RUE DES FLANDRES	95470	Fosses			Achat récent	83	Nouveau			Vente 2025-05-27 - 225 000€
+675	2026-02-11	DVF - Import auto		18 RUE DES BOVES	95420	Magny-en-Vexin			Achat récent	144	Nouveau			Vente 2025-05-27 - 317 000€
+676	2026-02-11	DVF - Import auto		16 RUE BAUDIN	95100	Argenteuil			Achat récent	104	Nouveau			Vente 2025-05-27 - 473 000€
+677	2026-02-11	DVF - Import auto		132 AV HENRI BARBUSSE	95470	Fosses			Achat récent	123	Nouveau			Vente 2025-05-27 - 275 000€
+678	2026-02-11	DVF - Import auto		37 AV DE L ENCLOS	95800	Cergy			Achat récent	120	Nouveau			Vente 2025-05-27 - 399 000€
+679	2026-02-11	DVF - Import auto		30 RUE DE L EGALITE	95500	Gonesse			Achat récent	80	Nouveau			Vente 2025-05-27 - 320 000€
+680	2026-02-11	DVF - Import auto		22 RUE DES CHATAIGNIERS	95520	Osny			Achat récent	100	Nouveau			Vente 2025-05-27 - 335 000€
+681	2026-02-11	DVF - Import auto		10 RUE ALEXANDRE TESSIER	95660	Champagne-sur-Oise			Achat récent	100	Nouveau			Vente 2025-05-27 - 375 000€
+682	2026-02-11	DVF - Import auto		27 RUE DE NORMANDIE	95100	Argenteuil			Achat récent	32	Nouveau			Vente 2025-05-27 - 275 000€
+683	2026-02-11	DVF - Import auto		28 ALL DES OSSARDS	95150	Taverny			Achat récent	68	Nouveau			Vente 2025-05-27 - 305 000€
+684	2026-02-11	DVF - Import auto		18 RUE ROBERT DUPRE	95150	Taverny			Achat récent	42	Nouveau			Vente 2025-05-27 - 300 000€
+685	2026-02-11	DVF - Import auto		3 RTE DE LIVILLIERS	95300	Ennery			Achat récent	20	Nouveau			Vente 2025-05-27 - 925 000€
+686	2026-02-11	DVF - Import auto		15 LA BUTTE AUX CHENES	95610	Éragny			Achat récent	101	Nouveau			Vente 2025-05-27 - 280 000€
+687	2026-02-11	DVF - Import auto		16 RUE PIERRE BROSSOLETTE	95210	Saint-Gratien			Achat récent	217	Nouveau			Vente 2025-05-27 - 685 000€
+688	2026-02-11	DVF - Import auto		14 RUE DES BASSERONS	95160	Montmorency			Achat récent	69	Nouveau			Vente 2025-05-27 - 321 000€
+689	2026-02-11	DVF - Import auto		11 RUE DE L YSIEUX	95500	Gonesse			Achat récent	216	Nouveau			Vente 2025-05-27 - 410 000€
+690	2026-02-11	DVF - Import auto		15 AV DU DOCTEUR BROQUET	95190	Goussainville			Achat récent	105	Nouveau			Vente 2025-05-27 - 243 000€
+691	2026-02-11	DVF - Import auto		42 RUE ROBERT SCHUMANN	95380	Louvres			Achat récent	98	Nouveau			Vente 2025-05-27 - 271 000€
+692	2026-02-11	DVF - Import auto		16 RUE MARTEL VAUQUELIN	95690	Nesles-la-Vallée			Achat récent	150	Nouveau			Vente 2025-05-27 - 560 000€
+693	2026-02-11	DVF - Import auto		27 RUE CARNOT	95410	Groslay			Achat récent	116	Nouveau			Vente 2025-05-27 - 454 000€
+694	2026-02-11	DVF - Import auto		10 RUE GUYNEMER	95210	Saint-Gratien			Achat récent	35	Nouveau			Vente 2025-05-27 - 214 000€
+695	2026-02-11	DVF - Import auto		16 RUE DU PRE MARGOT	95590	Nerville-la-Forêt			Achat récent	84	Nouveau			Vente 2025-05-27 - 286 370€
+696	2026-02-11	DVF - Import auto		13 RUE PASTEUR	95410	Groslay			Achat récent	82	Nouveau			Vente 2025-05-26 - 313 000€
+697	2026-02-11	DVF - Import auto		88 RUE ANDRE ET MAURICE GUESNIER	95420	Magny-en-Vexin			Achat récent	49	Nouveau			Vente 2025-05-23 - 147 000€
+698	2026-02-11	DVF - Import auto		54 BD PERE WRESINSKY	95540	Méry-sur-Oise			Achat récent	155	Nouveau			Vente 2025-05-23 - 477 000€
+699	2026-02-11	DVF - Import auto		12 PL DE LA REPUBLIQUE	95610	Éragny			Achat récent	61	Nouveau			Vente 2025-05-23 - 150 400€
+700	2026-02-11	DVF - Import auto		15 RUE HAMEAU DU FLAMINET	95670	Marly-la-Ville			Achat récent	88	Nouveau			Vente 2025-05-23 - 250 000€
