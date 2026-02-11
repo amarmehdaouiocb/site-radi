@@ -85,6 +85,16 @@ const UTILISATION = {
   '9': 'Non déterminé'
 };
 
+const TYPE_LOGEMENT = {
+  '1': 'Individuel pur',
+  '2': 'Individuel groupé',
+  '3': 'Collectif',
+  '4': 'Résidence'
+};
+
+// Types de logements à exclure (immeubles, résidences = plusieurs boîtes aux lettres)
+const TYPES_LOGEMENT_EXCLUS = ['3', '4'];
+
 // Fonction helper pour convertir un code en libellé
 function toLabel(dict, code) {
   if (!code) return '';
@@ -202,7 +212,9 @@ async function main() {
     total: 0,
     idf: 0,
     travauxExistant: 0,
-    recent: 0
+    recent: 0,
+    individuel: 0,
+    collectifExclu: 0
   };
 
   // Date limite : permis des 12 derniers mois
@@ -255,6 +267,14 @@ async function main() {
     }
     stats.recent++;
 
+    // Filtre 4 : Exclure les logements collectifs (immeubles, résidences)
+    const typeLogement = row[COL.TYPE_PRINCIP_LOGTS_CREES];
+    if (TYPES_LOGEMENT_EXCLUS.includes(typeLogement)) {
+      stats.collectifExclu++;
+      continue;
+    }
+    stats.individuel++;
+
     // Construire le lead avec libellés explicites
     const lead = {
       id: stats.recent,
@@ -284,6 +304,8 @@ async function main() {
   console.log(`   Île-de-France : ${stats.idf.toLocaleString()}`);
   console.log(`   Travaux existant : ${stats.travauxExistant.toLocaleString()}`);
   console.log(`   Récents (< 12 mois) : ${stats.recent.toLocaleString()}`);
+  console.log(`   Collectifs exclus : ${stats.collectifExclu.toLocaleString()}`);
+  console.log(`   Individuels retenus : ${stats.individuel.toLocaleString()}`);
 
   // Scorer les leads
   console.log('\n🎯 Scoring des leads...');
