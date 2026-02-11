@@ -3,10 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Courrier RA Bâtiment - Projet de Travaux</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=block" rel="stylesheet">
   <style>
+    :root {
+      --gold-primary: #d4af37;
+      --gold-light: #f4e4bc;
+      --gold-dark: #b8972e;
+      --gold-gradient: linear-gradient(135deg, #905e26 0%, #f5ec9b 50%, #905e26 100%);
+      --bg-white: #ffffff;
+      --bg-cream: #fdfcfa;
+      --text-dark: #1a1a1a;
+      --text-muted: #666666;
+      --border-gold: rgba(212, 175, 55, 0.3);
+    }
+
     @page {
-      margin: 2cm;
       size: A4;
+      margin: 0;
     }
 
     * {
@@ -15,251 +30,455 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      width: 210mm;
+      height: 297mm;
+    }
+
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 11pt;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10pt;
       line-height: 1.6;
-      color: #333;
+      color: var(--text-dark);
+      background: var(--bg-white);
     }
 
     .page {
-      width: 17cm;
-      min-height: 25cm;
-      padding: 0;
+      width: 210mm;
+      height: 297mm;
+      padding: 18mm 20mm 32mm 20mm;
+      position: relative;
+      background: var(--bg-white);
+      overflow: hidden;
     }
 
-    /* En-tête */
+    /* Decorative gold top border */
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gold-gradient);
+    }
+
+    /* Subtle corner accent */
+    .page::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: 0;
+      width: 80mm;
+      height: 40mm;
+      background: linear-gradient(135deg, transparent 60%, rgba(212, 175, 55, 0.03) 100%);
+      pointer-events: none;
+    }
+
+    /* Header */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 2cm;
-      padding-bottom: 0.5cm;
-      border-bottom: 2px solid #1a365d;
+      margin-bottom: 10mm;
+      padding-bottom: 6mm;
+      border-bottom: 1px solid var(--border-gold);
     }
 
     .logo-section {
-      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 4mm;
     }
 
-    .logo {
-      font-size: 28pt;
-      font-weight: bold;
-      color: #1a365d;
-      letter-spacing: -1px;
+    .logo-icon {
+      width: 24mm;
+      height: auto;
+      flex-shrink: 0;
     }
 
-    .logo-subtitle {
+    .logo-icon img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .company-info h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18pt;
+      font-weight: 600;
+      color: var(--text-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .company-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7pt;
+      font-weight: 500;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1mm;
+    }
+
+    .contact-details {
+      text-align: right;
+      font-size: 8pt;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .contact-details .phone {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 9pt;
+    }
+
+    .contact-details .website {
+      color: var(--gold-dark);
+      font-weight: 500;
+    }
+
+    /* Recipient zone */
+    .recipient {
+      margin-left: 100mm;
+      margin-bottom: 8mm;
+      padding: 4mm;
+      background: var(--bg-cream);
+      border-left: 2px solid var(--gold-primary);
+    }
+
+    .recipient p {
       font-size: 10pt;
-      color: #666;
-      margin-top: 2px;
+      line-height: 1.7;
+      color: var(--text-dark);
     }
 
-    .contact-info {
+    .recipient .name {
+      font-weight: 600;
+    }
+
+    /* Date */
+    .date-line {
       text-align: right;
       font-size: 9pt;
-      color: #555;
-      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 6mm;
+      font-style: italic;
     }
 
-    .contact-info strong {
-      color: #1a365d;
+    /* Subject */
+    .subject {
+      margin-bottom: 5mm;
+      padding-bottom: 4mm;
     }
 
-    /* Destinataire */
-    .destinataire {
-      margin: 1.5cm 0;
-      margin-left: 9cm;
-      line-height: 1.8;
+    .subject-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .destinataire strong {
-      font-size: 11pt;
+    .subject-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 13pt;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-top: 2mm;
     }
 
-    /* Date et lieu */
-    .date-lieu {
-      text-align: right;
-      margin-bottom: 1cm;
-      color: #555;
-    }
-
-    /* Objet */
-    .objet {
-      margin-bottom: 0.8cm;
-    }
-
-    .objet-label {
-      font-weight: bold;
-      color: #1a365d;
-    }
-
-    /* Corps de la lettre */
-    .corps {
+    /* Body */
+    .body {
       text-align: justify;
+      hyphens: auto;
     }
 
-    .corps p {
-      margin-bottom: 0.5cm;
+    .body p {
+      margin-bottom: 3mm;
+      font-size: 10pt;
+      line-height: 1.6;
     }
 
-    .corps p:first-child {
-      margin-bottom: 0.8cm;
+    .salutation {
+      margin-bottom: 4mm;
     }
 
-    /* Liste des services */
-    .services {
-      margin: 0.8cm 0;
-      margin-left: 0.5cm;
-    }
-
-    .services li {
-      margin: 0.3cm 0;
-      padding-left: 0.3cm;
-      list-style: none;
-    }
-
-    .services li::before {
-      content: "✓";
-      color: #1a365d;
-      font-weight: bold;
-      margin-right: 0.3cm;
-    }
-
-    /* Encadré mise en avant */
+    /* Highlight box */
     .highlight-box {
-      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-      border-left: 4px solid #1a365d;
-      padding: 0.5cm;
-      margin: 0.8cm 0;
+      margin: 4mm 0;
+      padding: 3mm 4mm;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(244, 228, 188, 0.15) 100%);
+      border-left: 3px solid var(--gold-primary);
+      border-radius: 0 4px 4px 0;
     }
 
-    /* Contact */
-    .contact-block {
-      margin: 0.8cm 0;
-      padding: 0.4cm;
-      background: #f7fafc;
-      border-radius: 4px;
+    .highlight-box p {
+      margin: 0;
+      font-weight: 500;
+      color: var(--text-dark);
     }
 
-    .contact-block strong {
-      color: #1a365d;
+    /* Services list */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm 8mm;
+      margin: 4mm 0;
+      padding-left: 2mm;
+    }
+
+    .service-item {
+      font-size: 9pt;
+      color: var(--text-dark);
+      padding-left: 4mm;
+      position: relative;
+    }
+
+    .service-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 5px;
+      height: 5px;
+      background: var(--gold-primary);
+      border-radius: 50%;
+    }
+
+    /* Contact CTA */
+    .contact-cta {
+      margin: 4mm 0;
+      padding: 3mm;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-gold);
+      border-radius: 3px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .cta-item {
+      text-align: center;
+      font-size: 9pt;
+    }
+
+    .cta-item .label {
+      color: var(--text-muted);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cta-item .value {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .cta-item .value.gold {
+      color: var(--gold-dark);
     }
 
     /* Signature */
     .signature {
-      margin-top: 1.2cm;
+      margin-top: 5mm;
     }
 
-    .signature-name {
-      margin-top: 1cm;
-      font-weight: bold;
+    .signature .closing {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 6mm;
     }
 
-    .signature-title {
-      color: #666;
-      font-size: 10pt;
+    .signature .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 12pt;
+      font-weight: 600;
+      color: var(--text-dark);
     }
 
-    /* Pied de page */
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      text-align: center;
+    .signature .title {
       font-size: 8pt;
-      color: #999;
-      border-top: 1px solid #e2e8f0;
-      padding-top: 0.3cm;
+      color: var(--gold-dark);
+      font-weight: 500;
     }
 
-    .footer-line {
-      margin: 2px 0;
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 20mm;
+      right: 20mm;
+      padding-top: 4mm;
+      border-top: 1px solid var(--border-gold);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7pt;
+      color: var(--text-muted);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+    }
+
+    .footer-logo {
+      width: 14mm;
+      height: auto;
+      opacity: 0.7;
+    }
+
+    .footer-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .footer-text {
+      line-height: 1.5;
+    }
+
+    .footer-right {
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .footer .highlight {
+      color: var(--gold-dark);
+      font-weight: 500;
+    }
+
+    /* Print optimization */
+    @media print {
+      html, body {
+        width: 210mm;
+        height: 297mm;
+      }
+
+      .page {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- En-tête -->
-    <div class="header">
+    <!-- Header -->
+    <header class="header">
       <div class="logo-section">
-        <div class="logo">RA Bâtiment</div>
-        <div class="logo-subtitle">Artisan Multi-Services BTP</div>
+        <div class="logo-icon">
+          <img src="{{LOGO_DATA_URI}}" alt="RA Bâtiment">
+        </div>
+        <div class="company-info">
+          <h1>RA Bâtiment</h1>
+          <div class="company-tagline">Artisan Rénovation · Île-de-France</div>
+        </div>
       </div>
-      <div class="contact-info">
-        <strong>📞 06 89 12 46 21</strong><br>
-        📧 contact@ra-batiment.fr<br>
-        🌐 ra-batiment.fr
+      <div class="contact-details">
+        <div class="phone">06 89 12 46 21</div>
+        contact@ra-batiment.fr<br>
+        <span class="website">ra-batiment.fr</span>
       </div>
+    </header>
+
+    <!-- Recipient -->
+    <div class="recipient">
+      <p>
+        <span class="name">Madame, Monsieur</span><br>
+        {{ADRESSE}}<br>
+        {{CODE_POSTAL}} {{VILLE}}
+      </p>
     </div>
 
-    <!-- Destinataire -->
-    <div class="destinataire">
-      <strong>{{NOM}}</strong><br>
-      {{ADRESSE}}<br>
-      {{CODE_POSTAL}} {{VILLE}}
-    </div>
-
-    <!-- Date et lieu -->
-    <div class="date-lieu">
+    <!-- Date -->
+    <div class="date-line">
       Bobigny, le {{DATE}}
     </div>
 
-    <!-- Objet -->
-    <div class="objet">
-      <span class="objet-label">Objet :</span> Votre projet de travaux
+    <!-- Subject -->
+    <div class="subject">
+      <div class="subject-label">Objet</div>
+      <div class="subject-text">Votre projet {{TYPE_TRAVAUX}}</div>
     </div>
 
-    <!-- Corps -->
-    <div class="corps">
-      <p>Madame, Monsieur,</p>
+    <!-- Body -->
+    <div class="body">
+      <p class="salutation">Madame, Monsieur,</p>
 
       <p>
-        Nous avons constaté que vous avez un <strong>projet de travaux en cours</strong>
+        Nous avons constaté que vous avez un <strong>projet de travaux</strong> en cours
         au {{ADRESSE}}, {{CODE_POSTAL}} {{VILLE}}.
       </p>
 
       <p>
-        <strong>RA Bâtiment</strong>, entreprise de rénovation générale basée en Île-de-France,
-        serait ravie de vous accompagner dans la réalisation de votre projet.
+        <strong>RA Bâtiment</strong>, entreprise de rénovation générale basée
+        en Île-de-France, accompagne les propriétaires dans la réalisation de leurs projets
+        depuis plus de 15 ans.
       </p>
 
-      <p>Notre équipe d'artisans qualifiés intervient sur :</p>
-
-      <ul class="services">
-        <li>Maçonnerie et gros œuvre</li>
-        <li>Rénovation intérieure complète</li>
-        <li>Plomberie et électricité</li>
-        <li>Carrelage, peinture et finitions</li>
-        <li>Aménagements extérieurs</li>
-      </ul>
-
       <div class="highlight-box">
-        <strong>Devis gratuit et sans engagement</strong> après visite technique à votre convenance.
+        <p>Nous intervenons sur tous vos projets de rénovation :</p>
       </div>
 
-      <div class="contact-block">
-        📞 Appelez-nous : <strong>06 89 12 46 21</strong><br>
-        📧 Email : <strong>contact@ra-batiment.fr</strong><br>
-        🌐 Nos réalisations : <strong>ra-batiment.fr</strong>
+      <div class="services-grid">
+        <div class="service-item">Rénovation complète</div>
+        <div class="service-item">Cuisine & Salle de bain</div>
+        <div class="service-item">Électricité & Plomberie</div>
+        <div class="service-item">Peinture & Revêtements</div>
+        <div class="service-item">Maçonnerie & Extension</div>
+        <div class="service-item">Aménagement extérieur</div>
+      </div>
+
+      <div class="contact-cta">
+        <div class="cta-item">
+          <div class="label">Téléphone</div>
+          <div class="value">06 89 12 46 21</div>
+        </div>
+        <div class="cta-item">
+          <div class="label">Email</div>
+          <div class="value">contact@ra-batiment.fr</div>
+        </div>
+        <div class="cta-item">
+          <div class="label">Nos réalisations</div>
+          <div class="value gold">ra-batiment.fr</div>
+        </div>
+      </div>
+
+      <p>
+        Nous serions ravis de vous rencontrer pour évaluer vos besoins et vous proposer
+        un <strong>devis gratuit et personnalisé</strong>.
+      </p>
+
+      <!-- Signature -->
+      <div class="signature">
+        <p class="closing">
+          Dans l'attente de votre retour, veuillez agréer nos salutations distinguées.
+        </p>
+        <div class="name">L'équipe RA Bâtiment</div>
       </div>
     </div>
 
-    <!-- Signature -->
-    <div class="signature">
-      <p>Dans l'attente de votre retour, je vous prie d'agréer, Madame, Monsieur,
-      l'expression de mes salutations distinguées.</p>
-
-      <div class="signature-name">Radi</div>
-      <div class="signature-title">Gérant - RA Bâtiment</div>
-    </div>
-
-    <!-- Pied de page -->
-    <div class="footer">
-      <div class="footer-line">RA Bâtiment - SAS au capital de 1 000 € - SIRET 933 728 610 00017</div>
-      <div class="footer-line">5 rue de la Gaîté, 93000 Bobigny | Garantie décennale - Assurance RC Pro</div>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <img src="{{LOGO_DATA_URI}}" alt="RA Bâtiment">
+        </div>
+        <div class="footer-text">
+          <strong>RA Bâtiment</strong> · SAS au capital de 1 000 €<br>
+          SIRET : 933 728 610 00017
+        </div>
+      </div>
+      <div class="footer-right">
+        5 rue de la Gaîté, 93000 Bobigny<br>
+        <span class="highlight">Garantie décennale · Assurance RC Pro</span>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
