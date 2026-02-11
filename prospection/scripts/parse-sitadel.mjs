@@ -48,11 +48,20 @@ const ETAT_DOSSIER = {
 
 const CATEGORIE_DEMANDEUR = {
   '10': 'Particulier',
+  '11': 'Particulier',
+  '12': 'Particulier avec architecte',
   '20': 'SCI',
+  '21': 'SCI familiale',
   '30': 'Société privée',
+  '31': 'Promoteur immobilier',
+  '32': 'Bailleur privé',
   '40': 'Organisme HLM',
+  '41': 'OPH',
+  '42': 'ESH',
+  '43': 'Autre organisme social',
   '50': 'Administration publique',
-  '60': 'Autre personne morale'
+  '60': 'Autre personne morale',
+  '90': 'Non renseigné'
 };
 
 const DESTINATION = {
@@ -71,6 +80,8 @@ const UTILISATION = {
   '1': 'Résidence principale',
   '2': 'Résidence secondaire',
   '3': 'Location',
+  '4': 'Vente',
+  '5': 'Non renseigné',
   '9': 'Non déterminé'
 };
 
