@@ -41,7 +41,7 @@ export const IMAGES = {
   heroAlt: "Terrasse bois aménagée par RA Bâtiment",
   services: {
     renovation: "/portfolio/renovation-couloir-apres-01.jpg",
-    maconnerie: "/portfolio/piscine-apres-01.jpg",
+    maconnerie: "/portfolio/sdb-daddy-apres.jpg",
     plomberie: "/portfolio/sdb-mosaique-apres-03.jpg",
     electricite: "/portfolio/renovation-tableau-elec-01.jpg",
     peinture: "/portfolio/cuisine-moderne-02.jpg",
@@ -278,11 +278,11 @@ export const PORTFOLIO_ITEMS = [
   },
   {
     id: 3,
-    title: "Piscine Béton",
+    title: "Salle de Bain",
     category: "Maçonnerie",
     location: "Île-de-France",
-    image: "/portfolio/piscine-apres-01.jpg",
-    beforeImage: "/portfolio/piscine-avant-01.jpg",
+    image: "/portfolio/sdb-daddy-apres.jpg",
+    beforeImage: "/portfolio/sdb-daddy-avant.jpg",
     surface: 32,
     duration: 8,
     budgetRange: { min: 25000, max: 35000 },
